@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ci7mniectht3j"
+path="res://.godot/imported/Towards The Fires.mp3-ea80146cac1e389ac8a676d9db4e490e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Towards The Fires.mp3"
+dest_files=["res://.godot/imported/Towards The Fires.mp3-ea80146cac1e389ac8a676d9db4e490e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

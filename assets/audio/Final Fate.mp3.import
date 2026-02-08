@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ohxvs7yi5c36"
+path="res://.godot/imported/Final Fate.mp3-7cfe16ce0a02eaf65b7aa62efe369144.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Final Fate.mp3"
+dest_files=["res://.godot/imported/Final Fate.mp3-7cfe16ce0a02eaf65b7aa62efe369144.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

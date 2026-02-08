@@ -1,0 +1,129 @@
+[gd_scene load_steps=15 format=3 uid="uid://nbrxau185wnw"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/rooms/room.gd" id="1_npohu"]
+[ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_fmhon"]
+[ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/autoload/spawn_manager/spawn_position.gd" id="11_w67ex"]
+[ext_resource type="Texture2D" uid="uid://cfcgiab5w7cbu" path="res://assets/img/rooms/conbini/Bg.png" id="29_71dl1"]
+[ext_resource type="Texture2D" uid="uid://ctggkoljchrmr" path="res://assets/img/rooms/conbini/Storage.png" id="30_npohu"]
+[ext_resource type="PackedScene" uid="uid://6cobcq10e24w" path="res://scenes/characters/stan_the_man/stan_the_man.tscn" id="31_sfjju"]
+[ext_resource type="Texture2D" uid="uid://btc5qb75hrohs" path="res://assets/img/rooms/conbini/Window.png" id="32_8mdtx"]
+[ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="33_65cf0"]
+[ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="34_tsxq7"]
+[ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scripts/areas/room_door.gd" id="35_tsxq7"]
+
+[sub_resource type="Environment" id="Environment_vovsb"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.06
+glow_bloom = 0.58
+
+[sub_resource type="Resource" id="Resource_xlha0"]
+script = ExtResource("34_tsxq7")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlha0"]
+size = Vector2(44, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsxq7"]
+size = Vector2(44, 18)
+
+[node name="ConbiniStorage" type="Node2D" node_paths=PackedStringArray("camera", "player")]
+script = ExtResource("1_npohu")
+camera = NodePath("Camera2D")
+player = NodePath("StanTheMan")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0195, 0.0323917, 0.13, 0.360784)
+metadata/_edit_use_anchors_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vovsb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -19)
+zoom = Vector2(2, 2)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_fmhon")
+metadata/_custom_type_script = "uid://btwul30fxa5pu"
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(3, -19)
+texture = ExtResource("29_71dl1")
+
+[node name="Storage" type="Sprite2D" parent="."]
+position = Vector2(1, -19)
+texture = ExtResource("30_npohu")
+
+[node name="StanTheMan" parent="." instance=ExtResource("31_sfjju")]
+position = Vector2(54, -17)
+scale_factor = 100.0
+scale_factor_min = 0.9
+scale_factor_max = 1.0
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(2, -19)
+texture = ExtResource("32_8mdtx")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+position = Vector2(2, -19)
+script = ExtResource("33_65cf0")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_xlha0")
+metadata/_custom_type_script = "uid://br03kradwjuk0"
+
+[node name="RoomDoor1" type="Area2D" parent="." node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-50, 70)
+collision_layer = 64
+script = ExtResource("35_tsxq7")
+door_id = "1"
+goto_door_id = "2"
+scene_path = "res://scenes/rooms/conbini/conbini_toire.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor1"]
+position = Vector2(107, -9)
+shape = SubResource("RectangleShape2D_xlha0")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoor1"]
+position = Vector2(106, -30)
+script = ExtResource("11_w67ex")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="RoomDoor2" type="Area2D" parent="." node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-145, -32)
+collision_layer = 64
+script = ExtResource("35_tsxq7")
+door_id = "2"
+goto_door_id = "1"
+scene_path = "res://scenes/rooms/conbini/conbini_back.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor2"]
+position = Vector2(106, -20)
+shape = SubResource("RectangleShape2D_tsxq7")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoor2"]
+position = Vector2(107, -3)
+script = ExtResource("11_w67ex")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-111, -40, -51, -40, -51, -45, -26, -45, -26, -40, 39, -40, 128, 50, 80, 50, 81, 69, 149, 70, 149, 18, 37, -94, -134, -92, -132, -40, -38, 72, 33, 70, 33, 52, -21, 50)

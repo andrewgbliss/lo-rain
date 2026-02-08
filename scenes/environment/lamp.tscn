@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqrl44pfo72sv"]
+
+[ext_resource type="Texture2D" uid="uid://bicvac2ermmgj" path="res://assets/img/rooms/long-road/Lamp.png" id="1_dsn84"]
+[ext_resource type="Texture2D" uid="uid://rwgmmbhucwqm" path="res://assets/img/masks/cone-mask.png" id="2_uxiqm"]
+[ext_resource type="Script" uid="uid://pwy777opm34y" path="res://scripts/areas/heat_area.gd" id="3_r4tib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxglm"]
+size = Vector2(108, 98)
+
+[node name="Lamp" type="Sprite2D"]
+texture = ExtResource("1_dsn84")
+offset = Vector2(0, 10)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-90, 6)
+color = Color(1, 1, 0.0784314, 1)
+energy = 2.37
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("2_uxiqm")
+texture_scale = 0.7
+
+[node name="HeatArea2D" type="Area2D" parent="."]
+position = Vector2(-92, -8)
+collision_layer = 4
+script = ExtResource("3_r4tib")
+metadata/_custom_type_script = "uid://pwy777opm34y"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeatArea2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_vxglm")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-9, 18)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(-100, -7, -100, -15, -90, -15, -90, -7)

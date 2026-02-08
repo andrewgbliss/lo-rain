@@ -1,0 +1,222 @@
+[gd_scene load_steps=22 format=3 uid="uid://cjunwldi6qc84"]
+
+[ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://blisscode/character/character_controller.gd" id="1_88g1p"]
+[ext_resource type="Texture2D" uid="uid://u3yumb7e1d6n" path="res://assets/img/characters/hanannan-Sheet.png" id="2_0safi"]
+[ext_resource type="Script" uid="uid://b3mlg2cpf7tdl" path="res://scripts/behavior_tree/bt_player.gd" id="3_hf7ox"]
+[ext_resource type="Script" uid="uid://dnm2cmvm2uh0v" path="res://scripts/behavior_tree/composite/bt_selector_node.gd" id="4_e5c4o"]
+[ext_resource type="Script" uid="uid://xwbo18yggp15" path="res://scripts/behavior_tree/composite/bt_sequence_node.gd" id="5_endi2"]
+[ext_resource type="Script" uid="uid://bnbbi7tcoi6sg" path="res://scripts/behavior_tree/bt_blackboard.gd" id="6_ahdu5"]
+[ext_resource type="Script" uid="uid://cjvn7rgac78xd" path="res://scripts/behavior_tree/action/bt_choose_random_polygon_pos.gd" id="6_e5c4o"]
+[ext_resource type="Script" uid="uid://b5wo0grwm5wq6" path="res://scripts/behavior_tree/action/bt_navigation_agent_set_target_pos.gd" id="7_ahdu5"]
+[ext_resource type="Script" uid="uid://dwayxjrljyl6k" path="res://scripts/behavior_tree/action/bt_navigation_process.gd" id="8_feks2"]
+[ext_resource type="Script" uid="uid://dc4tcsn1ssome" path="res://scripts/behavior_tree/action/bt_wait_for_seconds.gd" id="9_feks2"]
+[ext_resource type="Script" uid="uid://b8eiony1kt3mt" path="res://scripts/behavior_tree/composite/bt_timeout.gd" id="9_yxh51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxm2h"]
+size = Vector2(9, 2)
+
+[sub_resource type="Animation" id="Animation_ahdu5"]
+resource_name = "CastSpell"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_0safi"]
+resource_name = "IdleDown"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_88g1p"]
+resource_name = "IdleRight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_pxm2h"]
+resource_name = "IdleUp"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_endi2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_e5c4o"]
+resource_name = "WalkDown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_m3303"]
+resource_name = "WalkRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_hf7ox"]
+resource_name = "WalkUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahdu5"]
+_data = {
+&"CastSpell": SubResource("Animation_ahdu5"),
+&"IdleDown": SubResource("Animation_0safi"),
+&"IdleRight": SubResource("Animation_88g1p"),
+&"IdleUp": SubResource("Animation_pxm2h"),
+&"RESET": SubResource("Animation_endi2"),
+&"WalkDown": SubResource("Animation_e5c4o"),
+&"WalkRight": SubResource("Animation_m3303"),
+&"WalkUp": SubResource("Animation_hf7ox")
+}
+
+[node name="Hanannan" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent") groups=["Persist"]]
+collision_layer = 16
+collision_mask = 2
+motion_mode = 1
+wall_min_slide_angle = 0.00872665
+script = ExtResource("1_88g1p")
+character_type = 1
+has_gravity = false
+navigation_agent = NodePath("NavigationAgent2D")
+metadata/_custom_type_script = "uid://crueou1p1x8k2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_pxm2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -21)
+texture = ExtResource("2_0safi")
+hframes = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ahdu5")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+simplify_path = true
+
+[node name="BTPlayer" type="Node" parent="." node_paths=PackedStringArray("root_node", "blackboard", "agent")]
+script = ExtResource("3_hf7ox")
+root_node = NodePath("BTSelectorNode")
+blackboard = NodePath("../BTBlackboard")
+agent = NodePath("..")
+is_running = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSelectorNode" type="Node" parent="BTPlayer"]
+script = ExtResource("4_e5c4o")
+metadata/_custom_type_script = "uid://dnm2cmvm2uh0v"
+
+[node name="BTSequenceNodeWander" type="Node" parent="BTPlayer/BTSelectorNode"]
+script = ExtResource("5_endi2")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTWaitForSeconds" type="Node" parent="BTPlayer/BTSelectorNode/BTSequenceNodeWander"]
+script = ExtResource("9_feks2")
+metadata/_custom_type_script = "uid://dc4tcsn1ssome"
+
+[node name="BTChooseRandomPolygonPos" type="Node" parent="BTPlayer/BTSelectorNode/BTSequenceNodeWander"]
+script = ExtResource("6_e5c4o")
+
+[node name="BTNavigationAgentSetTargetPos" type="Node" parent="BTPlayer/BTSelectorNode/BTSequenceNodeWander"]
+script = ExtResource("7_ahdu5")
+
+[node name="BTTimeout" type="Node" parent="BTPlayer/BTSelectorNode/BTSequenceNodeWander"]
+script = ExtResource("9_yxh51")
+timeout_seconds = 3.0
+
+[node name="BTNavigationProcess" type="Node" parent="BTPlayer/BTSelectorNode/BTSequenceNodeWander/BTTimeout"]
+script = ExtResource("8_feks2")
+
+[node name="BTSequenceNodeAttack" type="Node" parent="BTPlayer/BTSelectorNode"]
+script = ExtResource("5_endi2")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTBlackboard" type="Node" parent="."]
+script = ExtResource("6_ahdu5")
+metadata/_custom_type_script = "uid://bnbbi7tcoi6sg"

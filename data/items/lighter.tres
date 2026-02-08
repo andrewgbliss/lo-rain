@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://n8gafjxtbtom"]
+
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://blisscode/inventory/item.gd" id="1_7wnou"]
+
+[resource]
+script = ExtResource("1_7wnou")
+id = "lighter"
+name = "Lighter"
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

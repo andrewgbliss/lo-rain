@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdbyc5d1kneyr"]
+
+[sub_resource type="Gradient" id="Gradient_13x0a"]
+offsets = PackedFloat32Array(0, 0.986175)
+colors = PackedColorArray(1, 1, 1, 0.498039, 0.572549, 0.572549, 0.572549, 0.219608)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i3vn0"]
+gradient = SubResource("Gradient_13x0a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t6tw8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(720, 20, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 50, 0)
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_i3vn0")
+
+[node name="RainCollision" type="Node2D"]
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+amount = 200
+visibility_rect = Rect2(-100, -100, 500, 500)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_t6tw8")

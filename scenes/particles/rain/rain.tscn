@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1l65b5ajopcp"]
+
+[sub_resource type="Gradient" id="Gradient_pl51t"]
+colors = PackedColorArray(1, 1, 1, 0.529412, 0.466667, 0.466667, 0.466667, 0.0784314)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s158i"]
+gradient = SubResource("Gradient_pl51t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o0dwr"]
+emission_shape_scale = Vector3(2048, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.592157)
+color_ramp = SubResource("GradientTexture1D_s158i")
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 20.0
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="Gradient" id="Gradient_13x0a"]
+offsets = PackedFloat32Array(0, 0.972727)
+colors = PackedColorArray(1, 1, 1, 0.494118, 0.572549, 0.572549, 0.572549, 0.305882)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6k4pp"]
+gradient = SubResource("Gradient_13x0a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xgb6p"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 50, 0)
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_6k4pp")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v78dc"]
+polygon = PackedVector2Array(-108, 251, -108, 407, 125, 407, 125, 251)
+
+[node name="Rain" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 3000
+sub_emitter = NodePath("../GPUParticles2D2")
+lifetime = 8.0
+preprocess = 8.0
+speed_scale = 3.0
+fixed_fps = 60
+visibility_rect = Rect2(-2000, 0, 4000, 1000)
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.07
+trail_sections = 7
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_o0dwr")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 200
+lifetime = 0.3
+one_shot = true
+visibility_rect = Rect2(-100, -100, 500, 500)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_xgb6p")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_v78dc")

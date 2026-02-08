@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=4 uid="uid://d4lyjmdiiiw2n"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/rooms/room.gd" id="1_gtj8y"]
+[ext_resource type="Texture2D" uid="uid://wuomu4juuwmq" path="res://assets/img/rooms/long-road/Background.png" id="2_qbimd"]
+[ext_resource type="Texture2D" uid="uid://bslorhfegfvxb" path="res://assets/img/rooms/long-road/Mountains1.png" id="4_qw1ak"]
+[ext_resource type="Texture2D" uid="uid://cjj8hvvnx42ob" path="res://assets/img/rooms/long-road/Mountains2.png" id="5_75b4j"]
+[ext_resource type="Texture2D" uid="uid://b4jfh601h8xuc" path="res://assets/img/rooms/long-road/DirtGround.png" id="6_p6ksl"]
+[ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="7_ej8s7"]
+[ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="8_eqmaa"]
+[ext_resource type="TileSet" uid="uid://b4r8u5pw61oks" path="res://scenes/tilesets/road.tres" id="9_exaqy"]
+[ext_resource type="PackedScene" uid="uid://6cobcq10e24w" path="res://scenes/characters/stan_the_man/stan_the_man.tscn" id="22_74dsm"]
+
+[sub_resource type="Environment" id="Environment_a8y0u"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 4.42
+glow_strength = 1.29
+glow_bloom = 0.83
+
+[node name="TestRoad" type="Node2D" node_paths=PackedStringArray("camera", "player")]
+y_sort_enabled = true
+script = ExtResource("1_gtj8y")
+camera = NodePath("Camera2D")
+player = NodePath("StanTheMan")
+
+[node name="Bg" type="Node2D" parent="."]
+
+[node name="Parallax2D3" type="Parallax2D" parent="Bg"]
+repeat_size = Vector2(480, 270)
+repeat_times = 4
+
+[node name="Background" type="Sprite2D" parent="Bg/Parallax2D3"]
+z_index = -20
+position = Vector2(0, -156)
+texture = ExtResource("2_qbimd")
+
+[node name="Parallax2D" type="Parallax2D" parent="Bg"]
+scroll_scale = Vector2(0.3, 1)
+repeat_size = Vector2(480, 0)
+repeat_times = 4
+
+[node name="Mountains1" type="Sprite2D" parent="Bg/Parallax2D"]
+z_index = -20
+position = Vector2(0, -85)
+texture = ExtResource("4_qw1ak")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Bg"]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(480, 0)
+repeat_times = 4
+
+[node name="Mountains2" type="Sprite2D" parent="Bg/Parallax2D2"]
+z_index = -20
+position = Vector2(0, -117)
+texture = ExtResource("5_75b4j")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Bg"]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0, -58)
+repeat_size = Vector2(480, 0)
+repeat_times = 4
+
+[node name="DirtGround" type="Sprite2D" parent="Bg/Parallax2D4"]
+z_index = -5
+position = Vector2(0, 35)
+texture = ExtResource("6_p6ksl")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Bg"]
+scroll_offset = Vector2(0, -58)
+repeat_size = Vector2(128, 0)
+repeat_times = 20
+
+[node name="Asphalt" type="Sprite2D" parent="Bg/Parallax2D5"]
+z_index = -5
+position = Vector2(-3, 173)
+texture = ExtResource("7_ej8s7")
+
+[node name="AsphaltRoad" type="Sprite2D" parent="Bg/Parallax2D5"]
+z_index = -5
+position = Vector2(-3, 93)
+texture = ExtResource("8_eqmaa")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, -16)
+tile_map_data = PackedByteArray("AAD3/wAAAAACAAAAAAD2/wAAAAABABQAAAD1/wAAAAABABQAAAD4/wAAAAABABQAAAD5/wAAAAABABQAAAD6/wAAAAABABQAAAD7/wAAAAACAAAAAAD8/wAAAAABABQAAAD9/wAAAAABABQAAAD+/wAAAAABABQAAAD//wAAAAABABQAAAD0/wAAAAABABQAAADz/wAAAAACAAAAAADy/wAAAAABABQAAADx/wAAAAABABQAAADw/wAAAAABABQAAADv/wAAAAACAAAAAADu/wAAAAABABQAAADt/wAAAAABABQAAADs/wAAAAABABQAAADr/wAAAAABABQAAAAAAAAAAAACAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAACAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAARAAAAAAACAAAAAAASAAAAAAABAAAAAAATAAAAAAABAAAAAAAUAAAAAAABAAAAAAAVAAAAAAABAAAAAAAWAAAAAAABAAAAAAAXAAAAAAABAAAAAAAYAAAAAAACAAAAAAAZAAAAAAABAAAAAAAaAAAAAAABAAAAAAAbAAAAAAABAAAAAAAcAAAAAAACAAAAAAAdAAAAAAABAAAAAAAeAAAAAAABAAAAAAAfAAAAAAABAAAAAAAgAAAAAAABAAAAAAAhAAAAAAABAAAAAAAiAAAAAAABAAAAAAAjAAAAAAABAAAAAAAkAAAAAAABAAAAAAAlAAAAAAABAAAAAAAmAAAAAAABAAAAAAA=")
+tile_set = ExtResource("9_exaqy")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a8y0u")
+
+[node name="StanTheMan" parent="." instance=ExtResource("22_74dsm")]
+position = Vector2(0, -10)
+default_movement_direction = 2
+scale_factor = 250.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(20, -13)
+zoom = Vector2(2, 2)
+process_callback = 0
+limit_left = -300
+limit_top = -500
+limit_right = 500
+limit_bottom = 75
+
+[node name="StaticBodies" type="Node" parent="."]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBodies"]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBodies/StaticBody2D2"]
+polygon = PackedVector2Array(-301, -30, -301, 77, 560, 75, 557, -28, 577, -28, 579, 90, -317, 90, -317, -30)

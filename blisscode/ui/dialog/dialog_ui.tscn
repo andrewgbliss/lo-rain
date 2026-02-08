@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1fgltshxqj10"]
+
+[ext_resource type="Script" uid="uid://c4sf7stghagg4" path="res://blisscode/ui/dialog/dialog_ui.gd" id="1_1cirm"]
+[ext_resource type="Script" uid="uid://cib0q3ta78d1h" path="res://blisscode/ui/dialog/dialog_control.gd" id="2_i4cft"]
+
+[sub_resource type="StyleBox" id="StyleBox_ig4ss"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = 7.0
+content_margin_top = 7.0
+content_margin_right = 7.0
+content_margin_bottom = 7.0
+
+[sub_resource type="Gradient" id="Gradient_gy1mc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.752)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d3ovp"]
+gradient = SubResource("Gradient_gy1mc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j3nvn"]
+texture = SubResource("GradientTexture1D_d3ovp")
+
+[node name="DialogUI" type="Node2D" node_paths=PackedStringArray("text_prompt", "text", "dialog_control")]
+script = ExtResource("1_1cirm")
+text_prompt = NodePath("CanvasLayer/TextPromptControl")
+text = NodePath("CanvasLayer/TextPromptControl/MarginContainer/TextEdit")
+dialog_control = NodePath("CanvasLayer/DialogControl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="TextPromptControl" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TextPromptControl"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/TextPromptControl/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+placeholder_text = "Enter command"
+wrap_mode = 1
+
+[node name="DialogControl" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_i4cft")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="CanvasLayer/DialogControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -14.0
+offset_right = 144.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBox_ig4ss")
+text = "Hello"
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DialogControl/Label"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_j3nvn")

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bek71vl22hjey"]
+
+[ext_resource type="FontFile" uid="uid://n2jktw62d14m" path="res://assets/fonts/Pixelme.ttf" id="1_knrol"]
+
+[resource]
+default_font = ExtResource("1_knrol")
+default_font_size = 14

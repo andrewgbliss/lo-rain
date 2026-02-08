@@ -1,0 +1,174 @@
+[gd_scene load_steps=30 format=3 uid="uid://trxw0odlwike"]
+
+[ext_resource type="Texture2D" uid="uid://b0o515x5kung5" path="res://assets/img/rooms/conbini/MagazineStand.png" id="1_2nf1x"]
+[ext_resource type="Texture2D" uid="uid://dksdlwqfio063" path="res://assets/img/rooms/conbini/Magazines.png" id="2_m33ff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nf1x"]
+atlas = ExtResource("2_m33ff")
+region = Rect2(3, 4, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m33ff"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u6nr"]
+atlas = SubResource("CompressedTexture2D_m33ff")
+region = Rect2(14, 4, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f7lwf"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k755u"]
+atlas = SubResource("CompressedTexture2D_f7lwf")
+region = Rect2(25, 4, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0pvrl"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utqq8"]
+atlas = SubResource("CompressedTexture2D_0pvrl")
+region = Rect2(36, 4, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8h5xh"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5og43"]
+atlas = SubResource("CompressedTexture2D_8h5xh")
+region = Rect2(47, 4, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dwed3"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g7ax"]
+atlas = SubResource("CompressedTexture2D_dwed3")
+region = Rect2(58, 4, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2nf1x"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m33ff"]
+atlas = SubResource("CompressedTexture2D_2nf1x")
+region = Rect2(69, 4, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6u6nr"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7lwf"]
+atlas = SubResource("CompressedTexture2D_6u6nr")
+region = Rect2(3, 17, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k755u"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pvrl"]
+atlas = SubResource("CompressedTexture2D_k755u")
+region = Rect2(14, 17, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_utqq8"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h5xh"]
+atlas = SubResource("CompressedTexture2D_utqq8")
+region = Rect2(25, 17, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5og43"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwed3"]
+atlas = SubResource("CompressedTexture2D_5og43")
+region = Rect2(36, 17, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5g7ax"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m73o8"]
+atlas = SubResource("CompressedTexture2D_5g7ax")
+region = Rect2(47, 17, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f36qv"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekvjd"]
+atlas = SubResource("CompressedTexture2D_f36qv")
+region = Rect2(58, 17, 8, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m73o8"]
+load_path = "res://.godot/imported/Magazines.png-5b6b6ab689d62d03f1fabde597b4e779.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f36qv"]
+atlas = SubResource("CompressedTexture2D_m73o8")
+region = Rect2(69, 17, 8, 10)
+
+[node name="MagazineStand" type="Node2D"]
+
+[node name="Stand" type="Sprite2D" parent="."]
+position = Vector2(120, 42)
+texture = ExtResource("1_2nf1x")
+
+[node name="Magazine1" type="Sprite2D" parent="."]
+position = Vector2(111, 34)
+texture = SubResource("AtlasTexture_2nf1x")
+
+[node name="Magazine2" type="Sprite2D" parent="."]
+position = Vector2(121, 34)
+texture = SubResource("AtlasTexture_6u6nr")
+
+[node name="Magazine3" type="Sprite2D" parent="."]
+position = Vector2(131, 34)
+texture = SubResource("AtlasTexture_k755u")
+
+[node name="Magazine4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(141, 34)
+texture = SubResource("AtlasTexture_utqq8")
+
+[node name="Magazine5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(151, 34)
+texture = SubResource("AtlasTexture_5og43")
+
+[node name="Magazine6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(161, 34)
+texture = SubResource("AtlasTexture_5g7ax")
+
+[node name="Magazine7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(171, 34)
+texture = SubResource("AtlasTexture_m33ff")
+
+[node name="Magazine8" type="Sprite2D" parent="."]
+position = Vector2(111, 47)
+texture = SubResource("AtlasTexture_f7lwf")
+
+[node name="Magazine9" type="Sprite2D" parent="."]
+position = Vector2(121, 47)
+texture = SubResource("AtlasTexture_0pvrl")
+
+[node name="Magazine10" type="Sprite2D" parent="."]
+position = Vector2(131, 47)
+texture = SubResource("AtlasTexture_8h5xh")
+
+[node name="Magazine11" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(141, 47)
+texture = SubResource("AtlasTexture_dwed3")
+
+[node name="Magazine12" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(151, 47)
+texture = SubResource("AtlasTexture_m73o8")
+
+[node name="Magazine13" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(161, 47)
+texture = SubResource("AtlasTexture_ekvjd")
+
+[node name="Magazine14" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(171, 47)
+texture = SubResource("AtlasTexture_f36qv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(100, 48, 104, 54, 140, 54, 140, 48)

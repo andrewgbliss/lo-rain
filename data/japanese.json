@@ -1,0 +1,96 @@
+{
+	"Global": {
+		"DontUnderstand": ["I don't understand what you mean"],
+		"NotCloseEnough": ["You aren't close enough"],
+		"CantDoAction": ["You can't do that"]
+	},
+	"Scene:01_intro": {
+		"global": {
+			"look": ["You find yourself on an island. Where you came from, who you are, you can't remember.", "The gentle breeze is refreshing."]
+		},
+		"weed": {
+			"smoke": ["You take a hit from the bong"]
+		},
+		"ocean": {
+			"look": ["You look out over the ocean in a lost memory."]
+		},
+		"sea": {
+			"look": ["You look out over the sea in a lost memory."]
+		},
+		"water": {
+			"look": ["You look out over the water in a lost memory."]
+		},
+		"sky": {
+			"look": ["空は明るい青色です。よく晴れた日はピクニックをするのにうってつけです。"]
+		},
+		"clouds": {
+			"look": ["You see wonderfully crafted pixel art clouds. This must be a retro style game."]
+		},
+		"mountains": {
+			"look": ["You remember something about why you're here as you look at the mountains but then quickly forget."]
+		},
+		"beach|island": {
+			"look": ["You find yourself on an island. Maybe if you search for someone you can find help."]
+		},
+		"rock": {
+			"look": ["One of the first rocks I ever drew. Dedicated to you."]
+		},
+		"bridge": {
+			"look": ["The bridge looks familiar. You can't remember anything."]
+		}
+	},
+	"Scene:02_main_entrance": {
+		"global": {
+			"look": ["You have no idea where you are at, however it looks like they are giving free tours."]
+		},
+		"sign": {
+			"look": ["It looks like they are giving free tours."]
+		},
+		"Guard": {
+			"look": ["You see a police man guarding the building. You wonder what kind of tours they are giving."],
+			"talk": {
+				"Guard": [
+					"We are having free tours today, but the last tour just finished.",
+					"Please go see the warden on level 2. He will help you off the prison island."
+				],
+				"Darl": [
+					"Thanks"
+				]
+			}
+		}
+	},
+	"Scene:03_prison_outside_a": {
+		"global": {
+			"look": ["As you walk on the back side of the prison you see nothing but more prison."]
+		},
+		"sky": {
+			"look": ["The sky is a bright #55ffff. What a nice clear day to have a picnic."]
+		},
+		"clouds": {
+			"look": ["You see wonderfully crafted pixel art clouds. This must be a retro style game."]
+		},
+		"prison|building": {
+			"look": ["You wonder why you are at a prison tour to begin with. The prison walls look thick and strong."]
+		},
+		"ground": {
+			"look": ["The ground terrain is kind of rough, but at least this path makes it easier."]
+		},
+		"bush": {
+			"look": ["The bushes along the side are a nice touch to a rather drab building."],
+			"search": ["You search in the bushes and find...", "Nothing"]
+		}
+	},
+	"Scene:03_prison_outside_b": {
+		"global": {
+			"look": ["As you walk on the back side of the prison you see a shed."]
+		},
+		"Shed": {
+			"open": ["You open the shed"]
+		}
+	},
+	"Scene:Prison": {
+		"global": {
+			"look": ["Looks like some of the prisoners aren't all accounted for."]
+		}
+	}
+}

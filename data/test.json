@@ -1,0 +1,137 @@
+{
+  "Global": {
+    "DontUnderstand": ["I don't understand what you mean"],
+    "NotCloseEnough": ["You aren't close enough"],
+    "CantDoAction": ["You can't do that"],
+    "AlreadyOpen": ["It's already open"],
+    "AlreadyClosed": ["It's already closed"]
+  },
+  "Scene:LongRoad": {
+    "global": {
+      "look": [
+        "Your girlfriend left you for dead out in the middle of nowhere.",
+        "It's almost midnight and you are very cold.",
+        "Better find a warm place before you freeze to death!"
+      ]
+    },
+    "weed": {
+      "smoke": ["You take a hit from the bong"]
+    },
+    "sky": {
+      "look": [
+        "The sky is a bright #55ffff. What a nice clear day to have a picnic."
+      ]
+    },
+    "rain": {
+      "look": ["The rain is coming down hard. You should find shelter."]
+    },
+    "clouds": {
+      "look": [
+        "You see wonderfully crafted pixel art clouds. This must be a retro style game."
+      ]
+    },
+    "road|street": {
+      "look": [
+        "You see a road leading back to the city. It's a long way to walk."
+      ]
+    },
+    "mountains": {
+      "look": [
+        "You remember something about why you're here as you look at the mountains but then quickly forget."
+      ]
+    },
+    "lamp": {
+      "look": ["The lamp is warm. Standing under it will keep you warm."]
+    },
+    "bench": {
+      "look": ["The bench is all wet. Shouldn't sit on it."]
+    },
+    "trash": {
+      "look": [
+        "You see a trash can. You notice a dollar behind it.",
+        "You could go around to pick it up.",
+        "Just be careful."
+      ]
+    },
+    "grate": {
+      "look": [
+        "You see a grate. It's a little dirty but warm steam is coming from it. Smells like a sewer."
+      ]
+    },
+    "bus stop": {
+      "look": ["You see a bus stop. It's probably warm under there."]
+    },
+    "dollar": {
+      "look": ["You see a dollar. You could pick it up."],
+      "take": ["You pick up the dollar."]
+    }
+  },
+  "Scene:ConbiniRoad": {
+    "global": {
+      "look": ["It's a cold raing night. You see a convenience store up ahead."]
+    },
+    "weed": {
+      "smoke": ["You take a hit from the bong"]
+    },
+    "sky": {
+      "look": [
+        "The sky is a bright #55ffff. What a nice clear day to have a picnic."
+      ]
+    },
+    "rain": {
+      "look": ["The rain is coming down hard. You should find shelter."]
+    },
+    "clouds": {
+      "look": [
+        "You see wonderfully crafted pixel art clouds. This must be a retro style game."
+      ]
+    },
+    "road|street": {
+      "look": [
+        "You see the convenience store down the road. Could be warm inside."
+      ]
+    },
+    "mountains": {
+      "look": [
+        "You remember something about why you're here as you look at the mountains but then quickly forget."
+      ]
+    }
+  },
+  "Scene:Conbini": {
+    "global": {
+      "look": [
+        "You made it to the conbini. You can buy some food and drinks here."
+      ]
+    },
+    "owl": {
+      "look": ["Whooo, whooo, whooo. The owl is looking at you."],
+      "talk": [
+        "Whooo, whooo, whooo.",
+        "Don't go in there, there is a wizard on a trip from another game.",
+        "Be careful!"
+      ]
+    }
+  },
+  "Scene:ConbiniToire": {
+    "global": {
+      "look": [
+        "This is the back bathroom area of the convenience store. There is a bathroom and and door leading to the outside probably."
+      ]
+    },
+    "door": {
+      "look": ["You see the door to the outside."],
+      "open": ["You open the door."],
+      "close": ["You close the door."]
+    },
+    "womens bathroom": {
+      "look": ["You see the door to the womens bathroom."],
+      "open": ["You open the door."],
+      "close": ["You close the door."]
+    },
+    "mens bathroom": {
+      "look": ["You see the door to the mens bathroom."],
+      "open": ["You open the door."],
+      "close": ["You close the door."]
+    }
+  }
+}

@@ -1,0 +1,1390 @@
+[gd_scene load_steps=120 format=3 uid="uid://rol7vmtncxq2"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/rooms/room.gd" id="1_78kai"]
+[ext_resource type="Texture2D" uid="uid://cwnxkcy2tojd5" path="res://assets/img/rooms/conbini/Toire.png" id="4_dmlvv"]
+[ext_resource type="Texture2D" uid="uid://btc5qb75hrohs" path="res://assets/img/rooms/conbini/Window.png" id="5_ahqrw"]
+[ext_resource type="Texture2D" uid="uid://cw6es2vwwwca7" path="res://assets/img/rooms/conbini/ConvenienceStoreInside.png" id="6_dmlvv"]
+[ext_resource type="PackedScene" uid="uid://4vo54dgiooh4" path="res://scenes/rooms/conbini/atm.tscn" id="6_h4f54"]
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://blisscode/interaction/hotspot/bt_hotspot.gd" id="8_5vhxn"]
+[ext_resource type="Texture2D" uid="uid://ci3e3sa75ufe" path="res://assets/img/rooms/conbini/Backshelf.png" id="8_puffv"]
+[ext_resource type="Texture2D" uid="uid://bwxg88c0cpxqj" path="res://assets/img/rooms/conbini/Bags.png" id="9_6s753"]
+[ext_resource type="Script" uid="uid://bnavkv7jftkbp" path="res://scripts/behavior_tree/action/bt_play_animation.gd" id="9_lp4uo"]
+[ext_resource type="Texture2D" uid="uid://cnvbh084hhk8w" path="res://assets/img/rooms/conbini/LightSwitch.png" id="9_mxjwa"]
+[ext_resource type="Texture2D" uid="uid://cc24j6nphylh" path="res://assets/img/rooms/conbini/Bottles.png" id="10_1gpas"]
+[ext_resource type="Script" uid="uid://b3mlg2cpf7tdl" path="res://scripts/behavior_tree/bt_player.gd" id="10_qmmja"]
+[ext_resource type="Script" uid="uid://dnm2cmvm2uh0v" path="res://scripts/behavior_tree/composite/bt_selector_node.gd" id="11_20i08"]
+[ext_resource type="Script" uid="uid://xwbo18yggp15" path="res://scripts/behavior_tree/composite/bt_sequence_node.gd" id="11_v1b2o"]
+[ext_resource type="Script" uid="uid://cvdi0smytgl47" path="res://scripts/behavior_tree/condition/bt_is_room_state.gd" id="12_20i08"]
+[ext_resource type="Script" uid="uid://dwsxptr6cy741" path="res://scripts/behavior_tree/action/bt_play_dialogue.gd" id="12_76668"]
+[ext_resource type="Texture2D" uid="uid://jo4e7efyb8v1" path="res://assets/img/rooms/conbini/BoxOfJerky.png" id="12_dn55d"]
+[ext_resource type="Texture2D" uid="uid://lwospvsu8yap" path="res://assets/img/rooms/conbini/CanDrinks.png" id="13_njyvt"]
+[ext_resource type="Script" uid="uid://bgwvgef43coev" path="res://scripts/behavior_tree/action/bt_set_visible.gd" id="13_v1b2o"]
+[ext_resource type="Texture2D" uid="uid://c7tx1fk6maaod" path="res://assets/img/rooms/conbini/Cans.png" id="14_c4ipj"]
+[ext_resource type="PackedScene" uid="uid://6cobcq10e24w" path="res://scenes/characters/stan_the_man/stan_the_man.tscn" id="14_pxai7"]
+[ext_resource type="Texture2D" uid="uid://cicofj8nhfmm8" path="res://assets/img/rooms/conbini/Cereal.png" id="15_ll5nj"]
+[ext_resource type="Texture2D" uid="uid://cm76au344g6v6" path="res://assets/img/rooms/conbini/Chips.png" id="16_62y3h"]
+[ext_resource type="Script" uid="uid://catw0b2ck2r1w" path="res://scripts/behavior_tree/action/bt_set_room_state.gd" id="16_gt7r5"]
+[ext_resource type="Texture2D" uid="uid://8afh4m28kbeg" path="res://assets/img/rooms/conbini/Coffee.png" id="17_0nmns"]
+[ext_resource type="Texture2D" uid="uid://byi8gfov4jdya" path="res://assets/img/rooms/conbini/CoffeeStand.png" id="18_7qh2p"]
+[ext_resource type="PackedScene" uid="uid://c7nlvdf1ebcdl" path="res://scenes/characters/johnny.tscn" id="19_h4f54"]
+[ext_resource type="Texture2D" uid="uid://c464yi1smxcs6" path="res://assets/img/rooms/conbini/Counter.png" id="20_11m50"]
+[ext_resource type="Texture2D" uid="uid://bpvywtjnmc5w5" path="res://assets/img/rooms/conbini/CounterGoods.png" id="21_52ccj"]
+[ext_resource type="Texture2D" uid="uid://dcsen2syiam5p" path="res://assets/img/rooms/conbini/Lighters.png" id="22_2awyx"]
+[ext_resource type="Texture2D" uid="uid://cojnbjgc15hod" path="res://assets/img/rooms/conbini/PrepaidCards.png" id="26_d4xmo"]
+[ext_resource type="Texture2D" uid="uid://dskvjv3mxcyui" path="res://assets/img/rooms/conbini/Printer.png" id="27_swoko"]
+[ext_resource type="PackedScene" uid="uid://trxw0odlwike" path="res://scenes/rooms/conbini/magazine_stand.tscn" id="28_6s753"]
+[ext_resource type="Texture2D" uid="uid://cpqamu8b7pd6l" path="res://assets/img/rooms/conbini/Shelf.png" id="29_hjjey"]
+[ext_resource type="PackedScene" uid="uid://3h0wbon0h4qp" path="res://scenes/rooms/conbini/security_camera.tscn" id="30_h4f54"]
+[ext_resource type="Texture2D" uid="uid://carv0j1n0xr6r" path="res://assets/img/rooms/conbini/SodaBottles.png" id="30_n2e54"]
+[ext_resource type="Resource" uid="uid://ds7hhc85yj06q" path="res://data/items/water_bottle.tres" id="33_4ism2"]
+[ext_resource type="Texture2D" uid="uid://clk14un7s3fid" path="res://assets/img/rooms/conbini/ColdGoods.png" id="34_4ism2"]
+[ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scripts/areas/room_door.gd" id="34_6s753"]
+[ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/autoload/spawn_manager/spawn_position.gd" id="34_om8fo"]
+[ext_resource type="Script" uid="uid://wmj03rrcyhlc" path="res://scripts/behavior_tree/condition/bt_is_in_inventory.gd" id="34_oq33a"]
+[ext_resource type="PackedScene" uid="uid://cjunwldi6qc84" path="res://scenes/characters/hanannan.tscn" id="35_1gpas"]
+[ext_resource type="Script" uid="uid://j8h3bxlf5jgl" path="res://scripts/behavior_tree/action/bt_add_to_inventory.gd" id="35_ws7v0"]
+[ext_resource type="Script" uid="uid://d1w5lk06ps5cp" path="res://scripts/behavior_tree/action/bt_remove_node.gd" id="36_j0myn"]
+[ext_resource type="Script" uid="uid://kj0i2av0kap2" path="res://scripts/behavior_tree/action/bt_remove_from_inventory.gd" id="39_0rp0u"]
+[ext_resource type="Resource" uid="uid://b0s4ymwrcoegd" path="res://data/items/dollar_bill.tres" id="40_7gmqs"]
+[ext_resource type="Script" uid="uid://db6j650tksuyg" path="res://scripts/behavior_tree/action/bt_character_paralyze.gd" id="41_7gmqs"]
+
+[sub_resource type="Environment" id="Environment_vovsb"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.06
+glow_bloom = 0.58
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu0cm"]
+atlas = ExtResource("4_dmlvv")
+region = Rect2(263, 133, 42, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s753"]
+atlas = ExtResource("17_0nmns")
+region = Rect2(4, 4, 7, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njyvt"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ipj"]
+atlas = SubResource("CompressedTexture2D_njyvt")
+region = Rect2(20, 4, 7, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ll5nj"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62y3h"]
+atlas = SubResource("CompressedTexture2D_ll5nj")
+region = Rect2(3, 19, 7, 9)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0nmns"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qh2p"]
+atlas = SubResource("CompressedTexture2D_0nmns")
+region = Rect2(18, 21, 13, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om8fo"]
+size = Vector2(20, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4xmo"]
+atlas = ExtResource("21_52ccj")
+region = Rect2(4, 4, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swoko"]
+load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df8qw"]
+atlas = SubResource("CompressedTexture2D_swoko")
+region = Rect2(20, 4, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1gpas"]
+load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swoko"]
+atlas = SubResource("CompressedTexture2D_1gpas")
+region = Rect2(36, 4, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h4f54"]
+load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjjey"]
+atlas = SubResource("CompressedTexture2D_h4f54")
+region = Rect2(4, 20, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4f54"]
+atlas = ExtResource("29_hjjey")
+region = Rect2(32, 13, 95, 51)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hjjey"]
+load_path = "res://.godot/imported/CanDrinks.png-bcab7ea6e1cd810b3e829c1b612e3b0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2e54"]
+atlas = SubResource("CompressedTexture2D_hjjey")
+region = Rect2(22, 2, 5, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dugd"]
+atlas = ExtResource("13_njyvt")
+region = Rect2(5, 2, 5, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v35fm"]
+load_path = "res://.godot/imported/CanDrinks.png-bcab7ea6e1cd810b3e829c1b612e3b0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5gvy"]
+atlas = SubResource("CompressedTexture2D_v35fm")
+region = Rect2(22, 12, 5, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d2y3t"]
+load_path = "res://.godot/imported/CanDrinks.png-bcab7ea6e1cd810b3e829c1b612e3b0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx15a"]
+atlas = SubResource("CompressedTexture2D_d2y3t")
+region = Rect2(5, 12, 5, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_45gis"]
+load_path = "res://.godot/imported/CanDrinks.png-bcab7ea6e1cd810b3e829c1b612e3b0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sugrn"]
+atlas = SubResource("CompressedTexture2D_45gis")
+region = Rect2(22, 22, 5, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o2cub"]
+load_path = "res://.godot/imported/CanDrinks.png-bcab7ea6e1cd810b3e829c1b612e3b0e.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wuda"]
+atlas = SubResource("CompressedTexture2D_o2cub")
+region = Rect2(5, 22, 5, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn55d"]
+atlas = ExtResource("16_62y3h")
+region = Rect2(3, 2, 12, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c4ipj"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll5nj"]
+atlas = SubResource("CompressedTexture2D_c4ipj")
+region = Rect2(18, 2, 12, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_62y3h"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nmns"]
+atlas = SubResource("CompressedTexture2D_62y3h")
+region = Rect2(33, 2, 12, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7qh2p"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjd0x"]
+atlas = SubResource("CompressedTexture2D_7qh2p")
+region = Rect2(50, 2, 12, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_11m50"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52ccj"]
+atlas = SubResource("CompressedTexture2D_11m50")
+region = Rect2(66, 2, 12, 14)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2awyx"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hebr8"]
+atlas = SubResource("CompressedTexture2D_2awyx")
+region = Rect2(6, 17, 5, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cch8y"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g14v1"]
+atlas = SubResource("CompressedTexture2D_cch8y")
+region = Rect2(21, 17, 5, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6s753"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11m50"]
+atlas = SubResource("CompressedTexture2D_6s753")
+region = Rect2(36, 17, 5, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_52ccj"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2awyx"]
+atlas = SubResource("CompressedTexture2D_52ccj")
+region = Rect2(53, 17, 5, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hebr8"]
+load_path = "res://.godot/imported/Chips.png-ae5c714f3db3a9633265a38d61cc0cbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cch8y"]
+atlas = SubResource("CompressedTexture2D_hebr8")
+region = Rect2(69, 17, 5, 15)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dn55d"]
+load_path = "res://.godot/imported/Shelf.png-12ffbd36288b8039756b93ea4f91940b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njyvt"]
+atlas = SubResource("CompressedTexture2D_dn55d")
+region = Rect2(14, 82, 120, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gpas"]
+atlas = ExtResource("9_6s753")
+region = Rect2(5, 5, 22, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc4o6"]
+atlas = ExtResource("14_c4ipj")
+region = Rect2(5, 4, 5, 9)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vy1ws"]
+load_path = "res://.godot/imported/Cans.png-43206088f8b49d6addca195c7c23c846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i221w"]
+atlas = SubResource("CompressedTexture2D_vy1ws")
+region = Rect2(22, 4, 5, 9)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hq7gi"]
+load_path = "res://.godot/imported/Cans.png-43206088f8b49d6addca195c7c23c846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlmid"]
+atlas = SubResource("CompressedTexture2D_hq7gi")
+region = Rect2(5, 19, 5, 9)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1va84"]
+load_path = "res://.godot/imported/Cans.png-43206088f8b49d6addca195c7c23c846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krb15"]
+atlas = SubResource("CompressedTexture2D_1va84")
+region = Rect2(22, 19, 5, 9)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mcjwt"]
+load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7v0"]
+atlas = SubResource("CompressedTexture2D_mcjwt")
+region = Rect2(3, 80, 29, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0myn"]
+atlas = ExtResource("34_4ism2")
+region = Rect2(113, 2, 13, 11)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oevnh"]
+load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq33a"]
+atlas = SubResource("CompressedTexture2D_oevnh")
+region = Rect2(86, 5, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpdto"]
+atlas = ExtResource("34_4ism2")
+region = Rect2(102, 3, 4, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_83u3r"]
+load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrhiy"]
+atlas = SubResource("CompressedTexture2D_83u3r")
+region = Rect2(44, 1, 29, 73)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5p8ot"]
+load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rp0u"]
+atlas = SubResource("CompressedTexture2D_5p8ot")
+region = Rect2(44, 81, 40, 71)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7gmqs"]
+radius = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s753"]
+size = Vector2(80, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1gpas"]
+size = Vector2(26, 28)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nu0cm"]
+vertices = PackedVector2Array(12.6406, 22.5, 17.5, 5.52344, 47.0703, -17.7266, 85.5313, 33.2031, 11.3672, 45.4766, 108.922, -29.4766, 117.273, -20.5, 48.4531, -20.5, 70.25, -28.9531, 54.5313, -35.4766, 19.8281, -34.5234, 17.5, -14.4766, -94.5, 4.47656, -122.5, 22.5, 8.8125, -26.5, -94.5, -15.5234, -107.977, -26.5, -138.5, 3.0625, -138.5, 51.4922, -122.5, 46.5234, 139.977, 50.5078, 105.641, 38.4922, 137.906, 39.4375)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 8, 7, 10), PackedInt32Array(2, 1, 11, 10, 7), PackedInt32Array(12, 1, 0, 13), PackedInt32Array(14, 10, 11), PackedInt32Array(14, 11, 15, 16), PackedInt32Array(17, 16, 15, 12, 13), PackedInt32Array(18, 17, 13, 19), PackedInt32Array(20, 18, 19, 4), PackedInt32Array(20, 4, 3, 21), PackedInt32Array(20, 21, 22)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-141, 54, 143, 53, 140, 37, 106, 36, 87, 31, 50, -18, 123, -18, 110, -32, 70.7281, -31.462, 55, -38, 19, -37, 8, -29, -79, -29, -109, -29, -141, 2)])
+agent_radius = 2.5
+
+[node name="ConbiniInsideFront" type="Node2D" node_paths=PackedStringArray("camera", "player") groups=["Persist"]]
+y_sort_enabled = true
+script = ExtResource("1_78kai")
+camera = NodePath("Camera2D")
+player = NodePath("StanTheMan")
+descriptions = Dictionary[String, Array]({
+"camera": ["The security camera is looking right at you. Better not steal anything."],
+"printer": ["You see a printer in the store. Only if you had something to print."],
+"room": ["This is a store."]
+})
+room_state = Dictionary[String, bool]({
+"colddoor": false,
+"has_paid_for_water": false,
+"has_taken_water": false,
+"lightswitch": true
+})
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0195, 0.0323917, 0.13, 0.360784)
+metadata/_edit_use_anchors_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vovsb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -19)
+zoom = Vector2(2, 2)
+
+[node name="ConvenienceStoreInside" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(1, -48)
+texture = ExtResource("6_dmlvv")
+offset = Vector2(0, 28.205)
+
+[node name="Toire" type="Sprite2D" parent="."]
+position = Vector2(37, -77)
+texture = SubResource("AtlasTexture_nu0cm")
+offset = Vector2(0, 17.9)
+
+[node name="BTHotspotAtm" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+position = Vector2(-85, -31)
+script = ExtResource("8_5vhxn")
+hotspot_id = "atm"
+actions = {
+"fuck_with": NodePath("BTPlayerFuckWith"),
+"look": NodePath("BTPlayerLook"),
+"use": NodePath("BTPlayerUse")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Atm" parent="BTHotspotAtm" instance=ExtResource("6_h4f54")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotAtm"]
+polygon = PackedVector2Array(16, 5, 15, -16, -24, -16, -29, 14, 3, 14)
+
+[node name="BTPlayerLook" type="Node" parent="BTHotspotAtm" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotAtm/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotAtm/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "The ATM is fully functional. Too bad you are broke."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerUse" type="Node" parent="BTHotspotAtm" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotAtm/BTPlayerUse"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotAtm/BTPlayerUse/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You try to use the ATM but since you are broke nothing comes out."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerFuckWith" type="Node" parent="BTHotspotAtm" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotAtm/BTPlayerFuckWith"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotAtm/BTPlayerFuckWith/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You fuck with the ATM and pull the plug. The screen goes blank."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayAnimation" type="Node" parent="BTHotspotAtm/BTPlayerFuckWith/BTSequenceNode" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("9_lp4uo")
+animation_player = NodePath("../../../Atm/AnimationPlayer")
+animation_name = "broke"
+metadata/_custom_type_script = "uid://bnavkv7jftkbp"
+
+[node name="Backshelf" type="Sprite2D" parent="."]
+position = Vector2(152, -31)
+texture = ExtResource("8_puffv")
+
+[node name="CoffeeStand" type="Sprite2D" parent="."]
+position = Vector2(-37, -47)
+texture = ExtResource("18_7qh2p")
+offset = Vector2(0, -18.652)
+
+[node name="CoffeePot" type="Sprite2D" parent="CoffeeStand"]
+position = Vector2(-22.5, -17)
+texture = SubResource("AtlasTexture_6s753")
+
+[node name="CoffeeBox" type="Sprite2D" parent="CoffeeStand"]
+position = Vector2(-10.5, -17)
+texture = SubResource("AtlasTexture_c4ipj")
+
+[node name="CoffeeBox2" type="Sprite2D" parent="CoffeeStand"]
+position = Vector2(18.5, -16)
+texture = SubResource("AtlasTexture_62y3h")
+
+[node name="CoffeeCups" type="Sprite2D" parent="CoffeeStand"]
+position = Vector2(4.5, -15)
+texture = SubResource("AtlasTexture_7qh2p")
+
+[node name="BTHotspotLightswitch" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+position = Vector2(6, -45)
+script = ExtResource("8_5vhxn")
+hotspot_id = "lightswitch|light"
+actions = {
+"use": NodePath("BTPlayersUse")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="BTHotspotLightswitch"]
+texture = ExtResource("9_mxjwa")
+offset = Vector2(0, -11.289)
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BTHotspotLightswitch"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_om8fo")
+
+[node name="BTPlayersUse" type="Node" parent="BTHotspotLightswitch" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSelectorNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSelectorNode" type="Node" parent="BTHotspotLightswitch/BTPlayersUse"]
+script = ExtResource("11_20i08")
+metadata/_custom_type_script = "uid://dnm2cmvm2uh0v"
+
+[node name="BTSequenceNodeTurnOff" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOff" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "lightswitch"
+expected_value = true
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOff"]
+script = ExtResource("12_76668")
+text = "You turn off the light."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTSetVisible" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOff" node_paths=PackedStringArray("node")]
+script = ExtResource("13_v1b2o")
+node = NodePath("../../../../../CanvasLayer/ColorRect")
+
+[node name="BTSetRoomState" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOff" node_paths=PackedStringArray("room")]
+script = ExtResource("16_gt7r5")
+room = NodePath("../../../../..")
+state_key = "lightswitch"
+
+[node name="BTSequenceNodeTurnOn" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOn" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "lightswitch"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOn"]
+script = ExtResource("12_76668")
+text = "You turn on the light."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTSetVisible" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOn" node_paths=PackedStringArray("node")]
+script = ExtResource("13_v1b2o")
+visible = false
+node = NodePath("../../../../../CanvasLayer/ColorRect")
+
+[node name="BTSetRoomState" type="Node" parent="BTHotspotLightswitch/BTPlayersUse/BTSelectorNode/BTSequenceNodeTurnOn" node_paths=PackedStringArray("room")]
+script = ExtResource("16_gt7r5")
+room = NodePath("../../../../..")
+state_key = "lightswitch"
+state_value = true
+
+[node name="Printer" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(90, -45)
+texture = ExtResource("27_swoko")
+
+[node name="Counter" type="Node2D" parent="."]
+position = Vector2(105, -16)
+
+[node name="Counter" type="Sprite2D" parent="Counter"]
+position = Vector2(0, 45)
+texture = ExtResource("20_11m50")
+
+[node name="CounterGoods" type="Sprite2D" parent="Counter"]
+position = Vector2(18, -32)
+texture = SubResource("AtlasTexture_d4xmo")
+
+[node name="CounterGoods2" type="Sprite2D" parent="Counter"]
+position = Vector2(26, -24)
+texture = SubResource("AtlasTexture_df8qw")
+
+[node name="CounterGoods3" type="Sprite2D" parent="Counter"]
+position = Vector2(20, -18)
+texture = SubResource("AtlasTexture_swoko")
+
+[node name="CounterGoods4" type="Sprite2D" parent="Counter"]
+position = Vector2(29, -10)
+texture = SubResource("AtlasTexture_hjjey")
+
+[node name="BTHotspotLighters" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+position = Vector2(103, -5)
+script = ExtResource("8_5vhxn")
+hotspot_id = "lighters"
+actions = {
+"look": NodePath("BTPlayerLook"),
+"take": NodePath("BTPlayerTake")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotLighters"]
+polygon = PackedVector2Array(19, 45, 21, 23, -28, 6, -52, 9, -47, 24, -47, 44, -22, 45)
+
+[node name="Lighters" type="Sprite2D" parent="BTHotspotLighters"]
+texture = ExtResource("22_2awyx")
+offset = Vector2(0, -5.41)
+
+[node name="BTPlayerLook" type="Node" parent="BTHotspotLighters" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotLighters/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotLighters/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You see some lighters on display on the counter."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerTake" type="Node" parent="BTHotspotLighters" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotLighters/BTPlayerTake"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotLighters/BTPlayerTake/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You can't afford any lighter."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTHotspotMagazineStand" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+position = Vector2(103, -5)
+script = ExtResource("8_5vhxn")
+hotspot_id = "magazines"
+actions = {
+"look": NodePath("BTPlayerLook"),
+"take": NodePath("BTPlayerTake")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="MagazineStand" parent="BTHotspotMagazineStand" instance=ExtResource("28_6s753")]
+position = Vector2(-101, -17)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotMagazineStand"]
+polygon = PackedVector2Array(43, 46, 42, 24, -28, 6, -52, 9, -47, 24, -47, 44, -24, 51, 5, 54, 34, 55)
+
+[node name="BTPlayerLook" type="Node" parent="BTHotspotMagazineStand" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotMagazineStand/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotMagazineStand/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You see some magazines about the latest fashion trends and movies."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerTake" type="Node" parent="BTHotspotMagazineStand" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotMagazineStand/BTPlayerTake"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotMagazineStand/BTPlayerTake/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You can't afford any magazine."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="ShelfSmall" type="Node2D" parent="."]
+position = Vector2(-36, -12)
+
+[node name="ShelfSmall" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-0.5, -14)
+texture = SubResource("AtlasTexture_h4f54")
+
+[node name="SodaBottles" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-22.5, -31)
+texture = ExtResource("30_n2e54")
+
+[node name="CanDrinks2" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-3.5, -27)
+texture = SubResource("AtlasTexture_n2e54")
+
+[node name="CanDrinks" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-4.5, -23)
+texture = SubResource("AtlasTexture_3dugd")
+
+[node name="CanDrinks4" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(2.5, -27)
+texture = SubResource("AtlasTexture_a5gvy")
+
+[node name="CanDrinks3" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(0.5, -23)
+texture = SubResource("AtlasTexture_qx15a")
+
+[node name="CanDrinks6" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(9.5, -27)
+texture = SubResource("AtlasTexture_sugrn")
+
+[node name="CanDrinks5" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(7.5, -23)
+texture = SubResource("AtlasTexture_2wuda")
+
+[node name="Chips" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-37.5, -8)
+texture = SubResource("AtlasTexture_dn55d")
+
+[node name="Chips2" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-30.5, -8)
+texture = SubResource("AtlasTexture_ll5nj")
+
+[node name="Chips3" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-23.5, -8)
+texture = SubResource("AtlasTexture_0nmns")
+
+[node name="Chips4" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-16.5, -8)
+texture = SubResource("AtlasTexture_xjd0x")
+
+[node name="Chips5" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(-9.5, -8)
+texture = SubResource("AtlasTexture_52ccj")
+
+[node name="Chips6" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(3.5, -8)
+texture = SubResource("AtlasTexture_hebr8")
+
+[node name="Chips7" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(10.5, -8)
+texture = SubResource("AtlasTexture_g14v1")
+
+[node name="Chips8" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(18.5, -8)
+texture = SubResource("AtlasTexture_11m50")
+
+[node name="Chips9" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(26.5, -8)
+texture = SubResource("AtlasTexture_2awyx")
+
+[node name="Chips10" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(35.5, -8)
+texture = SubResource("AtlasTexture_cch8y")
+
+[node name="Bottles" type="Sprite2D" parent="ShelfSmall"]
+position = Vector2(27.5, -27)
+texture = ExtResource("10_1gpas")
+
+[node name="ShelfBig" type="Node2D" parent="."]
+position = Vector2(-36, 27)
+
+[node name="ShelfBig" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-18, -12)
+texture = SubResource("AtlasTexture_njyvt")
+
+[node name="Cereal" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-52, -15)
+texture = ExtResource("15_ll5nj")
+
+[node name="Bags" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-60, 10)
+texture = SubResource("AtlasTexture_1gpas")
+
+[node name="Bags2" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-36, 10)
+texture = SubResource("AtlasTexture_1gpas")
+
+[node name="BoxOfJerky" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(13, -10)
+texture = ExtResource("12_dn55d")
+
+[node name="Cans" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-25, -23)
+texture = SubResource("AtlasTexture_pc4o6")
+
+[node name="Cans2" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-25, -7)
+texture = SubResource("AtlasTexture_i221w")
+
+[node name="Cans3" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-16, -23)
+texture = SubResource("AtlasTexture_nlmid")
+
+[node name="Cans4" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(-16, -7)
+texture = SubResource("AtlasTexture_krb15")
+
+[node name="PrepaidCards" type="Sprite2D" parent="ShelfBig"]
+position = Vector2(13, -18)
+texture = ExtResource("26_d4xmo")
+
+[node name="SecurityCamera" parent="." instance=ExtResource("30_h4f54")]
+position = Vector2(89, -81)
+
+[node name="BTHotspotColdGoods" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+position = Vector2(106, -22)
+script = ExtResource("8_5vhxn")
+hotspot_id = "door"
+actions = {
+"close": NodePath("BTPlayerClose"),
+"look": NodePath("BTPlayerLook"),
+"open": NodePath("BTPlayerOpen")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotColdGoods"]
+polygon = PackedVector2Array(-250, 30, -236, 30, -203, -6, -222, -6, -250, 22)
+
+[node name="OpenShelf2" type="Sprite2D" parent="BTHotspotColdGoods"]
+position = Vector2(-234, -11)
+texture = SubResource("AtlasTexture_ws7v0")
+
+[node name="Box4" type="Sprite2D" parent="BTHotspotColdGoods"]
+position = Vector2(-248, 15)
+texture = SubResource("AtlasTexture_j0myn")
+
+[node name="Box5" type="Sprite2D" parent="BTHotspotColdGoods"]
+position = Vector2(-238, 4)
+texture = SubResource("AtlasTexture_j0myn")
+
+[node name="Box6" type="Sprite2D" parent="BTHotspotColdGoods"]
+position = Vector2(-228, -6)
+texture = SubResource("AtlasTexture_j0myn")
+
+[node name="Can3" type="Sprite2D" parent="BTHotspotColdGoods"]
+position = Vector2(-243, -8)
+texture = SubResource("AtlasTexture_oq33a")
+
+[node name="Can4" type="Sprite2D" parent="BTHotspotColdGoods"]
+position = Vector2(-231, -20)
+texture = SubResource("AtlasTexture_oq33a")
+
+[node name="BTHotspotWater" type="Area2D" parent="BTHotspotColdGoods" node_paths=PackedStringArray("actions")]
+position = Vector2(-236, 1)
+script = ExtResource("8_5vhxn")
+hotspot_id = "water|bottle"
+actions = {
+"look": NodePath("BTPlayerLook"),
+"take": NodePath("BTPlayerTake")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="BTHotspotColdGoods/BTHotspotWater"]
+texture = SubResource("AtlasTexture_xpdto")
+offset = Vector2(0, -15.37)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotColdGoods/BTHotspotWater"]
+position = Vector2(236, 16)
+polygon = PackedVector2Array(-255, 21, -235, 20, -201, -23, -221, -24, -253, 9)
+
+[node name="BTPlayersOnLoad" type="Node" parent="BTHotspotColdGoods/BTHotspotWater" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayersOnLoad"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsInInventory" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayersOnLoad/BTSequenceNode"]
+script = ExtResource("34_oq33a")
+item = ExtResource("33_4ism2")
+
+[node name="BTRemoveNode" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayersOnLoad/BTSequenceNode"]
+script = ExtResource("36_j0myn")
+node_path = NodePath("../../..")
+
+[node name="BTPlayerLook" type="Node" parent="BTHotspotColdGoods/BTHotspotWater" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You see a water bottle that's only 79 cents."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerTake" type="Node" parent="BTHotspotColdGoods/BTHotspotWater" node_paths=PackedStringArray("root_node", "agent")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSelectorNode")
+agent = NodePath("..")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSelectorNode" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake"]
+script = ExtResource("11_20i08")
+metadata/_custom_type_script = "uid://dnm2cmvm2uh0v"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode/BTSequenceNode" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../../..")
+state_key = "colddoor"
+expected_value = true
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You take the water bottle."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTAddToInventory" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode/BTSequenceNode"]
+script = ExtResource("35_ws7v0")
+item = ExtResource("33_4ism2")
+metadata/_custom_type_script = "uid://j8h3bxlf5jgl"
+
+[node name="BTRemoveNode" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode/BTSequenceNode"]
+script = ExtResource("36_j0myn")
+node_path = NodePath("../../../..")
+metadata/_custom_type_script = "uid://d1w5lk06ps5cp"
+
+[node name="BTSetRoomState" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode/BTSequenceNode" node_paths=PackedStringArray("room")]
+script = ExtResource("16_gt7r5")
+room = NodePath("../../../../../..")
+state_key = "has_taken_water"
+state_value = true
+metadata/_custom_type_script = "uid://catw0b2ck2r1w"
+
+[node name="BTSequenceNode2" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTHotspotWater/BTPlayerTake/BTSelectorNode/BTSequenceNode2"]
+script = ExtResource("12_76668")
+text = "Try opening the door first."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="ClosedDoor2" type="Sprite2D" parent="BTHotspotColdGoods"]
+modulate = Color(1, 1, 1, 0.574)
+position = Vector2(-234, -11)
+texture = SubResource("AtlasTexture_rrhiy")
+
+[node name="OpenDoor2" type="Sprite2D" parent="BTHotspotColdGoods"]
+visible = false
+modulate = Color(1, 1, 1, 0.48)
+position = Vector2(-228, -12)
+texture = SubResource("AtlasTexture_0rp0u")
+
+[node name="BTPlayerLook" type="Node" parent="BTHotspotColdGoods" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotColdGoods/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "It's the cold section of the store. Looks like they have pretty cheap water bottles."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerOpen" type="Node" parent="BTHotspotColdGoods" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSelectorNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSelectorNode" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen"]
+script = ExtResource("11_20i08")
+metadata/_custom_type_script = "uid://dnm2cmvm2uh0v"
+
+[node name="BTSequenceNodeOpen" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode/BTSequenceNodeOpen" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "colddoor"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode/BTSequenceNodeOpen"]
+script = ExtResource("12_76668")
+text = "You open the door."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTSetRoomState" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode/BTSequenceNodeOpen" node_paths=PackedStringArray("room")]
+script = ExtResource("16_gt7r5")
+room = NodePath("../../../../..")
+state_key = "colddoor"
+state_value = true
+
+[node name="BTSetVisible" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode/BTSequenceNodeOpen" node_paths=PackedStringArray("node")]
+script = ExtResource("13_v1b2o")
+node = NodePath("../../../../OpenDoor2")
+
+[node name="BTSetVisible2" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode/BTSequenceNodeOpen" node_paths=PackedStringArray("node")]
+script = ExtResource("13_v1b2o")
+visible = false
+node = NodePath("../../../../ClosedDoor2")
+
+[node name="BTSequenceNodeAlreadyOpen" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTPlayerOpen/BTSelectorNode/BTSequenceNodeAlreadyOpen"]
+script = ExtResource("12_76668")
+text = "The door is already open."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerClose" type="Node" parent="BTHotspotColdGoods" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSelectorNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSelectorNode" type="Node" parent="BTHotspotColdGoods/BTPlayerClose"]
+script = ExtResource("11_20i08")
+metadata/_custom_type_script = "uid://dnm2cmvm2uh0v"
+
+[node name="BTSequenceNodeClose" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode/BTSequenceNodeClose" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "colddoor"
+expected_value = true
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode/BTSequenceNodeClose"]
+script = ExtResource("12_76668")
+text = "You close the door."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTSetRoomState" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode/BTSequenceNodeClose" node_paths=PackedStringArray("room")]
+script = ExtResource("16_gt7r5")
+room = NodePath("../../../../..")
+state_key = "colddoor"
+
+[node name="BTSetVisible" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode/BTSequenceNodeClose" node_paths=PackedStringArray("node")]
+script = ExtResource("13_v1b2o")
+visible = false
+node = NodePath("../../../../OpenDoor2")
+
+[node name="BTSetVisible2" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode/BTSequenceNodeClose" node_paths=PackedStringArray("node")]
+script = ExtResource("13_v1b2o")
+node = NodePath("../../../../ClosedDoor2")
+
+[node name="BTSequenceNodeAlreadyOpen" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotColdGoods/BTPlayerClose/BTSelectorNode/BTSequenceNodeAlreadyOpen"]
+script = ExtResource("12_76668")
+text = "The door is already closed.."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTHotspotGoods" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+script = ExtResource("8_5vhxn")
+hotspot_id = "soda|chips|coffee|card|cards|cup|ketchup|mustard|cereal|can|bag"
+actions = {
+"look": NodePath("BTPlayerLook"),
+"take": NodePath("BTPlayerTake")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotGoods"]
+polygon = PackedVector2Array(15, 6, 19, -40, -77, -40, -102, -40, -141, 3, -139, 50, 10, 49)
+
+[node name="BTPlayerLook" type="Node" parent="BTHotspotGoods" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotGoods/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotGoods/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You look at the $subject. You can't afford anything though."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerTake" type="Node" parent="BTHotspotGoods" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotGoods/BTPlayerTake"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotGoods/BTPlayerTake/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "No use. You can't afford anything except a water bottle."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTHotspotShelf" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+script = ExtResource("8_5vhxn")
+hotspot_id = "shelf|stand"
+actions = {
+"look": NodePath("BTPlayerLook")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotShelf"]
+polygon = PackedVector2Array(15, 6, 19, -40, -77, -40, -102, -40, -141, 3, -139, 50, 10, 49)
+
+[node name="BTPlayerLook" type="Node" parent="BTHotspotShelf" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotShelf/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotShelf/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "The store is filled with all manner of goods. Coffee, soda, cereal, chips."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTHotspotPay" type="Area2D" parent="." node_paths=PackedStringArray("actions")]
+script = ExtResource("8_5vhxn")
+hotspot_id = "counter"
+actions = {
+"pay": NodePath("BTPlayersPay")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotPay"]
+polygon = PackedVector2Array(107, 42, 108, -31, 42, -32, 43, 25, 73, 41)
+
+[node name="BTPlayersPay" type="Node" parent="BTHotspotPay" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSelectorNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSelectorNode" type="Node" parent="BTHotspotPay/BTPlayersPay"]
+script = ExtResource("11_20i08")
+metadata/_custom_type_script = "uid://dnm2cmvm2uh0v"
+
+[node name="BTSequenceNodeHasWater" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeHasWater" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "has_taken_water"
+expected_value = true
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTIsRoomState2" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeHasWater" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "has_paid_for_water"
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeHasWater"]
+script = ExtResource("12_76668")
+text = "You pay for the water bottle."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTSetRoomState" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeHasWater" node_paths=PackedStringArray("room")]
+script = ExtResource("16_gt7r5")
+room = NodePath("../../../../..")
+state_key = "has_paid_for_water"
+state_value = true
+metadata/_custom_type_script = "uid://catw0b2ck2r1w"
+
+[node name="BTRemoveFromInventory" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeHasWater"]
+script = ExtResource("39_0rp0u")
+item = ExtResource("40_7gmqs")
+
+[node name="BTSequenceNodeNoWater" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeNoWater" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "has_taken_water"
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTIsRoomState2" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeNoWater" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "has_paid_for_water"
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeNoWater"]
+script = ExtResource("12_76668")
+text = "You don't have anything to pay for."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTSequenceNodeAlreadyPaid" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeAlreadyPaid" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "has_taken_water"
+expected_value = true
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTIsRoomState2" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeAlreadyPaid" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../../..")
+state_key = "has_paid_for_water"
+expected_value = true
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotPay/BTPlayersPay/BTSelectorNode/BTSequenceNodeAlreadyPaid"]
+script = ExtResource("12_76668")
+text = "You have already paid for the water bottle."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTHotspotStealCheck" type="Area2D" parent="." node_paths=PackedStringArray("bt_enter_player")]
+collision_layer = 32
+script = ExtResource("8_5vhxn")
+bt_enter_player = NodePath("BTPlayersStealCheck")
+on_enter_start = true
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BTHotspotStealCheck"]
+polygon = PackedVector2Array(97, 53, 18, 53, 18, 48, 97, 48)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="BTHotspotStealCheck"]
+position = Vector2(-16, -96)
+polygon = PackedVector2Array(97, 53, 18, 53, 18, 48, 97, 48)
+
+[node name="BTPlayersStealCheck" type="Node" parent="BTHotspotStealCheck" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="BTHotspotStealCheck/BTPlayersStealCheck"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTIsRoomState" type="Node" parent="BTHotspotStealCheck/BTPlayersStealCheck/BTSequenceNode" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../..")
+state_key = "has_taken_water"
+expected_value = true
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTIsRoomState2" type="Node" parent="BTHotspotStealCheck/BTPlayersStealCheck/BTSequenceNode" node_paths=PackedStringArray("room")]
+script = ExtResource("12_20i08")
+room = NodePath("../../../..")
+state_key = "has_paid_for_water"
+metadata/_custom_type_script = "uid://cvdi0smytgl47"
+
+[node name="BTPlayDialogue" type="Node" parent="BTHotspotStealCheck/BTPlayersStealCheck/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "Hey stop! The clerk yells out."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayDialogue2" type="Node" parent="BTHotspotStealCheck/BTPlayersStealCheck/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "I'm calling the cops. You are trying to steal that water bottle."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTCharacterParalyze" type="Node" parent="BTHotspotStealCheck/BTPlayersStealCheck/BTSequenceNode" node_paths=PackedStringArray("character")]
+script = ExtResource("41_7gmqs")
+character = NodePath("../../../../StanTheMan")
+metadata/_custom_type_script = "uid://db6j650tksuyg"
+
+[node name="Johnny" parent="." instance=ExtResource("19_h4f54")]
+position = Vector2(104, -7)
+show_sprite_on_ready = false
+default_movement_direction = 3
+
+[node name="BTHotspot" type="Area2D" parent="Johnny" node_paths=PackedStringArray("actions")]
+script = ExtResource("8_5vhxn")
+hotspot_id = "clerk|johnny|manager|man"
+actions = {
+"look": NodePath("BTPlayerLook"),
+"talk": NodePath("BTPlayerTalk")
+}
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Johnny/BTHotspot"]
+position = Vector2(-14, 2)
+shape = SubResource("CircleShape2D_7gmqs")
+
+[node name="BTPlayerLook" type="Node" parent="Johnny/BTHotspot" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="Johnny/BTHotspot/BTPlayerLook"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="Johnny/BTHotspot/BTPlayerLook/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "You see the store clerk looking right at you with suspicion."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerTalk" type="Node" parent="Johnny/BTHotspot" node_paths=PackedStringArray("root_node")]
+script = ExtResource("10_qmmja")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="Johnny/BTHotspot/BTPlayerTalk"]
+script = ExtResource("11_v1b2o")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="Johnny/BTHotspot/BTPlayerTalk/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "Today we have a deal on the water bottles under a dollar."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayDialogue2" type="Node" parent="Johnny/BTHotspot/BTPlayerTalk/BTSequenceNode"]
+script = ExtResource("12_76668")
+text = "If you want to use the bathroom please buy something first."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="Hanannan" parent="." instance=ExtResource("35_1gpas")]
+position = Vector2(33, 24)
+show_sprite_on_ready = false
+default_movement_direction = 4
+use_scale_factor = true
+scale_factor = 300.0
+scale_factor_max = 1.5
+
+[node name="StanTheMan" parent="." instance=ExtResource("14_pxai7")]
+position = Vector2(52, 11)
+scale_factor = 300.0
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(2, -19)
+texture = ExtResource("5_ahqrw")
+
+[node name="RoomDoor1" type="Area2D" parent="." node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-44, 73)
+collision_layer = 64
+script = ExtResource("34_6s753")
+door_id = "1"
+goto_door_id = "3"
+scene_path = "res://scenes/rooms/conbini/conbini.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor1"]
+position = Vector2(102, -9)
+shape = SubResource("RectangleShape2D_6s753")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoor1"]
+position = Vector2(99, -29)
+script = ExtResource("34_om8fo")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="RoomDoor2" type="Area2D" parent="." node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-77, -62)
+collision_layer = 64
+script = ExtResource("34_6s753")
+door_id = "2"
+goto_door_id = "1"
+scene_path = "res://scenes/rooms/conbini/conbini_toire.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor2"]
+position = Vector2(109, -2)
+shape = SubResource("RectangleShape2D_1gpas")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoor2"]
+position = Vector2(112, 23)
+script = ExtResource("34_om8fo")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-142, 52, -143, 3, -100, -38, 18, -38, 18, -84, 46, -84, 46, -50, 58, -38, 68, -38, 74, -32, 110, -32, 133.788, -6.85245, 105, -7, 97, -16, 62, -16, 62, -4, 90, 25, 101, 28, 109, 5, 145, 5, 145, 51, 97, 51, 98, 71, 163, 71, 163, -110, -158, -108, -158, 69, 18, 71, 18, 50)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(-115, 40, -116, 29, 6, 29, 6, 40)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
+polygon = PackedVector2Array(11, -10, 11, 0, -85, 0, -85, -11)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_nu0cm")
+
+[node name="Polygon2D" type="Polygon2D" parent="NavigationRegion2D"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(10, 25, 9, 43, -120, 44, -120, 25)
+
+[node name="Polygon2D2" type="Polygon2D" parent="NavigationRegion2D"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(15, -12, 15, 3, -92, 2, -92, -13)
+
+[editable path="BTHotspotAtm/Atm"]

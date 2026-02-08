@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://ds7hhc85yj06q"]
+
+[ext_resource type="Texture2D" uid="uid://clk14un7s3fid" path="res://assets/img/rooms/conbini/ColdGoods.png" id="1_o8yyb"]
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://blisscode/inventory/item.gd" id="2_8odmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpdto"]
+atlas = ExtResource("1_o8yyb")
+region = Rect2(102, 3, 4, 8)
+
+[resource]
+script = ExtResource("2_8odmt")
+id = "water-bottle"
+name = "Water Bottle"
+room_texture = SubResource("AtlasTexture_xpdto")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

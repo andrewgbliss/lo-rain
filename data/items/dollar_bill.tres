@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b0s4ymwrcoegd"]
+
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://blisscode/inventory/item.gd" id="1_8ib87"]
+[ext_resource type="Texture2D" uid="uid://l32t53rd4fvj" path="res://assets/img/rooms/conbini/Money.png" id="2_13kh5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff7u1"]
+atlas = ExtResource("2_13kh5")
+region = Rect2(18, 3, 13, 7)
+
+[resource]
+script = ExtResource("1_8ib87")
+id = "dollar_bill"
+name = "Dollar Bill"
+room_texture = SubResource("AtlasTexture_ff7u1")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

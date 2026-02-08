@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://3toigwhvybu6"]
+
+[ext_resource type="Texture2D" uid="uid://bjkj76ajq58k" path="res://assets/img/rooms/long-road/BigMetalBox.png" id="1_jne3e"]
+
+[node name="BigMetalBox" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jne3e")
+offset = Vector2(0, -24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -24)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-38, 2, -38, 38, 24, 38, 38, 24, 38, 2)
