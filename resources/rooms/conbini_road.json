@@ -1,0 +1,61 @@
+{
+  "id": "conbini_road",
+  "name": "Conbini Road",
+  "init": ["spawn_player"],
+  "actions": {
+    "spawn_player": [
+      "spawn_entity(player)",
+      "camera_focus(player)",
+      "command_prompt(true)"
+    ]
+  },
+  "hotspots": {
+    "room": {
+      "require_range": false,
+      "commands": {
+        "look": [
+          "You're walking down the road when you see a convenience store up ahead.",
+          "You should probably get inside before you freeze to death."
+        ]
+      }
+    },
+    "clouds": {
+      "require_range": false,
+      "commands": {
+        "look": [
+          "You see wonderfully crafted pixel art clouds. This must be a retro style game."
+        ]
+      }
+    },
+    "mountains": {
+      "require_range": false,
+      "commands": {
+        "look": [
+          "You remember something about why you're here as you look at the mountains but then quickly forget."
+        ]
+      }
+    },
+    "rain": {
+      "require_range": false,
+      "commands": {
+        "look": ["The rain is coming down hard. You should find shelter."]
+      }
+    },
+    "road|street": {
+      "require_range": false,
+      "commands": {
+        "look": [
+          "You see a road leading back to the city. It's a long way to walk."
+        ]
+      }
+    },
+    "sky": {
+      "require_range": false,
+      "commands": {
+        "look": [
+          "The sky is a bright #55ffff. What a nice clear day to have a picnic."
+        ]
+      }
+    }
+  }
+}

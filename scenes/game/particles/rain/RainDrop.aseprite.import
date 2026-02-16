@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cso5mla566box"
+path="res://.godot/imported/RainDrop.aseprite-a224df598a6658318ee38eee3b0a8f1b.res"
+
+[deps]
+
+source_file="res://scenes/game/particles/rain/RainDrop.aseprite"
+dest_files=["res://.godot/imported/RainDrop.aseprite-a224df598a6658318ee38eee3b0a8f1b.res"]
+
+[params]
+

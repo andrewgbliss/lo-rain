@@ -1,0 +1,11 @@
+[
+  {
+    "wave": 0
+  },
+  {
+    "enemy": "bomber",
+    "amount": 1,
+    "spawn_delay": 5,
+    "spawn_index": 0
+  }
+]

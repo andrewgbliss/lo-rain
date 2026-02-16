@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://cjo18jsrkhiv2"]
+
+[ext_resource type="Script" uid="uid://bp7no1bvpm1we" path="res://scenes/core/quest/quest.gd" id="1_nunys"]
+
+[resource]
+script = ExtResource("1_nunys")
+quest_id = "getting_dumped"
+quest_name = "Getting Dumped"
+quest_description = "Your girlfriend is breaking up with you."
+metadata/_custom_type_script = "uid://bp7no1bvpm1we"

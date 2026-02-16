@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://balvedt1qymx1"
+path="res://.godot/imported/Sign.aseprite-3b149f6007d13965a2a98db211d0d89a.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/long-road/Sign.aseprite"
+dest_files=["res://.godot/imported/Sign.aseprite-3b149f6007d13965a2a98db211d0d89a.res"]
+
+[params]
+

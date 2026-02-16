@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://buh6bxcocixpe"]
+
+[ext_resource type="Script" uid="uid://mte2cgqaa2mf" path="res://scenes/core/audio/audio_manager.gd" id="1_l3ouf"]
+[ext_resource type="Script" uid="uid://byidjxsgxdc0x" path="res://scenes/core/audio/audio_config.gd" id="2_66lpq"]
+[ext_resource type="AudioStream" uid="uid://bqprpdbsm8pu4" path="res://assets/audio/wind-swipe.mp3" id="4_ofup8"]
+[ext_resource type="AudioStream" uid="uid://qx4kx5nblygx" path="res://assets/audio/wind-swipe-away.mp3" id="5_oppep"]
+[ext_resource type="AudioStream" uid="uid://bblc6two4kt3n" path="res://assets/audio/click.mp3" id="6_oppep"]
+[ext_resource type="AudioStream" uid="uid://biyj1mdjb8c8b" path="res://assets/audio/Lo Rain.mp3" id="6_pqf3c"]
+
+[sub_resource type="Resource" id="Resource_fksyh"]
+script = ExtResource("2_66lpq")
+
+[node name="AudioManager" type="Node2D" unique_id=1711072250]
+script = ExtResource("1_l3ouf")
+audio_config = SubResource("Resource_fksyh")
+
+[node name="WindSwipeIn" type="AudioStreamPlayer" parent="." unique_id=762628019]
+stream = ExtResource("4_ofup8")
+volume_db = -3.962
+bus = &"Effects"
+
+[node name="WindSwipeOut" type="AudioStreamPlayer" parent="." unique_id=1289845843]
+stream = ExtResource("5_oppep")
+volume_db = -5.943
+bus = &"Effects"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=1450784513]
+stream = ExtResource("6_oppep")
+volume_db = -5.943
+bus = &"Effects"
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="." unique_id=1400810118]
+stream = ExtResource("6_pqf3c")
+volume_db = -5.943
+autoplay = true
+bus = &"Effects"

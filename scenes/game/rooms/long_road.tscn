@@ -1,0 +1,231 @@
+[gd_scene format=4 uid="uid://pnyqh7obuyha"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_ig2tu"]
+[ext_resource type="PackedScene" uid="uid://nkgfsyjm7ie7" path="res://scenes/game/rooms/biome/biome.tscn" id="2_e8inl"]
+[ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="3_iyflf"]
+[ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="4_0ryq7"]
+[ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="5_gw5qv"]
+[ext_resource type="PackedScene" uid="uid://8yqfng7xpcog" path="res://scenes/game/hotspots/dollar_bill.tscn" id="7_iyflf"]
+[ext_resource type="TileSet" uid="uid://b4r8u5pw61oks" path="res://scenes/game/tilesets/road.tres" id="10_lksse"]
+[ext_resource type="PackedScene" uid="uid://hr1pmj7locu0" path="res://scenes/game/environment/right_railing.tscn" id="12_jr44l"]
+[ext_resource type="PackedScene" uid="uid://b8b0n76kkgv8f" path="res://scenes/game/environment/left_railing.tscn" id="13_iwu02"]
+[ext_resource type="PackedScene" uid="uid://3toigwhvybu6" path="res://scenes/game/hotspots/big_metal_box.tscn" id="13_tvtbn"]
+[ext_resource type="PackedScene" uid="uid://ce6ku3fldaqx0" path="res://scenes/game/hotspots/bus_stop.tscn" id="14_gofan"]
+[ext_resource type="PackedScene" uid="uid://dace1v6hxewpc" path="res://scenes/core/ui/dialog/dialog_ui.tscn" id="14_tgdiy"]
+[ext_resource type="PackedScene" uid="uid://ca6prygih2cy4" path="res://scenes/game/hotspots/bench.tscn" id="16_gofan"]
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="17_puwcg"]
+[ext_resource type="PackedScene" uid="uid://ccwcs5vmctju1" path="res://scenes/game/hotspots/grate.tscn" id="17_tvtbn"]
+[ext_resource type="PackedScene" uid="uid://ctk6yi8adass6" path="res://scenes/game/hotspots/trash.tscn" id="18_jr44l"]
+[ext_resource type="Script" uid="uid://c8h4p6rreiyix" path="res://scenes/core/interaction/hotspot/hotspot_death_trigger.gd" id="19_0ryq7"]
+[ext_resource type="PackedScene" uid="uid://bqrl44pfo72sv" path="res://scenes/game/hotspots/lamp.tscn" id="19_iwu02"]
+[ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="23_8rclq"]
+[ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="25_bnjec"]
+[ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="26_j5au5"]
+[ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="42_bot4p"]
+[ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="42_krqi5"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2wyq8"]
+polygon = PackedVector2Array(-508, 449, -507, 570, 558, 572, 560, 449)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i1ap"]
+size = Vector2(61, 79)
+
+[sub_resource type="Resource" id="Resource_8wf4g"]
+script = ExtResource("26_j5au5")
+
+[node name="LongRoad" type="Node2D" unique_id=194193865 node_paths=PackedStringArray("spawn_positions", "phantom_camera", "camera")]
+y_sort_enabled = true
+script = ExtResource("1_ig2tu")
+room_name = "long_road"
+spawn_positions = {
+"car": NodePath("Spawners/CarStart"),
+"player": NodePath("Spawners/PlayerSpawn")
+}
+phantom_camera = NodePath("PhantomCamera2D")
+camera = NodePath("Camera2D")
+
+[node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_e8inl")]
+
+[node name="Background" parent="." unique_id=1692324388 instance=ExtResource("3_iyflf")]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=158881936]
+scroll_offset = Vector2(0, -58)
+repeat_size = Vector2(128, 0)
+repeat_times = 20
+
+[node name="Asphalt" type="Sprite2D" parent="Parallax2D" unique_id=1118280107]
+z_index = -4
+position = Vector2(-3, 173)
+texture = ExtResource("4_0ryq7")
+
+[node name="AsphaltRoad" type="Sprite2D" parent="Parallax2D" unique_id=1209384060]
+z_index = -4
+position = Vector2(-3, 93)
+texture = ExtResource("5_gw5qv")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=18771720]
+position = Vector2(0, -16)
+tile_map_data = PackedByteArray("AAD3/wAAAAACAAAAAAD2/wAAAAABABQAAAD1/wAAAAABABQAAAD4/wAAAAABABQAAAD5/wAAAAABABQAAAD6/wAAAAABABQAAAD7/wAAAAACAAAAAAD8/wAAAAABABQAAAD9/wAAAAABABQAAAD+/wAAAAABABQAAAD//wAAAAABABQAAAD0/wAAAAABABQAAADz/wAAAAACAAAAAADy/wAAAAABABQAAADx/wAAAAABABQAAADw/wAAAAABABQAAADv/wAAAAACAAAAAADu/wAAAAABABQAAADt/wAAAAABABQAAADs/wAAAAABABQAAADr/wAAAAABABQAAAAAAAAAAAACAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAACAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAARAAAAAAACAAAAAAASAAAAAAABAAAAAAATAAAAAAABAAAAAAAUAAAAAAABAAAAAAAVAAAAAAABAAAAAAAWAAAAAAABAAAAAAAXAAAAAAABAAAAAAAYAAAAAAACAAAAAAAZAAAAAAABAAAAAAAaAAAAAAABAAAAAAAbAAAAAAABAAAAAAAcAAAAAAACAAAAAAAdAAAAAAABAAAAAAAeAAAAAAABAAAAAAAfAAAAAAABAAAAAAAgAAAAAAABAAAAAAAhAAAAAAABAAAAAAAiAAAAAAABAAAAAAAjAAAAAAABAAAAAAAkAAAAAAABAAAAAAAlAAAAAAABAAAAAAAmAAAAAAABAAAAAAA=")
+tile_set = ExtResource("10_lksse")
+
+[node name="Railing" type="Node2D" parent="." unique_id=1232463483]
+position = Vector2(0, -13)
+
+[node name="RightRailing" parent="Railing" unique_id=1215424290 instance=ExtResource("12_jr44l")]
+position = Vector2(117, 0)
+
+[node name="RightRailing2" parent="Railing" unique_id=1775041491 instance=ExtResource("12_jr44l")]
+position = Vector2(213, 0)
+
+[node name="RightRailing3" parent="Railing" unique_id=1811455454 instance=ExtResource("12_jr44l")]
+position = Vector2(309, 0)
+
+[node name="LeftRailing" parent="Railing" unique_id=355936883 instance=ExtResource("13_iwu02")]
+position = Vector2(-176, 0)
+
+[node name="LeftRailing2" parent="Railing" unique_id=1783171923 instance=ExtResource("13_iwu02")]
+position = Vector2(-271, 0)
+
+[node name="LeftRailing3" parent="Railing" unique_id=1136261073 instance=ExtResource("13_iwu02")]
+position = Vector2(-367, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1080840572]
+position = Vector2(0, -453)
+occluder = SubResource("OccluderPolygon2D_2wyq8")
+
+[node name="StaticBodies" type="Node" parent="." unique_id=1991471662]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="StaticBodies" unique_id=1002784606]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBodies/StaticBody2D2" unique_id=939610338]
+polygon = PackedVector2Array(-301, -30, -301, 77, 560, 75, 559, -2, 517, -10, 517, -29, 557, -28, 577, -28, 577, -1, 573, 90, -317, 90, -317, -30)
+
+[node name="RoomDoors" type="Node2D" parent="." unique_id=47530650]
+
+[node name="RoomDoor" type="Area2D" parent="RoomDoors" unique_id=1761789037 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(535, 35)
+collision_layer = 64
+script = ExtResource("42_bot4p")
+door_id = "1"
+goto_door_id = "1"
+scene_path = "res://scenes/game/rooms/conbini/conbini_road.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor" unique_id=924722368]
+position = Vector2(-4.5, 0.5)
+shape = SubResource("RectangleShape2D_3i1ap")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor" unique_id=1638191460]
+position = Vector2(-69, 0)
+script = ExtResource("42_krqi5")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=218901021]
+y_sort_enabled = true
+
+[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=1470040368]
+script = ExtResource("17_puwcg")
+object_name = "clouds"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=448129198]
+script = ExtResource("17_puwcg")
+object_name = "mountains"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Rain" type="Node2D" parent="Hotspots" unique_id=1579986088]
+script = ExtResource("17_puwcg")
+object_name = "rain"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Road" type="Node2D" parent="Hotspots" unique_id=1592929770]
+script = ExtResource("17_puwcg")
+object_name = "road|street"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sky" type="Node2D" parent="Hotspots" unique_id=426665521]
+script = ExtResource("17_puwcg")
+object_name = "sky"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Lamp" parent="Hotspots" unique_id=1925040909 instance=ExtResource("19_iwu02")]
+position = Vector2(-101, -15)
+
+[node name="DollarBill" parent="Hotspots" unique_id=1772556199 instance=ExtResource("7_iyflf")]
+position = Vector2(19, -20)
+
+[node name="Bench" parent="Hotspots" unique_id=211481027 instance=ExtResource("16_gofan")]
+position = Vector2(-38, -16)
+
+[node name="Grate" parent="Hotspots" unique_id=1864570611 instance=ExtResource("17_tvtbn")]
+position = Vector2(285, 5)
+
+[node name="Trash" parent="Hotspots" unique_id=328091173 instance=ExtResource("18_jr44l")]
+position = Vector2(25, -17)
+
+[node name="BusStop" parent="Hotspots" unique_id=841794085 instance=ExtResource("14_gofan")]
+position = Vector2(188, -13)
+
+[node name="Box" parent="Hotspots" unique_id=263764682 instance=ExtResource("13_tvtbn")]
+position = Vector2(395, 5)
+
+[node name="Cliff" type="Node2D" parent="Hotspots" unique_id=1598618375]
+position = Vector2(-119, -24)
+script = ExtResource("17_puwcg")
+object_name = "cliff"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="HotspotDeathTrigger" type="Area2D" parent="Hotspots/Cliff" unique_id=1830770314]
+collision_layer = 32
+script = ExtResource("19_0ryq7")
+death_action = "cliff"
+run_death_action_in_range = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Cliff/HotspotDeathTrigger" unique_id=1374273360]
+position = Vector2(0, -15)
+polygon = PackedVector2Array(-181, 4, -181, -14, 638, -11, 638, 6)
+
+[node name="Spawners" type="Node2D" parent="." unique_id=1255518591]
+
+[node name="PlayerSpawn" type="Node2D" parent="Spawners" unique_id=1783737382]
+position = Vector2(-221, -7)
+
+[node name="CarStart" type="Node2D" parent="Spawners" unique_id=47297331]
+position = Vector2(223, 13)
+
+[node name="CarEnd" type="Node2D" parent="Spawners" unique_id=922619403]
+position = Vector2(-217, 8)
+
+[node name="DialogUI" parent="." unique_id=2072539769 instance=ExtResource("14_tgdiy")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1166665989]
+position = Vector2(279, -258)
+zoom = Vector2(1.5, 1.5)
+limit_left = -300
+limit_top = -500
+limit_right = 500
+limit_bottom = 75
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1304580895]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("23_8rclq")
+metadata/_custom_type_script = "uid://btwul30fxa5pu"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1602343489]
+position = Vector2(279, -258)
+script = ExtResource("25_bnjec")
+priority = 5
+zoom = Vector2(1.5, 1.5)
+snap_to_pixel = true
+tween_resource = SubResource("Resource_8wf4g")
+tween_on_load = false
+follow_damping = true
+follow_damping_value = Vector2(1, 1)
+limit_left = -300
+limit_top = -500
+limit_right = 500
+limit_bottom = 75
+metadata/_custom_type_script = "uid://br03kradwjuk0"

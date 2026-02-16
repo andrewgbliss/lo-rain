@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://du2vclhxilf1a"
+path="res://.godot/imported/Fruit.aseprite-e84b05a87118d9417140b1b2dcefc96a.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/Fruit.aseprite"
+dest_files=["res://.godot/imported/Fruit.aseprite-e84b05a87118d9417140b1b2dcefc96a.res"]
+
+[params]
+

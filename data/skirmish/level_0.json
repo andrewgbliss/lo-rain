@@ -1,0 +1,19 @@
+[
+  {
+    "enemy": "smallheli",
+    "amount": 1,
+    "spawn_delay": 1
+  },
+  {
+    "block": true
+  },
+  {
+    "wave": 0
+  },
+  {
+    "enemy": "mediumheli",
+    "amount": 1,
+    "spawn_delay": 5,
+    "spawn_index": 0
+  }
+]

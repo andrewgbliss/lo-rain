@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://hr1pmj7locu0"]
+
+[ext_resource type="Texture2D" uid="uid://l4gmgwyl2aoe" path="res://assets/img/rooms/long-road/Railing.png" id="1_qd144"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltjxa"]
+atlas = ExtResource("1_qd144")
+region = Rect2(0, 0, 96, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd144"]
+size = Vector2(96, 3)
+
+[node name="RightRailing" type="Sprite2D" unique_id=459249984]
+texture = SubResource("AtlasTexture_ltjxa")
+offset = Vector2(0, -5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=996889353]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=577170105]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_qd144")

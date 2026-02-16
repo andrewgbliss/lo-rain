@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://f64rsg5loei5"
+path="res://.godot/imported/CounterGoods.aseprite-eaa4f1f42126e692b3192af28cb267ef.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/CounterGoods.aseprite"
+dest_files=["res://.godot/imported/CounterGoods.aseprite-eaa4f1f42126e692b3192af28cb267ef.res"]
+
+[params]
+

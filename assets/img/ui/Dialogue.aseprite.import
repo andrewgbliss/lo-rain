@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dukpepfrc2y1c"
+path="res://.godot/imported/Dialogue.aseprite-76669c867fa9f9e4eeaf91d02ada3d01.res"
+
+[deps]
+
+source_file="res://assets/img/ui/Dialogue.aseprite"
+dest_files=["res://.godot/imported/Dialogue.aseprite-76669c867fa9f9e4eeaf91d02ada3d01.res"]
+
+[params]
+

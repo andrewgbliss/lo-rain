@@ -1,0 +1,233 @@
+[gd_scene format=4 uid="uid://c2t287c1anv12"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_i4qfk"]
+[ext_resource type="PackedScene" uid="uid://nkgfsyjm7ie7" path="res://scenes/game/rooms/biome/biome.tscn" id="2_i4qfk"]
+[ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="5_xykyj"]
+[ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="6_i4qfk"]
+[ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="8_o32br"]
+[ext_resource type="TileSet" uid="uid://b4r8u5pw61oks" path="res://scenes/game/tilesets/road.tres" id="10_3aew7"]
+[ext_resource type="Texture2D" uid="uid://jvntudsq0mep" path="res://assets/img/rooms/conbini/ConvenienceStoreSmall.png" id="10_ha4el"]
+[ext_resource type="Texture2D" uid="uid://dk03i6w0a5riy" path="res://assets/img/rooms/long-road/AsphaltBend.png" id="10_v345v"]
+[ext_resource type="Texture2D" uid="uid://dq5130kucgbx" path="res://assets/img/rooms/long-road/AsphaltBendRight.png" id="11_i7l8u"]
+[ext_resource type="Texture2D" uid="uid://cr1pa6w4wdkar" path="res://assets/img/masks/LightMask.png" id="13_a7812"]
+[ext_resource type="PackedScene" uid="uid://hr1pmj7locu0" path="res://scenes/game/environment/right_railing.tscn" id="13_i7l8u"]
+[ext_resource type="PackedScene" uid="uid://b8b0n76kkgv8f" path="res://scenes/game/environment/left_railing.tscn" id="14_a7812"]
+[ext_resource type="PackedScene" uid="uid://ccwcs5vmctju1" path="res://scenes/game/hotspots/grate.tscn" id="17_a7812"]
+[ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="18_a7812"]
+[ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="23_e6ywp"]
+[ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="24_3ajla"]
+[ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="25_y2jsn"]
+[ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="26_elp6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sqh7"]
+size = Vector2(116, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4qfk"]
+size = Vector2(204, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xykyj"]
+size = Vector2(116, 104)
+
+[sub_resource type="Resource" id="Resource_og1vs"]
+script = ExtResource("26_elp6h")
+
+[node name="ConbiniRoad" type="Node2D" unique_id=355616706 node_paths=PackedStringArray("phantom_camera", "camera")]
+y_sort_enabled = true
+script = ExtResource("1_i4qfk")
+room_name = "conbini_road"
+phantom_camera = NodePath("PhantomCamera2D")
+camera = NodePath("Camera2D")
+metadata/_custom_type_script = "uid://cvxcabec87t10"
+
+[node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_i4qfk")]
+
+[node name="Background" parent="." unique_id=1692324388 instance=ExtResource("6_i4qfk")]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=784573668]
+scroll_offset = Vector2(0, -58)
+repeat_size = Vector2(128, 0)
+repeat_times = 20
+
+[node name="Asphalt" type="Sprite2D" parent="Parallax2D" unique_id=1299965787]
+z_index = -4
+position = Vector2(-3, 173)
+texture = ExtResource("8_o32br")
+
+[node name="AsphaltRoad" type="Sprite2D" parent="Parallax2D" unique_id=2106230211]
+z_index = -4
+position = Vector2(-3, 93)
+texture = ExtResource("5_xykyj")
+
+[node name="AsphaltBend" type="Sprite2D" parent="." unique_id=448130084]
+modulate = Color(0, 0, 0, 1)
+z_index = -5
+position = Vector2(-160, 15)
+texture = ExtResource("10_v345v")
+
+[node name="AsphaltBendRight" type="Sprite2D" parent="." unique_id=525629528]
+modulate = Color(0, 0, 0, 1)
+z_index = -5
+position = Vector2(46, 16)
+texture = ExtResource("11_i7l8u")
+
+[node name="Asphalt" type="Sprite2D" parent="." unique_id=1336437438]
+modulate = Color(0, 0, 0, 1)
+z_index = -5
+position = Vector2(-58, 16)
+texture = ExtResource("8_o32br")
+
+[node name="ConvenienceStoreSmall" type="Sprite2D" parent="." unique_id=619923419]
+position = Vector2(-55, -45)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_ha4el")
+
+[node name="PointLight2D" type="PointLight2D" parent="ConvenienceStoreSmall" unique_id=1579054316]
+color = Color(0.24, 0.911333, 1, 1)
+shadow_enabled = true
+texture = ExtResource("13_a7812")
+texture_scale = 17.2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=339177212]
+position = Vector2(0, -15)
+tile_map_data = PackedByteArray("AAD0/wAAAAABAAAAAADz/wAAAAABAAAAAADy/wAAAAABAAAAAADx/wAAAAABAAAAAADw/wAAAAABAAAAAADv/wAAAAABAAAAAADu/wAAAAACAAAAAADt/wAAAAABAAAAAADs/wAAAAABAAAAAADr/wAAAAABAAAAAADq/wAAAAABAAAAAADp/wAAAAACAAAAAADo/wAAAAABAAAAAADn/wAAAAABAAAAAADm/wAAAAABAAAAAADl/wAAAAABAAAAAADk/wAAAAACAAAAAADj/wAAAAABAAAAAADi/wAAAAABAAAAAADh/wAAAAABAAAAAADg/wAAAAABAAAAAADf/wAAAAABAAAAAADe/wAAAAACAAAAAADd/wAAAAABAAAAAADc/wAAAAABAAAAAADb/wAAAAABAAAAAADa/wAAAAABAAAAAADZ/wAAAAABAAAAAADY/wAAAAACAAAAAADX/wAAAAABAAAAAADW/wAAAAABAAAAAADV/wAAAAABAAAAAADU/wAAAAABAAAAAADT/wAAAAABAAAAAADS/wAAAAACAAAAAADR/wAAAAABAAAAAADQ/wAAAAABAAAAAADP/wAAAAABAAAAAADO/wAAAAABAAAAAADN/wAAAAABAAAAAADM/wAAAAABAAAAAADL/wAAAAABAAAAAADK/wAAAAABAAAAAADJ/wAAAAABAAAAAADI/wAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAACAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAACAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAARAAAAAAABAAAAAAASAAAAAAABAAAAAAATAAAAAAACAAAAAAAUAAAAAAABAAAAAAAVAAAAAAABAAAAAAAWAAAAAAABAAAAAAAXAAAAAAABAAAAAAAYAAAAAAACAAAAAAAZAAAAAAABAAAAAAAaAAAAAAABAAAAAAAbAAAAAAABAAAAAAAcAAAAAAABAAAAAAAdAAAAAAABAAAAAAAeAAAAAAABAAAAAAAfAAAAAAACAAAAAAAgAAAAAAABAAAAAAAhAAAAAAABAAAAAAAiAAAAAAABAAAAAAAjAAAAAAABAAAAAAAkAAAAAAABAAAAAAAlAAAAAAABAAAAAAAmAAAAAAABAAAAAAAnAAAAAAABAAAAAAAoAAAAAAABAAAAAAApAAAAAAABAAAAAAAqAAAAAAABAAAAAAD2/wAAAAACAA8AAAD3/wAAAAADAA8AAAD3////AAADAA4AAAD4////AAAEAA4AAAD1/wAAAAABAA8AAAACAAAAAAADABIAAAABAAAAAAACABIAAAABAP//AAACABEAAAAAAP//AAABABEAAAADAAAAAAAEABIAAAA=")
+tile_set = ExtResource("10_3aew7")
+
+[node name="Railing" type="Node2D" parent="." unique_id=742987584]
+position = Vector2(0, -12)
+
+[node name="RightRailing" parent="Railing" unique_id=1029451532 instance=ExtResource("13_i7l8u")]
+position = Vector2(117, 0)
+
+[node name="RightRailing2" parent="Railing" unique_id=807575602 instance=ExtResource("13_i7l8u")]
+position = Vector2(213, 0)
+
+[node name="RightRailing3" parent="Railing" unique_id=1794804804 instance=ExtResource("13_i7l8u")]
+position = Vector2(309, 0)
+
+[node name="RightRailing4" parent="Railing" unique_id=1573902781 instance=ExtResource("13_i7l8u")]
+position = Vector2(405, 0)
+
+[node name="RightRailing5" parent="Railing" unique_id=646406452 instance=ExtResource("13_i7l8u")]
+position = Vector2(501, 0)
+
+[node name="LeftRailing" parent="Railing" unique_id=719262927 instance=ExtResource("14_a7812")]
+position = Vector2(-213, 0)
+
+[node name="LeftRailing2" parent="Railing" unique_id=1212682251 instance=ExtResource("14_a7812")]
+position = Vector2(-308, 0)
+
+[node name="LeftRailing3" parent="Railing" unique_id=861153274 instance=ExtResource("14_a7812")]
+position = Vector2(-404, 0)
+
+[node name="LeftRailing4" parent="Railing" unique_id=907346534 instance=ExtResource("14_a7812")]
+position = Vector2(-499, 0)
+
+[node name="LeftRailing5" parent="Railing" unique_id=527659134 instance=ExtResource("14_a7812")]
+position = Vector2(-595, 0)
+
+[node name="LeftRailing6" parent="Railing" unique_id=1744792770 instance=ExtResource("14_a7812")]
+position = Vector2(-691, 0)
+
+[node name="LeftRailing7" parent="Railing" unique_id=1755805356 instance=ExtResource("14_a7812")]
+position = Vector2(-787, 0)
+
+[node name="RoomDoors" type="Node2D" parent="." unique_id=533997742]
+
+[node name="RoomDoor" type="Area2D" parent="RoomDoors" unique_id=1573790812 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-795, 40)
+collision_layer = 64
+script = ExtResource("18_a7812")
+door_id = "1"
+goto_door_id = "1"
+scene_path = "res://scenes/game/rooms/long_road.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor" unique_id=1155327977]
+position = Vector2(-36, -6)
+shape = SubResource("RectangleShape2D_4sqh7")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor" unique_id=599269785]
+position = Vector2(58, -48)
+script = ExtResource("24_3ajla")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="RoomDoor2" type="Area2D" parent="RoomDoors" unique_id=928514411 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-24, -21)
+collision_layer = 64
+script = ExtResource("18_a7812")
+door_id = "2"
+goto_door_id = "1"
+scene_path = "res://scenes/game/rooms/conbini/conbini.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor2" unique_id=1890810658]
+position = Vector2(-30, 0.5)
+shape = SubResource("RectangleShape2D_i4qfk")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor2" unique_id=90053323]
+position = Vector2(-32, 18)
+script = ExtResource("24_3ajla")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="RoomDoor3" type="Area2D" parent="RoomDoors" unique_id=1245306114 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(621, 48)
+collision_layer = 64
+script = ExtResource("18_a7812")
+door_id = "3"
+goto_door_id = "1"
+scene_path = "res://scenes/game/rooms/other_long_road_under_construction.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor3" unique_id=192038809]
+position = Vector2(-56, -6)
+shape = SubResource("RectangleShape2D_xykyj")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor3" unique_id=1666371198]
+position = Vector2(-140, -51)
+script = ExtResource("24_3ajla")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=34213193]
+
+[node name="Grate" parent="Hotspots" unique_id=576277806 instance=ExtResource("17_a7812")]
+position = Vector2(-471, 5)
+scale = Vector2(0.6, 0.6)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=432532002]
+position = Vector2(-433, -139)
+limit_left = -780
+limit_top = -500
+limit_right = 500
+limit_bottom = 75
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1176112971]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("23_e6ywp")
+metadata/_custom_type_script = "uid://btwul30fxa5pu"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=602593494]
+top_level = true
+position = Vector2(-433, -139)
+script = ExtResource("25_y2jsn")
+priority = 5
+follow_mode = 5
+snap_to_pixel = true
+tween_resource = SubResource("Resource_og1vs")
+tween_on_load = false
+follow_damping = true
+follow_damping_value = Vector2(0.5, 0.5)
+limit_left = -780
+limit_top = -500
+limit_right = 500
+limit_bottom = 75
+metadata/_custom_type_script = "uid://br03kradwjuk0"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=959025802]
+position = Vector2(-6, 3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2146266217]
+polygon = PackedVector2Array(-509, -29, -121, -31, 0, -31, 20, -23, -119, -23, -155, -12, -155, -22, -785, -22, -784, 83, 558, 83, 558, -18, 73, -19, 73, -12, 56, -12, 38, -19, 28, -24, 8, -31, 555, -28, 578, -29, 578, 103, -805, 98, -807, -27)

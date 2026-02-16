@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://br7wolkybw6km"
+path="res://.godot/imported/Bubble.aseprite-bf2626c0314c2743770306cbe9340c54.res"
+
+[deps]
+
+source_file="res://scenes/game/particles/bubble/Bubble.aseprite"
+dest_files=["res://.godot/imported/Bubble.aseprite-bf2626c0314c2743770306cbe9340c54.res"]
+
+[params]
+

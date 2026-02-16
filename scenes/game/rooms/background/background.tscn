@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ciebklw6tpwt7"]
+
+[ext_resource type="Texture2D" uid="uid://wuomu4juuwmq" path="res://assets/img/rooms/long-road/Background.png" id="1_0ay4x"]
+[ext_resource type="Texture2D" uid="uid://boefrltu5yyth" path="res://assets/img/rooms/long-road/clouds.png" id="2_yi7qa"]
+[ext_resource type="Texture2D" uid="uid://bslorhfegfvxb" path="res://assets/img/rooms/long-road/Mountains1.png" id="3_2gvpc"]
+[ext_resource type="Texture2D" uid="uid://cjj8hvvnx42ob" path="res://assets/img/rooms/long-road/Mountains2.png" id="4_2p4md"]
+[ext_resource type="Texture2D" uid="uid://b4jfh601h8xuc" path="res://assets/img/rooms/long-road/DirtGround.png" id="5_kio4m"]
+
+[node name="Background" type="Node2D" unique_id=1692324388]
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=1546272674]
+repeat_size = Vector2(480, 270)
+repeat_times = 4
+
+[node name="Background" type="Sprite2D" parent="Parallax2D3" unique_id=249416290]
+z_index = -20
+position = Vector2(0, -156)
+texture = ExtResource("1_0ay4x")
+
+[node name="Parallax2D7" type="Parallax2D" parent="." unique_id=484513941]
+scroll_scale = Vector2(0.1, 1)
+scroll_offset = Vector2(0, -129)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(-1, 0)
+repeat_times = 10
+
+[node name="Clouds" type="Sprite2D" parent="Parallax2D7" unique_id=1533717556]
+modulate = Color(0.0728426, 0.0728426, 0.0728426, 1)
+z_index = -20
+position = Vector2(-2, 10)
+texture = ExtResource("2_yi7qa")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1797937885]
+scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(480, 0)
+repeat_times = 4
+
+[node name="Mountains1" type="Sprite2D" parent="Parallax2D" unique_id=1444629961]
+z_index = -20
+position = Vector2(0, -68)
+texture = ExtResource("3_2gvpc")
+
+[node name="Parallax2D6" type="Parallax2D" parent="." unique_id=1255138265]
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(0, -58)
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(-4, 0)
+repeat_times = 10
+
+[node name="Clouds" type="Sprite2D" parent="Parallax2D6" unique_id=194801110]
+modulate = Color(1, 1, 1, 0.392)
+z_index = -20
+texture = ExtResource("2_yi7qa")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=270889796]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(480, 0)
+repeat_times = 4
+
+[node name="Mountains2" type="Sprite2D" parent="Parallax2D2" unique_id=568259212]
+z_index = -20
+position = Vector2(0, -117)
+texture = ExtResource("4_2p4md")
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=990679204]
+scroll_scale = Vector2(0.5, 1)
+scroll_offset = Vector2(0, -58)
+repeat_size = Vector2(480, 0)
+repeat_times = 4
+
+[node name="DirtGround" type="Sprite2D" parent="Parallax2D4" unique_id=1699562888]
+z_index = -10
+position = Vector2(0, 35)
+texture = ExtResource("5_kio4m")

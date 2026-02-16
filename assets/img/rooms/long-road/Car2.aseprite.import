@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bqny07ufe5gxv"
+path="res://.godot/imported/Car2.aseprite-987548606e9cc57b6b4c0f5fbab27846.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/long-road/Car2.aseprite"
+dest_files=["res://.godot/imported/Car2.aseprite-987548606e9cc57b6b4c0f5fbab27846.res"]
+
+[params]
+

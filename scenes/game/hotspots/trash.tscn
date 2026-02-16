@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ctk6yi8adass6"]
+
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_u31t3"]
+[ext_resource type="Texture2D" uid="uid://c6e28my5t7u4j" path="res://assets/img/rooms/long-road/Trash.png" id="1_was78"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_uskkv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_was78"]
+size = Vector2(20, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mulqc"]
+radius = 34.0588
+
+[node name="Trash" type="Node2D" unique_id=503562292]
+script = ExtResource("1_u31t3")
+object_name = "trash"
+require_in_range = true
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=149270749]
+texture = ExtResource("1_was78")
+offset = Vector2(0, -10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1664437914]
+position = Vector2(0, -10)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1160327797]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_was78")
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=1349959715]
+script = ExtResource("3_uskkv")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=1471609363]
+shape = SubResource("CircleShape2D_mulqc")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://tnss8nsec0v1"]
+
+[ext_resource type="Script" uid="uid://bp7no1bvpm1we" path="res://scenes/core/quest/quest.gd" id="1_llaw4"]
+
+[resource]
+script = ExtResource("1_llaw4")
+quest_id = "first_loaded"
+quest_name = "First Loaded"
+quest_description = "You have loaded the game. Congratulations!"
+quest_checkpoints = Dictionary[String, bool]({
+"first-completed": false,
+"first-loaded": false
+})
+metadata/_custom_type_script = "uid://bp7no1bvpm1we"

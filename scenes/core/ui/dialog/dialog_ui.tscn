@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dace1v6hxewpc"]
+
+[ext_resource type="Script" uid="uid://dt3hgfkkt47g1" path="res://scenes/core/ui/dialog/dialog_ui.gd" id="1_1cirm"]
+[ext_resource type="Script" uid="uid://42vnk45ybbr5" path="res://scenes/core/ui/command_prompt/command_prompt.gd" id="1_bmjyl"]
+[ext_resource type="Script" uid="uid://o85lj5g8j0jg" path="res://scenes/core/ui/dialog/dialog_text.gd" id="2_6gsvb"]
+
+[sub_resource type="Gradient" id="Gradient_dybl4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.752)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d3ovp"]
+gradient = SubResource("Gradient_dybl4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rww38"]
+texture = SubResource("GradientTexture1D_d3ovp")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8anu"]
+
+[node name="DialogUI" type="Node2D" unique_id=2072539769 node_paths=PackedStringArray("dialog_text", "command_prompt")]
+script = ExtResource("1_1cirm")
+dialog_text = NodePath("CanvasLayer/DialogControl/DialogText")
+command_prompt = NodePath("CanvasLayer/CommandPromptControl/MarginContainer/CommandPrompt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=518964930]
+layer = 5
+
+[node name="DialogControl" type="Control" parent="CanvasLayer" unique_id=1895915637]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogText" type="Label" parent="CanvasLayer/DialogControl" unique_id=1474353138]
+visible = false
+custom_minimum_size = Vector2(280, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -70.5
+offset_right = 140.0
+offset_bottom = 70.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is some text, this is some text and this is some more text, what you talking about. This is some text, this is some text and this is some more text, what you talking about.
+This is some text, this is some text and this is some more text, what you talking about."
+autowrap_mode = 3
+script = ExtResource("2_6gsvb")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DialogControl/DialogText" unique_id=816630706]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.5
+offset_top = -9.5
+offset_right = 10.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rww38")
+metadata/_edit_use_anchors_ = true
+
+[node name="CommandPromptControl" type="Control" parent="CanvasLayer" unique_id=1770391612]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CommandPromptControl" unique_id=491058217]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="CommandPrompt" type="TextEdit" parent="CanvasLayer/CommandPromptControl/MarginContainer" unique_id=810675408 node_paths=PackedStringArray("dialog_text")]
+process_mode = 3
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxFlat_h8anu")
+placeholder_text = "Enter command"
+wrap_mode = 1
+script = ExtResource("1_bmjyl")
+dialog_text = NodePath("../../../DialogControl/DialogText")

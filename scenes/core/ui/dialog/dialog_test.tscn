@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://daqc7b68b5l7y"]
+
+[ext_resource type="Script" uid="uid://o85lj5g8j0jg" path="res://scenes/core/ui/dialog/dialog_text.gd" id="1_mpnvc"]
+
+[sub_resource type="Gradient" id="Gradient_gqlrw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.752)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mpnvc"]
+gradient = SubResource("Gradient_gqlrw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sg86u"]
+texture = SubResource("GradientTexture1D_mpnvc")
+
+[node name="DialogTest" type="Node2D" unique_id=2095645193]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2116357687]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1071892766]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogText" type="Label" parent="CanvasLayer/Control" unique_id=1531713350]
+custom_minimum_size = Vector2(280, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "This is some text, this is some text and this is some more text, what you talking about. This is some text, this is some text and this is some more text, what you talking about.
+This is some text, this is some text and this is some more text, what you talking about."
+autowrap_mode = 3
+script = ExtResource("1_mpnvc")
+metadata/_custom_type_script = "uid://o85lj5g8j0jg"
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/DialogText" unique_id=838346310]
+show_behind_parent = true
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.5
+offset_top = -9.5
+offset_right = 10.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_sg86u")
+metadata/_edit_use_anchors_ = true

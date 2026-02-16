@@ -1,0 +1,67 @@
+{
+  "id": "conbini_toire",
+  "name": "Conbini Toire",
+  "init": ["spawn_player"],
+  "actions": {
+    "spawn_player": [
+      "spawn_entity(player)",
+      "camera_focus(player)",
+      "command_prompt(true)"
+    ]
+  },
+  "hotspots": {
+    "room": {
+      "commands": {
+        "look": [
+          "You're at the front of the conbini. You can buy some food and drinks here.",
+          "You should probably get inside before you freeze to death."
+        ]
+      }
+    },
+    "panel|buttons": {
+      "commands": {
+        "look": [
+          "You see a panel of buttons. You wonder what is in that room.",
+          "You pressed the correct buttons!",
+          "You press the buttons. But nothing happens."
+        ],
+        "press": {
+          "has_completed_animation_state": "door_open",
+          "yes": ["You press the buttons. But nothing happens."],
+          "no": ["Try opening the door first."]
+        }
+      }
+    },
+    "storage_door": {
+      "commands": {
+        "look": [
+          "You see a door with a keypad next to it. Probably for employees."
+        ]
+      }
+    },
+    "mens_door": {
+      "commands": {
+        "look": [
+          "You see the men's bathroom. You have to buy something first to use it.",
+          "You see a piece of paper on the ground.",
+          "You don't see any $object"
+        ],
+        "take": [
+          "You take the piece of paper.",
+          "add_inventory(piece_of_paper)",
+          "You don't see any $object"
+        ],
+        "open": [
+          "As you open the door you hear a loud crack. The door seems to be broken.",
+          "You see a little piece of paper on the ground.",
+          "animation_state(door_open, start)"
+        ]
+      }
+    },
+    "womens_door": {
+      "commands": {
+        "look": ["You see the women's bathroom door."]
+      }
+    }
+  }
+}

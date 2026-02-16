@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://0t3g138cd3se"
+path="res://.godot/imported/Money.aseprite-f7f4bce07059d758001c9a85000034b2.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/Money.aseprite"
+dest_files=["res://.godot/imported/Money.aseprite-f7f4bce07059d758001c9a85000034b2.res"]
+
+[params]
+

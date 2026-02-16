@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ca6prygih2cy4"]
+
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_h1nd1"]
+[ext_resource type="Texture2D" uid="uid://c5fm5pn6pdvbm" path="res://assets/img/rooms/long-road/Bench.png" id="1_ix178"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_5fxct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix178"]
+size = Vector2(66, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbwgb"]
+radius = 53.0377
+
+[node name="Bench" type="Node2D" unique_id=2047398479]
+script = ExtResource("1_h1nd1")
+object_name = "bench"
+require_in_range = true
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=719794489]
+texture = ExtResource("1_ix178")
+offset = Vector2(0, -10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=548103815]
+position = Vector2(0, -10)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=868256078]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_ix178")
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=535416344]
+script = ExtResource("3_5fxct")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=1218005161]
+shape = SubResource("CircleShape2D_rbwgb")

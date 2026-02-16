@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dib67x1gpbchv"
+path="res://.godot/imported/Toire.aseprite-f25c8f981621b70917832060c9edb158.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/Toire.aseprite"
+dest_files=["res://.godot/imported/Toire.aseprite-f25c8f981621b70917832060c9edb158.res"]
+
+[params]
+

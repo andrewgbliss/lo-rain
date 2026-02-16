@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bud0cycm4r3g5"]
+
+[ext_resource type="Script" uid="uid://bp7no1bvpm1we" path="res://scenes/core/quest/quest.gd" id="1_mtwqx"]
+
+[resource]
+script = ExtResource("1_mtwqx")
+quest_id = "someplace_warm"
+quest_name = "Someplace Warm"
+quest_description = "It's cold. Find someplace warm before you freeze."
+metadata/_custom_type_script = "uid://bp7no1bvpm1we"

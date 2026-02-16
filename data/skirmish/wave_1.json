@@ -1,0 +1,10 @@
+[
+  {
+    "enemy": "alien_ship",
+    "amount": 5,
+    "spawn_delay": 1
+  },
+  {
+    "block": true
+  }
+]

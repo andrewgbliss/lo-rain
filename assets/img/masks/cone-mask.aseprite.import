@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://627f2sctslpb"
+path="res://.godot/imported/cone-mask.aseprite-c6435982f644741ae27ff90958591ffa.res"
+
+[deps]
+
+source_file="res://assets/img/masks/cone-mask.aseprite"
+dest_files=["res://.godot/imported/cone-mask.aseprite-c6435982f644741ae27ff90958591ffa.res"]
+
+[params]
+

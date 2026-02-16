@@ -1,0 +1,46 @@
+[
+  {
+	"id": "zc4hlxqfdlugfbyemdqhugbp51",
+	"name": "Health",
+	"is_unique": false,
+	"max_stack_amount": "1",
+	"quantity": "1",
+	"type": "Consumable",
+	"consume_on_pickup": true,
+	"health": 50,
+	"armor": 0,
+	"level": 0
+  },
+  {
+	"id": "zc4hlxqfdlugfbyemdqhugbp512",
+	"name": "Armor",
+	"is_unique": false,
+	"max_stack_amount": "1",
+	"quantity": "1",
+	"type": "Consumable",
+	"consume_on_pickup": true,
+	"health": 0,
+	"armor": 50,
+	"level": 0
+  },
+  {
+	"id": "zc4hlxqfdlugfbyemdqhugbp5134",
+	"name": "Missle",
+	"is_unique": false,
+	"max_stack_amount": 3,
+	"quantity": 1,
+	"type": "Ammo"
+  },
+  {
+	"id": "zc4hlxqfdlugfbyemdqhugbp5132",
+	"name": "Powerup",
+	"is_unique": false,
+	"max_stack_amount": "1",
+	"quantity": "1",
+	"type": "Consumable",
+	"consume_on_pickup": true,
+	"health": 100,
+	"armor": 100,
+	"level": 1
+  }
+]

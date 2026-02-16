@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://b50vnnhk18gl1"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_ihh7m"]
+[ext_resource type="PackedScene" uid="uid://nkgfsyjm7ie7" path="res://scenes/game/rooms/biome/biome.tscn" id="2_fmdbb"]
+[ext_resource type="Texture2D" uid="uid://1u36w4sjgl6w" path="res://assets/img/rooms/gultch/Back Dirt.png" id="4_h48bs"]
+[ext_resource type="Texture2D" uid="uid://dnpylt4v4q8bc" path="res://assets/img/rooms/gultch/Back Dirt 2.png" id="5_w24xu"]
+[ext_resource type="Texture2D" uid="uid://dm57cfys7m4y3" path="res://assets/img/rooms/gultch/Bushes.png" id="6_hlpj1"]
+[ext_resource type="Texture2D" uid="uid://cxrluhpweg068" path="res://assets/img/rooms/gultch/Ground.png" id="7_1dapk"]
+[ext_resource type="Texture2D" uid="uid://ddwmkfo03kjn4" path="res://assets/img/rooms/gultch/Rocks.png" id="8_pjv6a"]
+[ext_resource type="Texture2D" uid="uid://c137qstlu11ee" path="res://assets/img/rooms/gultch/Trees.png" id="9_vsrva"]
+[ext_resource type="Texture2D" uid="uid://b7ixqbyaotbk" path="res://assets/img/rooms/gultch/Fireplace.png" id="10_ihh7m"]
+[ext_resource type="SpriteFrames" uid="uid://dlct00vn7iwm5" path="res://assets/img/rooms/gultch/Fire.res" id="15_w24xu"]
+[ext_resource type="PackedScene" uid="uid://dace1v6hxewpc" path="res://scenes/core/ui/dialog/dialog_ui.tscn" id="17_xvl7s"]
+[ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="18_vfjsw"]
+[ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="19_t5eyu"]
+[ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="20_bd4bu"]
+[ext_resource type="PackedScene" uid="uid://b8tfb0n1ochbt" path="res://scenes/game/rooms/background/background_no_road.tscn" id="21_fmdbb"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2wyq8"]
+polygon = PackedVector2Array(-508, 449, -507, 570, 558, 572, 560, 449)
+
+[sub_resource type="Resource" id="Resource_8wf4g"]
+script = ExtResource("20_bd4bu")
+
+[node name="LongRoad" type="Node2D" unique_id=194193865 node_paths=PackedStringArray("spawn_positions", "phantom_camera", "camera")]
+y_sort_enabled = true
+script = ExtResource("1_ihh7m")
+room_name = "long_road"
+spawn_positions = {
+"car": NodePath(""),
+"player": NodePath("Spawners/PlayerSpawn")
+}
+phantom_camera = NodePath("PhantomCamera2D")
+camera = NodePath("Camera2D")
+
+[node name="Background" parent="." unique_id=1692324388 instance=ExtResource("21_fmdbb")]
+
+[node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_fmdbb")]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=409287836]
+repeat_size = Vector2(320, 0)
+repeat_times = 8
+
+[node name="BackDirt" type="Sprite2D" parent="Parallax2D" unique_id=1805687389]
+texture = ExtResource("4_h48bs")
+
+[node name="BackDirt2" type="Sprite2D" parent="Parallax2D" unique_id=1324988621]
+texture = ExtResource("5_w24xu")
+
+[node name="Bushes" type="Sprite2D" parent="Parallax2D" unique_id=1559441008]
+texture = ExtResource("6_hlpj1")
+
+[node name="Ground" type="Sprite2D" parent="Parallax2D" unique_id=335280676]
+texture = ExtResource("7_1dapk")
+
+[node name="Rocks" type="Sprite2D" parent="." unique_id=2031727814]
+texture = ExtResource("8_pjv6a")
+
+[node name="Trees" type="Sprite2D" parent="." unique_id=1958939412]
+texture = ExtResource("9_vsrva")
+
+[node name="Fireplace" type="Sprite2D" parent="." unique_id=335892731]
+texture = ExtResource("10_ihh7m")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1080840572]
+position = Vector2(0, -453)
+occluder = SubResource("OccluderPolygon2D_2wyq8")
+
+[node name="RoomDoors" type="Node2D" parent="." unique_id=47530650]
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=218901021]
+y_sort_enabled = true
+
+[node name="Spawners" type="Node2D" parent="." unique_id=1255518591]
+
+[node name="PlayerSpawn" type="Node2D" parent="Spawners" unique_id=1783737382]
+position = Vector2(-418, 18)
+
+[node name="DialogUI" parent="." unique_id=2072539769 instance=ExtResource("17_xvl7s")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1166665989]
+position = Vector2(-240, -5)
+zoom = Vector2(1.5, 1.5)
+limit_left = -500
+limit_top = -500
+limit_right = 500
+limit_bottom = 75
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1304580895]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("18_vfjsw")
+metadata/_custom_type_script = "uid://btwul30fxa5pu"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1602343489]
+position = Vector2(-240, -5)
+script = ExtResource("19_t5eyu")
+priority = 5
+zoom = Vector2(1.5, 1.5)
+snap_to_pixel = true
+tween_resource = SubResource("Resource_8wf4g")
+tween_on_load = false
+follow_damping = true
+follow_damping_value = Vector2(1, 1)
+limit_left = -500
+limit_top = -500
+limit_right = 500
+limit_bottom = 75
+metadata/_custom_type_script = "uid://br03kradwjuk0"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=261832588]
+modulate = Color(1.8989718, 1.8989718, 1.8989718, 1)
+position = Vector2(-2, 22)
+sprite_frames = ExtResource("15_w24xu")
+autoplay = "default"
+frame_progress = 0.31511417

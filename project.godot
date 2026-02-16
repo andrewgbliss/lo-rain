@@ -18,7 +18,7 @@ config/name="LoRain"
 run/main_scene="uid://cfccphtcrkp3d"
 config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-boot_splash/image="uid://dgxhv2fltrx1f"
+boot_splash/image="uid://cexb4qmpnjy5b"
 config/icon="uid://ca3lcnodwaxi3"
 config/windows_native_icon="res://assets/img/icons/icon.ico"
 
@@ -29,17 +29,16 @@ buses/default_bus_layout="uid://dilhqjpya5p42"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-TextParser="*res://blisscode/text_parser/text_parser.tscn"
-SceneManager="*res://scenes/autoload/scene_manager/scene_manager.tscn"
-AudioManager="*res://scenes/autoload/audio_manager/audio_manager.tscn"
-GameManager="*res://scenes/autoload/game_manager/game_manager.tscn"
-MenuManager="*res://scenes/autoload/menu_manager/menu_manager.tscn"
-SpawnManager="*res://scenes/autoload/spawn_manager/spawn_manager.tscn"
-QuestManager="*res://scenes/autoload/quest_manager/quest_manager.tscn"
-SaveGameManager="*res://blisscode/save_games/save_game_manager.tscn"
-MenuTopBar="*res://scenes/ui/menus/menu_top_bar.tscn"
-InventoryManager="*res://blisscode/inventory/inventory_manager.gd"
-InventoryUI="*res://blisscode/inventory/inventory_ui.tscn"
+GameManager="*uid://cj8n3lqocc6ww"
+SceneManager="*res://scenes/core/scene/scene_manager.tscn"
+AudioManager="*res://scenes/core/audio/audio_manager.tscn"
+SpawnManager="*res://scenes/core/spawn/spawn_manager.tscn"
+UiManager="*uid://q052ogik1unx"
+TextParser="*uid://cpnfgx3761sse"
+QuestManager="*uid://bwa652clrqra3"
+GameStateStore="*uid://c6n03blnkoc62"
+DialogUi="*uid://dace1v6hxewpc"
+SaveGameManager="*uid://d14b2bjv1kj7h"
 
 [display]
 
@@ -54,7 +53,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [global_group]
 

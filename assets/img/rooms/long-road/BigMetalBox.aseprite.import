@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b2jpwldudgh2s"
+path="res://.godot/imported/BigMetalBox.aseprite-7c2d9a7237ab6ddd82c6582bc047c564.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/long-road/BigMetalBox.aseprite"
+dest_files=["res://.godot/imported/BigMetalBox.aseprite-7c2d9a7237ab6ddd82c6582bc047c564.res"]
+
+[params]
+

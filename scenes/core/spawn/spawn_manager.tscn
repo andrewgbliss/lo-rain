@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bf7uhdy2cx0ax"]
+
+[ext_resource type="Script" uid="uid://dcuvnwj71nl38" path="res://scenes/core/spawn/spawn_manager.gd" id="1_3ga4s"]
+[ext_resource type="PackedScene" uid="uid://6cobcq10e24w" path="res://scenes/game/characters/stan_the_man/stan_the_man.tscn" id="2_ox1rk"]
+[ext_resource type="PackedScene" uid="uid://bqw82wwbwqshe" path="res://scenes/game/characters/car/car.tscn" id="3_b7hal"]
+
+[node name="SpawnManager" type="Node2D" unique_id=1034380021]
+script = ExtResource("1_3ga4s")
+entities = Dictionary[String, PackedScene]({
+"car": ExtResource("3_b7hal"),
+"player": ExtResource("2_ox1rk")
+})

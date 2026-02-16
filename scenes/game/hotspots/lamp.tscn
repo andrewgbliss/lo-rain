@@ -1,0 +1,162 @@
+[gd_scene format=3 uid="uid://bqrl44pfo72sv"]
+
+[ext_resource type="Texture2D" uid="uid://bicvac2ermmgj" path="res://assets/img/rooms/long-road/Lamp.png" id="1_dsn84"]
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_ew5o8"]
+[ext_resource type="Texture2D" uid="uid://rwgmmbhucwqm" path="res://assets/img/masks/cone-mask.png" id="2_uxiqm"]
+[ext_resource type="Script" uid="uid://pwy777opm34y" path="res://scenes/core/areas/heat_area.gd" id="3_r4tib"]
+[ext_resource type="SpriteFrames" uid="uid://qyhu44xh7iwu" path="res://assets/img/environment/light-explode.res" id="5_w5q3a"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="6_0uh3x"]
+
+[sub_resource type="Animation" id="Animation_ew5o8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_11cro"]
+resource_name = "broken_completed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_w5q3a"]
+resource_name = "broken"
+length = 0.35
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["broken", "completed"],
+"method": &"set_animation_state"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_w5fgf"]
+resource_name = "broken_start"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["broken", "in_process"],
+"method": &"set_animation_state"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5fgf"]
+_data = {
+&"RESET": SubResource("Animation_ew5o8"),
+&"broken_completed": SubResource("Animation_11cro"),
+&"broken_in_process": SubResource("Animation_w5q3a"),
+&"broken_start": SubResource("Animation_w5fgf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxglm"]
+size = Vector2(108, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5fgf"]
+size = Vector2(8, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5q3a"]
+radius = 31.06445
+
+[node name="Lamp" type="Node2D" unique_id=943431902 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_ew5o8")
+object_name = "lamp"
+require_in_range = true
+animation_states = Dictionary[String, int]({
+"broken": 0
+})
+animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=605533830]
+texture = ExtResource("1_dsn84")
+offset = Vector2(104, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1574135432]
+position = Vector2(14, -3)
+color = Color(1, 1, 0.0784314, 1)
+energy = 2.37
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("2_uxiqm")
+texture_scale = 0.7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1554564268]
+libraries/ = SubResource("AnimationLibrary_w5fgf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=283049014]
+position = Vector2(14, -81)
+sprite_frames = ExtResource("5_w5q3a")
+frame = 5
+frame_progress = 1.0
+
+[node name="HeatArea2D" type="Area2D" parent="." unique_id=1730774444]
+position = Vector2(0, -24)
+collision_layer = 4
+script = ExtResource("3_r4tib")
+metadata/_custom_type_script = "uid://pwy777opm34y"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeatArea2D" unique_id=601048678]
+shape = SubResource("RectangleShape2D_vxglm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=892005839]
+position = Vector2(0, -9)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=494622582]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_w5fgf")
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=1171843575]
+position = Vector2(0, -15)
+script = ExtResource("6_0uh3x")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=685844692]
+shape = SubResource("CircleShape2D_w5q3a")

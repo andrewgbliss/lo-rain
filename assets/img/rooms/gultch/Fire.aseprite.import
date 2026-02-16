@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d3vf8tjv3k5cq"
+path="res://.godot/imported/Fire.aseprite-dd79913fb740406bfa33f692827abdfa.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/gultch/Fire.aseprite"
+dest_files=["res://.godot/imported/Fire.aseprite-dd79913fb740406bfa33f692827abdfa.res"]
+
+[params]
+

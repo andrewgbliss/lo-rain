@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://st7272m0sy74"
+path="res://.godot/imported/light-explode.aseprite-06d9946f38eab7dacbf5c16af4bfbf29.res"
+
+[deps]
+
+source_file="res://assets/img/environment/light-explode.aseprite"
+dest_files=["res://.godot/imported/light-explode.aseprite-06d9946f38eab7dacbf5c16af4bfbf29.res"]
+
+[params]
+

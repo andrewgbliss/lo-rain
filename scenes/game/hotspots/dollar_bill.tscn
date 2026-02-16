@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://8yqfng7xpcog"]
+
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_jmltx"]
+[ext_resource type="Resource" uid="uid://b0s4ymwrcoegd" path="res://resources/items/dollar_bill.tres" id="2_28kax"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_rqvy6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wu3dk"]
+load_path = "res://.godot/imported/Money.png-9a68c8ada87e1ff0e0a6da31f29184bf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28kax"]
+atlas = SubResource("CompressedTexture2D_wu3dk")
+region = Rect2(18, 3, 13, 7)
+
+[sub_resource type="Animation" id="Animation_28kax"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rqvy6"]
+resource_name = "taken_completed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7n6t"]
+_data = {
+&"RESET": SubResource("Animation_28kax"),
+&"taken_completed": SubResource("Animation_rqvy6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5q3a"]
+radius = 31.06445
+
+[node name="DollarBill" type="Node2D" unique_id=1913126863 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_jmltx")
+object_name = "dollar_bill"
+require_in_range = true
+item = ExtResource("2_28kax")
+animation_states = Dictionary[String, int]({
+"taken": 0
+})
+animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=605533830]
+texture = SubResource("AtlasTexture_28kax")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=256441933]
+libraries/ = SubResource("AnimationLibrary_y7n6t")
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=559454130]
+script = ExtResource("3_rqvy6")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=685844692]
+shape = SubResource("CircleShape2D_w5q3a")

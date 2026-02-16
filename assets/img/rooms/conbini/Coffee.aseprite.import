@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c4emofov3kwdw"
+path="res://.godot/imported/Coffee.aseprite-3e224d0395480b9bdbb7a98bec29c507.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/Coffee.aseprite"
+dest_files=["res://.godot/imported/Coffee.aseprite-3e224d0395480b9bdbb7a98bec29c507.res"]
+
+[params]
+

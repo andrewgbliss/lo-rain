@@ -1,0 +1,501 @@
+[gd_scene format=3 uid="uid://don2q7sd5dfdg"]
+
+[ext_resource type="Script" uid="uid://b02vcargaaxrw" path="res://scenes/core/ui/menus/menu/menu_top_bar/menu_top_bar.gd" id="1_g6vg3"]
+
+[sub_resource type="Texture2D" id="Texture2D_gm0gc"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sdmgn"]
+texture = SubResource("Texture2D_gm0gc")
+
+[sub_resource type="Animation" id="Animation_vy4ck"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_0gdhb"]
+resource_name = "transition_away_in"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_4fa8x"]
+resource_name = "transition_away_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_yicix"]
+resource_name = "transition_in"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_7ory4"]
+resource_name = "transition_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.083333336, 0, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gdhb"]
+_data = {
+&"RESET": SubResource("Animation_vy4ck"),
+&"transition_away_in": SubResource("Animation_0gdhb"),
+&"transition_away_out": SubResource("Animation_4fa8x"),
+&"transition_in": SubResource("Animation_yicix"),
+&"transition_out": SubResource("Animation_7ory4")
+}
+
+[node name="MenuTopBar" type="CanvasLayer" unique_id=1408461102 node_paths=PackedStringArray("menu_bar_panel", "file_panel", "action_panel", "options_panel", "file_button", "focus_btn")]
+process_mode = 3
+layer = 5
+script = ExtResource("1_g6vg3")
+menu_bar_panel = NodePath("Control/Panel")
+file_panel = NodePath("Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel")
+action_panel = NodePath("Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel")
+options_panel = NodePath("Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel")
+file_button = NodePath("Control/Panel/MarginContainer/HBoxContainer/FileButton")
+menu_name = "MenuTopBar"
+focus_btn = NodePath("Control/Panel/MarginContainer/HBoxContainer/FileButton")
+metadata/_custom_type_script = "uid://b02vcargaaxrw"
+
+[node name="Control" type="Control" parent="." unique_id=1504256248]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="Control" unique_id=823172154]
+self_modulate = Color(1, 1, 1, 0.293)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_sdmgn")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel" unique_id=136532650]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/MarginContainer" unique_id=1691730804]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="FileButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer" unique_id=74481526]
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../OptionsButton")
+focus_neighbor_top = NodePath("Panel/MarginContainer/VBoxContainer/QuitButton")
+focus_neighbor_right = NodePath("../ActionButton")
+focus_neighbor_bottom = NodePath("Panel/MarginContainer/VBoxContainer/SaveButton")
+theme_override_font_sizes/font_size = 10
+text = "File"
+flat = true
+
+[node name="Panel" type="Panel" parent="Control/Panel/MarginContainer/HBoxContainer/FileButton" unique_id=1761670931]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 20.0
+offset_right = 78.0
+offset_bottom = 98.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel" unique_id=968529066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer" unique_id=796278826]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SaveButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer" unique_id=188944206]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../OptionsButton")
+focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_right = NodePath("../../../../../ActionButton")
+focus_neighbor_bottom = NodePath("../RestoreButton")
+theme_override_font_sizes/font_size = 10
+text = "Save"
+flat = true
+alignment = 0
+
+[node name="RestoreButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer" unique_id=2028565088]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../OptionsButton")
+focus_neighbor_top = NodePath("../SaveButton")
+focus_neighbor_right = NodePath("../../../../../ActionButton")
+focus_neighbor_bottom = NodePath("../RestartButton")
+theme_override_font_sizes/font_size = 10
+text = "Restore"
+flat = true
+alignment = 0
+
+[node name="RestartButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer" unique_id=1518857397]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../OptionsButton")
+focus_neighbor_top = NodePath("../RestoreButton")
+focus_neighbor_right = NodePath("../../../../../ActionButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme_override_font_sizes/font_size = 10
+text = "Restart"
+flat = true
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer" unique_id=1109562821]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../OptionsButton")
+focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_right = NodePath("../../../../../ActionButton")
+focus_neighbor_bottom = NodePath("../../../..")
+theme_override_font_sizes/font_size = 10
+text = "Quit"
+flat = true
+alignment = 0
+
+[node name="ActionButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer" unique_id=251636735]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../FileButton")
+focus_neighbor_top = NodePath("Panel/MarginContainer/VBoxContainer/InventoryButton")
+focus_neighbor_right = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("Panel/MarginContainer/VBoxContainer/ViewObjectButton")
+theme_override_font_sizes/font_size = 10
+text = "Action"
+flat = true
+
+[node name="Panel" type="Panel" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton" unique_id=2120318931]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = 20.0
+offset_right = 78.0
+offset_bottom = 98.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel" unique_id=372902955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer" unique_id=140179313]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ViewObjectButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=508770956]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../FileButton")
+focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_right = NodePath("../../../../../OptionsButton")
+focus_neighbor_bottom = NodePath("../InventoryButton")
+theme_override_font_sizes/font_size = 10
+text = "View Object"
+flat = true
+alignment = 0
+
+[node name="InventoryButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=1724116508]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../FileButton")
+focus_neighbor_top = NodePath("../ViewObjectButton")
+focus_neighbor_right = NodePath("../../../../../OptionsButton")
+focus_neighbor_bottom = NodePath("../../../..")
+theme_override_font_sizes/font_size = 10
+text = "Inventory"
+flat = true
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer" unique_id=520513455]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_left = NodePath("../ActionButton")
+focus_neighbor_top = NodePath("Panel/MarginContainer/VBoxContainer/SoundButton")
+focus_neighbor_right = NodePath("../FileButton")
+focus_neighbor_bottom = NodePath("Panel/MarginContainer/VBoxContainer/SoundButton")
+theme_override_font_sizes/font_size = 10
+text = "Options"
+flat = true
+
+[node name="Panel" type="Panel" parent="Control/Panel/MarginContainer/HBoxContainer/OptionsButton" unique_id=1570453377]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = 20.0
+offset_right = 78.0
+offset_bottom = 98.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel" unique_id=1946395280]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer" unique_id=1378627980]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SoundButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer" unique_id=1863660426]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../ActionButton")
+focus_neighbor_top = NodePath("../../../..")
+focus_neighbor_right = NodePath("../../../../../FileButton")
+focus_neighbor_bottom = NodePath("../../../..")
+theme_override_font_sizes/font_size = 10
+text = "Sound"
+flat = true
+alignment = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1956497029]
+libraries/ = SubResource("AnimationLibrary_0gdhb")
+
+[connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/FileButton" to="." method="_on_file_button_focus_entered"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer/RestoreButton" to="." method="_on_restore_button_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton" to="." method="_on_action_button_focus_entered"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_focus_entered"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer/SoundButton" to="." method="_on_sound_button_pressed"]

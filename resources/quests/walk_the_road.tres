@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://sh3faqflxjnt"]
+
+[ext_resource type="Script" uid="uid://bp7no1bvpm1we" path="res://scenes/core/quest/quest.gd" id="1_42vcj"]
+
+[resource]
+script = ExtResource("1_42vcj")
+quest_id = "walk_the_road"
+quest_name = "Walk The Road"
+quest_description = "There might be a store down the road."
+metadata/_custom_type_script = "uid://bp7no1bvpm1we"

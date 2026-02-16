@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dcx14ojb1yhhm"
+path="res://.godot/imported/Street.aseprite-0f232214e15898d528a37090bb3e13ef.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/long-road/Street.aseprite"
+dest_files=["res://.godot/imported/Street.aseprite-0f232214e15898d528a37090bb3e13ef.res"]
+
+[params]
+

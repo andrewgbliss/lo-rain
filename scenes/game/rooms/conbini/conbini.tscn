@@ -1,0 +1,412 @@
+[gd_scene format=3 uid="uid://bs0c0qhfy2xfw"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_cudwr"]
+[ext_resource type="PackedScene" uid="uid://nkgfsyjm7ie7" path="res://scenes/game/rooms/biome/biome.tscn" id="2_324eo"]
+[ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="3_mmej3"]
+[ext_resource type="Texture2D" uid="uid://b3a8ubt8lxg75" path="res://assets/img/rooms/conbini/Railing2.png" id="3_vovsb"]
+[ext_resource type="Texture2D" uid="uid://dbugyyrekdlh2" path="res://assets/img/rooms/conbini/Railings.png" id="4_hjs4d"]
+[ext_resource type="Texture2D" uid="uid://w5hi0wrqlwxg" path="res://assets/img/rooms/conbini/ConvenienceStoreInsidePreview.png" id="5_kvdit"]
+[ext_resource type="Texture2D" uid="uid://bnqcau6rkaf7d" path="res://assets/img/rooms/conbini/ConvenienceStore.png" id="6_kcf6v"]
+[ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="6_kvdit"]
+[ext_resource type="Texture2D" uid="uid://cs7eqjmhomrt2" path="res://assets/img/rooms/conbini/Road.png" id="8_bced8"]
+[ext_resource type="Texture2D" uid="uid://c4d6x83onk5fk" path="res://assets/img/rooms/conbini/Sidewalk.png" id="9_85bi2"]
+[ext_resource type="Texture2D" uid="uid://cr1pa6w4wdkar" path="res://assets/img/masks/LightMask.png" id="10_85bi2"]
+[ext_resource type="Script" uid="uid://djpux5twcmwuj" path="res://scenes/core/interaction/hotspot/hotspot_animation_trigger.gd" id="13_wad3y"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="14_5i5st"]
+[ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="15_vvvj3"]
+[ext_resource type="Texture2D" uid="uid://bah5v2jpgjcw5" path="res://assets/img/rooms/conbini/Boxes.png" id="15_ymyrh"]
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="18_jnmdp"]
+[ext_resource type="Script" uid="uid://b3mlg2cpf7tdl" path="res://scenes/core/behavior_tree/bt_player.gd" id="19_6x1av"]
+[ext_resource type="Script" uid="uid://xwbo18yggp15" path="res://scenes/core/behavior_tree/composite/bt_sequence_node.gd" id="20_c3c67"]
+[ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="20_ee6ic"]
+[ext_resource type="Script" uid="uid://dwsxptr6cy741" path="res://scenes/core/behavior_tree/action/bt_play_dialogue.gd" id="21_j1usu"]
+[ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="21_wad3y"]
+[ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="22_5i5st"]
+[ext_resource type="PackedScene" uid="uid://o0lomg3wclnc" path="res://scenes/game/characters/xandric.tscn" id="23_2optl"]
+[ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="23_up5px"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_up5px"]
+radius = 52.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5i5st"]
+radius = 43.046486
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_svegg"]
+load_path = "res://.godot/imported/ConvenienceStoreDoors.png-f0367910c9ad67a547461d88e6912733.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee6ic"]
+atlas = SubResource("CompressedTexture2D_svegg")
+region = Rect2(160, 61, 32, 48)
+
+[sub_resource type="Animation" id="Animation_uilgb"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_nuxxp"]
+resource_name = "close"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-49, -0.25, 0, 0.25, 0, -16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(49, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_svegg"]
+resource_name = "open"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0, -49, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0, 49, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nuxxp"]
+_data = {
+&"RESET": SubResource("Animation_uilgb"),
+&"close": SubResource("Animation_nuxxp"),
+&"open": SubResource("Animation_svegg")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_533q6"]
+radius = 52.009613
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2optl"]
+size = Vector2(60, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_el4ic"]
+size = Vector2(338, 79)
+
+[sub_resource type="Resource" id="Resource_78efa"]
+script = ExtResource("23_up5px")
+
+[node name="Conbini" type="Node2D" unique_id=131213808 node_paths=PackedStringArray("phantom_camera", "camera")]
+script = ExtResource("1_cudwr")
+room_name = "conbini"
+phantom_camera = NodePath("PhantomCamera2D")
+camera = NodePath("Camera2D")
+
+[node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_324eo")]
+
+[node name="Background" parent="." unique_id=1692324388 instance=ExtResource("3_mmej3")]
+
+[node name="Asphalt" type="Sprite2D" parent="." unique_id=552083756]
+z_index = -20
+position = Vector2(-3, 6)
+texture = ExtResource("6_kvdit")
+
+[node name="Railing2" type="Sprite2D" parent="." unique_id=72163506]
+texture = ExtResource("3_vovsb")
+
+[node name="Railings" type="Sprite2D" parent="." unique_id=378336607]
+texture = ExtResource("4_hjs4d")
+
+[node name="Sidewalk" type="Sprite2D" parent="." unique_id=899720985]
+texture = ExtResource("9_85bi2")
+
+[node name="Road" type="Sprite2D" parent="." unique_id=266822073]
+texture = ExtResource("8_bced8")
+
+[node name="ConvenienceStoreInsidePreview" type="Sprite2D" parent="." unique_id=1118803864]
+z_index = -10
+position = Vector2(-4, 6)
+texture = ExtResource("5_kvdit")
+
+[node name="ConvenienceStore" type="Sprite2D" parent="." unique_id=513714379]
+z_index = -5
+texture = ExtResource("6_kcf6v")
+
+[node name="PointLight2D" type="PointLight2D" parent="ConvenienceStore" unique_id=1360706749]
+color = Color(0.24, 0.911333, 1, 1)
+shadow_enabled = true
+texture = ExtResource("10_85bi2")
+texture_scale = 17.2
+
+[node name="Boxes" type="Sprite2D" parent="." unique_id=602462827]
+position = Vector2(-4, -1)
+texture = ExtResource("15_ymyrh")
+
+[node name="Doors" type="Node2D" parent="." unique_id=1334981182]
+position = Vector2(-4, -1)
+script = ExtResource("18_jnmdp")
+object_name = "door|doors"
+require_in_range = true
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="HotspotInRange" type="Area2D" parent="Doors" unique_id=2110355644]
+position = Vector2(33, 1)
+script = ExtResource("14_5i5st")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/HotspotInRange" unique_id=667715740]
+shape = SubResource("CircleShape2D_up5px")
+
+[node name="HotspotAnimationTrigger" type="Area2D" parent="Doors" unique_id=105006686 node_paths=PackedStringArray("animation_player")]
+position = Vector2(36, -4)
+collision_layer = 32
+script = ExtResource("13_wad3y")
+animation_player = NodePath("AnimationPlayer")
+animation_name_enter = "open"
+animation_name_exit = "close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/HotspotAnimationTrigger" unique_id=856225708]
+shape = SubResource("CircleShape2D_5i5st")
+
+[node name="LeftDoor" type="Sprite2D" parent="Doors/HotspotAnimationTrigger" unique_id=229582205]
+z_index = -6
+position = Vector2(-16, 0)
+texture = SubResource("AtlasTexture_ee6ic")
+
+[node name="RightDoor" type="Sprite2D" parent="Doors/HotspotAnimationTrigger" unique_id=1424034923]
+z_index = -6
+position = Vector2(16, 0)
+texture = SubResource("AtlasTexture_ee6ic")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Doors/HotspotAnimationTrigger" unique_id=447853135]
+libraries/ = SubResource("AnimationLibrary_nuxxp")
+
+[node name="Xandric" parent="." unique_id=810629886 instance=ExtResource("23_2optl")]
+position = Vector2(-16, -11)
+
+[node name="BTHotspot" type="Area2D" parent="Xandric" unique_id=131477058]
+script = ExtResource("18_jnmdp")
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Xandric/BTHotspot" unique_id=1167583530]
+shape = SubResource("CircleShape2D_533q6")
+
+[node name="BTPlayerLook" type="Node" parent="Xandric/BTHotspot" unique_id=716455120 node_paths=PackedStringArray("root_node")]
+script = ExtResource("19_6x1av")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="Xandric/BTHotspot/BTPlayerLook" unique_id=1593852402]
+script = ExtResource("20_c3c67")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="Xandric/BTHotspot/BTPlayerLook/BTSequenceNode" unique_id=1132517873]
+script = ExtResource("21_j1usu")
+text = "Whooo, whooo, whooo. The owl is looking at you."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayerTalk" type="Node" parent="Xandric/BTHotspot" unique_id=1775362864 node_paths=PackedStringArray("root_node")]
+script = ExtResource("19_6x1av")
+root_node = NodePath("BTSequenceNode")
+one_shot = true
+metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
+
+[node name="BTSequenceNode" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk" unique_id=320798100]
+script = ExtResource("20_c3c67")
+metadata/_custom_type_script = "uid://xwbo18yggp15"
+
+[node name="BTPlayDialogue" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk/BTSequenceNode" unique_id=200404815]
+script = ExtResource("21_j1usu")
+text = "Whooo, whooo, whooo."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayDialogue2" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk/BTSequenceNode" unique_id=81717512]
+script = ExtResource("21_j1usu")
+text = "Don't go in there, there is a wizard on a trip from another game."
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="BTPlayDialogue3" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk/BTSequenceNode" unique_id=330747998]
+script = ExtResource("21_j1usu")
+text = "Be careful!"
+metadata/_custom_type_script = "uid://dwsxptr6cy741"
+
+[node name="RoomDoors" type="Node2D" parent="." unique_id=380039040]
+
+[node name="RoomDoor1" type="Area2D" parent="RoomDoors" unique_id=1883442793 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-68, 20)
+collision_layer = 64
+script = ExtResource("15_vvvj3")
+door_id = "2"
+goto_door_id = "1"
+scene_path = "res://scenes/game/rooms/conbini/conbini_inside_front.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor1" unique_id=1711451230]
+position = Vector2(100, -11.5)
+shape = SubResource("RectangleShape2D_2optl")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor1" unique_id=61935597]
+position = Vector2(98, 8)
+script = ExtResource("20_ee6ic")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="RoomDoor2" type="Area2D" parent="RoomDoors" unique_id=1183614483 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-68, 100)
+collision_layer = 64
+script = ExtResource("15_vvvj3")
+door_id = "1"
+goto_door_id = "2"
+scene_path = "res://scenes/game/rooms/conbini/conbini_road.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor2" unique_id=1268842479]
+position = Vector2(66, 17)
+shape = SubResource("RectangleShape2D_el4ic")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor2" unique_id=209104590]
+position = Vector2(69, -49)
+script = ExtResource("20_ee6ic")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2113907944]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=607310662]
+polygon = PackedVector2Array(-168, 75, -160, 75, -160, 15, -111, 15, -111, 20, 0, 20, 0, 12, 62, 12, 62, 22, 112, 22, 112, 15, 159, 15, 159, 77, 167, 78, 167, -9, -161, -9, -168, -10)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1412723746]
+position = Vector2(0, -15)
+zoom = Vector2(2, 2)
+limit_left = -50
+limit_top = -100
+limit_right = 50
+limit_bottom = 85
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=2023138961]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("21_wad3y")
+metadata/_custom_type_script = "uid://btwul30fxa5pu"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=848392480]
+top_level = true
+position = Vector2(0, -15)
+script = ExtResource("22_5i5st")
+priority = 5
+follow_mode = 5
+zoom = Vector2(2, 2)
+snap_to_pixel = true
+tween_resource = SubResource("Resource_78efa")
+tween_on_load = false
+follow_damping = true
+follow_damping_value = Vector2(0.5, 0.5)
+limit_left = -50
+limit_top = -100
+limit_right = 50
+limit_bottom = 85
+metadata/_custom_type_script = "uid://br03kradwjuk0"

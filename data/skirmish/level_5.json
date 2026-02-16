@@ -1,0 +1,11 @@
+[
+  {
+    "wave": 1
+  },
+  {
+    "enemy": "medium_alien_ship",
+    "amount": 1,
+    "spawn_delay": 5,
+    "spawn_index": 0
+  }
+]

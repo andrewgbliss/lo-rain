@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://3toigwhvybu6"]
+
+[ext_resource type="Texture2D" uid="uid://bjkj76ajq58k" path="res://assets/img/rooms/long-road/BigMetalBox.png" id="1_jne3e"]
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_ltvfr"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_l777m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ni3x"]
+radius = 75.0267
+
+[node name="Box" type="Node2D" unique_id=88427432]
+script = ExtResource("1_ltvfr")
+object_name = "box"
+require_in_range = true
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1849739238]
+texture = ExtResource("1_jne3e")
+offset = Vector2(0, -24)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1120197816]
+position = Vector2(0, -24)
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1034494018]
+polygon = PackedVector2Array(-38, 2, -38, 38, 24, 38, 38, 24, 38, 2)
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=356180080]
+script = ExtResource("3_l777m")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=1187868739]
+shape = SubResource("CircleShape2D_4ni3x")

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://nkgfsyjm7ie7"]
+
+[ext_resource type="PackedScene" uid="uid://cgwfeop4t4dma" path="res://scenes/game/particles/rain/rain_ambience.tscn" id="2_ow3qk"]
+[ext_resource type="PackedScene" uid="uid://b1l65b5ajopcp" path="res://scenes/game/particles/rain/rain.tscn" id="3_ev6c7"]
+
+[sub_resource type="Gradient" id="Gradient_ltjxa"]
+offsets = PackedFloat32Array(0, 0.972727)
+colors = PackedColorArray(1, 1, 1, 0.494118, 0.572549, 0.572549, 0.572549, 0.305882)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8rclq"]
+gradient = SubResource("Gradient_ltjxa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1c6b"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(720, 25, 1)
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 50, 0)
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_8rclq")
+
+[sub_resource type="Environment" id="Environment_a8y0u"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 3.88
+glow_bloom = 0.5
+
+[node name="Biome" type="Node2D" unique_id=34543219]
+
+[node name="Weather" type="Node" parent="." unique_id=612475815]
+
+[node name="RainAmbience" parent="Weather" unique_id=1617307124 instance=ExtResource("2_ow3qk")]
+position = Vector2(0, -453)
+
+[node name="RainSplash" type="GPUParticles2D" parent="Weather" unique_id=724499646]
+position = Vector2(-130, 38)
+amount = 200
+lifetime = 0.5
+visibility_rect = Rect2(-100, -100, 1000, 1000)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_e1c6b")
+
+[node name="Rain" parent="Weather" unique_id=1044847409 instance=ExtResource("3_ev6c7")]
+position = Vector2(0, -453)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=437749253]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1481521651]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.054902, 0.0901961, 0.372549, 0.196078)
+metadata/_edit_use_anchors_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2059692110]
+environment = SubResource("Environment_a8y0u")

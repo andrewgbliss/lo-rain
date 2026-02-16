@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://nbrxau185wnw"]
+
+[ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_npohu"]
+[ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="11_w67ex"]
+[ext_resource type="Texture2D" uid="uid://cfcgiab5w7cbu" path="res://assets/img/rooms/conbini/Bg.png" id="29_71dl1"]
+[ext_resource type="Texture2D" uid="uid://ctggkoljchrmr" path="res://assets/img/rooms/conbini/Storage.png" id="30_npohu"]
+[ext_resource type="Texture2D" uid="uid://btc5qb75hrohs" path="res://assets/img/rooms/conbini/Window.png" id="32_8mdtx"]
+[ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="35_tsxq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlha0"]
+size = Vector2(44, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsxq7"]
+size = Vector2(44, 18)
+
+[node name="ConbiniStorage" type="Node2D" unique_id=228955518 node_paths=PackedStringArray("camera")]
+script = ExtResource("1_npohu")
+room_name = "conbini_storage"
+camera = NodePath("Camera2D")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=912557986]
+position = Vector2(3, -19)
+texture = ExtResource("29_71dl1")
+
+[node name="Storage" type="Sprite2D" parent="." unique_id=54097167]
+position = Vector2(1, -19)
+texture = ExtResource("30_npohu")
+
+[node name="Window" type="Sprite2D" parent="." unique_id=1178319650]
+position = Vector2(2, -19)
+texture = ExtResource("32_8mdtx")
+
+[node name="RoomDoors" type="Node2D" parent="." unique_id=971706057]
+
+[node name="RoomDoor1" type="Area2D" parent="RoomDoors" unique_id=1697530638 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-50, 70)
+collision_layer = 64
+script = ExtResource("35_tsxq7")
+door_id = "1"
+goto_door_id = "2"
+scene_path = "res://scenes/game/rooms/conbini/conbini_toire.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor1" unique_id=926340769]
+position = Vector2(107, -9)
+shape = SubResource("RectangleShape2D_xlha0")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor1" unique_id=135653452]
+position = Vector2(106, -30)
+script = ExtResource("11_w67ex")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="RoomDoor2" type="Area2D" parent="RoomDoors" unique_id=2137969065 node_paths=PackedStringArray("spawn_position")]
+position = Vector2(-145, -32)
+collision_layer = 64
+script = ExtResource("35_tsxq7")
+door_id = "2"
+goto_door_id = "1"
+scene_path = "res://scenes/game/rooms/conbini/conbini_back.tscn"
+spawn_position = NodePath("SpawnPosition")
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor2" unique_id=1589540715]
+position = Vector2(106, -20)
+shape = SubResource("RectangleShape2D_tsxq7")
+
+[node name="SpawnPosition" type="Node2D" parent="RoomDoors/RoomDoor2" unique_id=1942340950]
+position = Vector2(107, -3)
+script = ExtResource("11_w67ex")
+metadata/_custom_type_script = "uid://qia23iggn1qa"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=241953104]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=730306903]
+polygon = PackedVector2Array(-111, -40, -51, -40, -51, -45, -26, -45, -26, -40, 39, -40, 128, 50, 80, 50, 81, 69, 149, 70, 149, 18, 37, -94, -134, -92, -132, -40, -38, 72, 33, 70, 33, 52, -21, 50)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1937497197]
+position = Vector2(2, -19)
+zoom = Vector2(2, 2)

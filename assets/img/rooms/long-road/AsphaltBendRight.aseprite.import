@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cpy0ejd5p7t38"
+path="res://.godot/imported/AsphaltBendRight.aseprite-2cc5200e0b93bd4d935f6e406ef8cf25.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/long-road/AsphaltBendRight.aseprite"
+dest_files=["res://.godot/imported/AsphaltBendRight.aseprite-2cc5200e0b93bd4d935f6e406ef8cf25.res"]
+
+[params]
+

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://tuun2mx73df8"]
+
+[ext_resource type="Texture2D" uid="uid://bffe5vktdmv8h" path="res://assets/img/ui/Healthbar.png" id="1_1vcc2"]
+[ext_resource type="Script" uid="uid://c3dwv2mjpqw3v" path="res://scenes/game/characters/stan_the_man/health_bar.gd" id="1_qi2ti"]
+
+[sub_resource type="Gradient" id="Gradient_vxglm"]
+offsets = PackedFloat32Array(0.512987)
+colors = PackedColorArray(1.8, 1.8, 1.8, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qi2ti"]
+gradient = SubResource("Gradient_vxglm")
+use_hdr = true
+
+[node name="HealthBar" type="Node2D" node_paths=PackedStringArray("texture_rect", "label")]
+script = ExtResource("1_qi2ti")
+texture_rect = NodePath("CanvasLayer/Control/HealthBarTextureTect")
+label = NodePath("CanvasLayer/Label")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 56.0
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+
+[node name="HealthBarTextureTect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 45.0
+offset_bottom = 18.0
+texture = SubResource("GradientTexture2D_qi2ti")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRectUI" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 48.0
+offset_bottom = 19.0
+texture = ExtResource("1_1vcc2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 47.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 8
+text = "100o"

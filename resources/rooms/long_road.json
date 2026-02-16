@@ -1,0 +1,167 @@
+{
+  "id": "long_road",
+  "name": "Long Road",
+  "init": ["init"],
+  "actions": {
+    "init": ["if_quest_completed(first_loaded, spawn_player, first_loaded)"],
+    "first_loaded": [
+      "quest_start(first_loaded)",
+      "quest_complete_checkpoint(first_loaded, first_completed)",
+      "quest_complete(first_loaded)",
+      "if_quest_completed(getting_dumped, spawn_player, getting_dumped)"
+    ],
+    "spawn_player": [
+      "spawn_entity(player)",
+      "camera_focus(player)",
+      "command_prompt(true)"
+    ],
+    "getting_dumped": [
+      "spawn_entity(car)",
+      "camera_focus(car)",
+      "movement_state(car, -1.0, 0.0)",
+      "wait(4.5)",
+      "movement_state(car, 0.0, 0.0)",
+      "quest_change(getting_dumped)",
+      "quest_status(getting_dumped, available)",
+      "Get out of my car!",
+      "All you ever do is talk about Face Quest 2!",
+      "We're done!",
+      "wait(3.0)",
+      "quest_status(getting_dumped, in_progress)",
+      "wait(3.0)",
+      "spawn_entity(player)",
+      "paralyze(player, true)",
+      "wait(3.0)",
+      "movement_state(car, -1.0, 0.0)",
+      "wait(3.0)",
+      "quest_complete(getting_dumped)",
+      "wait(3.0)",
+      "Your girlfriend has broken up with you out in the middle of nowhere. Better get somewhere warm fast!",
+      "quest_start(someplace_warm)",
+      "paralyze(player, false)",
+      "camera_focus(player)",
+      "command_prompt(true)"
+    ]
+  },
+  "deaths": {
+    "cliff": [
+      "paralyze(player, true)",
+      "set_idle(player)",
+      "set_z_index(player, -15)",
+      "You walked off the cliff. You now must face the fall of gravity.",
+      "change_collision_mask(player, 0)",
+      "change_gravity(player, true)"
+    ]
+  },
+  "hotspots": {
+    "room": {
+      "commands": {
+        "look": [
+          "Your girlfriend left you for dead out in the middle of nowhere.",
+          "It's almost midnight and you are very cold.",
+          "Better find a warm place before you freeze to death!"
+        ]
+      }
+    },
+    "clouds": {
+      "commands": {
+        "look": [
+          "You see wonderfully crafted pixel art clouds. This must be a retro style game."
+        ]
+      }
+    },
+    "mountains": {
+      "commands": {
+        "look": [
+          "You remember something about why you're here as you look at the mountains but then quickly forget."
+        ]
+      }
+    },
+    "rain": {
+      "commands": {
+        "look": ["The rain is coming down hard. You should find shelter."]
+      }
+    },
+    "road|street": {
+      "commands": {
+        "look": [
+          "You see a road leading back to the city. It's a long way to walk."
+        ]
+      }
+    },
+    "sky": {
+      "commands": {
+        "look": [
+          "The sky is a bright #55ffff. What a nice clear day to have a picnic."
+        ]
+      }
+    },
+    "lamp": {
+      "animation_states": ["broken"],
+      "commands": {
+        "look": {
+          "has_completed_animation_state": "broken",
+          "yes": ["The lamp is broken.", "You fucked with it."],
+          "no": ["You look at the lamp.", "It is warm under the lamp."]
+        },
+        "fuckwith": {
+          "has_completed_animation_state": "broken",
+          "yes": ["You already fucked it up."],
+          "no": [
+            "You fuck with the lamp.",
+            "It short circuits.",
+            "animation_state(broken, start)"
+          ]
+        }
+      }
+    },
+    "dollar_bill": {
+      "animation_states": ["taken"],
+      "commands": {
+        "look": ["You see a dollar bill.", "Be careful!"],
+        "take": ["You take the dollar.", "add_inventory(dollar_bill)"]
+      }
+    },
+    "cliff": {
+      "commands": {
+        "look": ["You see a cliff.", "Be careful!"]
+      }
+    },
+    "trash": {
+      "commands": {
+        "look": {
+          "has_inventory": "dollar_bill",
+          "yes": ["You see a trash can."],
+          "no": [
+            "You see a trash can. You notice a dollar behind it.",
+            "You could go around to pick it up.",
+            "Just be careful."
+          ]
+        },
+        "fuckwith": ["You fuck with the trash can."]
+      }
+    },
+    "bench": {
+      "commands": {
+        "look": ["The bench is all wet. Shouldn't sit on it."]
+      }
+    },
+    "grate": {
+      "commands": {
+        "look": [
+          "You see a grate. It's a little dirty but warm steam is coming from it. Smells like a sewer."
+        ]
+      }
+    },
+    "bus stop": {
+      "commands": {
+        "look": ["You see a bus stop. It's probably warm under there."]
+      }
+    },
+    "box": {
+      "commands": {
+        "look": ["You see a box in the middle of the road. Be careful of cars!"]
+      }
+    }
+  }
+}

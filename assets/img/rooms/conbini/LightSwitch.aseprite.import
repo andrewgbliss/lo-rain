@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b7t46x1x02sus"
+path="res://.godot/imported/LightSwitch.aseprite-9b8a09410e449e61ca981dbe1bb3f128.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/LightSwitch.aseprite"
+dest_files=["res://.godot/imported/LightSwitch.aseprite-9b8a09410e449e61ca981dbe1bb3f128.res"]
+
+[params]
+

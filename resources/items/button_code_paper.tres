@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b0oojt4mwwajl"]
+
+[ext_resource type="Texture2D" uid="uid://cfdnc1a3wgib0" path="res://assets/img/rooms/conbini/button-code-paper.png" id="1_khbp3"]
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="1_p8pfn"]
+
+[resource]
+script = ExtResource("1_p8pfn")
+id = "button-code-paper"
+name = "Button Code Paper"
+room_texture = ExtResource("1_khbp3")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

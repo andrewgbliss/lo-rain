@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cqgdxwks6ug2j"
+path="res://.godot/imported/CoffeeStand.aseprite-76c83e5e87a7467a1466c83c69a88aec.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/CoffeeStand.aseprite"
+dest_files=["res://.godot/imported/CoffeeStand.aseprite-76c83e5e87a7467a1466c83c69a88aec.res"]
+
+[params]
+

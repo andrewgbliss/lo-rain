@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://4vo54dgiooh4"]
+
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_a2obm"]
+[ext_resource type="Texture2D" uid="uid://caep2oalmst5m" path="res://assets/img/rooms/conbini/ATM-Sheet.png" id="1_c4uch"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_rgmbs"]
+
+[sub_resource type="Animation" id="Animation_547ok"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8xym4"]
+resource_name = "broke"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_c4uch"]
+resource_name = "running"
+length = 2.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0k7kg"]
+_data = {
+&"RESET": SubResource("Animation_547ok"),
+&"broke": SubResource("Animation_8xym4"),
+&"running": SubResource("Animation_c4uch")
+}
+
+[node name="Atm" type="Node2D" unique_id=509685226]
+script = ExtResource("1_a2obm")
+object_name = "atm"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=418627220]
+texture = ExtResource("1_c4uch")
+offset = Vector2(0, -26.775)
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=992597451]
+libraries/ = SubResource("AnimationLibrary_0k7kg")
+autoplay = &"running"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1525883749]
+position = Vector2(0, -26)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1350559127]
+polygon = PackedVector2Array(-15, 26, -15, 13, 11, 13, 11, 19, 2, 27)
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=1858136973]
+script = ExtResource("3_rgmbs")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HotspotInRange" unique_id=33076103]
+polygon = PackedVector2Array(16, 5, 15, -16, -24, -16, -29, 14, 3, 14)

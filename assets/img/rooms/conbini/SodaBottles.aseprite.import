@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b6oc7p67brcda"
+path="res://.godot/imported/SodaBottles.aseprite-203c67aa5f7647edd3b7a3d09119a092.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/SodaBottles.aseprite"
+dest_files=["res://.godot/imported/SodaBottles.aseprite-203c67aa5f7647edd3b7a3d09119a092.res"]
+
+[params]
+

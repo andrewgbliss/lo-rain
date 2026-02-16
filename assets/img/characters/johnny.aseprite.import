@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://djtgm57wxswlq"
+path="res://.godot/imported/johnny.aseprite-d8e62e73fa2ecfde2414b69800412cef.res"
+
+[deps]
+
+source_file="res://assets/img/characters/johnny.aseprite"
+dest_files=["res://.godot/imported/johnny.aseprite-d8e62e73fa2ecfde2414b69800412cef.res"]
+
+[params]
+

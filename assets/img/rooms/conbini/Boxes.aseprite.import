@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bpa8ld6lrxvqd"
+path="res://.godot/imported/Boxes.aseprite-807859d4e0cee0ea2f4071e01a1827ec.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/Boxes.aseprite"
+dest_files=["res://.godot/imported/Boxes.aseprite-807859d4e0cee0ea2f4071e01a1827ec.res"]
+
+[params]
+

@@ -1,0 +1,29 @@
+{
+  "id": "conbini",
+  "name": "Conbini",
+  "init": ["spawn_player"],
+  "actions": {
+    "spawn_player": [
+      "spawn_entity(player)",
+      "camera_focus(player)",
+      "command_prompt(true)"
+    ]
+  },
+  "hotspots": {
+    "room": {
+      "require_range": false,
+      "commands": {
+        "look": [
+          "You're at the front of the conbini. You can buy some food and drinks here.",
+          "You should probably get inside before you freeze to death."
+        ]
+      }
+    },
+    "door": {
+      "require_range": false,
+      "commands": {
+        "look": ["The front doors to the store are automatic."]
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dy4qg1qg3e22e"
+path="res://.godot/imported/Storage.aseprite-374bb1a3416226b0ddb0be4be5c1612e.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/Storage.aseprite"
+dest_files=["res://.godot/imported/Storage.aseprite-374bb1a3416226b0ddb0be4be5c1612e.res"]
+
+[params]
+

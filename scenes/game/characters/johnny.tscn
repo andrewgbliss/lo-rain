@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://c7nlvdf1ebcdl"]
+
+[ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://scenes/core/character/character_controller.gd" id="1_2r4sn"]
+[ext_resource type="Texture2D" uid="uid://car6aycp5hhpe" path="res://assets/img/characters/johnny-Sheet.png" id="2_b1epx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqmv8"]
+size = Vector2(9, 3)
+
+[sub_resource type="Animation" id="Animation_sqmv8"]
+resource_name = "IdleDown"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_2r4sn"]
+resource_name = "IdleRight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_b1epx"]
+resource_name = "IdleUp"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_eend5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_tbe0e"]
+resource_name = "WalkDown"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_7xkli"]
+resource_name = "WalkRight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1s077"]
+resource_name = "WalkUp"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eend5"]
+_data = {
+&"IdleDown": SubResource("Animation_sqmv8"),
+&"IdleRight": SubResource("Animation_2r4sn"),
+&"IdleUp": SubResource("Animation_b1epx"),
+&"RESET": SubResource("Animation_eend5"),
+&"WalkDown": SubResource("Animation_tbe0e"),
+&"WalkRight": SubResource("Animation_7xkli"),
+&"WalkUp": SubResource("Animation_1s077")
+}
+
+[node name="Johnny" type="CharacterBody2D" unique_id=421352308 groups=["Persist"]]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_2r4sn")
+character_type = 1
+has_gravity = false
+metadata/_custom_type_script = "uid://crueou1p1x8k2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1391975975]
+position = Vector2(-0.5, 2.5)
+shape = SubResource("RectangleShape2D_sqmv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=515209943]
+texture = ExtResource("2_b1epx")
+offset = Vector2(0, -20)
+hframes = 8
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=702655525]
+libraries/ = SubResource("AnimationLibrary_eend5")
