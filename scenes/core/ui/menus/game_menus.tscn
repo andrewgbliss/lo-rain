@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://don2q7sd5dfdg" path="res://scenes/core/ui/menus/menu/menu_top_bar/menu_top_bar.tscn" id="15_jw0ak"]
 [ext_resource type="PackedScene" uid="uid://b8rn5c3shewq3" path="res://scenes/core/ui/menus/menu/save_game_menu/save_game_menu.tscn" id="16_jsxpc"]
 [ext_resource type="PackedScene" uid="uid://cl68sts04a53i" path="res://scenes/core/ui/menus/menu/restore_game_menu/restore_game_menu.tscn" id="17_wyx08"]
+[ext_resource type="PackedScene" uid="uid://o5njfqyrri1" path="res://scenes/core/inventory/inventory_menu.tscn" id="18_0c6nc"]
 
 [sub_resource type="Animation" id="Animation_hibng"]
 length = 0.001
@@ -1221,6 +1222,8 @@ libraries/ = SubResource("AnimationLibrary_e8wlj")
 [node name="SaveGameMenu" parent="." unique_id=763743918 instance=ExtResource("16_jsxpc")]
 
 [node name="RestoreGameMenu" parent="." unique_id=1567664288 instance=ExtResource("17_wyx08")]
+
+[node name="InventoryMenu" parent="." unique_id=339308341 instance=ExtResource("18_0c6nc")]
 
 [editable path="AudioMenu/Control/Panel/MarginContainer/VBoxContainer/VBoxContainer/VolumeSlider"]
 [editable path="AudioMenu/Control/Panel/MarginContainer/VBoxContainer/VBoxContainer/VolumeSlider2"]

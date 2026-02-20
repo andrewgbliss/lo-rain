@@ -10,11 +10,6 @@
       "quest_complete(first_loaded)",
       "if_quest_completed(getting_dumped, spawn_player, getting_dumped)"
     ],
-    "spawn_player": [
-      "spawn_entity(player)",
-      "camera_focus(player)",
-      "command_prompt(true)"
-    ],
     "getting_dumped": [
       "spawn_entity(car)",
       "camera_focus(car)",
@@ -41,16 +36,6 @@
       "paralyze(player, false)",
       "camera_focus(player)",
       "command_prompt(true)"
-    ]
-  },
-  "deaths": {
-    "cliff": [
-      "paralyze(player, true)",
-      "set_idle(player)",
-      "set_z_index(player, -15)",
-      "You walked off the cliff. You now must face the fall of gravity.",
-      "change_collision_mask(player, 0)",
-      "change_gravity(player, true)"
     ]
   },
   "hotspots": {
@@ -97,7 +82,9 @@
       }
     },
     "lamp": {
-      "animation_states": ["broken"],
+      "animation_states": {
+        "broken": "none"
+      },
       "commands": {
         "look": {
           "has_completed_animation_state": "broken",
@@ -116,7 +103,9 @@
       }
     },
     "dollar_bill": {
-      "animation_states": ["taken"],
+      "animation_states": {
+        "taken": "none"
+      },
       "commands": {
         "look": ["You see a dollar bill.", "Be careful!"],
         "take": ["You take the dollar.", "add_inventory(dollar_bill)"]

@@ -57,7 +57,7 @@ collision_layer = 64
 script = ExtResource("7_ngo68")
 door_id = "1"
 goto_door_id = "2"
-scene_path = "res://scenes/rooms/conbini/conbini_storage.tscn"
+scene_path = "res://scenes/game/rooms/conbini/conbini_storage.tscn"
 spawn_position = NodePath("SpawnPosition")
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 

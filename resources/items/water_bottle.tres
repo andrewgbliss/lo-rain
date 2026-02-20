@@ -9,7 +9,7 @@ region = Rect2(102, 3, 4, 8)
 
 [resource]
 script = ExtResource("2_8odmt")
-id = "water-bottle"
+id = "water_bottle"
 name = "Water Bottle"
 room_texture = SubResource("AtlasTexture_xpdto")
 metadata/_custom_type_script = "uid://cjyg0ygclwad6"

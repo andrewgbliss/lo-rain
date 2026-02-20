@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://scenes/core/character/character_controller.gd" id="1_2r4sn"]
 [ext_resource type="Texture2D" uid="uid://car6aycp5hhpe" path="res://assets/img/characters/johnny-Sheet.png" id="2_b1epx"]
+[ext_resource type="Script" uid="uid://c2k3vdp72wicb" path="res://scenes/core/character/character_actions/find_target.gd" id="3_upcni"]
+[ext_resource type="Script" uid="uid://dvuchal7x7eop" path="res://scenes/core/character/character_actions/look_at.gd" id="4_ea7kh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqmv8"]
 size = Vector2(9, 3)
@@ -131,6 +133,7 @@ _data = {
 [node name="Johnny" type="CharacterBody2D" unique_id=421352308 groups=["Persist"]]
 collision_layer = 16
 collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_2r4sn")
 character_type = 1
 has_gravity = false
@@ -148,3 +151,10 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=702655525]
 libraries/ = SubResource("AnimationLibrary_eend5")
+
+[node name="FindTarget" type="Node2D" parent="." unique_id=1590050527]
+script = ExtResource("3_upcni")
+metadata/_custom_type_script = "uid://c2k3vdp72wicb"
+
+[node name="LookAt" type="Node2D" parent="." unique_id=736645040]
+script = ExtResource("4_ea7kh")

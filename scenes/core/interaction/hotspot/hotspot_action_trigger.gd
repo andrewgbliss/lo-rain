@@ -2,8 +2,11 @@ class_name HotspotActionTrigger extends Area2D
 
 @export var action: String
 @export var run_action_in_range: bool = false
+@export var one_time: bool = false
 
 signal action_run(action: String)
+
+var times = 0
 
 func _ready():
 	body_entered.connect(_on_in_range_body_entered)
@@ -12,7 +15,9 @@ func _ready():
 func _on_in_range_body_entered(body):
 	if body is CharacterController:
 		if run_action_in_range:
-			action_run.emit(action)
+			if one_time and times <= 0:
+				times = times + 1
+				action_run.emit(action)
 
 func _on_in_range_body_exited(_body):
 	pass

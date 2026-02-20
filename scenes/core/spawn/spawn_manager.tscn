@@ -3,10 +3,16 @@
 [ext_resource type="Script" uid="uid://dcuvnwj71nl38" path="res://scenes/core/spawn/spawn_manager.gd" id="1_3ga4s"]
 [ext_resource type="PackedScene" uid="uid://6cobcq10e24w" path="res://scenes/game/characters/stan_the_man/stan_the_man.tscn" id="2_ox1rk"]
 [ext_resource type="PackedScene" uid="uid://bqw82wwbwqshe" path="res://scenes/game/characters/car/car.tscn" id="3_b7hal"]
+[ext_resource type="PackedScene" uid="uid://c7nlvdf1ebcdl" path="res://scenes/game/characters/johnny.tscn" id="4_b7sl6"]
+[ext_resource type="PackedScene" uid="uid://cjunwldi6qc84" path="res://scenes/game/characters/hanannan.tscn" id="5_gw8sj"]
+[ext_resource type="PackedScene" uid="uid://dr3m40neq2x1o" path="res://scenes/game/characters/rasky.tscn" id="6_1ls2g"]
 
 [node name="SpawnManager" type="Node2D" unique_id=1034380021]
 script = ExtResource("1_3ga4s")
 entities = Dictionary[String, PackedScene]({
 "car": ExtResource("3_b7hal"),
-"player": ExtResource("2_ox1rk")
+"hanannan": ExtResource("5_gw8sj"),
+"johnny": ExtResource("4_b7sl6"),
+"player": ExtResource("2_ox1rk"),
+"rasky": ExtResource("6_1ls2g")
 })

@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cwnxkcy2tojd5" path="res://assets/img/rooms/conbini/Toire.png" id="4_tve4y"]
 [ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="5_eryup"]
 [ext_resource type="Texture2D" uid="uid://rykwx4g2p3oa" path="res://assets/img/rooms/conbini/ToireStorageDoor.png" id="9_7qity"]
-[ext_resource type="Texture2D" uid="uid://bsj4allkvcsn8" path="res://assets/img/rooms/conbini/WomensDoor.png" id="10_k4u64"]
+[ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="9_nywig"]
+[ext_resource type="SpriteFrames" uid="uid://qyhu44xh7iwu" path="res://assets/img/environment/light-explode.res" id="11_1ylio"]
 [ext_resource type="Texture2D" uid="uid://c8k8b3oevmrpi" path="res://assets/img/rooms/conbini/MensDoor.png" id="11_lvgig"]
+[ext_resource type="Script" uid="uid://djpux5twcmwuj" path="res://scenes/core/interaction/hotspot/hotspot_animation_trigger.gd" id="12_hkrj1"]
 [ext_resource type="Texture2D" uid="uid://cfdnc1a3wgib0" path="res://assets/img/rooms/conbini/button-code-paper.png" id="12_vsuqp"]
 [ext_resource type="Texture2D" uid="uid://btc5qb75hrohs" path="res://assets/img/rooms/conbini/Window.png" id="31_47nih"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="35_qwl5s"]
@@ -17,9 +19,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdebh"]
 atlas = ExtResource("4_tve4y")
 region = Rect2(75, 43, 182, 86)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhf11"]
-size = Vector2(16, 23)
 
 [sub_resource type="Animation" id="Animation_k4u64"]
 length = 0.001
@@ -178,7 +177,67 @@ size = Vector2(23, 39)
 size = Vector2(49, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4u64"]
-size = Vector2(29, 20)
+size = Vector2(29, 28)
+
+[sub_resource type="Animation" id="Animation_55ejm"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nywig"]
+resource_name = "taken_completed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_mode")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55ejm"]
+_data = {
+&"RESET": SubResource("Animation_55ejm"),
+&"taken_completed": SubResource("Animation_nywig")
+}
 
 [sub_resource type="Animation" id="Animation_ps4ya"]
 length = 0.001
@@ -203,6 +262,45 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_x4dm8"]
+resource_name = "open_completed"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MensDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MensDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["broken_bathroom"],
+"method": &"run_action"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_vsuqp"]
@@ -230,15 +328,47 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -15, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["open", "completed"],
+"method": &"set_animation_state"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jsi6j"]
 _data = {
 &"RESET": SubResource("Animation_ps4ya"),
-&"open": SubResource("Animation_vsuqp")
+&"open_completed": SubResource("Animation_x4dm8"),
+&"open_start": SubResource("Animation_vsuqp")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dhf11"]
-radius = 109.073
+[sub_resource type="CircleShape2D" id="CircleShape2D_hkrj1"]
+radius = 40.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nywig"]
+radius = 23.086792
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwru7"]
 size = Vector2(37, 14)
@@ -271,22 +401,10 @@ texture = ExtResource("31_47nih")
 
 [node name="Hotspots" type="Node2D" parent="." unique_id=171570772]
 
-[node name="ButtonPanel" type="Node2D" parent="Hotspots" unique_id=1240450445]
-position = Vector2(-4, -13)
-script = ExtResource("4_dhf11")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
-
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/ButtonPanel" unique_id=566231869]
-script = ExtResource("5_eryup")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/ButtonPanel/HotspotInRange" unique_id=78587779]
-position = Vector2(-41, -0.5)
-shape = SubResource("RectangleShape2D_dhf11")
-
 [node name="StorageDoor" type="Node2D" parent="Hotspots" unique_id=1918567173]
 script = ExtResource("4_dhf11")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+object_name = "door"
+require_in_range = true
 
 [node name="ToireStorageDoor" type="Sprite2D" parent="Hotspots/StorageDoor" unique_id=1147713438]
 z_index = -10
@@ -312,28 +430,44 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 position = Vector2(-54.5, -11.5)
 shape = SubResource("RectangleShape2D_iei60")
 
-[node name="Paper" type="Node2D" parent="Hotspots" unique_id=1559221966]
+[node name="Keycard" type="Node2D" parent="Hotspots" unique_id=1559221966 node_paths=PackedStringArray("animation_player")]
 position = Vector2(-4, -13)
 script = ExtResource("4_dhf11")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+object_name = "keycard"
+require_in_range = true
+item = ExtResource("9_nywig")
+animation_states = Dictionary[String, int]({
+"taken": 0
+})
+animation_player = NodePath("AnimationPlayer")
 
-[node name="ButtonCodePaper" type="Sprite2D" parent="Hotspots/Paper" unique_id=495778944]
+[node name="ButtonCodePaper" type="Sprite2D" parent="Hotspots/Keycard" unique_id=495778944]
 z_index = -11
 position = Vector2(-12, 2)
 texture = ExtResource("12_vsuqp")
 
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/Paper" unique_id=2054343028]
+[node name="HotspotInRange" type="Area2D" parent="Hotspots/Keycard" unique_id=2054343028]
+collision_layer = 32
 script = ExtResource("5_eryup")
 metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Paper/HotspotInRange" unique_id=266668178]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Keycard/HotspotInRange" unique_id=266668178]
 position = Vector2(-13.5, 0)
 shape = SubResource("RectangleShape2D_k4u64")
 
-[node name="MensDoor" type="Node2D" parent="Hotspots" unique_id=2066744734]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/Keycard" unique_id=1252041720]
+libraries/ = SubResource("AnimationLibrary_55ejm")
+
+[node name="MensDoor" type="Node2D" parent="Hotspots" unique_id=2066744734 node_paths=PackedStringArray("animation_player")]
 position = Vector2(-4, -13)
 script = ExtResource("4_dhf11")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+object_name = "bathroom|restroom"
+require_in_range = true
+animation_states = Dictionary[String, int]({
+"open": 0
+})
+animation_player = NodePath("AnimationPlayer")
+play_state_on_load = false
 
 [node name="MensDoor" type="Sprite2D" parent="Hotspots/MensDoor" unique_id=922238188]
 z_index = -11
@@ -347,25 +481,23 @@ script = ExtResource("5_eryup")
 metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/MensDoor/HotspotInRange" unique_id=882858796]
-position = Vector2(-13.5, 0)
-shape = SubResource("RectangleShape2D_k4u64")
+position = Vector2(-13.5, 4)
+shape = SubResource("CircleShape2D_hkrj1")
 
-[node name="WomensDoor" type="Node2D" parent="Hotspots" unique_id=1222489580]
-script = ExtResource("4_dhf11")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hotspots/MensDoor" unique_id=1275300843]
+position = Vector2(-13, -10)
+sprite_frames = ExtResource("11_1ylio")
+frame = 5
+frame_progress = 1.0
 
-[node name="WomensDoor" type="Sprite2D" parent="Hotspots/WomensDoor" unique_id=786066910]
-z_index = -11
-position = Vector2(-4, -13)
-texture = ExtResource("10_k4u64")
+[node name="HotspotAnimationTrigger" type="Area2D" parent="Hotspots/MensDoor" unique_id=1495707340]
+position = Vector2(-14, 0)
+script = ExtResource("12_hkrj1")
+animation_name_enter = "open"
+metadata/_custom_type_script = "uid://djpux5twcmwuj"
 
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/WomensDoor" unique_id=660976447]
-script = ExtResource("5_eryup")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/WomensDoor/HotspotInRange" unique_id=343802231]
-position = Vector2(-12, -10)
-shape = SubResource("CircleShape2D_dhf11")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/MensDoor/HotspotAnimationTrigger" unique_id=529911924]
+shape = SubResource("CircleShape2D_nywig")
 
 [node name="RoomDoors" type="Node2D" parent="." unique_id=293940503]
 

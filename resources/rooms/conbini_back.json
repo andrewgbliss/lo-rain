@@ -2,13 +2,6 @@
   "id": "conbini_back",
   "name": "Conbini Back",
   "init": ["spawn_player"],
-  "actions": {
-    "spawn_player": [
-      "spawn_entity(player)",
-      "camera_focus(player)",
-      "command_prompt(true)"
-    ]
-  },
   "hotspots": {
     "room": {
       "commands": {

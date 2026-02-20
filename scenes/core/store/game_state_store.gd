@@ -3,7 +3,6 @@ extends Node
 const ROOMS_DIR = "res://resources/rooms/"
 
 var _rooms: Dictionary = {}
-var _hotspot_data: Dictionary = {}
 var _is_loaded: bool = false
 
 var prev_door_id: String = ""
@@ -41,14 +40,15 @@ func get_room(id: String) -> Dictionary:
 	push_error("Error: A room data is missing!", id)
 	return {}
 
-
-## Returns saved hotspot data for the given id. Returns empty dictionary if none.
-func get_hotspot_data(id: String) -> Dictionary:
-	if _hotspot_data.has(id):
-		return _hotspot_data[id]
+func get_hotspot_data(room_id: String, hotspot_id: String) -> Dictionary:
+	var room = get_room(room_id)
+	if room.has("hotspots") and room["hotspots"].has(hotspot_id):
+		return room["hotspots"][hotspot_id]
 	return {}
 
-
-## Stores hotspot data for the given id (e.g. hotspot object_name or node path).
-func set_hotspot_data(id: String, data: Dictionary) -> void:
-	_hotspot_data[id] = data
+func set_hotspot_data(room_id: String, hotspot_id: String, data: Dictionary) -> void:
+	var room = get_room(room_id)
+	if room.has("hotspots"):
+		room["hotspots"][hotspot_id] = data
+	else:
+		room["hotspots"] = {hotspot_id: data}

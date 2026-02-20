@@ -1,0 +1,24 @@
+{
+  "actions": {
+    "spawn_player": [
+      "spawn_entity(player)",
+      "camera_focus(player)",
+      "command_prompt(true)"
+    ]
+  },
+  "deaths": {
+    "cliff": [
+      "paralyze(player, true)",
+      "set_idle(player)",
+      "set_z_index(player, -15)",
+      "You walked off the cliff. You now must face the fall of gravity.",
+      "change_collision_mask(player, 0)",
+      "change_gravity(player, true)"
+    ],
+    "steal_check": [
+      "paralyze(player, true)",
+      "You stole the water bottle. You now must face the consequences.",
+      "The cops will be here soon. You are definately not going to the convention tonight."
+    ]
+  }
+}

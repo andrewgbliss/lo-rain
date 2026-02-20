@@ -1,9 +1,14 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://d3ebribsi24o4"]
 
+[ext_resource type="Texture2D" uid="uid://bv2nyx1r2k2gh" path="res://assets/img/items/face_quest_con_ticket.png" id="1_3aqre"]
 [ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="1_ltwrm"]
 
 [resource]
 script = ExtResource("1_ltwrm")
-id = "face-quest-con-ticket"
+id = "face_quest_con_ticket"
 name = "Face Quest Con Ticket"
+description = "The Face Quest Con ticket. You need this to get into the convention."
+room_texture = ExtResource("1_3aqre")
+icon_texture = ExtResource("1_3aqre")
+inspect_texture = ExtResource("1_3aqre")
 metadata/_custom_type_script = "uid://cjyg0ygclwad6"

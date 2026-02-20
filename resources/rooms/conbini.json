@@ -2,16 +2,8 @@
   "id": "conbini",
   "name": "Conbini",
   "init": ["spawn_player"],
-  "actions": {
-    "spawn_player": [
-      "spawn_entity(player)",
-      "camera_focus(player)",
-      "command_prompt(true)"
-    ]
-  },
   "hotspots": {
     "room": {
-      "require_range": false,
       "commands": {
         "look": [
           "You're at the front of the conbini. You can buy some food and drinks here.",
@@ -19,10 +11,63 @@
         ]
       }
     },
+    "clouds": {
+      "commands": {
+        "look": [
+          "You see wonderfully crafted pixel art clouds. This must be a retro style game."
+        ]
+      }
+    },
+    "mountains": {
+      "commands": {
+        "look": [
+          "You remember something about why you're here as you look at the mountains but then quickly forget."
+        ]
+      }
+    },
+    "rain": {
+      "commands": {
+        "look": ["The rain is coming down hard. You should find shelter."]
+      }
+    },
+    "road|street": {
+      "commands": {
+        "look": [
+          "You see a road leading back to the city. It's a long way to walk."
+        ]
+      }
+    },
+    "sky": {
+      "commands": {
+        "look": [
+          "The sky is a bright #55ffff. What a nice clear day to have a picnic."
+        ]
+      }
+    },
+    "parking lot": {
+      "commands": {
+        "look": [
+          "This is the parking lot in front of the conbini. Probably should get inside before you freeze to death."
+        ]
+      }
+    },
     "door": {
-      "require_range": false,
       "commands": {
         "look": ["The front doors to the store are automatic."]
+      },
+      "animation_states": {
+        "open": "none",
+        "close": "none"
+      }
+    },
+    "owl": {
+      "commands": {
+        "look": ["Whooo, whooo, whooo. The owl is looking at you."],
+        "talk": [
+          "Whooo, whooo, whooo.",
+          "Don't go in there, there is a wizard on a trip from another game.",
+          "Be careful!"
+        ]
       }
     }
   }

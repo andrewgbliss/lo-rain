@@ -46,6 +46,7 @@ var is_facing_right: bool = true
 
 var timer: Timer
 var is_in_heat_area: bool = false
+var target
 
 signal update_hp(amount: int)
 
@@ -112,12 +113,12 @@ func _handle_collisions():
 	
 func _handle_flip():
 	# handle flip facing towards
-	if movement_direction == MovementDirection.Right or movement_direction == MovementDirection.DownRight or movement_direction == MovementDirection.UpRight or movement_direction == MovementDirection.Down or movement_direction == MovementDirection.Up:
-		scale.x = scale.y * 1
-		is_facing_right = true
-	elif movement_direction == MovementDirection.Left or movement_direction == MovementDirection.DownLeft or movement_direction == MovementDirection.UpLeft:
+	if movement_direction == MovementDirection.Left:
 		scale.x = scale.y * -1
 		is_facing_right = false
+		return
+	scale.x = scale.y * 1
+	is_facing_right = true
 		
 func set_idle(move_direction: MovementDirection = MovementDirection.None):
 	movement_direction = move_direction
@@ -265,9 +266,9 @@ func face_dir(dir: Vector2):
 	else:
 		movement_direction = MovementDirection.Left
 
-	if movement_direction == MovementDirection.Left or movement_direction == MovementDirection.UpLeft or movement_direction == MovementDirection.DownLeft:
+	if movement_direction == MovementDirection.Left:
 		scale.x = scale.y * -1
-	elif movement_direction == MovementDirection.Right or movement_direction == MovementDirection.UpRight or movement_direction == MovementDirection.DownRight:
+	else:
 		scale.x = scale.y * 1
 	
 	# Update animations based on new movement direction

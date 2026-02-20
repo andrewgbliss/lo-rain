@@ -11,6 +11,9 @@ var player
 
 @export var room_name: String = ""
 
+## Room id used to load global actions/deaths to merge into every room (res://resources/rooms/global.json).
+const GLOBAL_ROOM_ID := "global"
+
 ## Entity name (e.g. "car") -> Node2D used as spawn position for spawn_entity(...). Player uses room doors instead.
 @export var spawn_positions: Dictionary[String, Node2D] = {}
 
@@ -141,8 +144,30 @@ func _on_hotspot_death_action_run(death_action_id: String) -> void:
 # ------------------------------------------------------------------------------
 
 func load_room(name_or_id: String) -> bool:
-	_data = GameStateStore.get_room(name_or_id)
-	return _data.size() > 0
+	var room_data: Dictionary = GameStateStore.get_room(name_or_id)
+	if room_data.is_empty():
+		_data = {}
+		return false
+	var global_data: Dictionary = GameStateStore.get_room(GLOBAL_ROOM_ID)
+	_data = _merge_global_into_room(room_data, global_data)
+	return true
+
+## Merges global room JSON into room data. Global provides base for "actions" and "deaths"; room overrides same keys.
+func _merge_global_into_room(room_data: Dictionary, global_data: Dictionary) -> Dictionary:
+	var result: Dictionary = room_data.duplicate()
+	if global_data.has("actions") and global_data["actions"] is Dictionary:
+		var actions: Dictionary = (global_data["actions"] as Dictionary).duplicate()
+		if room_data.has("actions") and room_data["actions"] is Dictionary:
+			for k in (room_data["actions"] as Dictionary).keys():
+				actions[k] = (room_data["actions"] as Dictionary)[k]
+		result["actions"] = actions
+	if global_data.has("deaths") and global_data["deaths"] is Dictionary:
+		var deaths: Dictionary = (global_data["deaths"] as Dictionary).duplicate()
+		if room_data.has("deaths") and room_data["deaths"] is Dictionary:
+			for k in (room_data["deaths"] as Dictionary).keys():
+				deaths[k] = (room_data["deaths"] as Dictionary)[k]
+		result["deaths"] = deaths
+	return result
 
 # ------------------------------------------------------------------------------
 # Lookups
@@ -239,6 +264,12 @@ func run_command(section_name: String) -> void:
 func run_death(id: String) -> void:
 	run(get_death(id))
 
+## Runs the action by name from the room's actions dict. Use await run_action(...) if the action contains wait().
+func run_action(action_id: String) -> void:
+	if action_id.is_empty():
+		return
+	await _run_actions(action_id)
+
 func _run_one(raw: String) -> void:
 	var paren := raw.find("(")
 	if paren > 0 and raw.ends_with(")"):
@@ -298,6 +329,10 @@ func _run_builtin(prefix: String, args: PackedStringArray) -> bool:
 		"add_inventory":
 			if args.size() >= 1:
 				_call_add_inventory(args[0])
+			return true
+		"scene_goto":
+			if args.size() >= 1:
+				SceneManager.goto_scene(args[0])
 			return true
 		"spawn_entity":
 			if args.size() >= 1:
@@ -382,6 +417,7 @@ func _call_spawn_player() -> void:
 	var entity = SpawnManager.spawn("player", pos, parent)
 	if entity != null:
 		_spawned_entities["player"] = entity
+		ItemManager.player = entity
 	if entity is CharacterController:
 		entity.spawn(pos)
 		if not GameStateStore.current_door_id.is_empty():
@@ -507,6 +543,24 @@ func _run_if_quest_completed(quest_id: String, action_if_completed: String, acti
 	else:
 		await _run_actions(action_if_not_completed)
 
+## Finds a command key in commands_dict that matches the verb.
+## Keys may be "verb" or "verb1|verb2|verb3" (pipe-separated alternatives).
+func _find_command_key(commands_dict: Dictionary, verb: String) -> String:
+	if verb.is_empty():
+		return ""
+	if commands_dict.has(verb):
+		return verb
+	var verb_spaces := verb.replace("_", " ")
+	if commands_dict.has(verb_spaces):
+		return verb_spaces
+	for key in commands_dict.keys():
+		if "|" in key:
+			var aliases = key.split("|")
+			for alias in aliases:
+				if alias.strip_edges() == verb or alias.strip_edges() == verb_spaces:
+					return key
+	return ""
+
 ## Finds the hotspot by id (from TextParser.object) and action (from TextParser.verb),
 ## then runs that action's commands. Returns true if a hotspot action was found and run.
 func _run_hotspot() -> bool:
@@ -529,8 +583,8 @@ func _run_hotspot() -> bool:
 	if commands_dict is not Dictionary:
 		return false
 	var commands: Array = []
-	var action_key = verb if commands_dict.has(verb) else verb.replace("_", " ")
-	if not commands_dict.has(action_key):
+	var action_key := _find_command_key(commands_dict, verb)
+	if action_key.is_empty():
 		return false
 	var val = commands_dict[action_key]
 	if val is Array:
@@ -545,7 +599,7 @@ func _run_hotspot() -> bool:
 	return true
 
 ## Resolves a conditional command object to an array of commands.
-## Object may have has_completed_animation_state (state_name) or has_inventory (item_id), and "yes"/"no" arrays.
+## Object may have has_completed_animation_state (state_name on current hotspot), hotspot_has_completed_animation_state ("object(state)"), or has_inventory (item_id), and "yes"/"no" arrays.
 ## Returns the "yes" array when the condition is true, else "no". If not a valid conditional, returns [].
 func _resolve_conditional_commands(cond: Dictionary, hotspot_object_name: String) -> Array:
 	if not cond.has("yes") or not cond.has("no"):
@@ -562,6 +616,20 @@ func _resolve_conditional_commands(cond: Dictionary, hotspot_object_name: String
 			var hotspot_node: Hotspot = scene_hotspots[0]
 			if hotspot_node.animation_states != null and hotspot_node.animation_states.has(state_name):
 				condition_met = hotspot_node.animation_states[state_name] == Hotspot.AnimationState.Completed
+	if cond.has("hotspot_has_completed_animation_state"):
+		var spec: String = str(cond["hotspot_has_completed_animation_state"]).strip_edges()
+		var other_object: String = ""
+		var state_name: String = ""
+		var paren := spec.find("(")
+		if paren > 0 and spec.ends_with(")"):
+			other_object = spec.substr(0, paren).strip_edges()
+			state_name = spec.substr(paren + 1, spec.length() - paren - 2).strip_edges()
+		if not other_object.is_empty() and not state_name.is_empty():
+			var other_hotspots := find_hotspots_by_object_name(other_object)
+			if not other_hotspots.is_empty():
+				var other_hotspot: Hotspot = other_hotspots[0]
+				if other_hotspot.animation_states != null and other_hotspot.animation_states.has(state_name):
+					condition_met = other_hotspot.animation_states[state_name] == Hotspot.AnimationState.Completed
 	if cond.has("has_inventory"):
 		var item_id: String = str(cond["has_inventory"]).strip_edges()
 		var player_node = get_tree().get_first_node_in_group("player")
@@ -576,8 +644,7 @@ func _hotspot_exists_in_data(object: String, verb: String) -> bool:
 	var h = get_hotspot(object)
 	if h.is_empty() or not h.has("commands") or h.commands is not Dictionary:
 		return false
-	var action_key = verb if h.commands.has(verb) else verb.replace("_", " ")
-	return h.commands.has(action_key)
+	return not _find_command_key(h.commands, verb).is_empty()
 
 func _run_command_prompt(active: bool) -> void:
 	DialogUi.command_prompt.active = active

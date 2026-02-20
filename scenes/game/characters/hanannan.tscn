@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://scenes/core/character/character_controller.gd" id="1_88g1p"]
 [ext_resource type="Texture2D" uid="uid://u3yumb7e1d6n" path="res://assets/img/characters/hanannan-Sheet.png" id="2_0safi"]
+[ext_resource type="Script" uid="uid://ldv0v8cbtgxx" path="res://scenes/core/character/character_actions/navigation_process.gd" id="3_3nwy5"]
+[ext_resource type="Script" uid="uid://bw8g80cjnl8co" path="res://scenes/core/character/character_actions/navigation_set_target_pos.gd" id="4_ypx8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxm2h"]
 size = Vector2(9, 2)
@@ -168,3 +170,11 @@ libraries/ = SubResource("AnimationLibrary_ahdu5")
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 simplify_path = true
+
+[node name="NavigationProcess" type="Node2D" parent="." unique_id=930871290]
+script = ExtResource("3_3nwy5")
+
+[node name="NavigationAgentSetTargetPos" type="Node2D" parent="." unique_id=713736514]
+script = ExtResource("4_ypx8e")
+target_pos_type = 1
+wait_time = 3.0

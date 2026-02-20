@@ -145,6 +145,7 @@ _data = {
 }
 
 [node name="Rasky" type="CharacterBody2D" unique_id=1476453385 node_paths=PackedStringArray("navigation_agent")]
+motion_mode = 1
 script = ExtResource("1_kqlmh")
 character_type = 1
 has_gravity = false

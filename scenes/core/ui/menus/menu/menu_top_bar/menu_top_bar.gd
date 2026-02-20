@@ -67,5 +67,5 @@ func _on_sound_button_pressed() -> void:
 	UiManager.game_menus.push("SettingsMenu", false)
 
 func _on_inventory_button_pressed() -> void:
-	#InventoryUI.open()
 	_off()
+	UiManager.game_menus.push("InventoryMenu", false)

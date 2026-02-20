@@ -3,64 +3,57 @@
   "name": "Conbini Toire",
   "init": ["spawn_player"],
   "actions": {
-    "spawn_player": [
-      "spawn_entity(player)",
-      "camera_focus(player)",
-      "command_prompt(true)"
+    "broken_bathroom": [
+      "The bathroom door had malfunctioned.",
+      "You see a keycard on the ground."
     ]
   },
   "hotspots": {
     "room": {
       "commands": {
         "look": [
-          "You're at the front of the conbini. You can buy some food and drinks here.",
-          "You should probably get inside before you freeze to death."
+          "You're at the back of the conbini.",
+          "There is a bathroom and a door leading to the outside."
         ]
       }
     },
-    "panel|buttons": {
+    "keycard": {
+      "animation_states": {
+        "taken": "none"
+      },
       "commands": {
-        "look": [
-          "You see a panel of buttons. You wonder what is in that room.",
-          "You pressed the correct buttons!",
-          "You press the buttons. But nothing happens."
-        ],
-        "press": {
-          "has_completed_animation_state": "door_open",
-          "yes": ["You press the buttons. But nothing happens."],
-          "no": ["Try opening the door first."]
+        "look": {
+          "has_inventory": "keycard",
+          "yes": ["You already have the keycard."],
+          "no": ["You see a keycard on the ground."]
+        },
+        "take": {
+          "has_inventory": "keycard",
+          "yes": ["You already have the keycard."],
+          "no": ["You take the keycard.", "add_inventory(keycard)"]
         }
       }
     },
-    "storage_door": {
+    "door": {
       "commands": {
         "look": [
-          "You see a door with a keypad next to it. Probably for employees."
-        ]
+          "You see a door going to the outside. Looks like it requires a keycard to open."
+        ],
+        "open": {
+          "has_inventory": "keycard",
+          "yes": [
+            "You use the keycard to open the door.",
+            "scene_goto(res://scenes/game/rooms/conbini/conbini_storage.tscn)"
+          ],
+          "no": ["You need a keycard to open the door."]
+        }
       }
     },
-    "mens_door": {
+    "bathroom|restroom": {
       "commands": {
         "look": [
-          "You see the men's bathroom. You have to buy something first to use it.",
-          "You see a piece of paper on the ground.",
-          "You don't see any $object"
-        ],
-        "take": [
-          "You take the piece of paper.",
-          "add_inventory(piece_of_paper)",
-          "You don't see any $object"
-        ],
-        "open": [
-          "As you open the door you hear a loud crack. The door seems to be broken.",
-          "You see a little piece of paper on the ground.",
-          "animation_state(door_open, start)"
+          "You see a bathroom door. Might need to visit this later after eating at five hives with your ex-girlfriend."
         ]
-      }
-    },
-    "womens_door": {
-      "commands": {
-        "look": ["You see the women's bathroom door."]
       }
     }
   }

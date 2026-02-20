@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://8yqfng7xpcog"]
 
 [ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_jmltx"]
-[ext_resource type="Resource" uid="uid://b0s4ymwrcoegd" path="res://resources/items/dollar_bill.tres" id="2_28kax"]
 [ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_rqvy6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wu3dk"]
@@ -78,12 +77,10 @@ radius = 31.06445
 script = ExtResource("1_jmltx")
 object_name = "dollar_bill"
 require_in_range = true
-item = ExtResource("2_28kax")
 animation_states = Dictionary[String, int]({
 "taken": 0
 })
 animation_player = NodePath("AnimationPlayer")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=605533830]
 texture = SubResource("AtlasTexture_28kax")

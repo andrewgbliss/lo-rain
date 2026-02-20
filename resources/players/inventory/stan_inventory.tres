@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Inventory" format=3 uid="uid://cl6cayff5laqm"]
+
+[ext_resource type="Script" uid="uid://djhowic13p8om" path="res://scenes/core/inventory/inventory.gd" id="1_i2m1m"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_i2m1m")
+item_ids = Array[String](["id", "screw_driver", "face_quest_con_ticket"])
+metadata/_custom_type_script = "uid://djhowic13p8om"

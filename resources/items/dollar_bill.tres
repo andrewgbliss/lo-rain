@@ -3,6 +3,20 @@
 [ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="1_8ib87"]
 [ext_resource type="Texture2D" uid="uid://l32t53rd4fvj" path="res://assets/img/rooms/conbini/Money.png" id="2_13kh5"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ff88k"]
+load_path = "res://.godot/imported/Money.png-9a68c8ada87e1ff0e0a6da31f29184bf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r127g"]
+atlas = SubResource("CompressedTexture2D_ff88k")
+region = Rect2(18, 3, 13, 7)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nih5m"]
+load_path = "res://.godot/imported/Money.png-9a68c8ada87e1ff0e0a6da31f29184bf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2eu1g"]
+atlas = SubResource("CompressedTexture2D_nih5m")
+region = Rect2(18, 3, 13, 7)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ff7u1"]
 atlas = ExtResource("2_13kh5")
 region = Rect2(18, 3, 13, 7)
@@ -11,5 +25,8 @@ region = Rect2(18, 3, 13, 7)
 script = ExtResource("1_8ib87")
 id = "dollar_bill"
 name = "Dollar Bill"
+description = "A good ol' dolla bill. You can buy something at the conbini nearby."
 room_texture = SubResource("AtlasTexture_ff7u1")
+icon_texture = SubResource("AtlasTexture_r127g")
+inspect_texture = SubResource("AtlasTexture_2eu1g")
 metadata/_custom_type_script = "uid://cjyg0ygclwad6"

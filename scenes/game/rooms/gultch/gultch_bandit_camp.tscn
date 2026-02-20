@@ -22,12 +22,11 @@ polygon = PackedVector2Array(-508, 449, -507, 570, 558, 572, 560, 449)
 [sub_resource type="Resource" id="Resource_8wf4g"]
 script = ExtResource("20_bd4bu")
 
-[node name="LongRoad" type="Node2D" unique_id=194193865 node_paths=PackedStringArray("spawn_positions", "phantom_camera", "camera")]
+[node name="GultchBanditCamp" type="Node2D" unique_id=194193865 node_paths=PackedStringArray("spawn_positions", "phantom_camera", "camera")]
 y_sort_enabled = true
 script = ExtResource("1_ihh7m")
-room_name = "long_road"
+room_name = "gultch_bandit_camp"
 spawn_positions = {
-"car": NodePath(""),
 "player": NodePath("Spawners/PlayerSpawn")
 }
 phantom_camera = NodePath("PhantomCamera2D")
@@ -57,7 +56,9 @@ texture = ExtResource("7_1dapk")
 texture = ExtResource("8_pjv6a")
 
 [node name="Trees" type="Sprite2D" parent="." unique_id=1958939412]
+position = Vector2(0, 23)
 texture = ExtResource("9_vsrva")
+offset = Vector2(0, -20)
 
 [node name="Fireplace" type="Sprite2D" parent="." unique_id=335892731]
 texture = ExtResource("10_ihh7m")

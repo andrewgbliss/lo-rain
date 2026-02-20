@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://d3kw5ygjghfq5"]
+
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="1_4hp7c"]
+[ext_resource type="Texture2D" uid="uid://d2dk7mmhhkjeq" path="res://assets/img/items/screw_driver.png" id="1_7gkgv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7gkgv"]
+load_path = "res://.godot/imported/screw_driver.png-abcc120493b97f35435e61116ecd08c8.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k47oq"]
+load_path = "res://.godot/imported/screw_driver.png-abcc120493b97f35435e61116ecd08c8.ctex"
+
+[resource]
+script = ExtResource("1_4hp7c")
+id = "screw_driver"
+name = "Screw driver"
+description = "Your handy screw driver. You can fuck with all sorts of things."
+room_texture = ExtResource("1_7gkgv")
+icon_texture = SubResource("CompressedTexture2D_7gkgv")
+inspect_texture = SubResource("CompressedTexture2D_k47oq")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

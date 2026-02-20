@@ -1,13 +1,14 @@
 {
   "id": "conbini_inside_front",
   "name": "Conbini Inside Front",
-  "init": ["spawn_player"],
+  "init": ["spawn_player", "spawn_chararcters"],
   "actions": {
-    "spawn_player": [
-      "spawn_entity(player)",
-      "camera_focus(player)",
-      "command_prompt(true)"
-    ]
+    "spawn_chararcters": ["spawn_entity(johnny)", "spawn_entity(hanannan)"],
+    "steal_check": {
+      "did_pay_for": "water_bottle",
+      "yes": [],
+      "no": ["run_death(steal_check)"]
+    }
   },
   "hotspots": {
     "room": {
@@ -20,29 +21,35 @@
     },
     "atm": {
       "commands": {
-        "look": ["The ATM is fully functional. Too bad you are broke."],
-        "use": [
-          "You try to use the ATM but since you are broke nothing comes out."
-        ],
-        "fuck_with": [
-          "You fuck with the ATM and pull the plug. The screen goes blank.",
-          "animation_state(broken, start)"
-        ]
+        "look": {
+          "has_completed_animation_state": "broke",
+          "yes": ["The ATM is broken now. You can't use it."],
+          "no": ["The ATM is fully functional. Too bad you are broke."]
+        },
+        "use": {
+          "has_completed_animation_state": "broke",
+          "yes": ["The ATM is broken now. You can't use it."],
+          "no": [
+            "You try to use the ATM but since you are broke nothing comes out."
+          ]
+        },
+        "fuckwith": {
+          "has_completed_animation_state": "broke",
+          "yes": ["Haven't you already done enough damage?"],
+          "no": [
+            "You fuck with the ATM causing it to malfunction. The screen goes blank.",
+            "animation_state(broke, start)"
+          ]
+        }
       }
     },
-    "light_switch": {
+    "light|switch|light_switch": {
       "commands": {
         "look": ["The light switch is on the wall."],
-        "use": {
-          "has_completed_animation_state": "lights_off",
-          "yes": [
-            "You turn on the light.",
-            "animation_state(lights_on, start)"
-          ],
-          "no": [
-            "You turn off the light.",
-            "animation_state(lights_off, start)"
-          ]
+        "use|press|turn": {
+          "has_completed_animation_state": "light_off",
+          "yes": ["You turn on the light.", "animation_state(light_on, start)"],
+          "no": ["You turn off the light.", "animation_state(light_off, start)"]
         }
       }
     },
@@ -61,10 +68,13 @@
       }
     },
     "water_bottle": {
+      "animation_states": {
+        "taken": "none"
+      },
       "commands": {
         "look": ["You see a water bottle that's only 79 cents."],
         "take": {
-          "has_completed_animation_state": "door_open",
+          "hotspot_has_completed_animation_state": "door(open)",
           "yes": ["You take the water bottle.", "add_inventory(water_bottle)"],
           "no": ["Try opening the door first."]
         }
@@ -76,14 +86,14 @@
           "It's the cold section of the store. Looks like they have pretty cheap water bottles."
         ],
         "open": {
-          "has_completed_animation_state": "door_open",
+          "has_completed_animation_state": "open",
           "yes": ["The door is already open."],
-          "no": ["You open the door."]
+          "no": ["You open the door.", "animation_state(open, start)"]
         },
         "close": {
-          "has_completed_animation_state": "door_open",
+          "has_completed_animation_state": "close",
           "yes": ["The door is already closed."],
-          "no": ["You close the door."]
+          "no": ["You close the door.", "animation_state(close, start)"]
         }
       }
     },
@@ -96,6 +106,8 @@
     },
     "clerk": {
       "commands": {
+        "look": ["You see a clerk behind the counter."],
+        "talk": ["Any good deals today?", "We have coffee 50% off today!"],
         "pay": [
           "You pay for the water bottle.",
           "You don't have anything to pay for.",

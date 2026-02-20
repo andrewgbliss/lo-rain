@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cr1pa6w4wdkar" path="res://assets/img/masks/LightMask.png" id="13_a7812"]
 [ext_resource type="PackedScene" uid="uid://hr1pmj7locu0" path="res://scenes/game/environment/right_railing.tscn" id="13_i7l8u"]
 [ext_resource type="PackedScene" uid="uid://b8b0n76kkgv8f" path="res://scenes/game/environment/left_railing.tscn" id="14_a7812"]
+[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="15_efhqa"]
 [ext_resource type="PackedScene" uid="uid://ccwcs5vmctju1" path="res://scenes/game/hotspots/grate.tscn" id="17_a7812"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="18_a7812"]
 [ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="23_e6ywp"]
@@ -191,6 +192,36 @@ script = ExtResource("24_3ajla")
 metadata/_custom_type_script = "uid://qia23iggn1qa"
 
 [node name="Hotspots" type="Node2D" parent="." unique_id=34213193]
+
+[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=349821428]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("15_efhqa")
+object_name = "clouds"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=1633787547]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("15_efhqa")
+object_name = "mountains"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Rain" type="Node2D" parent="Hotspots" unique_id=437530070]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("15_efhqa")
+object_name = "rain"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Road" type="Node2D" parent="Hotspots" unique_id=1746544874]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("15_efhqa")
+object_name = "road|street"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sky" type="Node2D" parent="Hotspots" unique_id=1896151063]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("15_efhqa")
+object_name = "sky"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
 
 [node name="Grate" parent="Hotspots" unique_id=576277806 instance=ExtResource("17_a7812")]
 position = Vector2(-471, 5)

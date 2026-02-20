@@ -1,0 +1,41 @@
+{
+  "id": "gultch_bandit_camp",
+  "name": "Gultch Bandit Camp",
+  "init": ["spawn_player"],
+  "hotspots": {
+	"room": {
+	  "commands": {
+		"look": [
+		  "You're at the camp of some bandits.",
+          "You should probably get somewhere warm before you freeze to death."
+		]
+	  }
+	},
+	"clouds": {
+	  "commands": {
+		"look": [
+          "You see wonderfully crafted pixel art clouds. This must be a retro style game."
+		]
+	  }
+	},
+	"mountains": {
+	  "commands": {
+		"look": [
+          "You remember something about why you're here as you look at the mountains but then quickly forget."
+		]
+	  }
+	},
+	"rain": {
+	  "commands": {
+		"look": ["The rain is coming down hard. You should find shelter."]
+	  }
+	},
+	"sky": {
+	  "commands": {
+		"look": [
+          "The sky is a bright #55ffff. What a nice clear day to have a picnic."
+		]
+	  }
+	}
+  }
+}

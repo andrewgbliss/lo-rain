@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cy8wo0ksltvw3"]
+
+[ext_resource type="Script" uid="uid://dm7n685pwk426" path="res://scenes/core/inventory/item_manager.gd" id="1_jv8iy"]
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="2_xwuw0"]
+[ext_resource type="Resource" uid="uid://u2csa2b3u7bc" path="res://resources/items/id.tres" id="3_pjgr1"]
+[ext_resource type="Resource" uid="uid://d3ebribsi24o4" path="res://resources/items/face_quest_con_ticket.tres" id="4_bcmrv"]
+[ext_resource type="Resource" uid="uid://d3kw5ygjghfq5" path="res://resources/items/screw_driver.tres" id="5_a4lpk"]
+[ext_resource type="Resource" uid="uid://b0s4ymwrcoegd" path="res://resources/items/dollar_bill.tres" id="6_nfpyr"]
+[ext_resource type="Resource" uid="uid://n8gafjxtbtom" path="res://resources/items/lighter.tres" id="7_om13f"]
+[ext_resource type="Resource" uid="uid://ds7hhc85yj06q" path="res://resources/items/water_bottle.tres" id="8_8ivml"]
+
+[node name="ItemManager" type="Node" unique_id=196001630]
+script = ExtResource("1_jv8iy")
+items = Dictionary[String, ExtResource("2_xwuw0")]({
+"dollar_bill": ExtResource("6_nfpyr"),
+"face_quest_con_ticket": ExtResource("4_bcmrv"),
+"id": ExtResource("3_pjgr1"),
+"lighter": ExtResource("7_om13f"),
+"screw_driver": ExtResource("5_a4lpk"),
+"water_bottle": ExtResource("8_8ivml")
+})

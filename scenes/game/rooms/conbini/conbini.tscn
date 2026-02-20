@@ -16,14 +16,14 @@
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="15_vvvj3"]
 [ext_resource type="Texture2D" uid="uid://bah5v2jpgjcw5" path="res://assets/img/rooms/conbini/Boxes.png" id="15_ymyrh"]
 [ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="18_jnmdp"]
-[ext_resource type="Script" uid="uid://b3mlg2cpf7tdl" path="res://scenes/core/behavior_tree/bt_player.gd" id="19_6x1av"]
-[ext_resource type="Script" uid="uid://xwbo18yggp15" path="res://scenes/core/behavior_tree/composite/bt_sequence_node.gd" id="20_c3c67"]
 [ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="20_ee6ic"]
-[ext_resource type="Script" uid="uid://dwsxptr6cy741" path="res://scenes/core/behavior_tree/action/bt_play_dialogue.gd" id="21_j1usu"]
 [ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="21_wad3y"]
 [ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="22_5i5st"]
 [ext_resource type="PackedScene" uid="uid://o0lomg3wclnc" path="res://scenes/game/characters/xandric.tscn" id="23_2optl"]
 [ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="23_up5px"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_533q6"]
+radius = 52.009613
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_up5px"]
 radius = 52.0
@@ -85,8 +85,56 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_nuxxp"]
-resource_name = "close"
+[sub_resource type="Animation" id="Animation_5i5st"]
+resource_name = "close_completed"
+length = 0.15
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_up5px"]
+resource_name = "close_in_process"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -131,9 +179,146 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["close", "completed"],
+"method": &"set_animation_state"
+}]
+}
 
-[sub_resource type="Animation" id="Animation_svegg"]
-resource_name = "open"
+[sub_resource type="Animation" id="Animation_78efa"]
+resource_name = "close_start"
+length = 0.15
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-49, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(49, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["close", "in_process"],
+"method": &"set_animation_state"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["open"],
+"method": &"reset_animation_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_324eo"]
+resource_name = "open_completed"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-49, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.03333336)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.03333336)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(49, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.03333336)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.03333336)
+}
+
+[sub_resource type="Animation" id="Animation_mmej3"]
+resource_name = "open_in_process"
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,16 +363,107 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["open", "completed"],
+"method": &"set_animation_state"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wad3y"]
+resource_name = "open_start"
+length = 0.15
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["open", "in_process"],
+"method": &"set_animation_state"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["close"],
+"method": &"reset_animation_state"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nuxxp"]
 _data = {
 &"RESET": SubResource("Animation_uilgb"),
-&"close": SubResource("Animation_nuxxp"),
-&"open": SubResource("Animation_svegg")
+&"close_completed": SubResource("Animation_5i5st"),
+&"close_in_process": SubResource("Animation_up5px"),
+&"close_start": SubResource("Animation_78efa"),
+&"open_completed": SubResource("Animation_324eo"),
+&"open_in_process": SubResource("Animation_mmej3"),
+&"open_start": SubResource("Animation_wad3y")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_533q6"]
-radius = 52.009613
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2optl"]
 size = Vector2(60, 19)
@@ -244,94 +520,103 @@ texture_scale = 17.2
 position = Vector2(-4, -1)
 texture = ExtResource("15_ymyrh")
 
-[node name="Doors" type="Node2D" parent="." unique_id=1334981182]
-position = Vector2(-4, -1)
+[node name="Hotspots" type="Node2D" parent="." unique_id=427114854]
+
+[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=528640994]
+position = Vector2(3.0517578e-05, 0)
 script = ExtResource("18_jnmdp")
-object_name = "door|doors"
+object_name = "clouds"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=1942530235]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("18_jnmdp")
+object_name = "mountains"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Rain" type="Node2D" parent="Hotspots" unique_id=1924143727]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("18_jnmdp")
+object_name = "rain"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Road" type="Node2D" parent="Hotspots" unique_id=2018214955]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("18_jnmdp")
+object_name = "road|street"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Sky" type="Node2D" parent="Hotspots" unique_id=670747871]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("18_jnmdp")
+object_name = "sky"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="ParkingLot" type="Node2D" parent="Hotspots" unique_id=1918123099]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("18_jnmdp")
+object_name = "parking lot"
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="Owl" type="Node2D" parent="Hotspots" unique_id=272855964]
+position = Vector2(-16, -11)
+script = ExtResource("18_jnmdp")
+object_name = "owl"
 require_in_range = true
 metadata/_custom_type_script = "uid://ucmcws1e11dk"
 
-[node name="HotspotInRange" type="Area2D" parent="Doors" unique_id=2110355644]
+[node name="Xandric" parent="Hotspots/Owl" unique_id=810629886 instance=ExtResource("23_2optl")]
+
+[node name="HotspotInRange" type="Area2D" parent="Hotspots/Owl" unique_id=1488989677]
+collision_layer = 32
+script = ExtResource("14_5i5st")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Owl/HotspotInRange" unique_id=1167583530]
+shape = SubResource("CircleShape2D_533q6")
+
+[node name="Doors" type="Node2D" parent="Hotspots" unique_id=1334981182 node_paths=PackedStringArray("animation_player")]
+position = Vector2(-4, -1)
+script = ExtResource("18_jnmdp")
+object_name = "door"
+require_in_range = true
+animation_states = Dictionary[String, int]({
+"closed": 0,
+"open": 0
+})
+animation_player = NodePath("HotspotAnimationTrigger/AnimationPlayer")
+metadata/_custom_type_script = "uid://ucmcws1e11dk"
+
+[node name="HotspotInRange" type="Area2D" parent="Hotspots/Doors" unique_id=2110355644]
 position = Vector2(33, 1)
 script = ExtResource("14_5i5st")
 metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/HotspotInRange" unique_id=667715740]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Doors/HotspotInRange" unique_id=667715740]
 shape = SubResource("CircleShape2D_up5px")
 
-[node name="HotspotAnimationTrigger" type="Area2D" parent="Doors" unique_id=105006686 node_paths=PackedStringArray("animation_player")]
+[node name="HotspotAnimationTrigger" type="Area2D" parent="Hotspots/Doors" unique_id=105006686]
 position = Vector2(36, -4)
 collision_layer = 32
 script = ExtResource("13_wad3y")
-animation_player = NodePath("AnimationPlayer")
 animation_name_enter = "open"
 animation_name_exit = "close"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/HotspotAnimationTrigger" unique_id=856225708]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=856225708]
 shape = SubResource("CircleShape2D_5i5st")
 
-[node name="LeftDoor" type="Sprite2D" parent="Doors/HotspotAnimationTrigger" unique_id=229582205]
+[node name="LeftDoor" type="Sprite2D" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=229582205]
 z_index = -6
 position = Vector2(-16, 0)
 texture = SubResource("AtlasTexture_ee6ic")
 
-[node name="RightDoor" type="Sprite2D" parent="Doors/HotspotAnimationTrigger" unique_id=1424034923]
+[node name="RightDoor" type="Sprite2D" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=1424034923]
 z_index = -6
 position = Vector2(16, 0)
 texture = SubResource("AtlasTexture_ee6ic")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Doors/HotspotAnimationTrigger" unique_id=447853135]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=447853135]
 libraries/ = SubResource("AnimationLibrary_nuxxp")
-
-[node name="Xandric" parent="." unique_id=810629886 instance=ExtResource("23_2optl")]
-position = Vector2(-16, -11)
-
-[node name="BTHotspot" type="Area2D" parent="Xandric" unique_id=131477058]
-script = ExtResource("18_jnmdp")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Xandric/BTHotspot" unique_id=1167583530]
-shape = SubResource("CircleShape2D_533q6")
-
-[node name="BTPlayerLook" type="Node" parent="Xandric/BTHotspot" unique_id=716455120 node_paths=PackedStringArray("root_node")]
-script = ExtResource("19_6x1av")
-root_node = NodePath("BTSequenceNode")
-one_shot = true
-metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
-
-[node name="BTSequenceNode" type="Node" parent="Xandric/BTHotspot/BTPlayerLook" unique_id=1593852402]
-script = ExtResource("20_c3c67")
-metadata/_custom_type_script = "uid://xwbo18yggp15"
-
-[node name="BTPlayDialogue" type="Node" parent="Xandric/BTHotspot/BTPlayerLook/BTSequenceNode" unique_id=1132517873]
-script = ExtResource("21_j1usu")
-text = "Whooo, whooo, whooo. The owl is looking at you."
-metadata/_custom_type_script = "uid://dwsxptr6cy741"
-
-[node name="BTPlayerTalk" type="Node" parent="Xandric/BTHotspot" unique_id=1775362864 node_paths=PackedStringArray("root_node")]
-script = ExtResource("19_6x1av")
-root_node = NodePath("BTSequenceNode")
-one_shot = true
-metadata/_custom_type_script = "uid://b3mlg2cpf7tdl"
-
-[node name="BTSequenceNode" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk" unique_id=320798100]
-script = ExtResource("20_c3c67")
-metadata/_custom_type_script = "uid://xwbo18yggp15"
-
-[node name="BTPlayDialogue" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk/BTSequenceNode" unique_id=200404815]
-script = ExtResource("21_j1usu")
-text = "Whooo, whooo, whooo."
-metadata/_custom_type_script = "uid://dwsxptr6cy741"
-
-[node name="BTPlayDialogue2" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk/BTSequenceNode" unique_id=81717512]
-script = ExtResource("21_j1usu")
-text = "Don't go in there, there is a wizard on a trip from another game."
-metadata/_custom_type_script = "uid://dwsxptr6cy741"
-
-[node name="BTPlayDialogue3" type="Node" parent="Xandric/BTHotspot/BTPlayerTalk/BTSequenceNode" unique_id=330747998]
-script = ExtResource("21_j1usu")
-text = "Be careful!"
-metadata/_custom_type_script = "uid://dwsxptr6cy741"
 
 [node name="RoomDoors" type="Node2D" parent="." unique_id=380039040]
 

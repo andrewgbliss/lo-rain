@@ -39,6 +39,7 @@ QuestManager="*uid://bwa652clrqra3"
 GameStateStore="*uid://c6n03blnkoc62"
 DialogUi="*uid://dace1v6hxewpc"
 SaveGameManager="*uid://d14b2bjv1kj7h"
+ItemManager="*uid://cy8wo0ksltvw3"
 
 [display]
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://5sh7816txtb2"
+path="res://.godot/imported/screw_driver.aseprite-608d0624f03cd0886babee3f286ad8a1.res"
+
+[deps]
+
+source_file="res://assets/img/items/screw_driver.aseprite"
+dest_files=["res://.godot/imported/screw_driver.aseprite-608d0624f03cd0886babee3f286ad8a1.res"]
+
+[params]
+

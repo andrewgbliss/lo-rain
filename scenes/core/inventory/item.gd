@@ -4,6 +4,7 @@ class_name Item extends Resource
 
 @export var id: String
 @export var name: String
+@export var description: String
 @export var room_texture: Texture
 @export var icon_texture: Texture
 @export var inspect_texture: Texture

@@ -43,7 +43,7 @@ _data = {
 &"RESET": SubResource("Animation_8os3q")
 }
 
-[node name="Xandric" type="CharacterBody2D"]
+[node name="Xandric" type="CharacterBody2D" unique_id=875676783]
 collision_layer = 16
 collision_mask = 0
 motion_mode = 1
@@ -52,15 +52,13 @@ character_type = 1
 has_gravity = false
 metadata/_custom_type_script = "uid://crueou1p1x8k2"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1115022341]
 shape = SubResource("RectangleShape2D_b5ixl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=602745505]
 texture = ExtResource("2_8os3q")
 hframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_b5ixl")
-}
-autoplay = "IdleDown"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1445954574]
+libraries/ = SubResource("AnimationLibrary_b5ixl")
+autoplay = &"IdleDown"

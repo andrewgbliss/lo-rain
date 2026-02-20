@@ -3,23 +3,8 @@
   "name": "Other Long Road Under Construction",
   "init": ["spawn_player"],
   "actions": {
-    "spawn_player": [
-      "spawn_entity(player)",
-      "camera_focus(player)",
-      "command_prompt(true)"
-    ],
     "freeway": [
       "You can go that way since it's a freeway. You'd probably get hit by a car."
-    ]
-  },
-  "deaths": {
-    "cliff": [
-      "paralyze(player, true)",
-      "set_idle(player)",
-      "set_z_index(player, -15)",
-      "You walked off the cliff. You now must face the fall of gravity.",
-      "change_collision_mask(player, 0)",
-      "change_gravity(player, true)"
     ]
   },
   "hotspots": {

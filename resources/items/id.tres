@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://u2csa2b3u7bc"]
+
+[ext_resource type="Texture2D" uid="uid://bv2nyx1r2k2gh" path="res://assets/img/items/face_quest_con_ticket.png" id="1_4d416"]
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="1_yu33d"]
+
+[resource]
+script = ExtResource("1_yu33d")
+id = "id"
+name = "ID"
+description = "This is your ID card. Be sure not to lose it. You need it to get into the convention."
+room_texture = ExtResource("1_4d416")
+icon_texture = ExtResource("1_4d416")
+inspect_texture = ExtResource("1_4d416")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"
