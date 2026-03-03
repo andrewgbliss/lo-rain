@@ -3,6 +3,12 @@ extends Node2D
 @export var entities: Dictionary[String, PackedScene]
 
 var ui_label: Label = Label.new()
+var spawned_entities: Dictionary[String, Node2D] = {}
+
+func get_spawned_entity(entity_name: String):
+	if spawned_entities.has(entity_name):
+		return spawned_entities[entity_name]
+	return null
 
 func spawn(entity_name: String, spawn_position: Vector2, parent = null):
 	if not entities.has(entity_name):
@@ -20,6 +26,8 @@ func spawn(entity_name: String, spawn_position: Vector2, parent = null):
 
 	if entity.has_method("spawn"):
 		entity.spawn(spawn_position)
+
+	spawned_entities[entity_name] = entity
 
 	return entity
 

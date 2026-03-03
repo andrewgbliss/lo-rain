@@ -11,8 +11,6 @@ signal opened
 signal closed
 
 func _ready():
-	GameManager.on_pause.connect(_on_pause)
-	GameManager.on_unpause.connect(_on_unpause)
 	hide()
 	
 func _on_pause():
@@ -24,12 +22,14 @@ func _on_unpause():
 func is_only_alpha_numeric_pressed(event: InputEventKey):
 	return event is InputEventKey and event.is_pressed() and ((event.keycode >= KEY_A and event.keycode <= KEY_Z) or (event.keycode >= KEY_0 and event.keycode <= KEY_9))
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if not active or dialog_text.is_running:
 		return
 	if event is InputEventKey and event.is_pressed():
 		if not showing and is_only_alpha_numeric_pressed(event):
 			_handle_open()
+		elif showing and is_only_alpha_numeric_pressed(event):
+			grab_focus()
 		elif showing and event.keycode == KEY_ENTER:
 			_handle_process_command()
 		elif event.keycode == KEY_F3:

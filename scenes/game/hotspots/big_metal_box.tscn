@@ -1,17 +1,22 @@
 [gd_scene format=3 uid="uid://3toigwhvybu6"]
 
 [ext_resource type="Texture2D" uid="uid://bjkj76ajq58k" path="res://assets/img/rooms/long-road/BigMetalBox.png" id="1_jne3e"]
-[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_ltvfr"]
-[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_l777m"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_qxvjt"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="3_l777m"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="4_n5a8r"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="5_w34sk"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="6_1bily"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ni3x"]
 radius = 75.0267
 
-[node name="Box" type="Node2D" unique_id=88427432]
-script = ExtResource("1_ltvfr")
-object_name = "box"
-require_in_range = true
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="Box" type="Node2D" unique_id=1524350515 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_qxvjt")
+id = "box"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1849739238]
 texture = ExtResource("1_jne3e")
@@ -30,3 +35,20 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=1187868739]
 shape = SubResource("CircleShape2D_4ni3x")
+
+[node name="Look" type="Node" parent="." unique_id=966799958 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("4_n5a8r")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Look" unique_id=519510887 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("5_w34sk")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=32768569]
+script = ExtResource("6_1bily")
+messages = Array[String](["You see a box in the middle of the road. Be careful of cars!"])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

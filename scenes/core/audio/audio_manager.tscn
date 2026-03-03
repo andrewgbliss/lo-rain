@@ -32,5 +32,4 @@ bus = &"Effects"
 [node name="Soundtrack" type="AudioStreamPlayer" parent="." unique_id=1400810118]
 stream = ExtResource("6_pqf3c")
 volume_db = -5.943
-autoplay = true
 bus = &"Effects"

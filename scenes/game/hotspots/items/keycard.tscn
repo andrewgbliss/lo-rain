@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://4jrse1t2nrt5"]
+
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_uyos0"]
+[ext_resource type="Texture2D" uid="uid://cfdnc1a3wgib0" path="res://assets/img/rooms/conbini/button-code-paper.png" id="2_h467c"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="3_iqikh"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="4_uyos0"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="5_r6xix"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="6_assyd"]
+[ext_resource type="Script" uid="uid://deqpnph8yr2sj" path="res://scenes/core/action_tree/leaves/action_add_inventory.gd" id="7_3ynr3"]
+[ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="8_uyos0"]
+[ext_resource type="Script" uid="uid://b66mdms6w12qu" path="res://scenes/core/action_tree/leaves/action_enable_hotspot.gd" id="9_qrafs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4u64"]
+size = Vector2(29, 28)
+
+[node name="Keycard" type="Node2D" unique_id=1860438603 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_uyos0")
+id = "keycard"
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="ButtonCodePaper" type="Sprite2D" parent="." unique_id=849713105]
+z_index = -11
+position = Vector2(-12, 2)
+texture = ExtResource("2_h467c")
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=1442441347]
+collision_layer = 32
+script = ExtResource("3_iqikh")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=821307912]
+position = Vector2(-13.5, 0)
+shape = SubResource("RectangleShape2D_k4u64")
+
+[node name="Look" type="Node" parent="." unique_id=1115578167 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("4_uyos0")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Look" unique_id=362786100 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("5_r6xix")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=664216330]
+script = ExtResource("6_assyd")
+messages = Array[String](["You see a keycard on the ground."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Take" type="Node" parent="." unique_id=1997262812 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("4_uyos0")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Take" unique_id=1219527511 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("5_r6xix")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Take" unique_id=1816086509 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_assyd")
+messages = Array[String](["You take the keycard"])
+next_leaf = NodePath("../ActionAddInventory")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionAddInventory" type="Node" parent="Take" unique_id=1025289068 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_3ynr3")
+item = ExtResource("8_uyos0")
+next_leaf = NodePath("../ActionEnableHotspot")
+metadata/_custom_type_script = "uid://deqpnph8yr2sj"
+
+[node name="ActionEnableHotspot" type="Node" parent="Take" unique_id=849872313 node_paths=PackedStringArray("hotspot")]
+script = ExtResource("9_qrafs")
+hotspot = NodePath("../..")
+enabled = false
+metadata/_custom_type_script = "uid://b66mdms6w12qu"

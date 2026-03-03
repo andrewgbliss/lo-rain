@@ -2,34 +2,36 @@
 
 [ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_cudwr"]
 [ext_resource type="PackedScene" uid="uid://nkgfsyjm7ie7" path="res://scenes/game/rooms/biome/biome.tscn" id="2_324eo"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="2_up5px"]
+[ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_78efa"]
 [ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="3_mmej3"]
 [ext_resource type="Texture2D" uid="uid://b3a8ubt8lxg75" path="res://assets/img/rooms/conbini/Railing2.png" id="3_vovsb"]
 [ext_resource type="Texture2D" uid="uid://dbugyyrekdlh2" path="res://assets/img/rooms/conbini/Railings.png" id="4_hjs4d"]
+[ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_lpyup"]
+[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_ji0gc"]
 [ext_resource type="Texture2D" uid="uid://w5hi0wrqlwxg" path="res://assets/img/rooms/conbini/ConvenienceStoreInsidePreview.png" id="5_kvdit"]
 [ext_resource type="Texture2D" uid="uid://bnqcau6rkaf7d" path="res://assets/img/rooms/conbini/ConvenienceStore.png" id="6_kcf6v"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="6_kvdit"]
 [ext_resource type="Texture2D" uid="uid://cs7eqjmhomrt2" path="res://assets/img/rooms/conbini/Road.png" id="8_bced8"]
 [ext_resource type="Texture2D" uid="uid://c4d6x83onk5fk" path="res://assets/img/rooms/conbini/Sidewalk.png" id="9_85bi2"]
 [ext_resource type="Texture2D" uid="uid://cr1pa6w4wdkar" path="res://assets/img/masks/LightMask.png" id="10_85bi2"]
-[ext_resource type="Script" uid="uid://djpux5twcmwuj" path="res://scenes/core/interaction/hotspot/hotspot_animation_trigger.gd" id="13_wad3y"]
-[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="14_5i5st"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="14_5i5st"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="15_vvvj3"]
 [ext_resource type="Texture2D" uid="uid://bah5v2jpgjcw5" path="res://assets/img/rooms/conbini/Boxes.png" id="15_ymyrh"]
-[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="18_jnmdp"]
+[ext_resource type="Script" uid="uid://cwa2mlfejng6n" path="res://scenes/core/hotspot/hotspot_resolver.gd" id="17_78efa"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="18_ji0gc"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="19_h1ca5"]
 [ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="20_ee6ic"]
 [ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="21_wad3y"]
 [ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="22_5i5st"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="22_h1ca5"]
 [ext_resource type="PackedScene" uid="uid://o0lomg3wclnc" path="res://scenes/game/characters/xandric.tscn" id="23_2optl"]
+[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="23_ji0gc"]
 [ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="23_up5px"]
+[ext_resource type="Script" uid="uid://biskw5uli3lc2" path="res://scenes/core/action_tree/leaves/action_play_animation.gd" id="24_h1ca5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_533q6"]
 radius = 52.009613
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_up5px"]
-radius = 52.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5i5st"]
-radius = 43.046486
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_svegg"]
 load_path = "res://.godot/imported/ConvenienceStoreDoors.png-f0367910c9ad67a547461d88e6912733.ctex"
@@ -38,12 +40,12 @@ load_path = "res://.godot/imported/ConvenienceStoreDoors.png-f0367910c9ad67a5474
 atlas = SubResource("CompressedTexture2D_svegg")
 region = Rect2(160, 61, 32, 48)
 
-[sub_resource type="Animation" id="Animation_uilgb"]
+[sub_resource type="Animation" id="Animation_h1ca5"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/path = NodePath("../LeftDoor:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,7 +56,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/path = NodePath("../LeftDoor:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -65,7 +67,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/path = NodePath("../RightDoor:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -76,7 +78,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/path = NodePath("../RightDoor:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -85,385 +87,111 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_5i5st"]
-resource_name = "close_completed"
-length = 0.15
+[sub_resource type="Animation" id="Animation_ks763"]
+resource_name = "close"
+length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/path = NodePath("../LeftDoor:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-48, -0.16666667, 5.3333335, 0, 0, -16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/path = NodePath("../LeftDoor:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.16666667, 0, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/path = NodePath("../RightDoor:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(48, -0.16666667, -5.3333335, 0, 0, 16, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/path = NodePath("../RightDoor:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.16666667, 0, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 
-[sub_resource type="Animation" id="Animation_up5px"]
-resource_name = "close_in_process"
+[sub_resource type="Animation" id="Animation_sbbdo"]
+resource_name = "open"
+length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftDoor:position:x")
+tracks/0/path = NodePath("../LeftDoor:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-49, -0.25, 0, 0.25, 0, -16, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0, -48, -0.16666667, 5.3333335, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LeftDoor:position:y")
+tracks/1/path = NodePath("../LeftDoor:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RightDoor:position:x")
+tracks/2/path = NodePath("../RightDoor:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(49, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
+"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0, 48, -0.16666667, -5.3333335, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightDoor:position:y")
+tracks/3/path = NodePath("../RightDoor:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["close", "completed"],
-"method": &"set_animation_state"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_78efa"]
-resource_name = "close_start"
-length = 0.15
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftDoor:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-49, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftDoor:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightDoor:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(49, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RightDoor:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["close", "in_process"],
-"method": &"set_animation_state"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("..")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["open"],
-"method": &"reset_animation_state"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_324eo"]
-resource_name = "open_completed"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftDoor:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-49, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.03333336)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftDoor:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.03333336)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightDoor:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(49, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.03333336)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RightDoor:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0.03333336)
-}
-
-[sub_resource type="Animation" id="Animation_mmej3"]
-resource_name = "open_in_process"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftDoor:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0, -49, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftDoor:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightDoor:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0, 49, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RightDoor:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["open", "completed"],
-"method": &"set_animation_state"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_wad3y"]
-resource_name = "open_start"
-length = 0.15
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftDoor:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-16, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LeftDoor:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RightDoor:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(16, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RightDoor:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["open", "in_process"],
-"method": &"set_animation_state"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("..")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["close"],
-"method": &"reset_animation_state"
-}]
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nuxxp"]
 _data = {
-&"RESET": SubResource("Animation_uilgb"),
-&"close_completed": SubResource("Animation_5i5st"),
-&"close_in_process": SubResource("Animation_up5px"),
-&"close_start": SubResource("Animation_78efa"),
-&"open_completed": SubResource("Animation_324eo"),
-&"open_in_process": SubResource("Animation_mmej3"),
-&"open_start": SubResource("Animation_wad3y")
+&"RESET": SubResource("Animation_h1ca5"),
+&"close": SubResource("Animation_ks763"),
+&"open": SubResource("Animation_sbbdo")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5i5st"]
+radius = 43.046486
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2optl"]
 size = Vector2(60, 19)
@@ -474,11 +202,33 @@ size = Vector2(338, 79)
 [sub_resource type="Resource" id="Resource_78efa"]
 script = ExtResource("23_up5px")
 
-[node name="Conbini" type="Node2D" unique_id=131213808 node_paths=PackedStringArray("phantom_camera", "camera")]
+[node name="Conbini" type="Node2D" unique_id=131213808]
 script = ExtResource("1_cudwr")
 room_name = "conbini"
-phantom_camera = NodePath("PhantomCamera2D")
-camera = NodePath("Camera2D")
+
+[node name="ActionTrees" type="Node" parent="." unique_id=1657866384]
+
+[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=526547909 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionSpawnPlayer")
+run_after_ready = true
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=900407493 node_paths=PackedStringArray("room", "next_leaf")]
+script = ExtResource("3_78efa")
+room = NodePath("../../..")
+next_leaf = NodePath("../ActionCameraFocus")
+
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1466216335 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
+script = ExtResource("4_lpyup")
+entity_name = "player"
+camera = NodePath("../../../Camera2D")
+phantom_camera = NodePath("../../../PhantomCamera2D")
+next_leaf = NodePath("../ActionCommandPrompt")
+
+[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=414837880]
+script = ExtResource("5_ji0gc")
+active = true
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_324eo")]
 
@@ -522,48 +272,139 @@ texture = ExtResource("15_ymyrh")
 
 [node name="Hotspots" type="Node2D" parent="." unique_id=427114854]
 
-[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=528640994]
-position = Vector2(3.0517578e-05, 0)
-script = ExtResource("18_jnmdp")
-object_name = "clouds"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=900177727]
+script = ExtResource("17_78efa")
+metadata/_custom_type_script = "uid://cwa2mlfejng6n"
 
-[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=1942530235]
-position = Vector2(3.0517578e-05, 0)
-script = ExtResource("18_jnmdp")
-object_name = "mountains"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=1532762646 node_paths=PackedStringArray("commands")]
+script = ExtResource("18_ji0gc")
+id = "room"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="Rain" type="Node2D" parent="Hotspots" unique_id=1924143727]
-position = Vector2(3.0517578e-05, 0)
-script = ExtResource("18_jnmdp")
-object_name = "rain"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=1281090557 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="Road" type="Node2D" parent="Hotspots" unique_id=2018214955]
-position = Vector2(3.0517578e-05, 0)
-script = ExtResource("18_jnmdp")
-object_name = "road|street"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=1003995283]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["You're at the front of the conbini. You can buy some food and drinks here.", "You should probably get inside before you freeze to death."])
 
-[node name="Sky" type="Node2D" parent="Hotspots" unique_id=670747871]
-position = Vector2(3.0517578e-05, 0)
-script = ExtResource("18_jnmdp")
-object_name = "sky"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=742632917 node_paths=PackedStringArray("commands")]
+script = ExtResource("18_ji0gc")
+id = "clouds"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="ParkingLot" type="Node2D" parent="Hotspots" unique_id=1918123099]
-position = Vector2(3.0517578e-05, 0)
-script = ExtResource("18_jnmdp")
-object_name = "parking lot"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="Look" type="Node" parent="Hotspots/Clouds" unique_id=611317903 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="Owl" type="Node2D" parent="Hotspots" unique_id=272855964]
+[node name="ActionDialog" type="Node" parent="Hotspots/Clouds/Look" unique_id=78700340]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["You see wonderfully crafted pixel art clouds. This must be a retro style game."])
+
+[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=1138055167 node_paths=PackedStringArray("commands")]
+script = ExtResource("18_ji0gc")
+id = "mountains"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Mountains" unique_id=1479597074 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Mountains/Look" unique_id=463324895]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["You remember something about why you're here as you look at the mountains but then quickly forget."])
+
+[node name="Rain" type="Node2D" parent="Hotspots" unique_id=1417275164 node_paths=PackedStringArray("commands")]
+script = ExtResource("18_ji0gc")
+id = "rain"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Rain" unique_id=1432488218 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Rain/Look" unique_id=1150845030]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["The rain is coming down hard. You should find shelter."])
+
+[node name="Road" type="Node2D" parent="Hotspots" unique_id=1260893655 node_paths=PackedStringArray("commands")]
+script = ExtResource("18_ji0gc")
+id = "road|street"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Road" unique_id=1730051425 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Road/Look" unique_id=959302136]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["You see a road leading back to the city. It's a long way to walk."])
+
+[node name="Sky" type="Node2D" parent="Hotspots" unique_id=63993795 node_paths=PackedStringArray("commands")]
+script = ExtResource("18_ji0gc")
+id = "sky"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Sky" unique_id=2116353993 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Sky/Look" unique_id=2107011322]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["The sky is a bright #55ffff. What a nice clear day to have a picnic."])
+
+[node name="ParkingLot" type="Node2D" parent="Hotspots" unique_id=26124510 node_paths=PackedStringArray("commands")]
+position = Vector2(3.0517578e-05, 0)
+script = ExtResource("18_ji0gc")
+id = "parking lot"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/ParkingLot" unique_id=647660782 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/ParkingLot/Look" unique_id=381208232]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["This is the parking lot in front of the conbini. Probably should get inside before you freeze to death"])
+
+[node name="Owl" type="Node2D" parent="Hotspots" unique_id=158769459 node_paths=PackedStringArray("commands")]
 position = Vector2(-16, -11)
-script = ExtResource("18_jnmdp")
-object_name = "owl"
-require_in_range = true
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+script = ExtResource("18_ji0gc")
+id = "owl|xandric|cedric"
+commands = {
+"look": NodePath("Look"),
+"talk": NodePath("Talk")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="Xandric" parent="Hotspots/Owl" unique_id=810629886 instance=ExtResource("23_2optl")]
 
@@ -575,48 +416,95 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Owl/HotspotInRange" unique_id=1167583530]
 shape = SubResource("CircleShape2D_533q6")
 
-[node name="Doors" type="Node2D" parent="Hotspots" unique_id=1334981182 node_paths=PackedStringArray("animation_player")]
-position = Vector2(-4, -1)
-script = ExtResource("18_jnmdp")
-object_name = "door"
-require_in_range = true
-animation_states = Dictionary[String, int]({
-"closed": 0,
-"open": 0
-})
-animation_player = NodePath("HotspotAnimationTrigger/AnimationPlayer")
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="Look" type="Node" parent="Hotspots/Owl" unique_id=1808480494 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/Doors" unique_id=2110355644]
-position = Vector2(33, 1)
-script = ExtResource("14_5i5st")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+[node name="ActionDialog" type="Node" parent="Hotspots/Owl/Look" unique_id=1747950336]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["Whooo, whooo, whooo. The owl is looking at you."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Doors/HotspotInRange" unique_id=667715740]
-shape = SubResource("CircleShape2D_up5px")
+[node name="Talk" type="Node" parent="Hotspots/Owl" unique_id=1003561806 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="HotspotAnimationTrigger" type="Area2D" parent="Hotspots/Doors" unique_id=105006686]
-position = Vector2(36, -4)
-collision_layer = 32
-script = ExtResource("13_wad3y")
-animation_name_enter = "open"
-animation_name_exit = "close"
+[node name="ActionInRange" type="Node" parent="Hotspots/Owl/Talk" unique_id=1814003358 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("22_h1ca5")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=856225708]
-shape = SubResource("CircleShape2D_5i5st")
+[node name="ActionDialog" type="Node" parent="Hotspots/Owl/Talk" unique_id=53076135]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["Whooo, whooo, whooo.", "Don't go in there, there is a wizard on a trip from another game.", "Be careful!"])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
-[node name="LeftDoor" type="Sprite2D" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=229582205]
+[node name="Doors" type="Node2D" parent="Hotspots" unique_id=946229153 node_paths=PackedStringArray("commands")]
+position = Vector2(32, -5)
+script = ExtResource("18_ji0gc")
+id = "door"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="LeftDoor" type="Sprite2D" parent="Hotspots/Doors" unique_id=229582205]
 z_index = -6
 position = Vector2(-16, 0)
 texture = SubResource("AtlasTexture_ee6ic")
 
-[node name="RightDoor" type="Sprite2D" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=1424034923]
+[node name="RightDoor" type="Sprite2D" parent="Hotspots/Doors" unique_id=1424034923]
 z_index = -6
 position = Vector2(16, 0)
 texture = SubResource("AtlasTexture_ee6ic")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/Doors/HotspotAnimationTrigger" unique_id=447853135]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/Doors" unique_id=447853135]
+root_node = NodePath("../HotspotActionTrigger")
 libraries/ = SubResource("AnimationLibrary_nuxxp")
+
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspots/Doors" unique_id=2012713890 node_paths=PackedStringArray("action_tree_enter", "action_tree_exit")]
+collision_layer = 32
+script = ExtResource("23_ji0gc")
+action_tree_enter = NodePath("../OpenDoor")
+action_tree_exit = NodePath("../CloseDoor")
+metadata/_custom_type_script = "uid://6cnw82p6ya55"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Doors/HotspotActionTrigger" unique_id=856225708]
+shape = SubResource("CircleShape2D_5i5st")
+
+[node name="Look" type="Node" parent="Hotspots/Doors" unique_id=548248840 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Doors/Look" unique_id=654388018]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["The front doors to the store are automatic."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="OpenDoor" type="Node" parent="Hotspots/Doors" unique_id=1046005175 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionPlayAnimation")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionPlayAnimation" type="Node" parent="Hotspots/Doors/OpenDoor" unique_id=963979439 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("24_h1ca5")
+animation_name = "open"
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="CloseDoor" type="Node" parent="Hotspots/Doors" unique_id=337610349 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionPlayAnimation")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionPlayAnimation" type="Node" parent="Hotspots/Doors/CloseDoor" unique_id=978188069 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("24_h1ca5")
+animation_name = "close"
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="RoomDoors" type="Node2D" parent="." unique_id=380039040]
 

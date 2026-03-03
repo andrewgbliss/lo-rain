@@ -43,6 +43,7 @@ var movement_direction = MovementDirection.Down
 var movement_state = MovementState.Idle
 var input: Vector2 = Vector2(40, 40)
 var is_facing_right: bool = true
+var freeze_animation: bool = false
 
 var timer: Timer
 var is_in_heat_area: bool = false
@@ -65,7 +66,10 @@ func _ready():
 		
 	if navigation_agent:
 		navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
-		
+
+	if character_type == CharacterType.Player:
+		inventory.restore()
+
 func set_scale_by_y_position():
 	# Get the current Y position
 	var y_position = global_position.y
@@ -159,7 +163,8 @@ func change_movement_state(move_direction: MovementDirection, x: float, y: float
 	update_animations()
 	
 func update_animations():
-	# if has velocity
+	if paralyzed or freeze_animation:
+		return
 	if velocity.length() > 0:
 		match movement_direction:
 			MovementDirection.Up:
@@ -330,6 +335,14 @@ func get_movement_direction_by_int(i: int) -> MovementDirection:
 			return MovementDirection.DownRight
 		_:
 			return MovementDirection.None
+
+func set_paralyzed(value: bool):
+	if value:
+		change_movement_state(movement_direction, 0, 0)
+	paralyzed = value
+
+func set_freeze_animation(freeze: bool):
+	freeze_animation = freeze
 
 func save():
 	var data = {

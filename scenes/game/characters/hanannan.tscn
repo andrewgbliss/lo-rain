@@ -4,12 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://u3yumb7e1d6n" path="res://assets/img/characters/hanannan-Sheet.png" id="2_0safi"]
 [ext_resource type="Script" uid="uid://ldv0v8cbtgxx" path="res://scenes/core/character/character_actions/navigation_process.gd" id="3_3nwy5"]
 [ext_resource type="Script" uid="uid://bw8g80cjnl8co" path="res://scenes/core/character/character_actions/navigation_set_target_pos.gd" id="4_ypx8e"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="5_6i174"]
+[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="6_0uobs"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="7_1la4c"]
+[ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="8_dwyl5"]
+[ext_resource type="Script" uid="uid://cqjbjyrorfhxx" path="res://scenes/core/action_tree/leaves/action_set_idle.gd" id="9_4qa26"]
+[ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="10_1rjgw"]
+[ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="11_sq3k1"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="12_252rq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxm2h"]
 size = Vector2(9, 2)
 
 [sub_resource type="Animation" id="Animation_ahdu5"]
 resource_name = "CastSpell"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,10 +26,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [8, 9, 10, 11, 12]
+"values": [8, 9, 10, 11, 12, 8]
 }
 
 [sub_resource type="Animation" id="Animation_0safi"]
@@ -143,6 +152,9 @@ _data = {
 &"WalkUp": SubResource("Animation_hf7ox")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tp1f3"]
+radius = 20.0
+
 [node name="Hanannan" type="CharacterBody2D" unique_id=11442449 node_paths=PackedStringArray("navigation_agent") groups=["Persist"]]
 collision_layer = 16
 collision_mask = 2
@@ -178,3 +190,82 @@ script = ExtResource("3_3nwy5")
 script = ExtResource("4_ypx8e")
 target_pos_type = 1
 wait_time = 3.0
+
+[node name="Hotspot" type="Node2D" parent="." unique_id=34449643 node_paths=PackedStringArray("commands")]
+script = ExtResource("5_6i174")
+id = "wizard"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspot" unique_id=1448650435 node_paths=PackedStringArray("action_tree_enter")]
+collision_layer = 32
+script = ExtResource("6_0uobs")
+action_tree_enter = NodePath("ActionTree")
+enter_times = 1
+metadata/_custom_type_script = "uid://6cnw82p6ya55"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot/HotspotActionTrigger" unique_id=1296175487]
+shape = SubResource("CircleShape2D_tp1f3")
+
+[node name="ActionTree" type="Node" parent="Hotspot/HotspotActionTrigger" unique_id=2119834223 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("7_1la4c")
+root_leaf = NodePath("ActionParalyze")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionParalyze" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=84421421 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_dwyl5")
+entity_name = "player"
+value = true
+next_leaf = NodePath("../ActionParalyze2")
+metadata/_custom_type_script = "uid://8oquxlfp2c6a"
+
+[node name="ActionParalyze2" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1556982744 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_dwyl5")
+entity_name = "hanannan"
+value = true
+next_leaf = NodePath("../ActionSetIdle")
+metadata/_custom_type_script = "uid://8oquxlfp2c6a"
+
+[node name="ActionSetIdle" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=2057313860 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("9_4qa26")
+entity_name = "player"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+metadata/_custom_type_script = "uid://cqjbjyrorfhxx"
+
+[node name="ActionNpcRunAnimation" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=262935185 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("10_1rjgw")
+entity_name = "hanannan"
+animation_name = "CastSpell"
+next_leaf = NodePath("../ActionNpcRunAnimation2")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionNpcRunAnimation2" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=2113567015 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("10_1rjgw")
+entity_name = "player"
+animation_name = "Dust"
+next_leaf = NodePath("../ActionWait")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionWait" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=544233454 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("11_sq3k1")
+duration = 2.0
+next_leaf = NodePath("../ActionDialog")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionDialog" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1970507860 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_252rq")
+messages = Array[String](["The wizard killed you.", "You are now dead."])
+next_leaf = NodePath("")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Look" type="Node" parent="Hotspot" unique_id=1315677632 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("7_1la4c")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspot/Look" unique_id=1388219332]
+script = ExtResource("12_252rq")
+messages = Array[String](["You see a wizard from Mings Quest 3.", "Best to stay away from him."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

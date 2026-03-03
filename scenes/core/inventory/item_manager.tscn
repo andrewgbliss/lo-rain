@@ -8,13 +8,19 @@
 [ext_resource type="Resource" uid="uid://b0s4ymwrcoegd" path="res://resources/items/dollar_bill.tres" id="6_nfpyr"]
 [ext_resource type="Resource" uid="uid://n8gafjxtbtom" path="res://resources/items/lighter.tres" id="7_om13f"]
 [ext_resource type="Resource" uid="uid://ds7hhc85yj06q" path="res://resources/items/water_bottle.tres" id="8_8ivml"]
+[ext_resource type="Resource" uid="uid://ucot6b0nyvii" path="res://resources/items/gold_coin.tres" id="9_pjgr1"]
+[ext_resource type="Resource" uid="uid://bj0s5neyw87jc" path="res://resources/items/frisbee.tres" id="10_bcmrv"]
+[ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="11_a4lpk"]
 
 [node name="ItemManager" type="Node" unique_id=196001630]
 script = ExtResource("1_jv8iy")
 items = Dictionary[String, ExtResource("2_xwuw0")]({
 "dollar_bill": ExtResource("6_nfpyr"),
 "face_quest_con_ticket": ExtResource("4_bcmrv"),
+"frisbee": ExtResource("10_bcmrv"),
+"gold_coin": ExtResource("9_pjgr1"),
 "id": ExtResource("3_pjgr1"),
+"keycard": ExtResource("11_a4lpk"),
 "lighter": ExtResource("7_om13f"),
 "screw_driver": ExtResource("5_a4lpk"),
 "water_bottle": ExtResource("8_8ivml")

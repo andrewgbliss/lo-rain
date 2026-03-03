@@ -75,7 +75,7 @@ y_sort_enabled = true
 [node name="Spawners" type="Node2D" parent="." unique_id=1255518591]
 
 [node name="PlayerSpawn" type="Node2D" parent="Spawners" unique_id=1783737382]
-position = Vector2(-418, 18)
+position = Vector2(-35, 14)
 
 [node name="DialogUI" parent="." unique_id=2072539769 instance=ExtResource("17_xvl7s")]
 

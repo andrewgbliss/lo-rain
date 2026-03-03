@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dq2r3it2t0x4t"
+path="res://.godot/imported/gold_coin.aseprite-61633ec11acc738c54da0f61bd794064.res"
+
+[deps]
+
+source_file="res://assets/img/items/gold_coin.aseprite"
+dest_files=["res://.godot/imported/gold_coin.aseprite-61633ec11acc738c54da0f61bd794064.res"]
+
+[params]
+

@@ -1,7 +1,7 @@
 class_name NavigationProcess extends CharacterActionBase
 
 func _process(_delta: float):
-	if parent.navigation_agent == null:
+	if parent.navigation_agent == null or parent.paralyzed:
 		return
 
 	# Do not query when the map has never synchronized and is empty.

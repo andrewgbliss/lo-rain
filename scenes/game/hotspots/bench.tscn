@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://ca6prygih2cy4"]
 
-[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_h1nd1"]
 [ext_resource type="Texture2D" uid="uid://c5fm5pn6pdvbm" path="res://assets/img/rooms/long-road/Bench.png" id="1_ix178"]
-[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="3_5fxct"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_jcj8c"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="4_jcj8c"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="5_j3cya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix178"]
 size = Vector2(66, 8)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rbwgb"]
-radius = 53.0377
-
-[node name="Bench" type="Node2D" unique_id=2047398479]
-script = ExtResource("1_h1nd1")
-object_name = "bench"
-require_in_range = true
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="Bench" type="Node2D" unique_id=1471378580 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_jcj8c")
+id = "bench"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=719794489]
 texture = ExtResource("1_ix178")
@@ -28,9 +28,12 @@ collision_layer = 2
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_ix178")
 
-[node name="HotspotInRange" type="Area2D" parent="." unique_id=535416344]
-script = ExtResource("3_5fxct")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+[node name="Look" type="Node" parent="." unique_id=759188842 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("4_jcj8c")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=1218005161]
-shape = SubResource("CircleShape2D_rbwgb")
+[node name="ActionDialog" type="Node" parent="Look" unique_id=1912308231]
+script = ExtResource("5_j3cya")
+messages = Array[String](["The bench is all wet. Shouldn't sit on it."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

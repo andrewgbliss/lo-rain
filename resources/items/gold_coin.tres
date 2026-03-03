@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://ucot6b0nyvii"]
+
+[ext_resource type="Texture2D" uid="uid://c8soagay51s1a" path="res://assets/img/items/gold_coin.png" id="1_fvnps"]
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="2_1cdtf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1cdtf"]
+load_path = "res://.godot/imported/gold_coin.png-6f453e7f641f3d617f1b4261834f7210.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpkbb"]
+atlas = SubResource("CompressedTexture2D_1cdtf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fvnps"]
+load_path = "res://.godot/imported/gold_coin.png-6f453e7f641f3d617f1b4261834f7210.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cdtf"]
+atlas = SubResource("CompressedTexture2D_fvnps")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffoxm"]
+atlas = ExtResource("1_fvnps")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_1cdtf")
+id = "gold_coin"
+name = "Gold Coin"
+description = "A gold coin you found. Lucky you!"
+room_texture = SubResource("AtlasTexture_ffoxm")
+icon_texture = SubResource("AtlasTexture_mpkbb")
+inspect_texture = SubResource("AtlasTexture_1cdtf")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

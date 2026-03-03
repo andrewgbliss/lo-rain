@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bj0s5neyw87jc"]
+
+[ext_resource type="Texture2D" uid="uid://mwohiibqefx2" path="res://assets/img/items/frisbee.png" id="1_xi7yq"]
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="2_w0tgx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w0tgx"]
+load_path = "res://.godot/imported/frisbee.png-a20d92dc92a3e8116b8c375b5bcce245.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85g2t"]
+atlas = SubResource("CompressedTexture2D_w0tgx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vkftc"]
+load_path = "res://.godot/imported/frisbee.png-a20d92dc92a3e8116b8c375b5bcce245.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxf20"]
+atlas = SubResource("CompressedTexture2D_vkftc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff7u1"]
+atlas = ExtResource("1_xi7yq")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_w0tgx")
+id = "frisbee"
+name = "Frisbee"
+description = "You finally found the frisbee. This might come in handy later."
+room_texture = SubResource("AtlasTexture_ff7u1")
+icon_texture = SubResource("AtlasTexture_85g2t")
+inspect_texture = SubResource("AtlasTexture_vxf20")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

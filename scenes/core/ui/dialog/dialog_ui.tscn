@@ -91,7 +91,6 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="CommandPrompt" type="TextEdit" parent="CanvasLayer/CommandPromptControl/MarginContainer" unique_id=810675408 node_paths=PackedStringArray("dialog_text")]
-process_mode = 3
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3

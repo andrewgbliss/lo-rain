@@ -43,7 +43,7 @@
           "has_inventory": "keycard",
           "yes": [
             "You use the keycard to open the door.",
-            "scene_goto(res://scenes/game/rooms/conbini/conbini_storage.tscn)"
+            "scene_goto(res://scenes/game/rooms/conbini/conbini_storage.tscn, 2, 1, up)"
           ],
           "no": ["You need a keycard to open the door."]
         }

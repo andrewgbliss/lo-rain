@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d0mb1w783p6an"
+path="res://.godot/imported/tire.aseprite-61b17ab1caf58fff5f82d40b2ccc39b0.res"
+
+[deps]
+
+source_file="res://assets/img/rooms/conbini/tire.aseprite"
+dest_files=["res://.godot/imported/tire.aseprite-61b17ab1caf58fff5f82d40b2ccc39b0.res"]
+
+[params]
+

@@ -1,17 +1,46 @@
 {
   "id": "other_long_road_under_construction",
   "name": "Other Long Road Under Construction",
-  "init": ["spawn_player"],
+  "init": ["spawn_player", "spawn_chararcters"],
   "actions": {
-    "freeway": [
-      "You can go that way since it's a freeway. You'd probably get hit by a car."
-    ]
+    "spawn_chararcters": ["spawn_entity(rasky)"],
+    "freeway": ["Thanks for playing Part One. Part Two will be coming soon!"]
+  },
+  "inventory": {
+    "frisbee": {
+      "commands": {
+        "use": ["What would a frisbee do to a dangerous homeless man?"]
+      }
+    },
+    "gold_coin": {
+      "commands": {
+        "use": [
+          "You throw the gold coin at the homeless man. He smiles and says Thank you!",
+          "disable_hotspot(man)",
+          "paralyze(rasky, true)"
+        ],
+        "throw": [
+          "You throw the gold coin at the homeless man. He smiles and says Thank you!",
+          "disable_hotspot(man)",
+          "paralyze(rasky, true)"
+        ]
+      }
+    }
   },
   "hotspots": {
     "room": {
       "commands": {
         "look": [
-          "You're on the other side of the long road. It's under construction."
+          "You see a homeless man wearing a hoodie. He looks dangerous.",
+          "Either run or throw something at him."
+        ]
+      }
+    },
+    "man": {
+      "commands": {
+        "look": [
+          "You see a homeless man wearing a hoodie. He looks dangerous.",
+          "Either run or throw something at him."
         ]
       }
     }

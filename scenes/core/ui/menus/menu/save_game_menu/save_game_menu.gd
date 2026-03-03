@@ -14,11 +14,11 @@ func _ready():
 	line_edit.text_submitted.connect(_on_line_edit_text_submitted)
 
 func _input(event):
-		if event is InputEventKey and event.is_pressed() and not event.is_echo():
-			if not is_showing and event.is_action_pressed("save"):
-				_on()
-			if is_showing and event.is_action_pressed("ui_cancel"):
-				_off()
+	if event is InputEventKey and event.is_pressed() and not event.is_echo():
+		if not is_showing and event.is_action_pressed("save"):
+			_on()
+		if is_showing and event.is_action_pressed("ui_cancel"):
+			_off()
 
 func _on():
 	super ()

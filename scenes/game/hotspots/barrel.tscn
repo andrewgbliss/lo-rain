@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ld1rhkqdde5x"]
+
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_7xu22"]
+[ext_resource type="Texture2D" uid="uid://bepr36gcymfj2" path="res://assets/img/rooms/conbini/barrel.png" id="2_mxrmv"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="3_icgxb"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="4_6brt2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_was78"]
+size = Vector2(16, 13)
+
+[node name="Barrel" type="Node2D" unique_id=712572777 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_7xu22")
+id = "barrel|barrels"
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=149270749]
+position = Vector2(0, 9)
+texture = ExtResource("2_mxrmv")
+offset = Vector2(0, -25.855)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1664437914]
+position = Vector2(0, -26)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1160327797]
+position = Vector2(0, 19.5)
+shape = SubResource("RectangleShape2D_was78")
+
+[node name="Look" type="Node" parent="." unique_id=1470403682 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_icgxb")
+root_leaf = NodePath("")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=424247515]
+script = ExtResource("4_6brt2")
+messages = Array[String](["You see some barrels by the side of the conbini."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Take" type="Node" parent="." unique_id=968788909 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_icgxb")
+root_leaf = NodePath("")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Take" unique_id=642215193 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("4_6brt2")
+messages = Array[String](["There's no way you can carry that."])
+next_leaf = NodePath("")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

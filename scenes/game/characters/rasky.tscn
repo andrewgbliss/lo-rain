@@ -2,24 +2,20 @@
 
 [ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://scenes/core/character/character_controller.gd" id="1_kqlmh"]
 [ext_resource type="Texture2D" uid="uid://d1kj68eu245hj" path="res://assets/img/characters/Rasky-Sheet.png" id="2_y13hp"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="3_wd1un"]
+[ext_resource type="Script" uid="uid://ldv0v8cbtgxx" path="res://scenes/core/character/character_actions/navigation_process.gd" id="4_h61h6"]
+[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="4_wd1un"]
+[ext_resource type="Script" uid="uid://bw8g80cjnl8co" path="res://scenes/core/character/character_actions/navigation_set_target_pos.gd" id="5_w36af"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="5_x4h1l"]
+[ext_resource type="Script" uid="uid://c2k3vdp72wicb" path="res://scenes/core/character/character_actions/find_target.gd" id="6_h61h6"]
+[ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="6_pm5gr"]
+[ext_resource type="Script" uid="uid://cqjbjyrorfhxx" path="res://scenes/core/action_tree/leaves/action_set_idle.gd" id="7_tyho8"]
+[ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="8_5tlut"]
+[ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="9_ky6or"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="9_lmvr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha6mx"]
 size = Vector2(11, 4)
-
-[sub_resource type="Animation" id="Animation_p6bhe"]
-resource_name = "Attack"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [32]
-}
 
 [sub_resource type="Animation" id="Animation_y13hp"]
 resource_name = "IdleDown"
@@ -132,19 +128,38 @@ tracks/0/keys = {
 "values": [20, 21, 22, 23, 24, 25]
 }
 
+[sub_resource type="Animation" id="Animation_w36af"]
+resource_name = "attack_completed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p6bhe"]
 _data = {
-&"Attack": SubResource("Animation_p6bhe"),
 &"IdleDown": SubResource("Animation_y13hp"),
 &"IdleRight": SubResource("Animation_kqlmh"),
 &"IdleUp": SubResource("Animation_ha6mx"),
 &"RESET": SubResource("Animation_jd3gq"),
 &"WalkDown": SubResource("Animation_nicdu"),
 &"WalkRight": SubResource("Animation_ni6yh"),
-&"WalkUp": SubResource("Animation_rgxvw")
+&"WalkUp": SubResource("Animation_rgxvw"),
+&"attack": SubResource("Animation_w36af")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0noue"]
+radius = 20.0
+
 [node name="Rasky" type="CharacterBody2D" unique_id=1476453385 node_paths=PackedStringArray("navigation_agent")]
+collision_layer = 16
 motion_mode = 1
 script = ExtResource("1_kqlmh")
 character_type = 1
@@ -154,17 +169,108 @@ navigation_agent = NodePath("NavigationAgent2D")
 metadata/_custom_type_script = "uid://crueou1p1x8k2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1884398886]
-position = Vector2(-0.5, 22)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ha6mx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1744622738]
 texture = ExtResource("2_y13hp")
+offset = Vector2(0, -19.565)
 hframes = 34
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1296026646]
 libraries/ = SubResource("AnimationLibrary_p6bhe")
 
+[node name="Hotspot" type="Node2D" parent="." unique_id=1228395351 node_paths=PackedStringArray("commands")]
+script = ExtResource("3_wd1un")
+id = "man"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspot" unique_id=660110971 node_paths=PackedStringArray("action_tree_enter")]
+collision_layer = 32
+script = ExtResource("4_wd1un")
+action_tree_enter = NodePath("ActionTree")
+enter_times = 1
+metadata/_custom_type_script = "uid://6cnw82p6ya55"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot/HotspotActionTrigger" unique_id=750967278]
+shape = SubResource("CircleShape2D_0noue")
+
+[node name="ActionTree" type="Node" parent="Hotspot/HotspotActionTrigger" unique_id=774145652 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("5_x4h1l")
+root_leaf = NodePath("ActionParalyze")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionParalyze" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1258318063 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_pm5gr")
+entity_name = "player"
+value = true
+next_leaf = NodePath("../ActionParalyze2")
+metadata/_custom_type_script = "uid://8oquxlfp2c6a"
+
+[node name="ActionParalyze2" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=993210273 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_pm5gr")
+entity_name = "rasky"
+value = true
+next_leaf = NodePath("../ActionSetIdle")
+metadata/_custom_type_script = "uid://8oquxlfp2c6a"
+
+[node name="ActionSetIdle" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1592062806 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_tyho8")
+entity_name = "player"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+metadata/_custom_type_script = "uid://cqjbjyrorfhxx"
+
+[node name="ActionNpcRunAnimation" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=441911668 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_5tlut")
+entity_name = "rasky"
+animation_name = "attack"
+next_leaf = NodePath("../ActionNpcRunAnimation2")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionNpcRunAnimation2" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=445369522 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_5tlut")
+entity_name = "player"
+animation_name = "Death"
+next_leaf = NodePath("../ActionWait")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionWait" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=102252400 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("9_ky6or")
+duration = 2.0
+next_leaf = NodePath("../ActionDialog")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionDialog" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=184350392 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("9_lmvr0")
+messages = Array[String](["The homeless man killed you.", "You are now dead."])
+next_leaf = NodePath("")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Look" type="Node" parent="Hotspot" unique_id=1052483237 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("5_x4h1l")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspot/Look" unique_id=2049004982]
+script = ExtResource("9_lmvr0")
+messages = Array[String](["You see a homeless man wearing a hoodie. He looks dangerous.", "Either run or throw something at him."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=635730900]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 simplify_path = true
+
+[node name="NavigationProcess" type="Node2D" parent="." unique_id=5646126]
+script = ExtResource("4_h61h6")
+
+[node name="NavigationAgentSetTargetPos" type="Node2D" parent="." unique_id=1416577993]
+script = ExtResource("5_w36af")
+always_update = true
+
+[node name="FindTarget" type="Node2D" parent="." unique_id=45327856]
+script = ExtResource("6_h61h6")
+metadata/_custom_type_script = "uid://c2k3vdp72wicb"

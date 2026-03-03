@@ -6,6 +6,19 @@ class_name MenuTopBar extends Menu
 @export var options_panel: Panel
 @export var file_button: Button
 
+func _input(event):
+	# TODO - when going live uncomment this This is for testing
+	if GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+		return
+	if event is InputEventKey and event.is_pressed():
+		if Input.is_action_just_pressed("pause"):
+			if not GameManager.is_paused:
+				GameManager.pause()
+				UiManager.game_menus.push("MenuTopBar", false)
+			else:
+				GameManager.unpause()
+				UiManager.game_menus.pop()
+
 func _on():
 	super ()
 	menu_bar_panel.show()
@@ -51,7 +64,9 @@ func _on_restore_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	_off()
-	#SaveGameManager.restart()
+	GameStateStore.reset()
+	ItemManager.player.inventory.reset()
+	SceneManager.goto_first_scene()
 
 func _on_action_button_focus_entered() -> void:
 	_show_panel('action')

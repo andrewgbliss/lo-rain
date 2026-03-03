@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://biw5el2oqrg0g"]
+
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_1dgbv"]
+[ext_resource type="Texture2D" uid="uid://dinqn61tufb33" path="res://assets/img/rooms/conbini/bike.png" id="2_3ro3t"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="3_k07h3"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="4_i4pre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_was78"]
+size = Vector2(33, 17)
+
+[node name="Bike" type="Node2D" unique_id=1365106938 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_1dgbv")
+id = "bike|bicycle"
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=149270749]
+position = Vector2(0, 9)
+texture = ExtResource("2_3ro3t")
+offset = Vector2(0, -16.89)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1664437914]
+position = Vector2(0, -10)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1160327797]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_was78")
+
+[node name="Look" type="Node" parent="." unique_id=644879865 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_k07h3")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=1904461205]
+script = ExtResource("4_i4pre")
+messages = Array[String](["You see a bike by the side of the dumpster."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Take" type="Node" parent="." unique_id=1486658866 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_k07h3")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Take" unique_id=25898965]
+script = ExtResource("4_i4pre")
+messages = Array[String](["It's rusted and wet. You can't ride it."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

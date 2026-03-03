@@ -10,11 +10,11 @@ func _ready():
 	cancel_button_restore.pressed.connect(_on_cancel_button_pressed)
 
 func _input(event):
-		if event is InputEventKey and event.is_pressed() and not event.is_echo():
-			if not is_showing and event.is_action_pressed("restore"):
-				_on()
-			if is_showing and event.is_action_pressed("ui_cancel"):
-				_off()
+	if event is InputEventKey and event.is_pressed() and not event.is_echo():
+		if not is_showing and event.is_action_pressed("restore"):
+			_on()
+		if is_showing and event.is_action_pressed("ui_cancel"):
+			_off()
 	
 func _on():
 	super ()

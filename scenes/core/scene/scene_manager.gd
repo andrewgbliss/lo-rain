@@ -6,6 +6,7 @@ var current_scene = null
 var scene_transitions: Dictionary[String, SceneTransition] = {}
 var current_transition: SceneTransition = null
 var is_transitioning: bool = false
+var first_scene_path: String = "res://scenes/game/rooms/long_road.tscn"
 
 signal started
 signal finished(transition_name)
@@ -16,6 +17,9 @@ func _ready():
 	for child in get_children():
 		if child is SceneTransition:
 			scene_transitions[child.name] = child
+
+func goto_first_scene():
+	goto_scene(first_scene_path)
 	
 func goto_scene(path: String, transition_name: String = default_transition):
 	is_transitioning = true

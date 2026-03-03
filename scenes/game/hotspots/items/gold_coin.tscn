@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dnmrejoofln50"]
+
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_tdvow"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="2_w0ppq"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="3_f77ap"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="4_8w3up"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="5_oq7t0"]
+[ext_resource type="Script" uid="uid://deqpnph8yr2sj" path="res://scenes/core/action_tree/leaves/action_add_inventory.gd" id="6_ep5do"]
+[ext_resource type="Resource" uid="uid://ucot6b0nyvii" path="res://resources/items/gold_coin.tres" id="7_tdvow"]
+[ext_resource type="Script" uid="uid://b66mdms6w12qu" path="res://scenes/core/action_tree/leaves/action_enable_hotspot.gd" id="8_o3y1r"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n85el"]
+load_path = "res://.godot/imported/gold_coin.png-6f453e7f641f3d617f1b4261834f7210.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0ppq"]
+atlas = SubResource("CompressedTexture2D_n85el")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5q3a"]
+radius = 31.06445
+
+[node name="GoldCoin" type="Node2D" unique_id=1533823351 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_tdvow")
+id = "gold_coin"
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=605533830]
+texture = SubResource("AtlasTexture_w0ppq")
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=559454130]
+script = ExtResource("2_w0ppq")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=685844692]
+shape = SubResource("CircleShape2D_w5q3a")
+
+[node name="Look" type="Node" parent="." unique_id=2103782778 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_f77ap")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Look" unique_id=625449902 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("4_8w3up")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=266618786]
+script = ExtResource("5_oq7t0")
+messages = Array[String](["You see a gold coin behind the boxes."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Take" type="Node" parent="." unique_id=1822629174 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_f77ap")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Take" unique_id=1750666833 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("4_8w3up")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Take" unique_id=88378298 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("5_oq7t0")
+messages = Array[String](["You take the gold coin."])
+next_leaf = NodePath("../ActionAddInventory")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionAddInventory" type="Node" parent="Take" unique_id=51802466 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_ep5do")
+item = ExtResource("7_tdvow")
+next_leaf = NodePath("../ActionEnableHotspot")
+metadata/_custom_type_script = "uid://deqpnph8yr2sj"
+
+[node name="ActionEnableHotspot" type="Node" parent="Take" unique_id=600166583 node_paths=PackedStringArray("hotspot")]
+script = ExtResource("8_o3y1r")
+hotspot = NodePath("../..")
+enabled = false
+metadata/_custom_type_script = "uid://b66mdms6w12qu"

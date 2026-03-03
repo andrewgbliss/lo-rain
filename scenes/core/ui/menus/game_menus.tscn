@@ -763,12 +763,9 @@ _data = {
 &"transition_out": SubResource("Animation_lg1hb")
 }
 
-[node name="GameMenus" type="Node" unique_id=920775959 node_paths=PackedStringArray("audio_transition_in", "audio_transition_out", "audio_select")]
+[node name="GameMenus" type="Node" unique_id=920775959]
 process_mode = 3
 script = ExtResource("3_ljqv8")
-audio_transition_in = NodePath("AudioSwipe")
-audio_transition_out = NodePath("AudioSwipeAway")
-audio_select = NodePath("AudioClick")
 metadata/_custom_type_script = "uid://cg8iv8veotlm8"
 
 [node name="AudioSwipe" type="AudioStreamPlayer" parent="." unique_id=278000007]

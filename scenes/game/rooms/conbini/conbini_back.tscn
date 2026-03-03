@@ -1,28 +1,75 @@
 [gd_scene format=3 uid="uid://bkk4mt81uc17v"]
 
 [ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_dltbu"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="2_ukcog"]
 [ext_resource type="PackedScene" uid="uid://nkgfsyjm7ie7" path="res://scenes/game/rooms/biome/biome.tscn" id="2_xmclv"]
 [ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="3_o8y6y"]
+[ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_v7l03"]
+[ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_ctaxb"]
+[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_h7eo3"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="7_ngo68"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="7_povko"]
 [ext_resource type="Texture2D" uid="uid://b6t0ksko11mn2" path="res://assets/img/rooms/conbini/ConvenienceStoreBack.png" id="8_m0vp7"]
 [ext_resource type="PackedScene" uid="uid://3toigwhvybu6" path="res://scenes/game/hotspots/big_metal_box.tscn" id="8_optu5"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="9_7tnls"]
 [ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="10_vfilu"]
+[ext_resource type="PackedScene" uid="uid://cjuwsaphnr28o" path="res://scenes/game/hotspots/tire.tscn" id="11_aki2k"]
+[ext_resource type="Script" uid="uid://cwa2mlfejng6n" path="res://scenes/core/hotspot/hotspot_resolver.gd" id="11_v7l03"]
+[ext_resource type="PackedScene" uid="uid://ld1rhkqdde5x" path="res://scenes/game/hotspots/barrel.tscn" id="12_3fp4g"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="13_ctaxb"]
+[ext_resource type="PackedScene" uid="uid://biw5el2oqrg0g" path="res://scenes/game/hotspots/bike.tscn" id="13_sqhai"]
 [ext_resource type="Texture2D" uid="uid://cuqrjm8atm0gx" path="res://assets/img/rooms/conbini/BackGarbage.png" id="14_m0vp7"]
+[ext_resource type="Texture2D" uid="uid://bah5v2jpgjcw5" path="res://assets/img/rooms/conbini/Boxes.png" id="14_rp1sl"]
+[ext_resource type="PackedScene" uid="uid://uehfg7paehek" path="res://scenes/game/hotspots/items/frisbee.tscn" id="15_7tnls"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="15_j4ed8"]
 [ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="15_xdrw4"]
 [ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="16_aachq"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="16_nvfd1"]
+[ext_resource type="Script" uid="uid://bnp8uwvev60jm" path="res://scenes/core/action_tree/leaves/action_has_inventory.gd" id="17_o8one"]
 [ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="17_vb77y"]
+[ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="18_ycxhl"]
+[ext_resource type="Script" uid="uid://cmamihrcrkifw" path="res://scenes/core/action_tree/leaves/action_scene_goto.gd" id="19_fqflf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aki2k"]
+size = Vector2(49, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tnls"]
+radius = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0vp7"]
-size = Vector2(44, 18)
+size = Vector2(44, 9)
 
 [sub_resource type="Resource" id="Resource_og1vs"]
 script = ExtResource("17_vb77y")
 
-[node name="ConbiniBack" type="Node2D" unique_id=300203763 node_paths=PackedStringArray("camera")]
+[node name="ConbiniBack" type="Node2D" unique_id=300203763]
+y_sort_enabled = true
 script = ExtResource("1_dltbu")
 room_name = "conbini_back"
-camera = NodePath("Camera2D")
+
+[node name="ActionTrees" type="Node" parent="." unique_id=978618174]
+
+[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=484340158 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionSpawnPlayer")
+run_after_ready = true
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1738452656 node_paths=PackedStringArray("room", "next_leaf")]
+script = ExtResource("3_v7l03")
+room = NodePath("../../..")
+next_leaf = NodePath("../ActionCameraFocus")
+
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=134599632 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
+script = ExtResource("4_ctaxb")
+entity_name = "player"
+camera = NodePath("../../../Camera2D")
+phantom_camera = NodePath("../../../PhantomCamera2D")
+next_leaf = NodePath("../ActionCommandPrompt")
+
+[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1839271078]
+script = ExtResource("5_h7eo3")
+active = true
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_xmclv")]
 
@@ -45,9 +92,196 @@ position = Vector2(-169, -35)
 texture = ExtResource("14_m0vp7")
 
 [node name="Hotspots" type="Node2D" parent="." unique_id=901568613]
+y_sort_enabled = true
 
-[node name="BigMetalBox" parent="Hotspots" unique_id=2048897671 instance=ExtResource("8_optu5")]
+[node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=875151448]
+script = ExtResource("11_v7l03")
+metadata/_custom_type_script = "uid://cwa2mlfejng6n"
+
+[node name="BigMetalBox" parent="Hotspots" unique_id=2048897671 node_paths=PackedStringArray("commands") instance=ExtResource("8_optu5")]
 position = Vector2(131, -20)
+commands = {
+"look": NodePath("Look")
+}
+
+[node name="Door" type="Node2D" parent="Hotspots" unique_id=546119553 node_paths=PackedStringArray("commands")]
+position = Vector2(15, -22)
+script = ExtResource("13_ctaxb")
+id = "door"
+commands = {
+"look": NodePath("Look"),
+"open": NodePath("Open")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="HotspotInRange" type="Area2D" parent="Hotspots/Door" unique_id=1284137395]
+position = Vector2(51, 9)
+script = ExtResource("9_7tnls")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Door/HotspotInRange" unique_id=1575760903]
+position = Vector2(-54.5, -11.5)
+shape = SubResource("RectangleShape2D_aki2k")
+
+[node name="Look" type="Node" parent="Hotspots/Door" unique_id=1954340264 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Door/Look" unique_id=1870939299]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You see a door going to the inside. Looks like it requires a keycard to open."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Open" type="Node" parent="Hotspots/Door" unique_id=60294865 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Hotspots/Door/Open" unique_id=1502193706 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("16_nvfd1")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionHasInventory")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionHasInventory" type="Node" parent="Hotspots/Door/Open" unique_id=1969463690 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("17_o8one")
+item = ExtResource("18_ycxhl")
+action_leaf_true = NodePath("../ActionDialog")
+action_leaf_false = NodePath("../ActionDialog2")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Door/Open" unique_id=914328250 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You use the keycard to open the door."])
+next_leaf = NodePath("../ActionSceneGoto")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/Door/Open" unique_id=703007106]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You need a keycard to open the door."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionSceneGoto" type="Node" parent="Hotspots/Door/Open" unique_id=796221872]
+script = ExtResource("19_fqflf")
+scene_path = "res://scenes/game/rooms/conbini/conbini_storage.tscn"
+prev_door_id = "1"
+current_door_id = "2"
+movement_direction = 2
+metadata/_custom_type_script = "uid://cmamihrcrkifw"
+
+[node name="Trash" type="Node2D" parent="Hotspots" unique_id=285150725 node_paths=PackedStringArray("commands")]
+position = Vector2(-168, -28)
+script = ExtResource("13_ctaxb")
+id = "trash|dumpster|garbage"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="HotspotInRange" type="Area2D" parent="Hotspots/Trash" unique_id=1920871254]
+script = ExtResource("9_7tnls")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Trash/HotspotInRange" unique_id=1029495859]
+shape = SubResource("CircleShape2D_7tnls")
+
+[node name="Look" type="Node" parent="Hotspots/Trash" unique_id=150113654 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Trash/Look" unique_id=1829796703]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You see a trash can by the side of the conbini. You look inside and see a frisbee.", "Oh that's where the frisbee went. Might as well take it. It might come in handy later"])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Frisbee" parent="Hotspots" unique_id=1913126863 node_paths=PackedStringArray("commands") instance=ExtResource("15_7tnls")]
+position = Vector2(-168, -28)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Tire" parent="Hotspots" unique_id=503562292 node_paths=PackedStringArray("commands") instance=ExtResource("11_aki2k")]
+position = Vector2(-166, 21)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Tire2" parent="Hotspots" unique_id=1572686904 node_paths=PackedStringArray("commands") instance=ExtResource("11_aki2k")]
+position = Vector2(-166, 14)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Tire3" parent="Hotspots" unique_id=27868895 node_paths=PackedStringArray("commands") instance=ExtResource("11_aki2k")]
+position = Vector2(-145, 18)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Barrel" parent="Hotspots" unique_id=59946192 node_paths=PackedStringArray("commands") instance=ExtResource("12_3fp4g")]
+position = Vector2(-186, 14)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Barrel2" parent="Hotspots" unique_id=1921323703 node_paths=PackedStringArray("commands") instance=ExtResource("12_3fp4g")]
+position = Vector2(-186, 33)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Barrel3" parent="Hotspots" unique_id=1994234328 node_paths=PackedStringArray("commands") instance=ExtResource("12_3fp4g")]
+position = Vector2(-135, 34)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Barrel4" parent="Hotspots" unique_id=1142581082 node_paths=PackedStringArray("commands") instance=ExtResource("12_3fp4g")]
+position = Vector2(124, 20)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Barrel5" parent="Hotspots" unique_id=1966176694 node_paths=PackedStringArray("commands") instance=ExtResource("12_3fp4g")]
+position = Vector2(115, 32)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Barrel6" parent="Hotspots" unique_id=534948549 node_paths=PackedStringArray("commands") instance=ExtResource("12_3fp4g")]
+position = Vector2(99, 38)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Bike" parent="Hotspots" unique_id=1229456739 node_paths=PackedStringArray("commands") instance=ExtResource("13_sqhai")]
+position = Vector2(-141, -15)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Boxes" type="Sprite2D" parent="." unique_id=1540186826]
+position = Vector2(-95, -41)
+texture = ExtResource("14_rp1sl")
+flip_h = true
+
+[node name="Boxes2" type="Sprite2D" parent="." unique_id=2125421581]
+position = Vector2(-123, -41)
+texture = ExtResource("14_rp1sl")
+flip_h = true
 
 [node name="RoomDoor" type="Node2D" parent="." unique_id=572583062]
 
@@ -62,7 +296,7 @@ spawn_position = NodePath("SpawnPosition")
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor/RoomDoor1" unique_id=354092811]
-position = Vector2(107, -9)
+position = Vector2(107, -13.5)
 shape = SubResource("RectangleShape2D_m0vp7")
 
 [node name="SpawnPosition" type="Node2D" parent="RoomDoor/RoomDoor1" unique_id=1666923246]
@@ -84,7 +318,7 @@ process_physics_priority = 300
 script = ExtResource("15_xdrw4")
 metadata/_custom_type_script = "uid://btwul30fxa5pu"
 
-[node name="PhantomCamera2D2" type="Node2D" parent="." unique_id=689474399]
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=689474399]
 top_level = true
 position = Vector2(-34, -54)
 script = ExtResource("16_aachq")
@@ -104,4 +338,4 @@ metadata/_custom_type_script = "uid://br03kradwjuk0"
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=27088640]
-polygon = PackedVector2Array(-195, -16, -194, 38, 127, 36, 126, -16, 36, -16, 35, -36, 145, -36, 146, 56, -221, 56, -221, -36, -12, -38, -13, -14)
+polygon = PackedVector2Array(-195, -16, -194, 38, 127, 36, 126, -5, 93, -5, 93, -16, 33, -16, 33, -36, 145, -36, 146, 56, -221, 56, -221, -36, 32, -36, 32, -16)

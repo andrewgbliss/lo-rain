@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cjuwsaphnr28o"]
+
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_dxs3k"]
+[ext_resource type="Texture2D" uid="uid://dn4wcylgyuoi4" path="res://assets/img/rooms/conbini/tire.png" id="2_6xxto"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="3_jq6yl"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="4_sujjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_was78"]
+size = Vector2(20, 11)
+
+[node name="Tire" type="Node2D" unique_id=1429112761 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_dxs3k")
+id = "tire|tires"
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=149270749]
+position = Vector2(0, 9)
+texture = ExtResource("2_6xxto")
+offset = Vector2(0, -10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1664437914]
+position = Vector2(0, -10)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1160327797]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_was78")
+
+[node name="Look" type="Node" parent="." unique_id=353590754 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_jq6yl")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=409422914]
+script = ExtResource("4_sujjo")
+messages = Array[String](["You see a bike by the side of the dumpster."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Take" type="Node" parent="." unique_id=1282910417 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_jq6yl")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Take" unique_id=1907757491]
+script = ExtResource("4_sujjo")
+messages = Array[String](["It's rusted and wet. You can't ride it."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

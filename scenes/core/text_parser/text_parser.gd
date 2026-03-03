@@ -4,6 +4,8 @@ var DontUnderstand: String = "I don't understand what you mean."
 var HotspotNotFound: String = "I don't see that here."
 var NotCloseEnough: String = "You aren't close enough."
 var CantDoAction: String = "You can't do that."
+var DontHaveThat: String = "You don't have that."
+var CantUseThat: String = "You can't use that."
 var AlreadyOpen: String = "It's already open."
 var AlreadyClosed: String = "It's already closed."
 var MultipleHotspots: String = "Which one?"
@@ -12,8 +14,6 @@ var ReallyLongText: String = "This is some text, this is some text and this is s
 var verb: String
 var object: String
 var sentence: PackedStringArray
-
-signal command_processed(did_process: bool)
 
 func process_command(command: String):
 	#	Clean up the command trim edges and lowercase
@@ -24,7 +24,7 @@ func process_command(command: String):
 
 	#	If the command is blank then run the dont understand messages			
 	if command == "":
-		command_processed.emit(false)
+		SignalBus.command_processed.emit(false)
 		return
 		
 	#	Remove any stop words
@@ -36,11 +36,11 @@ func process_command(command: String):
 
 	#	If there is nothing in the sentence then run the dont understand message
 	if sentence.size() == 0:
-		command_processed.emit(false)
+		SignalBus.command_processed.emit(false)
 		return
 	
 	parse_sentence()
-	command_processed.emit(true)
+	SignalBus.command_processed.emit(true)
 	
 func parse_sentence():
 	verb = ""

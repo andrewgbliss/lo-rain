@@ -28,6 +28,7 @@ buses/default_bus_layout="uid://dilhqjpya5p42"
 
 [autoload]
 
+SignalBus="*uid://be0d4n8r2eqqh"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 GameManager="*uid://cj8n3lqocc6ww"
 SceneManager="*res://scenes/core/scene/scene_manager.tscn"

@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://ccwcs5vmctju1"]
 
-[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="1_hf1hk"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_4dtis"]
 [ext_resource type="Texture2D" uid="uid://btttxjt31tj01" path="res://assets/img/rooms/long-road/Grate.png" id="1_vacs8"]
 [ext_resource type="Texture2D" uid="uid://bjdasgrqp5th7" path="res://scenes/game/particles/steam/Steam.png" id="2_b1i5c"]
 [ext_resource type="Script" uid="uid://pwy777opm34y" path="res://scenes/core/areas/heat_area.gd" id="3_hk8vv"]
 [ext_resource type="Texture2D" uid="uid://cr1pa6w4wdkar" path="res://assets/img/masks/LightMask.png" id="4_wniim"]
-[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="5_bp3qw"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="5_bp3qw"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="7_4dtis"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="8_5nc3a"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="8_wyge7"]
 
 [sub_resource type="Curve" id="Curve_e1c6b"]
 _data = [Vector2(0.0294118, 0.0561798), 0.0, 0.0, 0, 0, Vector2(0.985294, 1), 0.0, 0.0, 0, 0]
@@ -29,10 +32,12 @@ radius = 34.0588
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nu5xs"]
 size = Vector2(26, 32)
 
-[node name="Grate" type="Node2D" unique_id=222724936]
-script = ExtResource("1_hf1hk")
-object_name = "grate"
-require_in_range = true
+[node name="Grate" type="Node2D" unique_id=222724936 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_4dtis")
+id = "grate"
+commands = {
+"look": NodePath("Look")
+}
 metadata/_custom_type_script = "uid://ucmcws1e11dk"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1420721108]
@@ -65,3 +70,20 @@ metadata/_custom_type_script = "uid://pwy777opm34y"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeatArea2D" unique_id=1296962846]
 position = Vector2(1, -14)
 shape = SubResource("RectangleShape2D_nu5xs")
+
+[node name="Look" type="Node" parent="." unique_id=68044156 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("7_4dtis")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Look" unique_id=226818163 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("8_5nc3a")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=74919224]
+script = ExtResource("8_wyge7")
+messages = Array[String](["You see a grate. It's a little dirty but warm steam is coming from it. Smells like a sewer."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

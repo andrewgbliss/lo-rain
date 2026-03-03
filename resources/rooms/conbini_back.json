@@ -7,6 +7,65 @@
       "commands": {
         "look": ["You're in the back of the conbini."]
       }
+    },
+    "door": {
+      "commands": {
+        "look": [
+          "You see a door going to the inside. Looks like it requires a keycard to open."
+        ],
+        "open": {
+          "has_inventory": "keycard",
+          "yes": [
+            "You use the keycard to open the door.",
+            "scene_goto(res://scenes/game/rooms/conbini/conbini_storage.tscn, 1, 2, down)"
+          ],
+          "no": ["You need a keycard to open the door."]
+        }
+      }
+    },
+    "frisbee": {
+      "animation_states": {
+        "taken": "none"
+      },
+      "commands": {
+        "look": ["You see a frisbee next to the dumpster."],
+        "take": ["You take the frisbee.", "add_inventory(frisbee)"]
+      }
+    },
+    "box": {
+      "commands": {
+        "look": [
+          "You see a box by the side of the conbini. It's probably empty."
+        ]
+      }
+    },
+    "tire|tires": {
+      "commands": {
+        "look": ["You see some tires by the side of the conbini."],
+        "take": [
+          "You try to pick up the tire and put it on your pants but it's too heavy."
+        ]
+      }
+    },
+    "barrel|barrels": {
+      "commands": {
+        "look": ["You see some barrels by the side of the conbini."],
+        "take": ["There's no way you can carry that."]
+      }
+    },
+    "bike": {
+      "commands": {
+        "look": ["You see a bike by the side of the conbini."],
+        "take": ["It's rusted and wet. You can't ride it."]
+      }
+    },
+    "trash|dumpster|garbage": {
+      "commands": {
+        "look": [
+          "You see a trash can by the side of the conbini. You look inside and see a frisbee.",
+          "Oh that's where the frisbee went. Might as well take it. It might come in handy later."
+        ]
+      }
     }
   }
 }

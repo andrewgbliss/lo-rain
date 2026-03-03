@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://qscq5xrabihu"]
 
 [ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_whu6d"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="2_f624s"]
+[ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_gusl7"]
 [ext_resource type="Texture2D" uid="uid://csyyadahxnol8" path="res://assets/img/rooms/conbini/ToireBgBg.png" id="4_7qity"]
 [ext_resource type="Texture2D" uid="uid://bo62fhnngqmah" path="res://assets/img/rooms/conbini/ToireBg.png" id="4_b1w40"]
-[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="4_dhf11"]
+[ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_h5ddn"]
 [ext_resource type="Texture2D" uid="uid://cwnxkcy2tojd5" path="res://assets/img/rooms/conbini/Toire.png" id="4_tve4y"]
-[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="5_eryup"]
+[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_bn854"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="5_eryup"]
 [ext_resource type="Texture2D" uid="uid://rykwx4g2p3oa" path="res://assets/img/rooms/conbini/ToireStorageDoor.png" id="9_7qity"]
-[ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="9_nywig"]
+[ext_resource type="Script" uid="uid://cwa2mlfejng6n" path="res://scenes/core/hotspot/hotspot_resolver.gd" id="10_bn854"]
 [ext_resource type="SpriteFrames" uid="uid://qyhu44xh7iwu" path="res://assets/img/environment/light-explode.res" id="11_1ylio"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="11_8veaw"]
 [ext_resource type="Texture2D" uid="uid://c8k8b3oevmrpi" path="res://assets/img/rooms/conbini/MensDoor.png" id="11_lvgig"]
-[ext_resource type="Script" uid="uid://djpux5twcmwuj" path="res://scenes/core/interaction/hotspot/hotspot_animation_trigger.gd" id="12_hkrj1"]
-[ext_resource type="Texture2D" uid="uid://cfdnc1a3wgib0" path="res://assets/img/rooms/conbini/button-code-paper.png" id="12_vsuqp"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="12_eryup"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="15_8veaw"]
+[ext_resource type="Script" uid="uid://bnp8uwvev60jm" path="res://scenes/core/action_tree/leaves/action_has_inventory.gd" id="16_vaek0"]
+[ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="17_la174"]
+[ext_resource type="Script" uid="uid://cmamihrcrkifw" path="res://scenes/core/action_tree/leaves/action_scene_goto.gd" id="18_8itdi"]
+[ext_resource type="PackedScene" uid="uid://4jrse1t2nrt5" path="res://scenes/game/hotspots/items/keycard.tscn" id="19_xm7ms"]
+[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="22_vaek0"]
+[ext_resource type="Script" uid="uid://c7u0pxs5cdyn1" path="res://scenes/core/action_tree/leaves/action_has_state.gd" id="23_8itdi"]
+[ext_resource type="Script" uid="uid://biskw5uli3lc2" path="res://scenes/core/action_tree/leaves/action_play_animation.gd" id="23_la174"]
+[ext_resource type="Script" uid="uid://d54o2utuv3ng" path="res://scenes/core/action_tree/leaves/action_has_hotspot_state.gd" id="24_vymwn"]
+[ext_resource type="Script" uid="uid://bdhxkagor6i6b" path="res://scenes/core/action_tree/leaves/action_set_hotspot_state.gd" id="25_vymwn"]
 [ext_resource type="Texture2D" uid="uid://btc5qb75hrohs" path="res://assets/img/rooms/conbini/Window.png" id="31_47nih"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="35_qwl5s"]
 [ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="36_kjnd8"]
@@ -176,69 +189,6 @@ size = Vector2(23, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iei60"]
 size = Vector2(49, 29)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4u64"]
-size = Vector2(29, 28)
-
-[sub_resource type="Animation" id="Animation_55ejm"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:process_mode")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_nywig"]
-resource_name = "taken_completed"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:process_mode")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_55ejm"]
-_data = {
-&"RESET": SubResource("Animation_55ejm"),
-&"taken_completed": SubResource("Animation_nywig")
-}
-
 [sub_resource type="Animation" id="Animation_ps4ya"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -262,45 +212,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_x4dm8"]
-resource_name = "open_completed"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MensDoor:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MensDoor:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-15, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["broken_bathroom"],
-"method": &"run_action"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_vsuqp"]
@@ -342,30 +253,12 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["open", "completed"],
-"method": &"set_animation_state"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jsi6j"]
 _data = {
 &"RESET": SubResource("Animation_ps4ya"),
-&"open_completed": SubResource("Animation_x4dm8"),
-&"open_start": SubResource("Animation_vsuqp")
+&"open": SubResource("Animation_vsuqp")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hkrj1"]
-radius = 40.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nywig"]
 radius = 23.086792
@@ -376,10 +269,32 @@ size = Vector2(37, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxxr3"]
 size = Vector2(37, 14)
 
-[node name="ConbiniToire" type="Node2D" unique_id=662316878 node_paths=PackedStringArray("camera")]
+[node name="ConbiniToire" type="Node2D" unique_id=662316878]
 script = ExtResource("1_whu6d")
 room_name = "conbini_toire"
-camera = NodePath("Camera2D")
+
+[node name="ActionTrees" type="Node" parent="." unique_id=1084433167]
+
+[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=922926056 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_f624s")
+root_leaf = NodePath("ActionSpawnPlayer")
+run_after_ready = true
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1527708661 node_paths=PackedStringArray("room", "next_leaf")]
+script = ExtResource("3_gusl7")
+room = NodePath("../../..")
+next_leaf = NodePath("../ActionCameraFocus")
+
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=2045481332 node_paths=PackedStringArray("camera", "next_leaf")]
+script = ExtResource("4_h5ddn")
+entity_name = "player"
+camera = NodePath("../../../Camera2D")
+next_leaf = NodePath("../ActionCommandPrompt")
+
+[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=987161709]
+script = ExtResource("5_bn854")
+active = true
 
 [node name="ToireBg" type="Sprite2D" parent="." unique_id=1504179251]
 z_index = -15
@@ -401,10 +316,34 @@ texture = ExtResource("31_47nih")
 
 [node name="Hotspots" type="Node2D" parent="." unique_id=171570772]
 
-[node name="StorageDoor" type="Node2D" parent="Hotspots" unique_id=1918567173]
-script = ExtResource("4_dhf11")
-object_name = "door"
-require_in_range = true
+[node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=1903231732]
+script = ExtResource("10_bn854")
+metadata/_custom_type_script = "uid://cwa2mlfejng6n"
+
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=381655953 node_paths=PackedStringArray("commands")]
+script = ExtResource("11_8veaw")
+id = "room"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=892526464 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_f624s")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=1139868992]
+script = ExtResource("12_eryup")
+messages = Array[String](["You're at the back of the conbini.", "There is a bathroom and a door leading to the outside."])
+
+[node name="StorageDoor" type="Node2D" parent="Hotspots" unique_id=1918567173 node_paths=PackedStringArray("commands")]
+script = ExtResource("11_8veaw")
+id = "door"
+commands = {
+"look": NodePath("Look"),
+"open": NodePath("Open")
+}
 
 [node name="ToireStorageDoor" type="Sprite2D" parent="Hotspots/StorageDoor" unique_id=1147713438]
 z_index = -10
@@ -430,44 +369,67 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 position = Vector2(-54.5, -11.5)
 shape = SubResource("RectangleShape2D_iei60")
 
-[node name="Keycard" type="Node2D" parent="Hotspots" unique_id=1559221966 node_paths=PackedStringArray("animation_player")]
+[node name="Look" type="Node" parent="Hotspots/StorageDoor" unique_id=2119944095 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_f624s")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/StorageDoor/Look" unique_id=138296972]
+script = ExtResource("12_eryup")
+messages = Array[String](["You see a door going to the outside. Looks like it requires a keycard to open."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Open" type="Node" parent="Hotspots/StorageDoor" unique_id=707922762 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_f624s")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=29437405 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("15_8veaw")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionHasInventory")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionHasInventory" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=1789115618 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("16_vaek0")
+item = ExtResource("17_la174")
+action_leaf_true = NodePath("../ActionDialog")
+action_leaf_false = NodePath("../ActionDialog2")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=184133712 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_eryup")
+messages = Array[String](["You use the keycard to open the door."])
+next_leaf = NodePath("../ActionSceneGoto")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=922577211]
+script = ExtResource("12_eryup")
+messages = Array[String](["You need a keycard to open the door."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionSceneGoto" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=1650048031]
+script = ExtResource("18_8itdi")
+scene_path = "res://scenes/game/rooms/conbini/conbini_storage.tscn"
+prev_door_id = "2"
+current_door_id = "1"
+movement_direction = 1
+metadata/_custom_type_script = "uid://cmamihrcrkifw"
+
+[node name="Keycard" parent="Hotspots" unique_id=775142946 node_paths=PackedStringArray("commands") instance=ExtResource("19_xm7ms")]
 position = Vector2(-4, -13)
-script = ExtResource("4_dhf11")
-object_name = "keycard"
-require_in_range = true
-item = ExtResource("9_nywig")
-animation_states = Dictionary[String, int]({
-"taken": 0
-})
-animation_player = NodePath("AnimationPlayer")
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
 
-[node name="ButtonCodePaper" type="Sprite2D" parent="Hotspots/Keycard" unique_id=495778944]
-z_index = -11
-position = Vector2(-12, 2)
-texture = ExtResource("12_vsuqp")
-
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/Keycard" unique_id=2054343028]
-collision_layer = 32
-script = ExtResource("5_eryup")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Keycard/HotspotInRange" unique_id=266668178]
-position = Vector2(-13.5, 0)
-shape = SubResource("RectangleShape2D_k4u64")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/Keycard" unique_id=1252041720]
-libraries/ = SubResource("AnimationLibrary_55ejm")
-
-[node name="MensDoor" type="Node2D" parent="Hotspots" unique_id=2066744734 node_paths=PackedStringArray("animation_player")]
+[node name="MensDoor" type="Node2D" parent="Hotspots" unique_id=2066744734 node_paths=PackedStringArray("commands")]
 position = Vector2(-4, -13)
-script = ExtResource("4_dhf11")
-object_name = "bathroom|restroom"
-require_in_range = true
-animation_states = Dictionary[String, int]({
-"open": 0
-})
-animation_player = NodePath("AnimationPlayer")
-play_state_on_load = false
+script = ExtResource("11_8veaw")
+id = "bathroom|restroom"
+commands = {
+"look": NodePath("Look")
+}
 
 [node name="MensDoor" type="Sprite2D" parent="Hotspots/MensDoor" unique_id=922238188]
 z_index = -11
@@ -476,28 +438,66 @@ texture = ExtResource("11_lvgig")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/MensDoor" unique_id=183225430]
 libraries/ = SubResource("AnimationLibrary_jsi6j")
 
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/MensDoor" unique_id=838432058]
-script = ExtResource("5_eryup")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/MensDoor/HotspotInRange" unique_id=882858796]
-position = Vector2(-13.5, 4)
-shape = SubResource("CircleShape2D_hkrj1")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hotspots/MensDoor" unique_id=1275300843]
 position = Vector2(-13, -10)
 sprite_frames = ExtResource("11_1ylio")
 frame = 5
 frame_progress = 1.0
 
-[node name="HotspotAnimationTrigger" type="Area2D" parent="Hotspots/MensDoor" unique_id=1495707340]
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspots/MensDoor" unique_id=1495707340 node_paths=PackedStringArray("action_tree_enter")]
 position = Vector2(-14, 0)
-script = ExtResource("12_hkrj1")
-animation_name_enter = "open"
+script = ExtResource("22_vaek0")
+action_tree_enter = NodePath("../OpenBayDoors")
+enter_times = 1
 metadata/_custom_type_script = "uid://djpux5twcmwuj"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/MensDoor/HotspotAnimationTrigger" unique_id=529911924]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/MensDoor/HotspotActionTrigger" unique_id=529911924]
 shape = SubResource("CircleShape2D_nywig")
+
+[node name="Look" type="Node" parent="Hotspots/MensDoor" unique_id=1788942645 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_f624s")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/MensDoor/Look" unique_id=1844376966]
+script = ExtResource("12_eryup")
+messages = Array[String](["You see a bathroom door. Might need to visit this later after eating at five hives with your ex-girlfriend."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="OpenBayDoors" type="Node" parent="Hotspots/MensDoor" unique_id=2082076394 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_f624s")
+root_leaf = NodePath("ActionHasState")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionHasState" type="Node" parent="Hotspots/MensDoor/OpenBayDoors" unique_id=1696744330 node_paths=PackedStringArray("action_leaf_true")]
+script = ExtResource("23_8itdi")
+state_name = "did_pay_for_water"
+value = true
+action_leaf_true = NodePath("../ActionHasHotspotState")
+
+[node name="ActionHasHotspotState" type="Node" parent="Hotspots/MensDoor/OpenBayDoors" unique_id=41026927 node_paths=PackedStringArray("hotspot", "action_leaf_true")]
+script = ExtResource("24_vymwn")
+hotspot = NodePath("../..")
+state = "broken"
+action_leaf_true = NodePath("../ActionPlayAnimation")
+
+[node name="ActionPlayAnimation" type="Node" parent="Hotspots/MensDoor/OpenBayDoors" unique_id=2065533198 node_paths=PackedStringArray("animation_player", "next_leaf")]
+script = ExtResource("23_la174")
+animation_name = "open"
+animation_player = NodePath("../../AnimationPlayer")
+next_leaf = NodePath("../ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/MensDoor/OpenBayDoors" unique_id=360503123 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_eryup")
+messages = Array[String](["The bathroom door had malfunctioned.", "You see a keycard on the ground."])
+next_leaf = NodePath("../ActionSetHotspotState")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionSetHotspotState" type="Node" parent="Hotspots/MensDoor/OpenBayDoors" unique_id=782277783 node_paths=PackedStringArray("hotspot")]
+script = ExtResource("25_vymwn")
+hotspot = NodePath("../..")
+state = "broken"
+value = true
 
 [node name="RoomDoors" type="Node2D" parent="." unique_id=293940503]
 

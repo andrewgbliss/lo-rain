@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://uehfg7paehek"]
+
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="1_kkg1s"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="2_umlmf"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="3_rqwck"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="4_70u1o"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="5_pkws2"]
+[ext_resource type="Script" uid="uid://deqpnph8yr2sj" path="res://scenes/core/action_tree/leaves/action_add_inventory.gd" id="6_ql1lc"]
+[ext_resource type="Resource" uid="uid://bj0s5neyw87jc" path="res://resources/items/frisbee.tres" id="7_kkg1s"]
+[ext_resource type="Script" uid="uid://b66mdms6w12qu" path="res://scenes/core/action_tree/leaves/action_enable_hotspot.gd" id="8_2qkgd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5q3a"]
+radius = 31.06445
+
+[node name="Frisbee" type="Node2D" unique_id=1220957817 node_paths=PackedStringArray("commands")]
+script = ExtResource("1_kkg1s")
+id = "frisbee"
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="HotspotInRange" type="Area2D" parent="." unique_id=559454130]
+script = ExtResource("2_umlmf")
+metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotInRange" unique_id=685844692]
+shape = SubResource("CircleShape2D_w5q3a")
+
+[node name="Look" type="Node" parent="." unique_id=464686233 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_rqwck")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Look" unique_id=1939665634 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("4_70u1o")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Look" unique_id=1676129796]
+script = ExtResource("5_pkws2")
+messages = Array[String](["You see a frisbee in the dumpster."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Take" type="Node" parent="." unique_id=1926475795 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("3_rqwck")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Take" unique_id=1971149297 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("4_70u1o")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Take" unique_id=467986340 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("5_pkws2")
+messages = Array[String](["You take the frisbee."])
+next_leaf = NodePath("../ActionAddInventory")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionAddInventory" type="Node" parent="Take" unique_id=2140590046 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_ql1lc")
+item = ExtResource("7_kkg1s")
+next_leaf = NodePath("../ActionEnableHotspot")
+metadata/_custom_type_script = "uid://deqpnph8yr2sj"
+
+[node name="ActionEnableHotspot" type="Node" parent="Take" unique_id=1870837731 node_paths=PackedStringArray("hotspot")]
+script = ExtResource("8_2qkgd")
+hotspot = NodePath("../..")
+enabled = false
+metadata/_custom_type_script = "uid://b66mdms6w12qu"

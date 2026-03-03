@@ -3,24 +3,49 @@
 [ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_ig2tu"]
 [ext_resource type="PackedScene" uid="uid://nkgfsyjm7ie7" path="res://scenes/game/rooms/biome/biome.tscn" id="2_e8inl"]
 [ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="3_iyflf"]
+[ext_resource type="Script" uid="uid://d3i0sakfll1e6" path="res://scenes/core/action_tree/leaves/action_has_quest_completed.gd" id="3_kcbv6"]
+[ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_teepp"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="4_0ryq7"]
+[ext_resource type="Script" uid="uid://dorg3rjrncsup" path="res://scenes/core/action_tree/leaves/action_run_action_tree.gd" id="4_8i2v8"]
+[ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_kcbv6"]
+[ext_resource type="Script" uid="uid://blw6hn8bnrjbj" path="res://scenes/core/action_tree/leaves/action_quest_start.gd" id="4_m3cwa"]
+[ext_resource type="Script" uid="uid://corso48wuveen" path="res://scenes/core/action_tree/leaves/action_quest_complete_checkpoint.gd" id="5_c2wk8"]
 [ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="5_gw5qv"]
-[ext_resource type="PackedScene" uid="uid://8yqfng7xpcog" path="res://scenes/game/hotspots/dollar_bill.tscn" id="7_iyflf"]
+[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_wn1ym"]
+[ext_resource type="Script" uid="uid://dc0dykc5abfwx" path="res://scenes/core/action_tree/leaves/action_quest_complete.gd" id="6_c2wk8"]
+[ext_resource type="PackedScene" uid="uid://8yqfng7xpcog" path="res://scenes/game/hotspots/items/dollar_bill.tscn" id="7_iyflf"]
+[ext_resource type="Script" uid="uid://b0osu2rtunsnc" path="res://scenes/core/action_tree/leaves/action_spawn_entity.gd" id="10_0cuhu"]
 [ext_resource type="TileSet" uid="uid://b4r8u5pw61oks" path="res://scenes/game/tilesets/road.tres" id="10_lksse"]
+[ext_resource type="Script" uid="uid://cs2f4mmgvo7ve" path="res://scenes/core/action_tree/leaves/action_movement_state.gd" id="11_4pa1n"]
 [ext_resource type="PackedScene" uid="uid://hr1pmj7locu0" path="res://scenes/game/environment/right_railing.tscn" id="12_jr44l"]
+[ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="12_ne7q7"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="12_wtmu4"]
 [ext_resource type="PackedScene" uid="uid://b8b0n76kkgv8f" path="res://scenes/game/environment/left_railing.tscn" id="13_iwu02"]
 [ext_resource type="PackedScene" uid="uid://3toigwhvybu6" path="res://scenes/game/hotspots/big_metal_box.tscn" id="13_tvtbn"]
+[ext_resource type="Script" uid="uid://m8o8dlpqcoet" path="res://scenes/core/action_tree/leaves/action_quest_change.gd" id="13_usuj6"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="13_wtmu4"]
+[ext_resource type="Script" uid="uid://cjxnsp3qrmkkd" path="res://scenes/core/action_tree/leaves/action_quest_status.gd" id="14_1062q"]
 [ext_resource type="PackedScene" uid="uid://ce6ku3fldaqx0" path="res://scenes/game/hotspots/bus_stop.tscn" id="14_gofan"]
 [ext_resource type="PackedScene" uid="uid://dace1v6hxewpc" path="res://scenes/core/ui/dialog/dialog_ui.tscn" id="14_tgdiy"]
+[ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="16_1062q"]
 [ext_resource type="PackedScene" uid="uid://ca6prygih2cy4" path="res://scenes/game/hotspots/bench.tscn" id="16_gofan"]
-[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="17_puwcg"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="17_puwcg"]
 [ext_resource type="PackedScene" uid="uid://ccwcs5vmctju1" path="res://scenes/game/hotspots/grate.tscn" id="17_tvtbn"]
 [ext_resource type="PackedScene" uid="uid://ctk6yi8adass6" path="res://scenes/game/hotspots/trash.tscn" id="18_jr44l"]
-[ext_resource type="Script" uid="uid://c8h4p6rreiyix" path="res://scenes/core/interaction/hotspot/hotspot_death_trigger.gd" id="19_0ryq7"]
 [ext_resource type="PackedScene" uid="uid://bqrl44pfo72sv" path="res://scenes/game/hotspots/lamp.tscn" id="19_iwu02"]
 [ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="23_8rclq"]
 [ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="25_bnjec"]
 [ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="26_j5au5"]
+[ext_resource type="Script" uid="uid://cwa2mlfejng6n" path="res://scenes/core/hotspot/hotspot_resolver.gd" id="26_o42ux"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="34_qoymw"]
+[ext_resource type="Script" uid="uid://d54o2utuv3ng" path="res://scenes/core/action_tree/leaves/action_has_hotspot_state.gd" id="35_1bmwo"]
+[ext_resource type="Script" uid="uid://bdhxkagor6i6b" path="res://scenes/core/action_tree/leaves/action_set_hotspot_state.gd" id="36_k6byg"]
+[ext_resource type="Script" uid="uid://b66mdms6w12qu" path="res://scenes/core/action_tree/leaves/action_enable_hotspot.gd" id="37_qoymw"]
+[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="37_uxib5"]
+[ext_resource type="Script" uid="uid://cqjbjyrorfhxx" path="res://scenes/core/action_tree/leaves/action_set_idle.gd" id="38_uxib5"]
+[ext_resource type="Script" uid="uid://cekjbadpyoy6a" path="res://scenes/core/action_tree/leaves/action_set_z_index.gd" id="39_utdyq"]
+[ext_resource type="Script" uid="uid://dms3vjyyp4e7d" path="res://scenes/core/action_tree/leaves/action_change_collision_mask.gd" id="40_r4xyu"]
+[ext_resource type="Script" uid="uid://bwuxkjiinyv12" path="res://scenes/core/action_tree/leaves/action_change_gravity.gd" id="41_qoymw"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="42_bot4p"]
 [ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="42_krqi5"]
 
@@ -33,16 +58,226 @@ size = Vector2(61, 79)
 [sub_resource type="Resource" id="Resource_8wf4g"]
 script = ExtResource("26_j5au5")
 
-[node name="LongRoad" type="Node2D" unique_id=194193865 node_paths=PackedStringArray("spawn_positions", "phantom_camera", "camera")]
+[node name="LongRoad" type="Node2D" unique_id=194193865]
 y_sort_enabled = true
 script = ExtResource("1_ig2tu")
 room_name = "long_road"
-spawn_positions = {
-"car": NodePath("Spawners/CarStart"),
-"player": NodePath("Spawners/PlayerSpawn")
-}
-phantom_camera = NodePath("PhantomCamera2D")
-camera = NodePath("Camera2D")
+
+[node name="ActionTrees" type="Node" parent="." unique_id=340107528]
+
+[node name="Init" type="Node" parent="ActionTrees" unique_id=362038880 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionHasQuestCompleted")
+run_after_ready = true
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionHasQuestCompleted" type="Node" parent="ActionTrees/Init" unique_id=644747898 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("3_kcbv6")
+quest_id = "first_loaded"
+action_leaf_true = NodePath("../ActionRunSpawnPlayer")
+action_leaf_false = NodePath("../ActionRunFirstLoaded")
+
+[node name="ActionRunFirstLoaded" type="Node" parent="ActionTrees/Init" unique_id=1873160514 node_paths=PackedStringArray("action_tree")]
+script = ExtResource("4_8i2v8")
+action_tree = NodePath("../../FirstLoaded")
+
+[node name="ActionRunSpawnPlayer" type="Node" parent="ActionTrees/Init" unique_id=1213382207 node_paths=PackedStringArray("action_tree")]
+script = ExtResource("4_8i2v8")
+action_tree = NodePath("../../SpawnPlayer")
+
+[node name="FirstLoaded" type="Node" parent="ActionTrees" unique_id=1950480338 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionQuestStart")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionQuestStart" type="Node" parent="ActionTrees/FirstLoaded" unique_id=930400934 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("4_m3cwa")
+quest_id = "first_loaded"
+next_leaf = NodePath("../ActionQuestCompleteCheckpoint")
+
+[node name="ActionQuestCompleteCheckpoint" type="Node" parent="ActionTrees/FirstLoaded" unique_id=222519842 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("5_c2wk8")
+quest_id = "first_loaded"
+checkpoint_id = "first_completed"
+next_leaf = NodePath("../ActionQuestComplete")
+
+[node name="ActionQuestComplete" type="Node" parent="ActionTrees/FirstLoaded" unique_id=2014550673 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_c2wk8")
+quest_id = "first_loaded"
+next_leaf = NodePath("../ActionHasQuestCompleted")
+
+[node name="ActionHasQuestCompleted" type="Node" parent="ActionTrees/FirstLoaded" unique_id=2136165494 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("3_kcbv6")
+quest_id = "getting_dumped"
+action_leaf_true = NodePath("../../Init/ActionRunSpawnPlayer")
+action_leaf_false = NodePath("../ActionRunGettingDumped")
+metadata/_custom_type_script = "uid://d3i0sakfll1e6"
+
+[node name="ActionRunGettingDumped" type="Node" parent="ActionTrees/FirstLoaded" unique_id=1167139972 node_paths=PackedStringArray("action_tree")]
+script = ExtResource("4_8i2v8")
+action_tree = NodePath("../../GettingDumped")
+
+[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=1625345370 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionSpawnPlayer")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=337309194 node_paths=PackedStringArray("room", "default_spawn_position", "next_leaf")]
+script = ExtResource("3_teepp")
+room = NodePath("../../..")
+default_spawn_position = NodePath("../../../Spawners/PlayerSpawn")
+next_leaf = NodePath("../ActionCameraFocus")
+
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=575170536 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
+script = ExtResource("4_kcbv6")
+entity_name = "player"
+camera = NodePath("../../../Camera2D")
+phantom_camera = NodePath("../../../PhantomCamera2D")
+next_leaf = NodePath("../ActionCommandPrompt")
+
+[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1799214738]
+script = ExtResource("5_wn1ym")
+active = true
+
+[node name="GettingDumped" type="Node" parent="ActionTrees" unique_id=1750778023 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionSpawnEntity")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSpawnEntity" type="Node" parent="ActionTrees/GettingDumped" unique_id=480331167 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
+script = ExtResource("10_0cuhu")
+room = NodePath("../../..")
+spawn_position = NodePath("../../../Spawners/CarStart")
+entity_name = "car"
+next_leaf = NodePath("../ActionCameraFocus")
+
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/GettingDumped" unique_id=694037452 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
+script = ExtResource("4_kcbv6")
+entity_name = "car"
+camera = NodePath("../../../Camera2D")
+phantom_camera = NodePath("../../../PhantomCamera2D")
+next_leaf = NodePath("../ActionMovementState")
+
+[node name="ActionMovementState" type="Node" parent="ActionTrees/GettingDumped" unique_id=1382302153 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("11_4pa1n")
+entity_name = "car"
+velocity_x = -1.0
+next_leaf = NodePath("../ActionWait")
+
+[node name="ActionWait" type="Node" parent="ActionTrees/GettingDumped" unique_id=651984967 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_ne7q7")
+duration = 4.5
+next_leaf = NodePath("../ActionMovementState2")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionMovementState2" type="Node" parent="ActionTrees/GettingDumped" unique_id=1113805696 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("11_4pa1n")
+entity_name = "car"
+next_leaf = NodePath("../ActionQuestChange")
+metadata/_custom_type_script = "uid://cs2f4mmgvo7ve"
+
+[node name="ActionQuestChange" type="Node" parent="ActionTrees/GettingDumped" unique_id=147034739 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("13_usuj6")
+quest_id = "getting_dumped"
+next_leaf = NodePath("../ActionQuestStatus")
+
+[node name="ActionQuestStatus" type="Node" parent="ActionTrees/GettingDumped" unique_id=764764338 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_1062q")
+quest_id = "getting_dumped"
+status_name = "available"
+next_leaf = NodePath("../ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="ActionTrees/GettingDumped" unique_id=851792472 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["Get out of my car!", "All you ever do is talk about Face Quest 2!", "We're done!"])
+next_leaf = NodePath("../ActionWait2")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionWait2" type="Node" parent="ActionTrees/GettingDumped" unique_id=1646494056 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_ne7q7")
+duration = 3.0
+next_leaf = NodePath("../ActionQuestStatus2")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionQuestStatus2" type="Node" parent="ActionTrees/GettingDumped" unique_id=2014377890 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_1062q")
+quest_id = "getting_dumped"
+status_name = "in_progress"
+next_leaf = NodePath("../ActionWait3")
+
+[node name="ActionWait3" type="Node" parent="ActionTrees/GettingDumped" unique_id=119701553 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_ne7q7")
+duration = 3.0
+next_leaf = NodePath("../ActionSpawnPlayer")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/GettingDumped" unique_id=1299722787 node_paths=PackedStringArray("room", "default_spawn_position", "next_leaf")]
+script = ExtResource("3_teepp")
+room = NodePath("../../..")
+default_spawn_position = NodePath("../../../Spawners/PlayerSpawn")
+next_leaf = NodePath("../ActionParalyze")
+
+[node name="ActionParalyze" type="Node" parent="ActionTrees/GettingDumped" unique_id=57799690 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("16_1062q")
+entity_name = "player"
+value = true
+next_leaf = NodePath("../ActionWait4")
+
+[node name="ActionWait4" type="Node" parent="ActionTrees/GettingDumped" unique_id=1482983719 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_ne7q7")
+duration = 3.0
+next_leaf = NodePath("../ActionMovementState3")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionMovementState3" type="Node" parent="ActionTrees/GettingDumped" unique_id=94334559 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("11_4pa1n")
+entity_name = "car"
+velocity_x = -1.0
+next_leaf = NodePath("../ActionWait5")
+
+[node name="ActionWait5" type="Node" parent="ActionTrees/GettingDumped" unique_id=270272329 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_ne7q7")
+duration = 3.0
+next_leaf = NodePath("../ActionQuestComplete")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionQuestComplete" type="Node" parent="ActionTrees/GettingDumped" unique_id=1724155508 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_c2wk8")
+quest_id = "getting_dumped"
+next_leaf = NodePath("../ActionWait6")
+
+[node name="ActionWait6" type="Node" parent="ActionTrees/GettingDumped" unique_id=1556725662 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_ne7q7")
+duration = 3.0
+next_leaf = NodePath("../ActionDialog2")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionDialog2" type="Node" parent="ActionTrees/GettingDumped" unique_id=2108163944 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["Your girlfriend has broken up with you out in the middle of nowhere. Better get somewhere warm fast!"])
+next_leaf = NodePath("../ActionQuestStart")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionQuestStart" type="Node" parent="ActionTrees/GettingDumped" unique_id=947818754 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("4_m3cwa")
+quest_id = "someplace_warm"
+next_leaf = NodePath("../ActionParalyze2")
+
+[node name="ActionParalyze2" type="Node" parent="ActionTrees/GettingDumped" unique_id=1773379420 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("16_1062q")
+entity_name = "player"
+next_leaf = NodePath("../ActionCameraFocus2")
+
+[node name="ActionCameraFocus2" type="Node" parent="ActionTrees/GettingDumped" unique_id=276974963 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
+script = ExtResource("4_kcbv6")
+entity_name = "player"
+camera = NodePath("../../../Camera2D")
+phantom_camera = NodePath("../../../PhantomCamera2D")
+next_leaf = NodePath("../ActionCommandPrompt")
+
+[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/GettingDumped" unique_id=1165033562]
+script = ExtResource("5_wn1ym")
+active = true
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_e8inl")]
 
@@ -125,67 +360,298 @@ metadata/_custom_type_script = "uid://qia23iggn1qa"
 [node name="Hotspots" type="Node2D" parent="." unique_id=218901021]
 y_sort_enabled = true
 
-[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=1470040368]
-script = ExtResource("17_puwcg")
-object_name = "clouds"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+[node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=129983979]
+script = ExtResource("26_o42ux")
+metadata/_custom_type_script = "uid://cwa2mlfejng6n"
 
-[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=448129198]
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=473543354 node_paths=PackedStringArray("commands")]
 script = ExtResource("17_puwcg")
-object_name = "mountains"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+id = "room"
+commands = {
+"help": NodePath("Help"),
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="Rain" type="Node2D" parent="Hotspots" unique_id=1579986088]
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=27484645 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=908354383]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["It's almost midnight and you are very cold.", "Better find a warm place before you freeze to death!"])
+
+[node name="Help" type="Node" parent="Hotspots/Room" unique_id=1648800463 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Help" unique_id=1247098511]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["Welcome to Lo Rain! An old school text parser adventure game.", "You can type commands in like: look at rain, take dollar, and fuck with light.", "Type help in each area to get hints."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=218857958 node_paths=PackedStringArray("commands")]
 script = ExtResource("17_puwcg")
-object_name = "rain"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+id = "clouds"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="Road" type="Node2D" parent="Hotspots" unique_id=1592929770]
+[node name="Look" type="Node" parent="Hotspots/Clouds" unique_id=1071419539 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Clouds/Look" unique_id=1041200553]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["You see wonderfully crafted pixel art clouds. This must be a retro style game."])
+
+[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=745290509 node_paths=PackedStringArray("commands")]
 script = ExtResource("17_puwcg")
-object_name = "road|street"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+id = "mountains"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="Sky" type="Node2D" parent="Hotspots" unique_id=426665521]
+[node name="Look" type="Node" parent="Hotspots/Mountains" unique_id=103432181 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Mountains/Look" unique_id=536249926]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["You remember something about why you're here as you look at the mountains but then quickly forget."])
+
+[node name="Rain" type="Node2D" parent="Hotspots" unique_id=1467269405 node_paths=PackedStringArray("commands")]
 script = ExtResource("17_puwcg")
-object_name = "sky"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+id = "rain"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="Lamp" parent="Hotspots" unique_id=1925040909 instance=ExtResource("19_iwu02")]
+[node name="Look" type="Node" parent="Hotspots/Rain" unique_id=1779859084 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Rain/Look" unique_id=972073657]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["The rain is coming down hard. You should find shelter."])
+
+[node name="Road" type="Node2D" parent="Hotspots" unique_id=67650220 node_paths=PackedStringArray("commands")]
+script = ExtResource("17_puwcg")
+id = "road|street"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Road" unique_id=183537972 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Road/Look" unique_id=650696314]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["You see a road leading back to the city. It's a long way to walk."])
+
+[node name="Sky" type="Node2D" parent="Hotspots" unique_id=463672358 node_paths=PackedStringArray("commands")]
+script = ExtResource("17_puwcg")
+id = "sky"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Sky" unique_id=1920365016 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Sky/Look" unique_id=864281295]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["The sky is a bright #55ffff. What a nice clear day to have a picnic."])
+
+[node name="Railing" type="Node2D" parent="Hotspots" unique_id=1825014374 node_paths=PackedStringArray("commands")]
+script = ExtResource("17_puwcg")
+id = "railing"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Railing" unique_id=1607183707 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Railing/Look" unique_id=774252709]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["There is a railing along the sidewalk. It looks cold and wet. It's there so you don't fall off the cliff."])
+
+[node name="Lamp" parent="Hotspots" unique_id=1925040909 node_paths=PackedStringArray("commands") instance=ExtResource("19_iwu02")]
 position = Vector2(-101, -15)
+commands = {
+"fuckwith": NodePath("FuckWith"),
+"look": NodePath("Look")
+}
 
-[node name="DollarBill" parent="Hotspots" unique_id=1772556199 instance=ExtResource("7_iyflf")]
+[node name="DollarBill" parent="Hotspots" unique_id=1772556199 node_paths=PackedStringArray("commands") instance=ExtResource("7_iyflf")]
 position = Vector2(19, -20)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+disabled = true
 
-[node name="Bench" parent="Hotspots" unique_id=211481027 instance=ExtResource("16_gofan")]
+[node name="Bench" parent="Hotspots" unique_id=211481027 node_paths=PackedStringArray("commands") instance=ExtResource("16_gofan")]
 position = Vector2(-38, -16)
+commands = {
+"look": NodePath("Look")
+}
 
-[node name="Grate" parent="Hotspots" unique_id=1864570611 instance=ExtResource("17_tvtbn")]
+[node name="Grate" parent="Hotspots" unique_id=1864570611 node_paths=PackedStringArray("commands") instance=ExtResource("17_tvtbn")]
 position = Vector2(285, 5)
+commands = {
+"look": NodePath("Look")
+}
 
-[node name="Trash" parent="Hotspots" unique_id=328091173 instance=ExtResource("18_jr44l")]
+[node name="Trash" parent="Hotspots" unique_id=328091173 node_paths=PackedStringArray("commands") instance=ExtResource("18_jr44l")]
 position = Vector2(25, -17)
+commands = {
+"fuckwith": NodePath("FuckWith"),
+"look": NodePath("Look")
+}
 
-[node name="BusStop" parent="Hotspots" unique_id=841794085 instance=ExtResource("14_gofan")]
+[node name="FuckWith" type="Node" parent="Hotspots/Trash" unique_id=640144890 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=888470677 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("34_qoymw")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionHasHotspotState")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionHasHotspotState" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=621137780 node_paths=PackedStringArray("hotspot", "action_leaf_true", "action_leaf_false")]
+script = ExtResource("35_1bmwo")
+hotspot = NodePath("../..")
+state = "fucked_with"
+value = true
+action_leaf_true = NodePath("../ActionDialog2")
+action_leaf_false = NodePath("../ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=471289703 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["You fuck with the trash.", "A dollar bill falls to the ground."])
+next_leaf = NodePath("../ActionSetHotspotState")
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=4829686]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["You already fucked with it."])
+
+[node name="ActionSetHotspotState" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=607137887 node_paths=PackedStringArray("hotspot", "next_leaf")]
+script = ExtResource("36_k6byg")
+hotspot = NodePath("../..")
+state = "fucked_with"
+value = true
+next_leaf = NodePath("../ActionEnableHotspot")
+
+[node name="ActionEnableHotspot" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=517612469 node_paths=PackedStringArray("hotspot")]
+script = ExtResource("37_qoymw")
+hotspot = NodePath("../../../DollarBill")
+metadata/_custom_type_script = "uid://b66mdms6w12qu"
+
+[node name="BusStop" parent="Hotspots" unique_id=841794085 node_paths=PackedStringArray("commands") instance=ExtResource("14_gofan")]
 position = Vector2(188, -13)
+id = "bus stop|sign"
+commands = {
+"look": NodePath("Look")
+}
 
-[node name="Box" parent="Hotspots" unique_id=263764682 instance=ExtResource("13_tvtbn")]
+[node name="Box" parent="Hotspots" unique_id=263764682 node_paths=PackedStringArray("commands") instance=ExtResource("13_tvtbn")]
 position = Vector2(395, 5)
+commands = {
+"look": NodePath("Look")
+}
 
-[node name="Cliff" type="Node2D" parent="Hotspots" unique_id=1598618375]
+[node name="Cliff" type="Node2D" parent="Hotspots" unique_id=1336181358 node_paths=PackedStringArray("commands")]
 position = Vector2(-119, -24)
 script = ExtResource("17_puwcg")
-object_name = "cliff"
-metadata/_custom_type_script = "uid://ucmcws1e11dk"
+id = "cliff"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="HotspotDeathTrigger" type="Area2D" parent="Hotspots/Cliff" unique_id=1830770314]
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspots/Cliff" unique_id=737413492]
 collision_layer = 32
-script = ExtResource("19_0ryq7")
-death_action = "cliff"
-run_death_action_in_range = true
+script = ExtResource("37_uxib5")
+metadata/_custom_type_script = "uid://6cnw82p6ya55"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Cliff/HotspotDeathTrigger" unique_id=1374273360]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Cliff/HotspotActionTrigger" unique_id=1374273360]
 position = Vector2(0, -15)
 polygon = PackedVector2Array(-181, 4, -181, -14, 638, -11, 638, 6)
+
+[node name="ActionTree" type="Node" parent="Hotspots/Cliff" unique_id=797350673 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionParalyze")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionParalyze" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=1673422556 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("16_1062q")
+entity_name = "player"
+value = true
+next_leaf = NodePath("../ActionSetIdle")
+metadata/_custom_type_script = "uid://8oquxlfp2c6a"
+
+[node name="ActionSetIdle" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=555296077 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("38_uxib5")
+entity_name = "player"
+next_leaf = NodePath("../ActionSetZIndex")
+metadata/_custom_type_script = "uid://cqjbjyrorfhxx"
+
+[node name="ActionSetZIndex" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=174845109 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("39_utdyq")
+entity_name = "player"
+z_index = -15
+next_leaf = NodePath("../ActionDialog")
+metadata/_custom_type_script = "uid://cekjbadpyoy6a"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=380027675 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["You walked off the cliff. You now must face the fall of gravity."])
+next_leaf = NodePath("../ActionChangeCollisionMask")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionChangeCollisionMask" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=865343770 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("40_r4xyu")
+entity_name = "player"
+next_leaf = NodePath("../ActionChangeGravity")
+metadata/_custom_type_script = "uid://dms3vjyyp4e7d"
+
+[node name="ActionChangeGravity" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=1030881451]
+script = ExtResource("41_qoymw")
+entity_name = "player"
+value = true
+metadata/_custom_type_script = "uid://bwuxkjiinyv12"
+
+[node name="Look" type="Node" parent="Hotspots/Cliff" unique_id=564115830 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Cliff/Look" unique_id=596617538]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["You see a cliff.", "Be careful!"])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
 [node name="Spawners" type="Node2D" parent="." unique_id=1255518591]
 
@@ -229,3 +695,5 @@ limit_top = -500
 limit_right = 500
 limit_bottom = 75
 metadata/_custom_type_script = "uid://br03kradwjuk0"
+
+[editable path="Hotspots/Trash"]

@@ -1,24 +1,35 @@
 [gd_scene format=3 uid="uid://rol7vmtncxq2"]
 
 [ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_78kai"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="2_fq5t2"]
+[ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_6hhse"]
 [ext_resource type="Texture2D" uid="uid://cwnxkcy2tojd5" path="res://assets/img/rooms/conbini/Toire.png" id="4_dmlvv"]
+[ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_j66wu"]
 [ext_resource type="Texture2D" uid="uid://btc5qb75hrohs" path="res://assets/img/rooms/conbini/Window.png" id="5_ahqrw"]
+[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_tpwdy"]
+[ext_resource type="Script" uid="uid://b0osu2rtunsnc" path="res://scenes/core/action_tree/leaves/action_spawn_entity.gd" id="6_ce0qk"]
 [ext_resource type="Texture2D" uid="uid://cw6es2vwwwca7" path="res://assets/img/rooms/conbini/ConvenienceStoreInside.png" id="6_dmlvv"]
 [ext_resource type="PackedScene" uid="uid://4vo54dgiooh4" path="res://scenes/game/rooms/conbini/atm.tscn" id="6_h4f54"]
-[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/interaction/hotspot/hotspot_in_range.gd" id="7_fq5t2"]
-[ext_resource type="Script" uid="uid://ucmcws1e11dk" path="res://scenes/core/interaction/hotspot/hotspot.gd" id="8_5vhxn"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="7_fq5t2"]
 [ext_resource type="Texture2D" uid="uid://ci3e3sa75ufe" path="res://assets/img/rooms/conbini/Backshelf.png" id="8_puffv"]
 [ext_resource type="Texture2D" uid="uid://bwxg88c0cpxqj" path="res://assets/img/rooms/conbini/Bags.png" id="9_6s753"]
+[ext_resource type="Script" uid="uid://cwa2mlfejng6n" path="res://scenes/core/hotspot/hotspot_resolver.gd" id="9_j66wu"]
 [ext_resource type="Texture2D" uid="uid://cnvbh084hhk8w" path="res://assets/img/rooms/conbini/LightSwitch.png" id="9_mxjwa"]
 [ext_resource type="Texture2D" uid="uid://cc24j6nphylh" path="res://assets/img/rooms/conbini/Bottles.png" id="10_1gpas"]
-[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/interaction/hotspot/hotspot_action_trigger.gd" id="11_sec67"]
+[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="11_sec67"]
+[ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="11_tpwdy"]
 [ext_resource type="Texture2D" uid="uid://jo4e7efyb8v1" path="res://assets/img/rooms/conbini/BoxOfJerky.png" id="12_dn55d"]
 [ext_resource type="Texture2D" uid="uid://lwospvsu8yap" path="res://assets/img/rooms/conbini/CanDrinks.png" id="13_njyvt"]
 [ext_resource type="Texture2D" uid="uid://c7tx1fk6maaod" path="res://assets/img/rooms/conbini/Cans.png" id="14_c4ipj"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="14_tpwdy"]
 [ext_resource type="Texture2D" uid="uid://cicofj8nhfmm8" path="res://assets/img/rooms/conbini/Cereal.png" id="15_ll5nj"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="15_ybb6n"]
 [ext_resource type="Texture2D" uid="uid://cm76au344g6v6" path="res://assets/img/rooms/conbini/Chips.png" id="16_62y3h"]
+[ext_resource type="Script" uid="uid://d54o2utuv3ng" path="res://scenes/core/action_tree/leaves/action_has_hotspot_state.gd" id="16_bfobi"]
 [ext_resource type="Texture2D" uid="uid://8afh4m28kbeg" path="res://assets/img/rooms/conbini/Coffee.png" id="17_0nmns"]
+[ext_resource type="Script" uid="uid://bdhxkagor6i6b" path="res://scenes/core/action_tree/leaves/action_set_hotspot_state.gd" id="17_07fu3"]
 [ext_resource type="Texture2D" uid="uid://byi8gfov4jdya" path="res://assets/img/rooms/conbini/CoffeeStand.png" id="18_7qh2p"]
+[ext_resource type="Script" uid="uid://biskw5uli3lc2" path="res://scenes/core/action_tree/leaves/action_play_animation.gd" id="18_tcgup"]
 [ext_resource type="Texture2D" uid="uid://c464yi1smxcs6" path="res://assets/img/rooms/conbini/Counter.png" id="20_11m50"]
 [ext_resource type="Texture2D" uid="uid://bpvywtjnmc5w5" path="res://assets/img/rooms/conbini/CounterGoods.png" id="21_52ccj"]
 [ext_resource type="Texture2D" uid="uid://dcsen2syiam5p" path="res://assets/img/rooms/conbini/Lighters.png" id="22_2awyx"]
@@ -64,34 +75,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2lqcp"]
-resource_name = "light_off_completed"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasModulate:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.5409905, 0.5409905, 0.5409905, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ybb6n"]
@@ -148,34 +131,6 @@ tracks/3/keys = {
 "args": ["light_on", "none"],
 "method": &"set_animation_state"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_ce0qk"]
-resource_name = "light_on"
-length = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasModulate:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cvnec"]
@@ -237,10 +192,8 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2lqcp"]
 _data = {
 &"RESET": SubResource("Animation_tpwdy"),
-&"light_off_completed": SubResource("Animation_2lqcp"),
-&"light_off_start": SubResource("Animation_ybb6n"),
-&"light_on_completed": SubResource("Animation_ce0qk"),
-&"light_on_start": SubResource("Animation_cvnec")
+&"light_off": SubResource("Animation_ybb6n"),
+&"light_on": SubResource("Animation_cvnec")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpdto"]
@@ -790,15 +743,49 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-141, 54, 143, 53, 140, 37, 106, 36, 87, 31, 50, -18, 123, -18, 110, -32, 70.7281, -31.462, 55, -38, 19, -37, 8, -29, -79, -29, -109, -29, -141, 2)])
 agent_radius = 2.5
 
-[node name="ConbiniInsideFront" type="Node2D" unique_id=1613112780 node_paths=PackedStringArray("spawn_positions", "camera") groups=["Persist"]]
+[node name="ConbiniInsideFront" type="Node2D" unique_id=1613112780 groups=["Persist"]]
 y_sort_enabled = true
 script = ExtResource("1_78kai")
 room_name = "conbini_inside_front"
-spawn_positions = {
-"hanannan": NodePath("Spawners/WizardSpawn"),
-"johnny": NodePath("Spawners/ClerkSpawn")
-}
-camera = NodePath("Camera2D")
+
+[node name="ActionTrees" type="Node" parent="." unique_id=1168990204]
+
+[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=2145098494 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionSpawnPlayer")
+run_after_ready = true
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1925290588 node_paths=PackedStringArray("room", "next_leaf")]
+script = ExtResource("3_6hhse")
+room = NodePath("../../..")
+next_leaf = NodePath("../ActionCameraFocus")
+
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=2105232866 node_paths=PackedStringArray("camera", "next_leaf")]
+script = ExtResource("4_j66wu")
+entity_name = "player"
+camera = NodePath("../../../Camera2D")
+next_leaf = NodePath("../ActionCommandPrompt")
+
+[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=216844785 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("5_tpwdy")
+active = true
+next_leaf = NodePath("../ActionSpawnEntity")
+
+[node name="ActionSpawnEntity" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1902251126 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
+script = ExtResource("6_ce0qk")
+room = NodePath("../../..")
+spawn_position = NodePath("../../../Spawners/WizardSpawn")
+entity_name = "hanannan"
+next_leaf = NodePath("../ActionSpawnEntity2")
+metadata/_custom_type_script = "uid://b0osu2rtunsnc"
+
+[node name="ActionSpawnEntity2" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1523219386 node_paths=PackedStringArray("room", "spawn_position")]
+script = ExtResource("6_ce0qk")
+room = NodePath("../../..")
+spawn_position = NodePath("../../../Spawners/ClerkSpawn")
+entity_name = "johnny"
+metadata/_custom_type_script = "uid://b0osu2rtunsnc"
 
 [node name="ConvenienceStoreInside" type="Sprite2D" parent="." unique_id=2010947186]
 z_index = -5
@@ -814,19 +801,27 @@ offset = Vector2(0, 17.9)
 [node name="Hotspots" type="Node2D" parent="." unique_id=1465056601]
 y_sort_enabled = true
 
-[node name="Atm" parent="Hotspots" unique_id=1914298531 instance=ExtResource("6_h4f54")]
-position = Vector2(-85, -31)
+[node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=806686551]
+script = ExtResource("9_j66wu")
+metadata/_custom_type_script = "uid://cwa2mlfejng6n"
 
-[node name="Lightswitch" type="Node2D" parent="Hotspots" unique_id=558074161 node_paths=PackedStringArray("animation_player")]
+[node name="Atm" parent="Hotspots" unique_id=1914298531 node_paths=PackedStringArray("commands") instance=ExtResource("6_h4f54")]
+position = Vector2(-85, -31)
+commands = {
+"fuckwith": NodePath("FuckWith"),
+"look": NodePath("Look"),
+"use": NodePath("Use")
+}
+
+[node name="Lightswitch" type="Node2D" parent="Hotspots" unique_id=1744506777 node_paths=PackedStringArray("commands")]
 position = Vector2(6, -45)
-script = ExtResource("8_5vhxn")
-object_name = "light|switch|light_switch"
-require_in_range = true
-animation_states = Dictionary[String, int]({
-"light_off": 0,
-"light_on": 0
-})
-animation_player = NodePath("AnimationPlayer")
+script = ExtResource("11_tpwdy")
+id = "light|switch|light_switch"
+commands = {
+"look": NodePath("Look"),
+"use|press|turn": NodePath("Use")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="Sprite2D" type="Sprite2D" parent="Hotspots/Lightswitch" unique_id=405174757]
 texture = ExtResource("9_mxjwa")
@@ -849,11 +844,75 @@ position = Vector2(-6, 45)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/Lightswitch" unique_id=1840477231]
 libraries/ = SubResource("AnimationLibrary_2lqcp")
 
-[node name="Lighters" type="Node2D" parent="Hotspots" unique_id=956026115]
+[node name="Look" type="Node" parent="Hotspots/Lightswitch" unique_id=1527598587 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Lightswitch/Look" unique_id=1218771494]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["The light switch is on the wall."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Use" type="Node" parent="Hotspots/Lightswitch" unique_id=1617243781 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionInRange")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=1230726176 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("15_ybb6n")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionHasHotspotState")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionHasHotspotState" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=1363331572 node_paths=PackedStringArray("hotspot", "action_leaf_true", "action_leaf_false")]
+script = ExtResource("16_bfobi")
+hotspot = NodePath("../..")
+state = "switch_off"
+action_leaf_true = NodePath("../ActionDialog2")
+action_leaf_false = NodePath("../ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=1995135238 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You turn on the light."])
+next_leaf = NodePath("../ActionSetHotspotState2")
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=998121160 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You turn off the light"])
+next_leaf = NodePath("../ActionSetHotspotState")
+
+[node name="ActionSetHotspotState" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=776864754 node_paths=PackedStringArray("hotspot", "next_leaf")]
+script = ExtResource("17_07fu3")
+hotspot = NodePath("../..")
+state = "switch_off"
+value = true
+next_leaf = NodePath("../ActionPlayAnimation")
+
+[node name="ActionSetHotspotState2" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=470667697 node_paths=PackedStringArray("hotspot", "next_leaf")]
+script = ExtResource("17_07fu3")
+hotspot = NodePath("../..")
+state = "switch_off"
+next_leaf = NodePath("../ActionPlayAnimation2")
+
+[node name="ActionPlayAnimation" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=1850094720 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("18_tcgup")
+animation_name = "light_off"
+animation_player = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://biskw5uli3lc2"
+
+[node name="ActionPlayAnimation2" type="Node" parent="Hotspots/Lightswitch/Use" unique_id=2129246446 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("18_tcgup")
+animation_name = "light_on"
+animation_player = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://biskw5uli3lc2"
+
+[node name="Lighters" type="Node2D" parent="Hotspots" unique_id=508208151]
 position = Vector2(103, -5)
-script = ExtResource("8_5vhxn")
-object_name = "lighters"
-require_in_range = true
+script = ExtResource("11_tpwdy")
+id = "lighters|lighter"
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="Lighters" type="Sprite2D" parent="Hotspots/Lighters" unique_id=1507889978]
 texture = ExtResource("22_2awyx")
@@ -866,9 +925,20 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Lighters/HotspotInRange" unique_id=1600828756]
 polygon = PackedVector2Array(19, 45, 21, 23, -28, 6, -52, 9, -47, 24, -47, 44, -22, 45)
 
-[node name="MagazineStand" type="Node2D" parent="Hotspots" unique_id=332582944]
+[node name="Look" type="Node" parent="Hotspots/Lighters" unique_id=498562208 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Lighters/Look" unique_id=664277733]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You see lighters on the counter."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="MagazineStand" type="Node2D" parent="Hotspots" unique_id=423742153]
 position = Vector2(103, -5)
-script = ExtResource("8_5vhxn")
+script = ExtResource("11_tpwdy")
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="MagazineStand" parent="Hotspots/MagazineStand" unique_id=533942004 instance=ExtResource("28_6s753")]
 position = Vector2(-101, -17)
@@ -880,15 +950,11 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/MagazineStand/HotspotInRange" unique_id=921955536]
 polygon = PackedVector2Array(43, 46, 42, 24, -28, 6, -52, 9, -47, 24, -47, 44, -24, 51, 5, 54, 34, 55)
 
-[node name="WaterBottle" type="Node2D" parent="Hotspots" unique_id=133370163 node_paths=PackedStringArray("animation_player")]
+[node name="WaterBottle" type="Node2D" parent="Hotspots" unique_id=2062527715]
 position = Vector2(-130, -21)
-script = ExtResource("8_5vhxn")
-object_name = "water_bottle"
-require_in_range = true
-animation_states = Dictionary[String, int]({
-"taken": 0
-})
-animation_player = NodePath("AnimationPlayer")
+script = ExtResource("11_tpwdy")
+id = "water_bottle"
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="Sprite2D" type="Sprite2D" parent="Hotspots/WaterBottle" unique_id=1901543294]
 texture = SubResource("AtlasTexture_xpdto")
@@ -906,16 +972,11 @@ polygon = PackedVector2Array(-255, 21, -235, 20, -201, -23, -221, -24, -253, 9)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/WaterBottle" unique_id=228057131]
 libraries/ = SubResource("AnimationLibrary_tpwdy")
 
-[node name="ColdGoods" type="Node2D" parent="Hotspots" unique_id=1440255431 node_paths=PackedStringArray("animation_player")]
+[node name="ColdGoods" type="Node2D" parent="Hotspots" unique_id=1621511648]
 position = Vector2(106, -22)
-script = ExtResource("8_5vhxn")
-object_name = "door|doors"
-require_in_range = true
-animation_states = Dictionary[String, int]({
-"close": 0,
-"open": 0
-})
-animation_player = NodePath("AnimationPlayer")
+script = ExtResource("11_tpwdy")
+id = "door|doors"
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="OpenShelf2" type="Sprite2D" parent="Hotspots/ColdGoods" unique_id=2132790656]
 position = Vector2(-234, -11)
@@ -963,8 +1024,9 @@ polygon = PackedVector2Array(-250, 30, -236, 30, -203, -6, -222, -6, -250, 22)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/ColdGoods" unique_id=1464250315]
 libraries/ = SubResource("AnimationLibrary_skrin")
 
-[node name="Goods" type="Node2D" parent="Hotspots" unique_id=638813569]
-script = ExtResource("8_5vhxn")
+[node name="Goods" type="Node2D" parent="Hotspots" unique_id=361870036]
+script = ExtResource("11_tpwdy")
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="HotspotInRange" type="Area2D" parent="Hotspots/Goods" unique_id=1230682436]
 script = ExtResource("7_fq5t2")
@@ -973,8 +1035,9 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Goods/HotspotInRange" unique_id=1278758581]
 polygon = PackedVector2Array(15, 6, 19, -40, -77, -40, -102, -40, -141, 3, -139, 50, 10, 49)
 
-[node name="Shelf" type="Node2D" parent="Hotspots" unique_id=856711548]
-script = ExtResource("8_5vhxn")
+[node name="Shelf" type="Node2D" parent="Hotspots" unique_id=300521521]
+script = ExtResource("11_tpwdy")
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="HotspotInRange" type="Area2D" parent="Hotspots/Shelf" unique_id=522869875]
 script = ExtResource("7_fq5t2")
@@ -983,8 +1046,10 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Shelf/HotspotInRange" unique_id=1927974400]
 polygon = PackedVector2Array(15, 6, 19, -40, -77, -40, -102, -40, -141, 3, -139, 50, 10, 49)
 
-[node name="Pay" type="Node2D" parent="Hotspots" unique_id=1996817876]
-script = ExtResource("8_5vhxn")
+[node name="Pay" type="Node2D" parent="Hotspots" unique_id=1910852162]
+script = ExtResource("11_tpwdy")
+id = "pay"
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="HotspotInRange" type="Area2D" parent="Hotspots/Pay" unique_id=911881665]
 script = ExtResource("7_fq5t2")
@@ -993,11 +1058,11 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Pay/HotspotInRange" unique_id=1619656823]
 polygon = PackedVector2Array(107, 42, 108, -31, 42, -32, 43, 25, 73, 41)
 
-[node name="Clerk" type="Node2D" parent="Hotspots" unique_id=518140519]
+[node name="Clerk" type="Node2D" parent="Hotspots" unique_id=1242579238]
 position = Vector2(106, -22)
-script = ExtResource("8_5vhxn")
-object_name = "clerk"
-require_in_range = true
+script = ExtResource("11_tpwdy")
+id = "clerk"
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="HotspotInRange" type="Area2D" parent="Hotspots/Clerk" unique_id=1219078934]
 position = Vector2(-6, 2)
@@ -1014,6 +1079,7 @@ shape = SubResource("RectangleShape2D_vu73a")
 [node name="StealCheck" type="Node2D" parent="Triggers" unique_id=549615912]
 
 [node name="HotspotActionTrigger" type="Area2D" parent="Triggers/StealCheck" unique_id=225836706]
+collision_layer = 32
 script = ExtResource("11_sec67")
 metadata/_custom_type_script = "uid://6cnw82p6ya55"
 
@@ -1021,6 +1087,7 @@ metadata/_custom_type_script = "uid://6cnw82p6ya55"
 polygon = PackedVector2Array(97, 53, 18, 53, 18, 48, 97, 48)
 
 [node name="HotspotActionTrigger2" type="Area2D" parent="Triggers/StealCheck" unique_id=1816504972]
+collision_layer = 32
 script = ExtResource("11_sec67")
 metadata/_custom_type_script = "uid://6cnw82p6ya55"
 

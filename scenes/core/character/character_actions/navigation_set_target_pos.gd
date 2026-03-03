@@ -8,12 +8,17 @@ enum TargetPosType {
 @export var target_pos_type: TargetPosType = TargetPosType.Target
 @export var threshold: float = 10.0
 @export var wait_time: float = 0.0
+@export var always_update: bool = false
 
 var target_pos: Vector2 = Vector2.ZERO
 var waiting_time: float = 0.0
 
 func _process(delta: float):
 	if parent.navigation_agent == null:
+		return
+
+	if always_update and target_pos_type == TargetPosType.Target:
+		_get_target_pos()
 		return
 
 	if target_pos == Vector2.ZERO:
@@ -34,8 +39,9 @@ func _has_reached_target_pos():
 		target_pos = Vector2.ZERO
 
 func _get_target_pos():
-	target_pos = parent.target.global_position
-	parent.navigation_agent.set_target_position(target_pos)
+	if parent.target:
+		target_pos = parent.target.global_position
+		parent.navigation_agent.set_target_position(target_pos)
 
 func _get_random_point():
 	var map = parent.navigation_agent.get_navigation_map()

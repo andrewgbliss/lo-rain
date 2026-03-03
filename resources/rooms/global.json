@@ -1,4 +1,10 @@
 {
+  "states": [
+    {
+      "name": "did_pay_for_water_bottle",
+      "value": "false"
+    }
+  ],
   "actions": {
     "spawn_player": [
       "spawn_entity(player)",
@@ -19,6 +25,26 @@
       "paralyze(player, true)",
       "You stole the water bottle. You now must face the consequences.",
       "The cops will be here soon. You are definately not going to the convention tonight."
+    ],
+    "rasky_death": [
+      "paralyze(rasky, true)",
+      "paralyze(player, true)",
+      "set_idle(player)",
+      "npc_run_animation(rasky, attack)",
+      "npc_run_animation(player, Death)",
+      "wait(2.0)",
+      "The homeless man killed you.",
+      "You are now dead."
+    ],
+    "wizard_death": [
+      "paralyze(hanannan, true)",
+      "paralyze(player, true)",
+      "set_idle(player)",
+      "npc_run_animation(hanannan, CastSpell)",
+      "npc_run_animation(player, Dust)",
+      "wait(2.0)",
+      "The wizard killed you.",
+      "You are now dead."
     ]
   }
 }

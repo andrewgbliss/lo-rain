@@ -17,18 +17,18 @@ func _ready() -> void:
 			menus[child.name] = child
 				
 func push(menu_name: String, play_audio: bool = true):
-	if menu_stack.back() == menu_name:
+	if menu_stack.size() > 0 and menu_stack.back() == menu_name:
 		return
 	started.emit()
 	if is_transitioning:
 		return
 	is_transitioning = true
 	if menu_stack.size() > 0:
-		if play_audio:
+		if play_audio and audio_transition_out:
 			audio_transition_out.play()
 		await transition_away_out(menu_stack.back())
 	menu_stack.append(menu_name)
-	if play_audio:
+	if play_audio and audio_transition_in:
 		audio_transition_in.play()
 	await transition_in(menu_name)
 	is_transitioning = false
@@ -43,11 +43,11 @@ func pop(play_audio: bool = true):
 	is_transitioning = true
 	var prev_menu_size = menu_stack.size()
 	var menu_name = menu_stack.pop_back()
-	if play_audio:
+	if play_audio and audio_transition_out:
 		audio_transition_out.play()
 	await transition_out(menu_name)
 	if prev_menu_size > 1:
-		if play_audio:
+		if play_audio and audio_transition_in:
 			audio_transition_in.play()
 		await transition_away_in(menu_stack.back())
 	is_transitioning = false
@@ -60,7 +60,7 @@ func pop_all(play_audio: bool = true):
 	is_transitioning = true
 	var menu_name = menu_stack.pop_back()
 	if menu_name:
-		if play_audio:
+		if play_audio and audio_transition_out:
 			audio_transition_out.play()
 		await transition_out(menu_name)
 	menu_stack.clear()

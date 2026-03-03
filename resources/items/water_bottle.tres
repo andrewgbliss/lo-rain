@@ -3,6 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://clk14un7s3fid" path="res://assets/img/rooms/conbini/ColdGoods.png" id="1_o8yyb"]
 [ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="2_8odmt"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xg436"]
+load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_be2vl"]
+atlas = SubResource("CompressedTexture2D_xg436")
+region = Rect2(102, 3, 4, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pm7tm"]
+load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3mrm"]
+atlas = SubResource("CompressedTexture2D_pm7tm")
+region = Rect2(102, 3, 4, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpdto"]
 atlas = ExtResource("1_o8yyb")
 region = Rect2(102, 3, 4, 8)
@@ -11,5 +25,8 @@ region = Rect2(102, 3, 4, 8)
 script = ExtResource("2_8odmt")
 id = "water_bottle"
 name = "Water Bottle"
+description = "A bottle of water. Could be useful at some point in the game. Is this the fish item? Maybe."
 room_texture = SubResource("AtlasTexture_xpdto")
+icon_texture = SubResource("AtlasTexture_be2vl")
+inspect_texture = SubResource("AtlasTexture_h3mrm")
 metadata/_custom_type_script = "uid://cjyg0ygclwad6"

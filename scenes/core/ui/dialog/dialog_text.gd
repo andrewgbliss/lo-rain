@@ -12,6 +12,8 @@ func _ready():
 	hide()
 
 func _input(event):
+	if not is_running:
+		return
 	if event is InputEventKey and event.is_pressed():
 		if is_running and Input.is_action_just_pressed("next_dialogue"):
 			_handle_next()

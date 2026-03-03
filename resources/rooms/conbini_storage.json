@@ -7,6 +7,44 @@
       "commands": {
         "look": ["You're in the storage room of the conbini."]
       }
+    },
+    "boxes": {
+      "commands": {
+        "look": [
+          "You see a bunch of boxes. Probably contains some goods for the conbini."
+        ]
+      }
+    },
+    "gold_coin": {
+      "animation_states": {
+        "taken": "none"
+      },
+      "commands": {
+        "look": ["You see a gold coin behind the boxes"],
+        "take": ["You take the gold coin.", "add_inventory(gold_coin)"]
+      }
+    },
+    "trash": {
+      "commands": {
+        "look": [
+          "You see a trash can. There is nothing in it. The people who work here are on top of everything."
+        ]
+      }
+    },
+    "door": {
+      "commands": {
+        "look": [
+          "You see a door going to the outside. Looks like it requires a keycard to open."
+        ],
+        "open": {
+          "has_inventory": "keycard",
+          "yes": [
+            "You use the keycard to open the door.",
+            "scene_goto(res://scenes/game/rooms/conbini/conbini_back.tscn, 1, 2, down)"
+          ],
+          "no": ["You need a keycard to open the door."]
+        }
+      }
     }
   }
 }
