@@ -6,6 +6,8 @@ var _state: Dictionary = {}
 var prev_door_id: String = ""
 var current_door_id: String = ""
 var movement_direction: int = 0
+var player_hp: int = 0
+var player_max_hp: int = 0
 
 func get_hotspot_data(room_id: String, hotspot_id: String) -> Dictionary:
 	if not _rooms.has(room_id):
@@ -36,7 +38,9 @@ func save() -> Dictionary:
 		"current_door_id": current_door_id,
 		"movement_direction": movement_direction,
 		"state": _state,
-		"rooms": _rooms
+		"rooms": _rooms,
+		"player_hp": player_hp,
+		"player_max_hp": player_max_hp
 	}
 
 func restore(data: Dictionary) -> void:
@@ -45,6 +49,8 @@ func restore(data: Dictionary) -> void:
 	movement_direction = data.get("movement_direction", 0)
 	_state = data.get("state", {})
 	_rooms = data.get("rooms", {})
+	player_hp = data.get("player_hp", 0)
+	player_max_hp = data.get("player_max_hp", 0)
 
 func reset() -> void:
 	prev_door_id = ""
@@ -52,3 +58,5 @@ func reset() -> void:
 	movement_direction = 0
 	_state = {}
 	_rooms = {}
+	player_hp = 0
+	player_max_hp = 0

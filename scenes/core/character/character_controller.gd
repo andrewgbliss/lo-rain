@@ -25,6 +25,7 @@ enum MovementState {Idle, Walking}
 @export_category("Health")
 @export var hp: int = 35
 @export var max_hp: int = 35
+@export var death_action_tree: ActionTree
 
 @export_category("Navigation")
 @export var navigation_agent: NavigationAgent2D
@@ -49,18 +50,14 @@ var timer: Timer
 var is_in_heat_area: bool = false
 var target
 
-signal update_hp(amount: int)
+signal update_hp(hp: int, max_hp: int)
 
 func _ready():
 	if show_sprite_on_ready:
 		sprite.visible = true
 	else:
 		sprite.visible = false
-	timer = Timer.new()
-	timer.wait_time = .5
-	timer.timeout.connect(_on_timer_timeout)
-	add_child(timer)
-	timer.start()
+	
 	if default_movement_direction != MovementDirection.None:
 		change_movement_state(default_movement_direction, 0, 0)
 		
@@ -68,7 +65,15 @@ func _ready():
 		navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 
 	if character_type == CharacterType.Player:
-		inventory.restore()
+		timer = Timer.new()
+		timer.wait_time = 1.0
+		timer.timeout.connect(_on_timer_timeout)
+		add_child(timer)
+		timer.start()
+		if GameStateStore.player_hp > 0:
+			hp = GameStateStore.player_hp
+			max_hp = GameStateStore.player_max_hp
+		inventory.restore_from_file()
 
 func set_scale_by_y_position():
 	# Get the current Y position
@@ -83,12 +88,6 @@ func set_scale_by_y_position():
 	# Apply the scale factor to the player's Y scale
 	self.scale.y = factor if self.scale.y >= 0 else factor * -1
 	self.scale.x = factor if self.scale.x >= 0 else factor * -1
-
-func _on_text_parser_opened():
-	paralyzed = true
-	
-func _on_text_parser_closed():
-	paralyzed = false
 	
 func _on_timer_timeout():
 	if not is_in_heat_area:
@@ -211,9 +210,12 @@ func add_hp(amount):
 	hp += amount
 	if hp > max_hp:
 		hp = max_hp
-	update_hp.emit(hp)
+	update_hp.emit(hp, max_hp)
+	GameStateStore.player_hp = hp
+	GameStateStore.player_max_hp = max_hp
 	if hp <= 0:
 		timer.stop()
+		death_action_tree.run()
 		print("You Dead!")
 
 func spawn(pos: Vector2 = position):
@@ -227,6 +229,9 @@ func spawn(pos: Vector2 = position):
 		scale.x = scale.y * 1
 	
 func spawn_restore():
+	var data = SaveGameManager.get_restore_data(get_path())
+	if data:
+		restore(data)
 	velocity.x = 0
 	velocity.y = 0
 	update_animations()
@@ -355,11 +360,17 @@ func save():
 		"input_y": input.y,
 		"movement_direction": int(movement_direction),
 		"movement_state": int(movement_state),
-		"is_facing_right": is_facing_right
+		"is_facing_right": is_facing_right,
+		"hp": hp,
+		"max_hp": max_hp
 	}
 	return data
 	
 func restore(data):
+	if data.has("pos_x"):
+		position.x = data.get("pos_x")
+	if data.has("pos_y"):
+		position.y = data.get("pos_y")
 	if data.get("is_facing_right"):
 		is_facing_right = data.get("is_facing_right")
 	if data.get("input_x"):
@@ -370,3 +381,7 @@ func restore(data):
 		movement_direction = int(data.get("movement_direction")) as MovementDirection
 	if data.get("movement_state"):
 		movement_state = int(data.get("movement_state")) as MovementState
+	if data.get("hp"):
+		hp = data.get("hp")
+	if data.get("max_hp"):
+		max_hp = data.get("max_hp")

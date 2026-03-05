@@ -24,9 +24,6 @@ func spawn(entity_name: String, spawn_position: Vector2, parent = null):
 	else:
 		add_child(entity)
 
-	if entity.has_method("spawn"):
-		entity.spawn(spawn_position)
-
 	spawned_entities[entity_name] = entity
 
 	return entity

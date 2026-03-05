@@ -822,9 +822,19 @@ grow_vertical = 0
 layout_mode = 2
 focus_neighbor_left = NodePath("../ButtonQuit")
 focus_neighbor_right = NodePath("../ButtonSettings")
-text = "Play"
+text = "New Game"
 script = ExtResource("7_a02qa")
 menu_stack = NodePath("../../../..")
+
+[node name="ButtonRestore" type="Button" parent="MainMenu/Control/HBoxContainer" unique_id=1715725798 node_paths=PackedStringArray("menu_stack", "to_menu")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../ButtonPlay")
+focus_neighbor_right = NodePath("../ButtonQuit")
+text = "Restore"
+script = ExtResource("5_vwoi7")
+menu_stack = NodePath("../../../..")
+to_menu = NodePath("../../../../RestoreGameMenu")
+metadata/_custom_type_script = "uid://kfj666n2xifd"
 
 [node name="ButtonSettings" type="Button" parent="MainMenu/Control/HBoxContainer" unique_id=1974396545 node_paths=PackedStringArray("menu_stack", "to_menu")]
 layout_mode = 2

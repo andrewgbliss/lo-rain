@@ -8,7 +8,9 @@ class_name MenuTopBar extends Menu
 
 func _input(event):
 	# TODO - when going live uncomment this This is for testing
-	if GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+	# if GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+	# 	return
+	if not GameManager.can_pause:
 		return
 	if event is InputEventKey and event.is_pressed():
 		if Input.is_action_just_pressed("pause"):

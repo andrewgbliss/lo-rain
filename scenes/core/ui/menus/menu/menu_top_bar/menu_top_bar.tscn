@@ -389,7 +389,6 @@ size_flags_vertical = 4
 focus_neighbor_left = NodePath("../FileButton")
 focus_neighbor_top = NodePath("Panel/MarginContainer/VBoxContainer/InventoryButton")
 focus_neighbor_right = NodePath("../OptionsButton")
-focus_neighbor_bottom = NodePath("Panel/MarginContainer/VBoxContainer/ViewObjectButton")
 theme_override_font_sizes/font_size = 10
 text = "Action"
 flat = true
@@ -418,21 +417,9 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ViewObjectButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=508770956]
-layout_mode = 2
-focus_neighbor_left = NodePath("../../../../../FileButton")
-focus_neighbor_top = NodePath("../../../..")
-focus_neighbor_right = NodePath("../../../../../OptionsButton")
-focus_neighbor_bottom = NodePath("../InventoryButton")
-theme_override_font_sizes/font_size = 10
-text = "View Object"
-flat = true
-alignment = 0
-
 [node name="InventoryButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=1724116508]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../FileButton")
-focus_neighbor_top = NodePath("../ViewObjectButton")
 focus_neighbor_right = NodePath("../../../../../OptionsButton")
 focus_neighbor_bottom = NodePath("../../../..")
 theme_override_font_sizes/font_size = 10
@@ -445,9 +432,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_neighbor_left = NodePath("../ActionButton")
-focus_neighbor_top = NodePath("Panel/MarginContainer/VBoxContainer/SoundButton")
+focus_neighbor_top = NodePath("Panel/MarginContainer/VBoxContainer/SettingsButton")
 focus_neighbor_right = NodePath("../FileButton")
-focus_neighbor_bottom = NodePath("Panel/MarginContainer/VBoxContainer/SoundButton")
+focus_neighbor_bottom = NodePath("Panel/MarginContainer/VBoxContainer/SettingsButton")
 theme_override_font_sizes/font_size = 10
 text = "Options"
 flat = true
@@ -476,14 +463,14 @@ theme_override_constants/margin_bottom = 2
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SoundButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer" unique_id=1863660426]
+[node name="SettingsButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer" unique_id=1863660426]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../ActionButton")
 focus_neighbor_top = NodePath("../../../..")
 focus_neighbor_right = NodePath("../../../../../FileButton")
 focus_neighbor_bottom = NodePath("../../../..")
 theme_override_font_sizes/font_size = 10
-text = "Sound"
+text = "Settings"
 flat = true
 alignment = 0
 
@@ -498,4 +485,4 @@ libraries/ = SubResource("AnimationLibrary_0gdhb")
 [connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton" to="." method="_on_action_button_focus_entered"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer/InventoryButton" to="." method="_on_inventory_button_pressed"]
 [connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_focus_entered"]
-[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer/SoundButton" to="." method="_on_sound_button_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_sound_button_pressed"]

@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b45g1r2pxxebr" path="res://scenes/core/ui/manager/ui_manager.gd" id="1_4amv8"]
 [ext_resource type="PackedScene" uid="uid://dgq6syw2qe32p" path="res://scenes/core/ui/menus/game_menus.tscn" id="2_4amv8"]
+[ext_resource type="PackedScene" uid="uid://iwjmhpocpse" path="res://scenes/core/ui/hud/hud.tscn" id="3_4amv8"]
 
-[node name="UiManager" type="Node" unique_id=610716686 node_paths=PackedStringArray("game_menus")]
+[node name="UiManager" type="Node" unique_id=610716686 node_paths=PackedStringArray("game_menus", "hud")]
 script = ExtResource("1_4amv8")
 game_menus = NodePath("GameMenus")
+hud = NodePath("Hud")
 
 [node name="GameMenus" parent="." unique_id=920775959 instance=ExtResource("2_4amv8")]
+
+[node name="Hud" parent="." unique_id=2003997803 instance=ExtResource("3_4amv8")]

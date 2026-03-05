@@ -6,26 +6,19 @@ var save_games = []
 var loaded_restore_index = 0
 
 func _ready():
-	#SceneManager.loaded.connect(_on_loaded)
-	_remove_all_files()
+	#print("User dir", OS.get_user_data_dir())
+	#_remove_all_files()
+	pass
 	
-# func _on_loaded():
-# 	if GameManager.game_data.restoring_scene:
-# 		await get_tree().create_timer(1.0).timeout
-# 		load_persisting_nodes(loaded_restore_index)
-# 		GameManager.unpause()
-# 		SceneManager.transition_out()
-# 		GameManager.game_data.restoring_scene = false
-
 func _remove_all_files():
 	if not FilesUtil.dir_exists(save_game_path):
 		FilesUtil.create_dir(save_game_path)
 	var files = FilesUtil.get_files_at(save_game_path)
 	for file in files:
 		if file.begins_with("save_game_"):
-			FilesUtil.remove_file(file)
+			FilesUtil.remove_file(str(save_game_path, file))
 		if file.begins_with("save_persisting_nodes_"):
-			FilesUtil.remove_file(file)
+			FilesUtil.remove_file(str(save_game_path, file))
 
 func find_save_game_index(description: String):
 	var index = 1
@@ -41,9 +34,10 @@ func get_save_games():
 	for file in DirAccess.get_files_at(save_game_path):
 		if file.begins_with("save_game_"):
 			var index = file.get_file().get_basename().get_slice("_", 2)
-			var path = str("user://save_game_", index, ".dat")
+			var path = str(save_game_path, "save_game_", index, ".dat")
 			var data = FilesUtil.restore(path)
 			saves.append(data)
+	saves.sort_custom(func(a, b): return a.index > b.index)
 	return saves
 
 func get_next_save_game_index():
@@ -61,31 +55,32 @@ func save(description: String):
 	var data = {
 		"index": index,
 		"description": description,
-		# "game_data": GameManager.save(),
-		# "inventory": InventoryManager.save(),
-		# "quests": QuestManager.save(),
+		"scene_path": SceneManager.current_scene.scene_file_path,
+		"game_state_store": GameStateStore.save(),
+		"inventory": ItemManager.player.inventory.save(),
+		"quest_manager": QuestManager.save(),
 		"timestamp": Time.get_datetime_string_from_system(false, true)
 	}
 	FilesUtil.save(path, data)
 	save_persisting_nodes(index)
 	
 func restore(index):
-	var path = str("user://save_game_", index, ".dat")
+	loaded_restore_index = index
+	var path = str(save_game_path, "save_game_", index, ".dat")
 	var data = FilesUtil.restore(path)
-	print("restore: ", data)
-	#GameManager.restore(data)
-	# if data.inventory:
-	# 	InventoryManager.restore(data.inventory)
-	# if data.quests:
-	# 	QuestManager.restore(data.quests)
-	# if data.game_data.current_scene_path == get_tree().current_scene.scene_file_path:
-	# 	load_persisting_nodes(index)
-	# 	GameManager.unpause()
-	# else:
-	# 	GameManager.game_data.restoring_scene = true
-	# 	MenuManager.pop_all()
-	# 	SceneManager.goto_scene(data.game_data.current_scene_path)
+	GameStateStore.restore(data.game_state_store)
+	QuestManager.restore(data.quest_manager)
+	UiManager.game_menus.pop_all()
+	GameManager.unpause()
+	SceneManager.goto_scene(data.scene_path)
 	
+func get_restore_data(scene_path: String):
+	var data = get_persisting_nodes(loaded_restore_index)
+	if data:
+		for node in data:
+			if node.path == scene_path:
+				return node
+	return null
 
 func save_persisting_nodes(index):
 	var path = str(save_game_path, "save_persisting_nodes_", index, ".dat")
@@ -108,11 +103,12 @@ func save_persisting_nodes(index):
 #		# Store the save dictionary as a new line in the save file.
 		file.store_line(JSON.stringify(node_data))
 		
-func load_persisting_nodes(index):
+func get_persisting_nodes(index):
 	var path = str(save_game_path, "save_persisting_nodes_", index, ".dat")
 	if not FilesUtil.file_exists(path):
 		return
-	var file = FilesUtil.open_file(path)
+	var file = FilesUtil.open_file(path, FileAccess.READ)
+	var nodes = []
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
 	while file.get_position() < file.get_length():
@@ -122,22 +118,7 @@ func load_persisting_nodes(index):
 		var error = json.parse(line)
 		if error == OK:
 			var node_data = json.get_data()
-			var node = get_node(node_data.get("path"))
-			if node != null:
-				var new_position = Vector2(node_data.get("pos_x"), node_data.get("pos_y"))
-				node.position = new_position
-				# Now we set the remaining variables.
-				for i in node_data.keys():
-					if i == "filename" or i == "parent" or i == "path" or i == "pos_x" or i == "pos_y" or i == "input_x" or i == "input_y" or i == "movement_direction" or i == "movement_state" or i == "is_facing_right":
-						continue
-					node.set(i, node_data.get(i))
-					
-				if node.has_method("restore"):
-					node.call("restore", node_data)
-
-				if node.has_method("spawn_restore"):
-					node.call("spawn_restore")
-#
-			#print(node, node_data)
+			nodes.append(node_data)
 		else:
 			print("JSON Parse Error: ", json.get_error_message(), " in ", line, " at line ", json.get_error_line())
+	return nodes

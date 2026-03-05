@@ -24,7 +24,7 @@ func _on():
 	if saves.size() == 0:
 		cancel_button_restore.grab_focus()
 	parent.push(menu_name, false)
-
+	
 func _off():
 	super ()
 	GameManager.unpause()
@@ -35,19 +35,23 @@ func _update_ui():
 	for child in save_game_button_container.get_children():
 		child.queue_free()
 	var saves = SaveGameManager.get_save_games()
+	var first = true
 	for s in saves:
-		_add_button_to_container(s.description)
+		var b = _add_button_to_container(s.index, s.description)
+		if first:
+			b.grab_focus()
+			first = false
 	return saves
 
-func _add_button_to_container(description: String):
+func _add_button_to_container(index: int, description: String):
 	var button = Button.new()
 	button.text = description
-	button.pressed.connect(func _connect(): _on_restore_game_pressed(description))
+	button.pressed.connect(func _connect(): _on_restore_game_pressed(index))
 	save_game_button_container.add_child(button)
+	return button
 
 func _on_cancel_button_pressed() -> void:
 	_off()
 
-func _on_restore_game_pressed(description):
-	# TODO - restore game from index and not description
-	SaveGameManager.restore(description)
+func _on_restore_game_pressed(index):
+	SaveGameManager.restore(index)

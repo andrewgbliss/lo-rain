@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://scenes/core/character/character_controller.gd" id="1_alups"]
 [ext_resource type="Script" uid="uid://b20n78127jv4d" path="res://scenes/core/character/character_controls.gd" id="2_02ihq"]
 [ext_resource type="Resource" uid="uid://cl6cayff5laqm" path="res://resources/players/inventory/stan_inventory.tres" id="2_ntuft"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="5_hg5oh"]
+[ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="6_ck8jd"]
+[ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="6_hj7ru"]
+[ext_resource type="Script" uid="uid://cqjbjyrorfhxx" path="res://scenes/core/action_tree/leaves/action_set_idle.gd" id="7_el3rp"]
+[ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="7_jqeo2"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="8_ck8jd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0n3y"]
 size = Vector2(10, 3.75)
@@ -161,12 +167,13 @@ _data = {
 &"WalkUp": SubResource("Animation_andt8")
 }
 
-[node name="StanTheMan" type="CharacterBody2D" unique_id=1242993061 groups=["Persist", "player"]]
+[node name="StanTheMan" type="CharacterBody2D" unique_id=1242993061 node_paths=PackedStringArray("death_action_tree") groups=["Persist", "player"]]
 collision_mask = 47
 motion_mode = 1
 script = ExtResource("1_alups")
 has_gravity = false
 inventory = ExtResource("2_ntuft")
+death_action_tree = NodePath("DeathActionTree")
 use_scale_factor = true
 scale_factor = 250.0
 scale_factor_max = 1.5
@@ -186,3 +193,39 @@ hframes = 40
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1825224461]
 libraries/ = SubResource("AnimationLibrary_2uw68")
+
+[node name="DeathActionTree" type="Node" parent="." unique_id=1798420996 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("5_hg5oh")
+root_leaf = NodePath("ActionParalyze")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionParalyze" type="Node" parent="DeathActionTree" unique_id=412054594 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_ck8jd")
+entity_name = "player"
+value = true
+next_leaf = NodePath("../ActionSetIdle")
+metadata/_custom_type_script = "uid://8oquxlfp2c6a"
+
+[node name="ActionSetIdle" type="Node" parent="DeathActionTree" unique_id=1301740089 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_el3rp")
+entity_name = "player"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+metadata/_custom_type_script = "uid://cqjbjyrorfhxx"
+
+[node name="ActionNpcRunAnimation" type="Node" parent="DeathActionTree" unique_id=888485588 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_hj7ru")
+entity_name = "player"
+animation_name = "Death"
+next_leaf = NodePath("../ActionWait")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionWait" type="Node" parent="DeathActionTree" unique_id=168490132 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_jqeo2")
+duration = 3.0
+next_leaf = NodePath("../ActionDialog")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionDialog" type="Node" parent="DeathActionTree" unique_id=641658147]
+script = ExtResource("8_ck8jd")
+messages = Array[String](["You have died from the cold. Next time get to someplace warm. Thanks for playing!"])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

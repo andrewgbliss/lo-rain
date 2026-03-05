@@ -9,11 +9,17 @@ func run() -> void:
 	if entity != null:
 		ItemManager.player = entity
 	if entity is CharacterController:
+		if SaveGameManager.loaded_restore_index != 0:
+			entity.spawn_restore()
+		else:
+			entity.spawn(pos)
 		if not GameStateStore.current_door_id.is_empty():
 			entity.movement_direction = GameStateStore.movement_direction
 			entity.set_idle(entity.get_movement_direction_by_int(GameStateStore.movement_direction))
 			GameStateStore.current_door_id = ""
 			GameStateStore.prev_door_id = ""
+		entity.update_hp.connect(UiManager.hud.update_health_bar)
+		UiManager.hud.update_health_bar(entity.hp, entity.max_hp)
 	next()
 
 func get_player_spawn_position_vector() -> Vector2:

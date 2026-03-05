@@ -20,6 +20,7 @@ enum GAME_STATE {
 var game_state: GAME_STATE = GAME_STATE.NONE
 var previous_game_state: GAME_STATE = GAME_STATE.NONE
 var is_paused: bool = false
+var can_pause: bool = false
 
 signal state_changed(state: GAME_STATE)
 signal paused_toggled(is_paused: bool)

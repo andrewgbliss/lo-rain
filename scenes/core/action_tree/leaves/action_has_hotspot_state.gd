@@ -9,6 +9,7 @@ class_name ActionHasHotspotState extends ActionLeaf
 func run() -> void:
 	var data = GameStateStore.get_hotspot_data(hotspot.get_room_name(), hotspot.id)
 	if data.has(state) and data[state] == value:
-		action_leaf_true.run()
-	else:
+		if action_leaf_true:
+			action_leaf_true.run()
+	elif action_leaf_false:
 		action_leaf_false.run()

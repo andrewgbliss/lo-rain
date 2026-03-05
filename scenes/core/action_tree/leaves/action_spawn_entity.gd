@@ -6,5 +6,10 @@ class_name ActionSpawnEntity extends ActionLeaf
 
 func run() -> void:
 	var pos: Vector2 = spawn_position.global_position
-	SpawnManager.spawn(entity_name, pos, room)
+	var entity = SpawnManager.spawn(entity_name, pos, room)
+	if entity is CharacterController:
+		if SaveGameManager.loaded_restore_index != 0:
+			entity.spawn_restore()
+		else:
+			entity.spawn(pos)
 	next()

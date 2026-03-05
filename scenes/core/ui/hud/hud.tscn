@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://iwjmhpocpse"]
+
+[ext_resource type="Script" uid="uid://d0wdc8uqpplwo" path="res://scenes/core/ui/hud/hud.gd" id="1_chwhf"]
+[ext_resource type="Shader" uid="uid://m33bk4ianu7w" path="res://shaders/health_color.gdshader" id="2_4w35y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dlqb"]
+shader = ExtResource("2_4w35y")
+shader_parameter/color_low = Color(0, 0, 1, 1)
+shader_parameter/color_high = Color(1, 0, 0, 1)
+shader_parameter/threshold = 0.5
+shader_parameter/hp = 0.0
+
+[sub_resource type="Gradient" id="Gradient_ty6s8"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_chwhf"]
+gradient = SubResource("Gradient_ty6s8")
+width = 1
+
+[node name="Hud" type="Node" unique_id=2003997803 node_paths=PackedStringArray("cold_meter")]
+script = ExtResource("1_chwhf")
+cold_meter = NodePath("CanvasLayer/TextureRect")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1620420348]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=833016522]
+material = SubResource("ShaderMaterial_6dlqb")
+custom_minimum_size = Vector2(0, 5)
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 29.0
+offset_bottom = 8.0
+texture = SubResource("GradientTexture1D_chwhf")
