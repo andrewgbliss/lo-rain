@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bicvac2ermmgj" path="res://assets/img/rooms/long-road/Lamp.png" id="10_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://rwgmmbhucwqm" path="res://assets/img/masks/cone-mask.png" id="13_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://c6e28my5t7u4j" path="res://assets/img/rooms/long-road/Trash.png" id="14_vxglm"]
+[ext_resource type="AudioStream" uid="uid://biyj1mdjb8c8b" path="res://assets/audio/Lo Rain.mp3" id="15_jkv2x"]
 [ext_resource type="Script" uid="uid://pwy777opm34y" path="res://scenes/core/areas/heat_area.gd" id="16_2wyq8"]
 [ext_resource type="PackedScene" uid="uid://hr1pmj7locu0" path="res://scenes/game/environment/right_railing.tscn" id="19_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://b8b0n76kkgv8f" path="res://scenes/game/environment/left_railing.tscn" id="20_yc10j"]
@@ -105,3 +106,9 @@ limit_left = -500
 limit_top = -500
 limit_right = 1000
 limit_bottom = 100
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="." unique_id=155679648]
+stream = ExtResource("15_jkv2x")
+volume_db = -5.943
+autoplay = true
+bus = &"Soundtrack"

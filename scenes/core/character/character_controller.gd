@@ -49,6 +49,7 @@ var freeze_animation: bool = false
 var timer: Timer
 var is_in_heat_area: bool = false
 var target
+var is_alive: bool = false
 
 signal update_hp(hp: int, max_hp: int)
 
@@ -92,6 +93,8 @@ func set_scale_by_y_position():
 func _on_timer_timeout():
 	if not is_in_heat_area:
 		add_hp(-1)
+	else:
+		add_hp(1)
 		
 func _physics_process(delta):
 	if has_gravity:
@@ -182,8 +185,6 @@ func update_animations():
 				animation_player.play(animation_walk_down)
 			MovementDirection.DownRight:
 				animation_player.play(animation_walk_down)
-			_:
-				animation_player.play(animation_walk_right)
 	else:
 		match movement_direction:
 			MovementDirection.Up:
@@ -202,11 +203,11 @@ func update_animations():
 				animation_player.play(animation_idle_down)
 			MovementDirection.DownRight:
 				animation_player.play(animation_idle_down)
-			_:
-				animation_player.play(animation_idle_right)
 
 
 func add_hp(amount):
+	if not is_alive:
+		return
 	hp += amount
 	if hp > max_hp:
 		hp = max_hp
@@ -214,6 +215,7 @@ func add_hp(amount):
 	GameStateStore.player_hp = hp
 	GameStateStore.player_max_hp = max_hp
 	if hp <= 0:
+		is_alive = false
 		timer.stop()
 		death_action_tree.run()
 		print("You Dead!")
@@ -223,6 +225,7 @@ func spawn(pos: Vector2 = position):
 	set_idle(movement_direction)
 	sprite.visible = true
 	paralyzed = false
+	is_alive = true
 	if movement_direction == MovementDirection.Left:
 		scale.x = scale.y * -1
 	elif movement_direction == MovementDirection.Right:
@@ -237,6 +240,7 @@ func spawn_restore():
 	update_animations()
 	sprite.visible = true
 	paralyzed = false
+	is_alive = true
 	if movement_direction == MovementDirection.Left:
 		scale.x = scale.y * -1
 	elif movement_direction == MovementDirection.Right:
@@ -291,7 +295,6 @@ func _on_velocity_computed(safe_velocity: Vector2):
 
 func _calculate_movement_direction_from_velocity():
 	if velocity.length() < 0.1:
-		movement_direction = MovementDirection.None
 		return
 		
 	var x = velocity.x

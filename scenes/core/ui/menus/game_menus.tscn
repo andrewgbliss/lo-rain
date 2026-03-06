@@ -1190,7 +1190,7 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(50, 15)
 layout_mode = 2
 bus_idx = 1
-label_text = "Music"
+label_text = "Soundtrack"
 
 [node name="HSlider" parent="AudioMenu/Control/Panel/MarginContainer/VBoxContainer/VBoxContainer/VolumeSlider/VBoxContainer" parent_id_path=PackedInt32Array(1118962981, 1678018193) index="1" unique_id=1146054939]
 focus_neighbor_bottom = NodePath("../../../VolumeSlider2/VBoxContainer/HSlider")
@@ -1199,7 +1199,7 @@ focus_neighbor_bottom = NodePath("../../../VolumeSlider2/VBoxContainer/HSlider")
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 bus_idx = 2
-label_text = "Ambience"
+label_text = "Effects"
 
 [node name="HSlider" parent="AudioMenu/Control/Panel/MarginContainer/VBoxContainer/VBoxContainer/VolumeSlider2/VBoxContainer" parent_id_path=PackedInt32Array(869556154, 1678018193) index="1" unique_id=1146054939]
 focus_neighbor_bottom = NodePath("../../../VolumeSlider3/VBoxContainer/HSlider")
@@ -1208,7 +1208,7 @@ focus_neighbor_bottom = NodePath("../../../VolumeSlider3/VBoxContainer/HSlider")
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 bus_idx = 3
-label_text = "Effects"
+label_text = "Ambience"
 
 [node name="HSlider" parent="AudioMenu/Control/Panel/MarginContainer/VBoxContainer/VBoxContainer/VolumeSlider3/VBoxContainer" parent_id_path=PackedInt32Array(168843246, 1678018193) index="1" unique_id=1146054939]
 focus_neighbor_bottom = NodePath("../../../../ButtonBack")

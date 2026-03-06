@@ -335,7 +335,7 @@ commands = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=432532002]
-position = Vector2(-433, -139)
+position = Vector2(-594, -53)
 limit_left = -780
 limit_top = -500
 limit_right = 500
@@ -349,7 +349,7 @@ metadata/_custom_type_script = "uid://btwul30fxa5pu"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=602593494]
 top_level = true
-position = Vector2(-433, -139)
+position = Vector2(-594, -53)
 script = ExtResource("25_y2jsn")
 priority = 5
 follow_mode = 5

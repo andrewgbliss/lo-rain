@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_ji0gc"]
 [ext_resource type="Texture2D" uid="uid://w5hi0wrqlwxg" path="res://assets/img/rooms/conbini/ConvenienceStoreInsidePreview.png" id="5_kvdit"]
 [ext_resource type="Texture2D" uid="uid://bnqcau6rkaf7d" path="res://assets/img/rooms/conbini/ConvenienceStore.png" id="6_kcf6v"]
+[ext_resource type="Script" uid="uid://cxdxx8083nob7" path="res://scenes/core/action_tree/leaves/action_show_hud.gd" id="6_ks763"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="6_kvdit"]
 [ext_resource type="Texture2D" uid="uid://cs7eqjmhomrt2" path="res://assets/img/rooms/conbini/Road.png" id="8_bced8"]
 [ext_resource type="Texture2D" uid="uid://c4d6x83onk5fk" path="res://assets/img/rooms/conbini/Sidewalk.png" id="9_85bi2"]
@@ -226,9 +227,15 @@ camera = NodePath("../../../Camera2D")
 phantom_camera = NodePath("../../../PhantomCamera2D")
 next_leaf = NodePath("../ActionCommandPrompt")
 
-[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=414837880]
+[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=414837880 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("5_ji0gc")
 active = true
+next_leaf = NodePath("../ActionShowHud")
+
+[node name="ActionShowHud" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=549074863]
+script = ExtResource("6_ks763")
+show = true
+metadata/_custom_type_script = "uid://cxdxx8083nob7"
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_324eo")]
 

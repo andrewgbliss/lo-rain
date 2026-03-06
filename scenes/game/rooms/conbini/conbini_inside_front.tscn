@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b0osu2rtunsnc" path="res://scenes/core/action_tree/leaves/action_spawn_entity.gd" id="6_ce0qk"]
 [ext_resource type="Texture2D" uid="uid://cw6es2vwwwca7" path="res://assets/img/rooms/conbini/ConvenienceStoreInside.png" id="6_dmlvv"]
 [ext_resource type="PackedScene" uid="uid://4vo54dgiooh4" path="res://scenes/game/rooms/conbini/atm.tscn" id="6_h4f54"]
+[ext_resource type="Script" uid="uid://cxdxx8083nob7" path="res://scenes/core/action_tree/leaves/action_show_hud.gd" id="6_ybb6n"]
 [ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="7_fq5t2"]
 [ext_resource type="Texture2D" uid="uid://ci3e3sa75ufe" path="res://assets/img/rooms/conbini/Backshelf.png" id="8_puffv"]
 [ext_resource type="Texture2D" uid="uid://bwxg88c0cpxqj" path="res://assets/img/rooms/conbini/Bags.png" id="9_6s753"]
@@ -759,6 +760,7 @@ metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 [node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1925290588 node_paths=PackedStringArray("room", "next_leaf")]
 script = ExtResource("3_6hhse")
 room = NodePath("../../..")
+is_in_heat_area = true
 next_leaf = NodePath("../ActionCameraFocus")
 
 [node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=2105232866 node_paths=PackedStringArray("camera", "next_leaf")]
@@ -770,7 +772,13 @@ next_leaf = NodePath("../ActionCommandPrompt")
 [node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=216844785 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("5_tpwdy")
 active = true
+next_leaf = NodePath("../ActionShowHud")
+
+[node name="ActionShowHud" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=741720897 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_ybb6n")
+show = true
 next_leaf = NodePath("../ActionSpawnEntity")
+metadata/_custom_type_script = "uid://cxdxx8083nob7"
 
 [node name="ActionSpawnEntity" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1902251126 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
 script = ExtResource("6_ce0qk")
@@ -1296,9 +1304,6 @@ door_id = "1"
 goto_door_id = "2"
 scene_path = "res://scenes/game/rooms/conbini/conbini.tscn"
 spawn_position = NodePath("SpawnPosition")
-room_hotspot_data = Dictionary[String, String]({
-"conbini|door|open": "completed"
-})
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor1" unique_id=1830690542]

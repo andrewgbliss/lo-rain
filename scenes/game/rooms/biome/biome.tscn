@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cgwfeop4t4dma" path="res://scenes/game/particles/rain/rain_ambience.tscn" id="2_ow3qk"]
 [ext_resource type="PackedScene" uid="uid://b1l65b5ajopcp" path="res://scenes/game/particles/rain/rain.tscn" id="3_ev6c7"]
+[ext_resource type="AudioStream" uid="uid://cnykdk5bxek02" path="res://assets/audio/Rain.mp3" id="3_ytawp"]
 
 [sub_resource type="Gradient" id="Gradient_ltjxa"]
 offsets = PackedFloat32Array(0, 0.972727)
@@ -59,3 +60,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2059692110]
 environment = SubResource("Environment_a8y0u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=311714336]
+stream = ExtResource("3_ytawp")
+autoplay = true
+bus = &"Ambience"

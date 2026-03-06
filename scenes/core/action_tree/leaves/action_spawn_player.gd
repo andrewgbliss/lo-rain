@@ -2,6 +2,7 @@ class_name ActionSpawnPlayer extends ActionLeaf
 
 @export var room: Room
 @export var default_spawn_position: Node2D
+@export var is_in_heat_area: bool = false
 
 func run() -> void:
 	var pos: Vector2 = get_player_spawn_position_vector()
@@ -13,6 +14,7 @@ func run() -> void:
 			entity.spawn_restore()
 		else:
 			entity.spawn(pos)
+		entity.is_in_heat_area = is_in_heat_area
 		if not GameStateStore.current_door_id.is_empty():
 			entity.movement_direction = GameStateStore.movement_direction
 			entity.set_idle(entity.get_movement_direction_by_int(GameStateStore.movement_direction))

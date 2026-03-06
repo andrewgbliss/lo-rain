@@ -7,4 +7,5 @@ func run() -> void:
 		UiManager.hud.show_hud()
 	else:
 		UiManager.hud.hide_hud()
+	next()
 	

@@ -9,20 +9,22 @@ func _ready():
 	body_entered.connect(_on_in_range_body_entered)
 	body_exited.connect(_on_in_range_body_exited)
 
-func _on_in_range_body_entered(_body):
+func _on_in_range_body_entered(body):
 	if not action_tree_enter:
 		return
-	if enter_times == -1:
-		action_tree_enter.run()
-	elif enter_times > 0:
-		enter_times = enter_times - 1
-		action_tree_enter.run()
+	if body is CharacterController:
+		if enter_times == -1:
+			action_tree_enter.run()
+		elif enter_times > 0:
+			enter_times = enter_times - 1
+			action_tree_enter.run()
 
-func _on_in_range_body_exited(_body):
+func _on_in_range_body_exited(body):
 	if not action_tree_exit:
 		return
-	if exit_times == -1:
-		action_tree_exit.run()
-	elif exit_times > 0:
-		exit_times = exit_times - 1
-		action_tree_exit.run()
+	if body is CharacterController:
+		if exit_times == -1:
+			action_tree_exit.run()
+		elif exit_times > 0:
+			exit_times = exit_times - 1
+			action_tree_exit.run()

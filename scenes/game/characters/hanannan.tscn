@@ -254,10 +254,9 @@ duration = 2.0
 next_leaf = NodePath("../ActionDialog")
 metadata/_custom_type_script = "uid://bmfirnwwl5a16"
 
-[node name="ActionDialog" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1970507860 node_paths=PackedStringArray("next_leaf")]
+[node name="ActionDialog" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1970507860]
 script = ExtResource("12_252rq")
 messages = Array[String](["The wizard killed you.", "You are now dead."])
-next_leaf = NodePath("")
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
 [node name="Look" type="Node" parent="Hotspot" unique_id=1315677632 node_paths=PackedStringArray("root_leaf")]

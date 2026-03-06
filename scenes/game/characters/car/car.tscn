@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://scenes/core/character/character_controller.gd" id="1_awssk"]
 [ext_resource type="Texture2D" uid="uid://de076qqfrfwh7" path="res://assets/img/rooms/long-road/Car2-Sheet.png" id="2_r53ve"]
+[ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="3_8ufsf"]
+[ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="4_lhd41"]
+[ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="5_ky3r4"]
+[ext_resource type="Script" uid="uid://cb3c2r6tdwudg" path="res://scenes/core/action_tree/leaves/action_set_alive.gd" id="5_ncsnc"]
+[ext_resource type="Script" uid="uid://cqjbjyrorfhxx" path="res://scenes/core/action_tree/leaves/action_set_idle.gd" id="6_ncsnc"]
+[ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="7_ss2ts"]
+[ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="8_8rlle"]
+[ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="9_r7j4g"]
+[ext_resource type="AudioStream" uid="uid://b51yv2levrcbe" path="res://assets/audio/effects/CarEngine.mp3" id="11_ky3r4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r53ve"]
 size = Vector2(113, 7)
@@ -62,7 +71,10 @@ _data = {
 &"WalkLeft": SubResource("Animation_r53ve")
 }
 
-[node name="Car" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qerox"]
+size = Vector2(113, 9)
+
+[node name="Car" type="CharacterBody2D" unique_id=1942904670]
 collision_layer = 16
 collision_mask = 0
 motion_mode = 1
@@ -72,17 +84,74 @@ has_gravity = false
 move_speed = Vector2(100, 20)
 metadata/_custom_type_script = "uid://crueou1p1x8k2"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=372822598]
 scale = Vector2(-1, 1)
 texture = ExtResource("2_r53ve")
+offset = Vector2(0, -14.785)
 hframes = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 11.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1445617130]
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_r53ve")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_aey4m")
-}
-autoplay = "WalkLeft"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1036983748]
+libraries/ = SubResource("AnimationLibrary_aey4m")
+
+[node name="HotspotActionTrigger" type="Area2D" parent="." unique_id=2131708066 node_paths=PackedStringArray("action_tree_enter")]
+position = Vector2(0, -15)
+collision_layer = 32
+script = ExtResource("3_8ufsf")
+action_tree_enter = NodePath("ActionTree")
+enter_times = 1
+metadata/_custom_type_script = "uid://6cnw82p6ya55"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HotspotActionTrigger" unique_id=1838955207]
+position = Vector2(-0.5, 10.5)
+shape = SubResource("RectangleShape2D_qerox")
+
+[node name="ActionTree" type="Node" parent="HotspotActionTrigger" unique_id=458042080 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("4_lhd41")
+root_leaf = NodePath("ActionSetAlive")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSetAlive" type="Node" parent="HotspotActionTrigger/ActionTree" unique_id=2090576990 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("5_ncsnc")
+entity_name = "player"
+next_leaf = NodePath("../ActionParalyze")
+
+[node name="ActionParalyze" type="Node" parent="HotspotActionTrigger/ActionTree" unique_id=1636809507 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("5_ky3r4")
+entity_name = "player"
+value = true
+next_leaf = NodePath("../ActionSetIdle")
+metadata/_custom_type_script = "uid://8oquxlfp2c6a"
+
+[node name="ActionSetIdle" type="Node" parent="HotspotActionTrigger/ActionTree" unique_id=380635199 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_ncsnc")
+entity_name = "player"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+metadata/_custom_type_script = "uid://cqjbjyrorfhxx"
+
+[node name="ActionNpcRunAnimation" type="Node" parent="HotspotActionTrigger/ActionTree" unique_id=1177281431 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_ss2ts")
+entity_name = "player"
+animation_name = "Death"
+next_leaf = NodePath("../ActionWait")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionWait" type="Node" parent="HotspotActionTrigger/ActionTree" unique_id=1298892502 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_8rlle")
+duration = 2.0
+next_leaf = NodePath("../ActionDialog")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionDialog" type="Node" parent="HotspotActionTrigger/ActionTree" unique_id=1349555978]
+script = ExtResource("9_r7j4g")
+messages = Array[String](["You got ran over by a vehicle. Should have stayed out of the road.", "You are now dead."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=622887736]
+stream = ExtResource("11_ky3r4")
+volume_db = -5.778
+autoplay = true
+bus = &"Effects"

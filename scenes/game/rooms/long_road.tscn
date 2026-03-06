@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="13_wtmu4"]
 [ext_resource type="Script" uid="uid://cjxnsp3qrmkkd" path="res://scenes/core/action_tree/leaves/action_quest_status.gd" id="14_1062q"]
 [ext_resource type="PackedScene" uid="uid://ce6ku3fldaqx0" path="res://scenes/game/hotspots/bus_stop.tscn" id="14_gofan"]
+[ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="14_st4mc"]
 [ext_resource type="PackedScene" uid="uid://dace1v6hxewpc" path="res://scenes/core/ui/dialog/dialog_ui.tscn" id="14_tgdiy"]
 [ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="16_1062q"]
 [ext_resource type="PackedScene" uid="uid://ca6prygih2cy4" path="res://scenes/game/hotspots/bench.tscn" id="16_gofan"]
@@ -56,6 +57,12 @@ polygon = PackedVector2Array(-508, 449, -507, 570, 558, 572, 560, 449)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3i1ap"]
 size = Vector2(61, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_st4mc"]
+size = Vector2(107, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yobjs"]
+size = Vector2(60, 67)
 
 [sub_resource type="Resource" id="Resource_8wf4g"]
 script = ExtResource("26_j5au5")
@@ -162,7 +169,14 @@ script = ExtResource("10_0cuhu")
 room = NodePath("../../..")
 spawn_position = NodePath("../../../Spawners/CarStart")
 entity_name = "car"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+
+[node name="ActionNpcRunAnimation" type="Node" parent="ActionTrees/GettingDumped" unique_id=1228424968 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_st4mc")
+entity_name = "car"
+animation_name = "WalkLeft"
 next_leaf = NodePath("../ActionCameraFocus")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
 
 [node name="ActionCameraFocus" type="Node" parent="ActionTrees/GettingDumped" unique_id=694037452 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
 script = ExtResource("4_kcbv6")
@@ -174,6 +188,7 @@ next_leaf = NodePath("../ActionMovementState")
 [node name="ActionMovementState" type="Node" parent="ActionTrees/GettingDumped" unique_id=1382302153 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("11_4pa1n")
 entity_name = "car"
+movement_direction = 3
 velocity_x = -1.0
 next_leaf = NodePath("../ActionWait")
 
@@ -186,8 +201,16 @@ metadata/_custom_type_script = "uid://bmfirnwwl5a16"
 [node name="ActionMovementState2" type="Node" parent="ActionTrees/GettingDumped" unique_id=1113805696 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("11_4pa1n")
 entity_name = "car"
-next_leaf = NodePath("../ActionQuestChange")
+movement_direction = 3
+next_leaf = NodePath("../ActionNpcRunAnimation2")
 metadata/_custom_type_script = "uid://cs2f4mmgvo7ve"
+
+[node name="ActionNpcRunAnimation2" type="Node" parent="ActionTrees/GettingDumped" unique_id=1291541801 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_st4mc")
+entity_name = "car"
+animation_name = "IdleLeft"
+next_leaf = NodePath("../ActionQuestChange")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
 
 [node name="ActionQuestChange" type="Node" parent="ActionTrees/GettingDumped" unique_id=147034739 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("13_usuj6")
@@ -245,8 +268,16 @@ metadata/_custom_type_script = "uid://bmfirnwwl5a16"
 [node name="ActionMovementState3" type="Node" parent="ActionTrees/GettingDumped" unique_id=94334559 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("11_4pa1n")
 entity_name = "car"
+movement_direction = 3
 velocity_x = -1.0
+next_leaf = NodePath("../ActionNpcRunAnimation3")
+
+[node name="ActionNpcRunAnimation3" type="Node" parent="ActionTrees/GettingDumped" unique_id=80592764 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_st4mc")
+entity_name = "car"
+animation_name = "WalkLeft"
 next_leaf = NodePath("../ActionWait5")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
 
 [node name="ActionWait5" type="Node" parent="ActionTrees/GettingDumped" unique_id=270272329 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("12_ne7q7")
@@ -525,6 +556,28 @@ commands = {
 "look": NodePath("Look")
 }
 
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspots/Lamp" unique_id=1826383143 node_paths=PackedStringArray("action_tree_enter")]
+position = Vector2(0, -17)
+collision_layer = 32
+script = ExtResource("37_uxib5")
+action_tree_enter = NodePath("ActionTree")
+enter_times = 1
+metadata/_custom_type_script = "uid://6cnw82p6ya55"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Lamp/HotspotActionTrigger" unique_id=1428476855]
+position = Vector2(0.5, -7)
+shape = SubResource("RectangleShape2D_st4mc")
+
+[node name="ActionTree" type="Node" parent="Hotspots/Lamp/HotspotActionTrigger" unique_id=1146559943 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Lamp/HotspotActionTrigger/ActionTree" unique_id=614710544]
+script = ExtResource("13_wtmu4")
+messages = Array[String](["It's feels nice and warm under this street light.", "There are areas where you can warm up. Try to stay warm and don't freeze."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
 [node name="DollarBill" parent="Hotspots" unique_id=1772556199 node_paths=PackedStringArray("commands") instance=ExtResource("7_iyflf")]
 position = Vector2(19, -20)
 commands = {
@@ -540,7 +593,7 @@ commands = {
 }
 
 [node name="Grate" parent="Hotspots" unique_id=1864570611 node_paths=PackedStringArray("commands") instance=ExtResource("17_tvtbn")]
-position = Vector2(285, 5)
+position = Vector2(285, 8)
 commands = {
 "look": NodePath("Look")
 }
@@ -677,6 +730,43 @@ script = ExtResource("13_wtmu4")
 messages = Array[String](["You see a cliff.", "Be careful!"])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspots" unique_id=1667430917 node_paths=PackedStringArray("action_tree_enter")]
+position = Vector2(369, 30)
+script = ExtResource("37_uxib5")
+action_tree_enter = NodePath("ActionTree")
+enter_times = 1
+metadata/_custom_type_script = "uid://6cnw82p6ya55"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HotspotActionTrigger" unique_id=1542524640]
+position = Vector2(20, 17.5)
+shape = SubResource("RectangleShape2D_yobjs")
+
+[node name="ActionTree" type="Node" parent="Hotspots/HotspotActionTrigger" unique_id=1990353154 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("12_wtmu4")
+root_leaf = NodePath("ActionSpawnEntity")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSpawnEntity" type="Node" parent="Hotspots/HotspotActionTrigger/ActionTree" unique_id=1939766148 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
+script = ExtResource("10_0cuhu")
+room = NodePath("../../../..")
+spawn_position = NodePath("../../../../Spawners/CarStart2")
+entity_name = "car"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+metadata/_custom_type_script = "uid://b0osu2rtunsnc"
+
+[node name="ActionNpcRunAnimation" type="Node" parent="Hotspots/HotspotActionTrigger/ActionTree" unique_id=428242755 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_st4mc")
+entity_name = "car"
+animation_name = "WalkLeft"
+next_leaf = NodePath("../ActionMovementState")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionMovementState" type="Node" parent="Hotspots/HotspotActionTrigger/ActionTree" unique_id=75732688]
+script = ExtResource("11_4pa1n")
+entity_name = "car"
+movement_direction = 3
+velocity_x = -1.0
+
 [node name="Spawners" type="Node2D" parent="." unique_id=1255518591]
 
 [node name="PlayerSpawn" type="Node2D" parent="Spawners" unique_id=1783737382]
@@ -684,6 +774,9 @@ position = Vector2(-221, -7)
 
 [node name="CarStart" type="Node2D" parent="Spawners" unique_id=47297331]
 position = Vector2(223, 13)
+
+[node name="CarStart2" type="Node2D" parent="Spawners" unique_id=388553444]
+position = Vector2(616, 37)
 
 [node name="CarEnd" type="Node2D" parent="Spawners" unique_id=922619403]
 position = Vector2(-217, 8)
