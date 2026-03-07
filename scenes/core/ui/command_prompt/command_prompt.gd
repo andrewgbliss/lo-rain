@@ -11,6 +11,13 @@ signal opened
 signal closed
 
 func _ready():
+	DialogUi.dialog_text.is_started.connect(_on_dialog_text_is_started)
+	hide()
+	
+func _on_dialog_text_is_started():
+	active = false
+	text = ""
+	showing = false
 	hide()
 	
 func _on_pause():

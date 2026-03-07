@@ -180,11 +180,11 @@ action_leaf_false = NodePath("../ActionDialog")
 
 [node name="ActionDialog" type="Node" parent="Look" unique_id=266640687]
 script = ExtResource("8_14qw0")
-messages = Array[String](["The lamp gives off light as the sun has already set.", "It is warm under the lamp."])
+messages = Array[String](["There is a street light on the sidewalk.", "It is warm under the light."])
 
 [node name="ActionDialog2" type="Node" parent="Look" unique_id=1999534928]
 script = ExtResource("8_14qw0")
-messages = Array[String](["The lamp is broken.", "You fucked with it."])
+messages = Array[String](["The light is broken.", "Thanks to you, you messed with it and it short circuited."])
 
 [node name="FuckWith" type="Node" parent="." unique_id=2048076632 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("7_smj2t")
@@ -208,12 +208,12 @@ action_leaf_false = NodePath("../ActionDialog")
 
 [node name="ActionDialog" type="Node" parent="FuckWith" unique_id=203573749 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("8_14qw0")
-messages = Array[String](["You fuck with the lamp.", "It short circuits."])
+messages = Array[String](["You pull out your screwdriver set and mess with the light.", "It short circuits."])
 next_leaf = NodePath("../ActionSetHotspotState")
 
 [node name="ActionDialog2" type="Node" parent="FuckWith" unique_id=1465219714]
 script = ExtResource("8_14qw0")
-messages = Array[String](["You already fucked it up."])
+messages = Array[String](["It is already short circuited."])
 
 [node name="ActionSetHotspotState" type="Node" parent="FuckWith" unique_id=841706956 node_paths=PackedStringArray("hotspot", "next_leaf")]
 script = ExtResource("11_p33s8")

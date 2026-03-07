@@ -51,6 +51,7 @@
 [ext_resource type="Script" uid="uid://bwuxkjiinyv12" path="res://scenes/core/action_tree/leaves/action_change_gravity.gd" id="41_qoymw"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="42_bot4p"]
 [ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="42_krqi5"]
+[ext_resource type="Script" uid="uid://cb3c2r6tdwudg" path="res://scenes/core/action_tree/leaves/action_set_alive.gd" id="44_yobjs"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2wyq8"]
 polygon = PackedVector2Array(-508, 449, -507, 570, 558, 572, 560, 449)
@@ -605,6 +606,9 @@ commands = {
 "look": NodePath("Look")
 }
 
+[node name="ActionDialog" parent="Hotspots/Trash/Look" parent_id_path=PackedInt32Array(328091173, 1996294422) index="1" unique_id=1493959905]
+messages = Array[String](["You see a trash can. You could mess with it to see if you get anything out of it."])
+
 [node name="FuckWith" type="Node" parent="Hotspots/Trash" unique_id=640144890 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("12_wtmu4")
 root_leaf = NodePath("ActionInRange")
@@ -627,12 +631,12 @@ action_leaf_false = NodePath("../ActionDialog")
 
 [node name="ActionDialog" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=471289703 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("13_wtmu4")
-messages = Array[String](["You fuck with the trash.", "A dollar bill falls to the ground."])
+messages = Array[String](["You pull out your screwdriver set and mess with the lid of the trash.", "A dollar bill falls to the ground."])
 next_leaf = NodePath("../ActionSetHotspotState")
 
 [node name="ActionDialog2" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=4829686]
 script = ExtResource("13_wtmu4")
-messages = Array[String](["You already fucked with it."])
+messages = Array[String](["You already messed with it."])
 
 [node name="ActionSetHotspotState" type="Node" parent="Hotspots/Trash/FuckWith" unique_id=607137887 node_paths=PackedStringArray("hotspot", "next_leaf")]
 script = ExtResource("36_k6byg")
@@ -668,9 +672,11 @@ commands = {
 }
 metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="HotspotActionTrigger" type="Area2D" parent="Hotspots/Cliff" unique_id=737413492]
+[node name="HotspotActionTrigger" type="Area2D" parent="Hotspots/Cliff" unique_id=737413492 node_paths=PackedStringArray("action_tree_enter")]
 collision_layer = 32
 script = ExtResource("37_uxib5")
+action_tree_enter = NodePath("../ActionTree")
+enter_times = 1
 metadata/_custom_type_script = "uid://6cnw82p6ya55"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Cliff/HotspotActionTrigger" unique_id=1374273360]
@@ -679,8 +685,13 @@ polygon = PackedVector2Array(-181, 4, -181, -14, 638, -11, 638, 6)
 
 [node name="ActionTree" type="Node" parent="Hotspots/Cliff" unique_id=797350673 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("12_wtmu4")
-root_leaf = NodePath("ActionParalyze")
+root_leaf = NodePath("ActionSetAlive")
 metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSetAlive" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=410529657 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("44_yobjs")
+entity_name = "player"
+next_leaf = NodePath("../ActionParalyze")
 
 [node name="ActionParalyze" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=1673422556 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("16_1062q")
@@ -784,7 +795,7 @@ position = Vector2(-217, 8)
 [node name="DialogUI" parent="." unique_id=2072539769 instance=ExtResource("14_tgdiy")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1166665989]
-position = Vector2(279, -258)
+position = Vector2(-126, -21)
 zoom = Vector2(1.5, 1.5)
 limit_left = -300
 limit_top = -500
@@ -798,7 +809,7 @@ script = ExtResource("23_8rclq")
 metadata/_custom_type_script = "uid://btwul30fxa5pu"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1602343489]
-position = Vector2(279, -258)
+position = Vector2(-126, -21)
 script = ExtResource("25_bnjec")
 priority = 5
 zoom = Vector2(1.5, 1.5)

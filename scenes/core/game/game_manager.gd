@@ -21,11 +21,18 @@ var game_state: GAME_STATE = GAME_STATE.NONE
 var previous_game_state: GAME_STATE = GAME_STATE.NONE
 var is_paused: bool = false
 var can_pause: bool = false
+var player
+var is_testing: bool = true
+var demo_mode: bool = true
 
 signal state_changed(state: GAME_STATE)
 signal paused_toggled(is_paused: bool)
 signal on_pause
 signal on_unpause
+
+func _ready():
+	if OS.get_name() == "Web":
+		demo_mode = true
 
 func set_state(new_game_state: GAME_STATE):
 	if new_game_state != game_state:

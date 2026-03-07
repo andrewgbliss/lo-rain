@@ -24,30 +24,30 @@ func _find_command_key(commands_dict: Dictionary, verb: String) -> String:
 
 ## Finds the hotspot by id (from TextParser.object) and action (from TextParser.verb),
 ## then runs that action's ActionTree. Returns true if a hotspot action was found and run.
-func _run_hotspot() -> bool:
+func _run_hotspot() -> String:
 	var obj := TextParser.object.strip_edges()
 	var verb := TextParser.verb.strip_edges()
 	if obj.is_empty() or verb.is_empty():
-		return false
+		return TextParser.DontUnderstand
 
 	var hotspot := _find_hotspot_by_id(obj)
 	if hotspot == null:
-		return false
+		return TextParser.HotspotNotFound
 
 	var commands_dict: Dictionary = hotspot.commands
 	if commands_dict.is_empty():
-		return false
+		return TextParser.CantDoAction
 
 	var action_key := _find_command_key(commands_dict, verb)
 	if action_key.is_empty():
-		return false
+		return TextParser.CantDoAction
 
 	var tree: ActionTree = hotspot.commands[action_key]
 	if tree == null:
-		return false
+		return TextParser.CantDoAction
 
 	tree.run()
-	return true
+	return ""
 
 func _find_hotspot_by_id(object: String) -> Hotspot:
 	if object.is_empty():
@@ -100,8 +100,9 @@ func _on_command_processed(did_process: bool) -> void:
 	if (verb == "look" or verb == "help") and TextParser.object == "":
 		TextParser.object = "room"
 
-	if _run_hotspot():
+	var message = _run_hotspot()
+	if message.is_empty():
 		return
 
-	DialogUi.dialog_text.send_message(TextParser.DontUnderstand)
+	DialogUi.dialog_text.send_message(message)
 	await DialogUi.dialog_text.is_finished

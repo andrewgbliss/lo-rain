@@ -12,6 +12,10 @@ func _ready():
 func _input(event):
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		if not is_showing and event.is_action_pressed("restore"):
+			if not GameManager.is_testing and GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+				return
+			if not GameManager.can_pause:
+				return
 			_on()
 		if is_showing and event.is_action_pressed("ui_cancel"):
 			_off()

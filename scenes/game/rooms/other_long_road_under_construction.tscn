@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_wjfdc"]
 [ext_resource type="Script" uid="uid://b0osu2rtunsnc" path="res://scenes/core/action_tree/leaves/action_spawn_entity.gd" id="6_wy0se"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="8_qtd6q"]
+[ext_resource type="Script" uid="uid://woqmqjl10k3a" path="res://scenes/core/action_tree/leaves/action_next.gd" id="8_xnols"]
+[ext_resource type="Script" uid="uid://bsw2es8qsp716" path="res://scenes/core/action_tree/leaves/action_show_node2d.gd" id="9_fu48c"]
 [ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="9_rb1c6"]
 [ext_resource type="TileSet" uid="uid://b4r8u5pw61oks" path="res://scenes/game/tilesets/road.tres" id="10_86rm5"]
 [ext_resource type="Texture2D" uid="uid://blke63jaipwkh" path="res://assets/img/rooms/long-road/ParkComingSoon.png" id="11_dbfcv"]
@@ -18,14 +20,17 @@
 [ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="15_6d1lh"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="15_dbfcv"]
 [ext_resource type="Script" uid="uid://br03kradwjuk0" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="15_ej7g5"]
+[ext_resource type="Script" uid="uid://dchafued14aax" path="res://scenes/core/action_tree/leaves/action_is_demo_mode.gd" id="16_wjfdc"]
 [ext_resource type="Script" uid="uid://cqjbjyrorfhxx" path="res://scenes/core/action_tree/leaves/action_set_idle.gd" id="16_xnols"]
 [ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="16_yagxe"]
+[ext_resource type="Script" uid="uid://cb3c2r6tdwudg" path="res://scenes/core/action_tree/leaves/action_set_alive.gd" id="17_0ocjf"]
 [ext_resource type="Script" uid="uid://cekjbadpyoy6a" path="res://scenes/core/action_tree/leaves/action_set_z_index.gd" id="17_fu48c"]
 [ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="18_glrgi"]
 [ext_resource type="Script" uid="uid://qia23iggn1qa" path="res://scenes/core/spawn/spawn_position.gd" id="19_0chix"]
 [ext_resource type="Script" uid="uid://dms3vjyyp4e7d" path="res://scenes/core/action_tree/leaves/action_change_collision_mask.gd" id="19_7gnfj"]
 [ext_resource type="Script" uid="uid://bwuxkjiinyv12" path="res://scenes/core/action_tree/leaves/action_change_gravity.gd" id="20_170wn"]
 [ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="23_u2geu"]
+[ext_resource type="Texture2D" uid="uid://b83t8yes1b5i3" path="res://assets/img/rooms/long-road/ParkSign.png" id="24_2v376"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyh21"]
 size = Vector2(20, 111)
@@ -71,12 +76,45 @@ script = ExtResource("5_wjfdc")
 active = true
 next_leaf = NodePath("../ActionSpawnEntity")
 
-[node name="ActionSpawnEntity" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1399383207 node_paths=PackedStringArray("room", "spawn_position")]
+[node name="ActionSpawnEntity" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1399383207 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
 script = ExtResource("6_wy0se")
 room = NodePath("../../..")
 spawn_position = NodePath("../../../Spawners/RaskySpawn")
-entity_name = "rasky"
+next_leaf = NodePath("../ActionIsDemoMode")
 metadata/_custom_type_script = "uid://b0osu2rtunsnc"
+
+[node name="ActionIsDemoMode" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=638861073 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("16_wjfdc")
+action_leaf_true = NodePath("ActionNextDemo")
+action_leaf_false = NodePath("ActionNextReal")
+
+[node name="ActionNextDemo" type="Node" parent="ActionTrees/SpawnPlayer/ActionIsDemoMode" unique_id=947300896 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_xnols")
+next_leaf = NodePath("ActionShowDemoSign")
+
+[node name="ActionShowDemoSign" type="Node" parent="ActionTrees/SpawnPlayer/ActionIsDemoMode/ActionNextDemo" unique_id=440747593 node_paths=PackedStringArray("node2d", "next_leaf")]
+script = ExtResource("9_fu48c")
+node2d = NodePath("../../../../../Hotspots/Hotspot/ParkComingSoon")
+show = true
+next_leaf = NodePath("../ActionHideRealSign")
+
+[node name="ActionHideRealSign" type="Node" parent="ActionTrees/SpawnPlayer/ActionIsDemoMode/ActionNextDemo" unique_id=824078002 node_paths=PackedStringArray("node2d")]
+script = ExtResource("9_fu48c")
+node2d = NodePath("../../../../../Hotspots/Hotspot/ParkSign")
+
+[node name="ActionNextReal" type="Node" parent="ActionTrees/SpawnPlayer/ActionIsDemoMode" unique_id=204955531 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_xnols")
+next_leaf = NodePath("ActionHideDemoSign")
+
+[node name="ActionHideDemoSign" type="Node" parent="ActionTrees/SpawnPlayer/ActionIsDemoMode/ActionNextReal" unique_id=1999501627 node_paths=PackedStringArray("node2d", "next_leaf")]
+script = ExtResource("9_fu48c")
+node2d = NodePath("../../../../../Hotspots/Hotspot/ParkComingSoon")
+next_leaf = NodePath("../ActionShowRealSign")
+
+[node name="ActionShowRealSign" type="Node" parent="ActionTrees/SpawnPlayer/ActionIsDemoMode/ActionNextReal" unique_id=1951178250 node_paths=PackedStringArray("node2d")]
+script = ExtResource("9_fu48c")
+node2d = NodePath("../../../../../Hotspots/Hotspot/ParkSign")
+show = true
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_y0kg4")]
 
@@ -103,11 +141,8 @@ z_index = -5
 tile_map_data = PackedByteArray("AADo////AAACAAEAAADn////AAAAAAAAAADm////AAAAAAAAAADl////AAAEAAIAAADk////AAAAAAAAAADj////AAAAAAAAAADi////AAAAAAAAAADh////AAAEAAIAAADg////AAAAAAAAAADf////AAAAAAAAAADe////AAACAAIAAADd////AAAAAAAAAADc////AAAAAAAAAADb////AAACAAIAAADa////AAAAAAAAAADZ////AAAAAAAAAADY////AAACAAIAAADX////AAAAAAAAAADW////AAAAAAAAAADV////AAACAAIAAADU////AAAAAAAAAADT////AAAAAAAAAADS////AAACAAIAAADR////AAAAAAAAAADQ////AAAAAAAAAADP////AAACAAIAAADO////AAAAAAAAAADN////AAAAAAAAAADM////AAAAAAAAAADL////AAAAAAAAAADK////AAAAAAAAAADJ////AAAAAAAAAACt////AAAAAAAAAACu////AAAAAAAAAACv////AAAAAAAAAACw////AAAAAAAAAACx////AAAAAAAAAACy////AAAAAAAAAACz////AAAAAAAAAAC0////AAAAAAAAAAC1////AAAAAAAAAAC2////AAAAAAAAAAC3////AAAAAAAAAAC4////AAAAAAAAAAC5////AAAAAAAAAAC6////AAAAAAAAAAC7////AAAAAAAAAAC8////AAAAAAAAAAC9////AAAAAAAAAAC+////AAAAAAAAAAC/////AAAAAAAAAADA////AAAAAAAAAADB////AAAAAAAAAADC////AAAAAAAAAADD////AAAAAAAAAADE////AAAAAAAAAADF////AAAAAAAAAADG////AAAAAAAAAADH////AAAAAAAAAADI////AAAAAAAAAACJ////AAAAAAAAAACK////AAAAAAAAAACL////AAAAAAAAAACM////AAAAAAAAAACN////AAAAAAAAAACO////AAAAAAAAAACP////AAAAAAAAAACQ////AAAAAAAAAACR////AAAAAAAAAACS////AAAAAAAAAACT////AAAAAAAAAACU////AAAAAAAAAACV////AAAAAAAAAACW////AAAAAAAAAACX////AAAAAAAAAACY////AAAAAAAAAACZ////AAAAAAAAAACa////AAAAAAAAAACb////AAAAAAAAAACc////AAAAAAAAAACd////AAAAAAAAAACe////AAAAAAAAAACf////AAAAAAAAAACg////AAAAAAAAAACh////AAAAAAAAAACi////AAAAAAAAAACj////AAAAAAAAAACk////AAAAAAAAAACl////AAAAAAAAAACm////AAAAAAAAAACn////AAAAAAAAAACo////AAAAAAAAAACp////AAAAAAAAAACq////AAAAAAAAAACr////AAAAAAAAAACs////AAAAAAAAAABZ////AAAAAAAAAABa////AAAAAAAAAABb////AAAAAAAAAABc////AAAAAAAAAABd////AAAAAAAAAABe////AAAAAAAAAABf////AAAAAAAAAABg////AAAAAAAAAABh////AAAAAAAAAABi////AAAAAAAAAABj////AAAAAAAAAABk////AAAAAAAAAABl////AAAAAAAAAABm////AAAAAAAAAABn////AAAAAAAAAABo////AAAAAAAAAABp////AAAAAAAAAABq////AAAAAAAAAABr////AAAAAAAAAABs////AAAAAAAAAABt////AAAAAAAAAABu////AAAAAAAAAABv////AAAAAAAAAABw////AAAAAAAAAABx////AAAAAAAAAABy////AAAAAAAAAABz////AAAAAAAAAAB0////AAAAAAAAAAB1////AAAAAAAAAAB2////AAAAAAAAAAB3////AAAAAAAAAAB4////AAAAAAAAAAB5////AAAAAAAAAAB6////AAAAAAAAAAB7////AAAAAAAAAAB8////AAAAAAAAAAB9////AAAAAAAAAAB+////AAAAAAAAAAB/////AAAAAAAAAACA////AAAAAAAAAACB////AAAAAAAAAACC////AAAAAAAAAACD////AAAAAAAAAACE////AAAAAAAAAACF////AAAAAAAAAACG////AAAAAAAAAACH////AAAAAAAAAACI////AAAAAAAAAAA4////AAAAAAAAAAA5////AAAAAAAAAAA6////AAAAAAAAAAA7////AAAAAAAAAAA8////AAAAAAAAAAA9////AAAAAAAAAAA+////AAAAAAAAAAA/////AAAAAAAAAABA////AAAAAAAAAABB////AAAAAAAAAABC////AAAAAAAAAABD////AAAAAAAAAABE////AAAAAAAAAABF////AAAAAAAAAABG////AAAAAAAAAABH////AAAAAAAAAABI////AAAAAAAAAABJ////AAAAAAAAAABK////AAAAAAAAAABL////AAAAAAAAAABM////AAAAAAAAAABN////AAAAAAAAAABO////AAAAAAAAAABP////AAAAAAAAAABQ////AAAAAAAAAABR////AAAAAAAAAABS////AAAAAAAAAABT////AAAAAAAAAABU////AAAAAAAAAABV////AAAAAAAAAABW////AAAAAAAAAABX////AAAAAAAAAABY////AAAAAAAAAAD8/v//AAAAAAAAAAD9/v//AAAAAAAAAAD+/v//AAAAAAAAAAD//v//AAAAAAAAAAAA////AAAAAAAAAAAB////AAAAAAAAAAAC////AAAAAAAAAAAD////AAAAAAAAAAAE////AAAAAAAAAAAF////AAAAAAAAAAAG////AAAAAAAAAAAH////AAAAAAAAAAAI////AAAAAAAAAAAJ////AAAAAAAAAAAK////AAAAAAAAAAAL////AAAAAAAAAAAM////AAAAAAAAAAAN////AAAAAAAAAAAO////AAAAAAAAAAAP////AAAAAAAAAAAQ////AAAAAAAAAAAR////AAAAAAAAAAAS////AAAAAAAAAAAT////AAAAAAAAAAAU////AAAAAAAAAAAV////AAAAAAAAAAAW////AAAAAAAAAAAX////AAAAAAAAAAAY////AAAAAAAAAAAZ////AAAAAAAAAAAa////AAAAAAAAAAAb////AAAAAAAAAAAc////AAAAAAAAAAAd////AAAAAAAAAAAe////AAAAAAAAAAAf////AAAAAAAAAAAg////AAAAAAAAAAAh////AAAAAAAAAAAi////AAAAAAAAAAAj////AAAAAAAAAAAk////AAAAAAAAAAAl////AAAAAAAAAAAm////AAAAAAAAAAAn////AAAAAAAAAAAo////AAAAAAAAAAAp////AAAAAAAAAAAq////AAAAAAAAAAAr////AAAAAAAAAAAs////AAAAAAAAAAAt////AAAAAAAAAAAu////AAAAAAAAAAAv////AAAAAAAAAAAw////AAAAAAAAAAAx////AAAAAAAAAAAy////AAAAAAAAAAAz////AAAAAAAAAAA0////AAAAAAAAAAA1////AAAAAAAAAAA2////AAAAAAAAAAA3////AAAAAAAAAADF/v//AAAAAAAAAADG/v//AAAAAAAAAADH/v//AAAAAAAAAADI/v//AAAAAAAAAADJ/v//AAAAAAAAAADK/v//AAAAAAAAAADL/v//AAAAAAAAAADM/v//AAAAAAAAAADN/v//AAAAAAAAAADO/v//AAAAAAAAAADP/v//AAAAAAAAAADQ/v//AAAAAAAAAADR/v//AAAAAAAAAADS/v//AAAAAAAAAADT/v//AAAAAAAAAADU/v//AAAAAAAAAADV/v//AAAAAAAAAADW/v//AAAAAAAAAADX/v//AAAAAAAAAADY/v//AAAAAAAAAADZ/v//AAAAAAAAAADa/v//AAAAAAAAAADb/v//AAAAAAAAAADc/v//AAAAAAAAAADd/v//AAAAAAAAAADe/v//AAAAAAAAAADf/v//AAAAAAAAAADg/v//AAAAAAAAAADh/v//AAAAAAAAAADi/v//AAAAAAAAAADj/v//AAAAAAAAAADk/v//AAAAAAAAAADl/v//AAAAAAAAAADm/v//AAAAAAAAAADn/v//AAAAAAAAAADo/v//AAAAAAAAAADp/v//AAAAAAAAAADq/v//AAAAAAAAAADr/v//AAAAAAAAAADs/v//AAAAAAAAAADt/v//AAAAAAAAAADu/v//AAAAAAAAAADv/v//AAAAAAAAAADw/v//AAAAAAAAAADx/v//AAAAAAAAAADy/v//AAAAAAAAAADz/v//AAAAAAAAAAD0/v//AAAAAAAAAAD1/v//AAAAAAAAAAD2/v//AAAAAAAAAAD3/v//AAAAAAAAAAD4/v//AAAAAAAAAAD5/v//AAAAAAAAAAD6/v//AAAAAAAAAAD7/v//AAAAAAAAAADp////AAAAAAAAAADq////AAAAAAAAAADr////AAACAAEAAADs////AAAAAAAAAADt////AAAAAAAAAADu////AAACAAAAAADv////AAAAAAAAAADw////AAAAAAAAAADx////AAACAAAAAADy////AAAAAAAAAADz////AAAAAAAAAAD0////AAACAAAAAAD1////AAAAAAAAAAD2////AAAAAAAAAAD3////AAACAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAACAAIAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAACAAIAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAACAAIAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAACAAIAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAACAAIAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAACAAIAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAACAAIAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAACAAIAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAbAP//AAACAAIAAAAcAP//AAAAAAAAAAAdAP//AAAAAAAAAAAeAP//AAACAAEAAAAfAP//AAAAAAAAAAAgAP//AAAAAAAAAAAhAP//AAAAAAAAAAAiAP//AAAAAAAAAAAjAP//AAAAAAAAAAAkAP//AAAAAAAAAAAlAP//AAAAAAAAAAAmAP//AAAAAAAAAAAnAP//AAAAAAAAAAAoAP//AAACAAEAAAApAP//AAAAAAAAAAAqAP//AAAAAAAAAAArAP//AAACAAAAAAAsAP//AAAAAAAAAAAtAP//AAAAAAAAAAAuAP//AAACAAAAAAAvAP//AAAAAAAAAAAwAP//AAAAAAAAAAAxAP//AAACAAAAAAAyAP//AAAAAAAAAAAzAP//AAAAAAAAAAA0AP//AAACAAAAAAA1AP//AAAAAAAAAAA3AP//AAAAAAAAAAA4AP//AAACAAAAAAA5AP//AAAAAAAAAAA6AP//AAACAAAAAAA7AP//AAAAAAAAAAA8AP//AAAAAAAAAAA9AP//AAACAAAAAAA+AP//AAAAAAAAAAA/AP//AAAAAAAAAABAAP//AAAAAAAAAABBAP//AAAAAAAAAABCAP//AAAAAAAAAABDAP//AAAAAAAAAABEAP//AAAAAAAAAABFAP//AAAAAAAAAABGAP//AAAAAAAAAABHAP//AAAAAAAAAABIAP//AAAAAAAAAABJAP//AAAAAAAAAABKAP//AAAAAAAAAABLAP//AAAAAAAAAABMAP//AAAAAAAAAABNAP//AAAAAAAAAABOAP//AAAAAAAAAABPAP//AAAAAAAAAABQAP//AAAAAAAAAABRAP//AAAAAAAAAABSAP//AAAAAAAAAABTAP//AAAAAAAAAABUAP//AAAAAAAAAABVAP//AAAAAAAAAABWAP//AAAAAAAAAABXAP//AAAAAAAAAABYAP//AAAAAAAAAABZAP//AAAAAAAAAABaAP//AAAAAAAAAABbAP//AAAAAAAAAABcAP//AAAAAAAAAABdAP//AAAAAAAAAABeAP//AAAAAAAAAABfAP//AAAAAAAAAABgAP//AAAAAAAAAABhAP//AAAAAAAAAABiAP//AAAAAAAAAABjAP//AAAAAAAAAABkAP//AAAAAAAAAABlAP//AAAAAAAAAABmAP//AAAAAAAAAABnAP//AAAAAAAAAABoAP//AAAAAAAAAABpAP//AAAAAAAAAABqAP//AAAAAAAAAABrAP//AAAAAAAAAABsAP//AAAAAAAAAABtAP//AAAAAAAAAABuAP//AAAAAAAAAABvAP//AAAAAAAAAABwAP//AAAAAAAAAABxAP//AAAAAAAAAAByAP//AAAAAAAAAABzAP//AAAAAAAAAAB0AP//AAAAAAAAAAB1AP//AAAAAAAAAAB2AP//AAAAAAAAAAB3AP//AAAAAAAAAAB4AP//AAAAAAAAAAB5AP//AAAAAAAAAAB6AP//AAAAAAAAAAB7AP//AAAAAAAAAAB8AP//AAAAAAAAAAB9AP//AAAAAAAAAAB+AP//AAAAAAAAAAB/AP//AAAAAAAAAACAAP//AAAAAAAAAACBAP//AAAAAAAAAACCAP//AAAAAAAAAACDAP//AAAAAAAAAACEAP//AAAAAAAAAACFAP//AAAAAAAAAACGAP//AAAAAAAAAACHAP//AAAAAAAAAACIAP//AAAAAAAAAACJAP//AAAAAAAAAACKAP//AAAAAAAAAACLAP//AAAAAAAAAACMAP//AAAAAAAAAACNAP//AAAAAAAAAACOAP//AAAAAAAAAACPAP//AAAAAAAAAACQAP//AAAAAAAAAACRAP//AAAAAAAAAACSAP//AAAAAAAAAACTAP//AAAAAAAAAACUAP//AAAAAAAAAACVAP//AAAAAAAAAACWAP//AAAAAAAAAACXAP//AAAAAAAAAACYAP//AAAAAAAAAACZAP//AAAAAAAAAACaAP//AAAAAAAAAACbAP//AAAAAAAAAACcAP//AAAAAAAAAACdAP//AAAAAAAAAACeAP//AAAAAAAAAACfAP//AAAAAAAAAACgAP//AAAAAAAAAAChAP//AAAAAAAAAACiAP//AAAAAAAAAACjAP//AAAAAAAAAACkAP//AAAAAAAAAAClAP//AAAAAAAAAACmAP//AAAAAAAAAACnAP//AAAAAAAAAACoAP//AAAAAAAAAACpAP//AAAAAAAAAACqAP//AAAAAAAAAACrAP//AAAAAAAAAACsAP//AAAAAAAAAACtAP//AAAAAAAAAACuAP//AAAAAAAAAACvAP//AAAAAAAAAACwAP//AAAAAAAAAACxAP//AAAAAAAAAACyAP//AAAAAAAAAACzAP//AAAAAAAAAAC0AP//AAAAAAAAAAC1AP//AAAAAAAAAAC2AP//AAAAAAAAAAC3AP//AAAAAAAAAAC4AP//AAAAAAAAAAC5AP//AAAAAAAAAAC6AP//AAAAAAAAAAC7AP//AAAAAAAAAAC8AP//AAAAAAAAAAC9AP//AAAAAAAAAAC+AP//AAAAAAAAAAC/AP//AAAAAAAAAADAAP//AAAAAAAAAADBAP//AAAAAAAAAADCAP//AAAAAAAAAADDAP//AAAAAAAAAADEAP//AAAAAAAAAADFAP//AAAAAAAAAADGAP//AAAAAAAAAADHAP//AAAAAAAAAADIAP//AAAAAAAAAADJAP//AAAAAAAAAADKAP//AAAAAAAAAADLAP//AAAAAAAAAADMAP//AAAAAAAAAADNAP//AAAAAAAAAADOAP//AAAAAAAAAADPAP//AAAAAAAAAADQAP//AAAAAAAAAADRAP//AAAAAAAAAADSAP//AAAAAAAAAADTAP//AAAAAAAAAADUAP//AAAAAAAAAADVAP//AAAAAAAAAADWAP//AAAAAAAAAADXAP//AAAAAAAAAADYAP//AAAAAAAAAADZAP//AAAAAAAAAADaAP//AAAAAAAAAADbAP//AAAAAAAAAADcAP//AAAAAAAAAADdAP//AAAAAAAAAADeAP//AAAAAAAAAADfAP//AAAAAAAAAADgAP//AAAAAAAAAADhAP//AAAAAAAAAADiAP//AAAAAAAAAADjAP//AAAAAAAAAADkAP//AAAAAAAAAADlAP//AAAAAAAAAADmAP//AAAAAAAAAADnAP//AAAAAAAAAADoAP//AAAAAAAAAADpAP//AAAAAAAAAADqAP//AAAAAAAAAADrAP//AAAAAAAAAADsAP//AAAAAAAAAADtAP//AAAAAAAAAADuAP//AAAAAAAAAADvAP//AAAAAAAAAADwAP//AAAAAAAAAADxAP//AAAAAAAAAADyAP//AAAAAAAAAADzAP//AAAAAAAAAAD0AP//AAAAAAAAAAD1AP//AAAAAAAAAAD2AP//AAAAAAAAAAD3AP//AAAAAAAAAAD4AP//AAAAAAAAAAD5AP//AAAAAAAAAAD6AP//AAAAAAAAAAD7AP//AAAAAAAAAAD8AP//AAAAAAAAAAD9AP//AAAAAAAAAAD+AP//AAAAAAAAAAD/AP//AAAAAAAAAAAAAf//AAAAAAAAAAABAf//AAAAAAAAAAACAf//AAAAAAAAAAADAf//AAAAAAAAAAAEAf//AAAAAAAAAAAFAf//AAAAAAAAAAAGAf//AAAAAAAAAAAHAf//AAAAAAAAAAAIAf//AAAAAAAAAAAJAf//AAAAAAAAAAAKAf//AAAAAAAAAAALAf//AAAAAAAAAAAMAf//AAAAAAAAAAANAf//AAAAAAAAAAAOAf//AAAAAAAAAAAPAf//AAAAAAAAAAAQAf//AAAAAAAAAAARAf//AAAAAAAAAAASAf//AAAAAAAAAAATAf//AAAAAAAAAAAUAf//AAAAAAAAAAAVAf//AAAAAAAAAAAWAf//AAAAAAAAAAAXAf//AAAAAAAAAAAYAf//AAAAAAAAAAAZAf//AAAAAAAAAAAaAf//AAAAAAAAAAAbAf//AAAAAAAAAAAcAf//AAAAAAAAAAAdAf//AAAAAAAAAAAeAf//AAAAAAAAAAAfAf//AAAAAAAAAAAgAf//AAAAAAAAAAAhAf//AAAAAAAAAAAiAf//AAAAAAAAAAAjAf//AAAAAAAAAAAkAf//AAAAAAAAAAAlAf//AAAAAAAAAAAmAf//AAAAAAAAAAAnAf//AAAAAAAAAAAoAf//AAAAAAAAAAApAf//AAAAAAAAAAAqAf//AAAAAAAAAAArAf//AAAAAAAAAAAsAf//AAAAAAAAAAAtAf//AAAAAAAAAAAuAf//AAAAAAAAAAAvAf//AAAAAAAAAAAwAf//AAAAAAAAAAAxAf//AAAAAAAAAAAyAf//AAAAAAAAAAAzAf//AAAAAAAAAAA0Af//AAAAAAAAAAA1Af//AAAAAAAAAAA2Af//AAAAAAAAAAA3Af//AAAAAAAAAAA4Af//AAAAAAAAAAA5Af//AAAAAAAAAAA6Af//AAAAAAAAAAA2AP//AAACAAAAAAA=")
 tile_set = ExtResource("10_86rm5")
 
-[node name="ParkComingSoon" type="Sprite2D" parent="." unique_id=1781504927]
-position = Vector2(368, -44)
-texture = ExtResource("11_dbfcv")
-
 [node name="Hotspots" type="Node2D" parent="." unique_id=582214124]
+y_sort_enabled = true
 
 [node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=1755126274]
 script = ExtResource("12_2v376")
@@ -129,13 +164,24 @@ metadata/_custom_type_script = "uid://6cnw82p6ya55"
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_jyh21")
 
-[node name="ActionTree" type="Node" parent="Hotspots/Freeway" unique_id=1779319916]
+[node name="ActionTree" type="Node" parent="Hotspots/Freeway" unique_id=1779319916 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("2_b7aaq")
+root_leaf = NodePath("ActionIsDemoMode")
 metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionIsDemoMode" type="Node" parent="Hotspots/Freeway/ActionTree" unique_id=424227957 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("16_wjfdc")
+action_leaf_true = NodePath("../ActionDialog")
+action_leaf_false = NodePath("../ActionDialog2")
 
 [node name="ActionDialog" type="Node" parent="Hotspots/Freeway/ActionTree" unique_id=1212144639]
 script = ExtResource("18_glrgi")
-messages = Array[String](["Thanks for playing Part One. Part Two will be coming soon!"])
+messages = Array[String](["Thanks for playing the demo. To continue with the rest of the story you can get the full version."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/Freeway/ActionTree" unique_id=293369456]
+script = ExtResource("18_glrgi")
+messages = Array[String](["You can't go that way since it's the freeway. You don't want to end up roadkill do you?"])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
 [node name="Cliff" type="Node2D" parent="Hotspots" unique_id=1169713872 node_paths=PackedStringArray("commands")]
@@ -160,8 +206,13 @@ polygon = PackedVector2Array(-183, 5, -181, -14, 638, -11, 638, 6)
 
 [node name="ActionTree" type="Node" parent="Hotspots/Cliff" unique_id=573968603 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("2_b7aaq")
-root_leaf = NodePath("ActionParalyze")
+root_leaf = NodePath("ActionSetAlive")
 metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionSetAlive" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=714802393 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("17_0ocjf")
+entity_name = "player"
+next_leaf = NodePath("../ActionParalyze")
 
 [node name="ActionParalyze" type="Node" parent="Hotspots/Cliff/ActionTree" unique_id=671670137 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("15_6d1lh")
@@ -210,6 +261,19 @@ metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 script = ExtResource("18_glrgi")
 messages = Array[String](["You see a cliff.", "Be careful!"])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Hotspot" type="Node2D" parent="Hotspots" unique_id=1542720707]
+script = ExtResource("14_0ocjf")
+id = "sign"
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="ParkComingSoon" type="Sprite2D" parent="Hotspots/Hotspot" unique_id=1781504927]
+position = Vector2(368, -44)
+texture = ExtResource("11_dbfcv")
+
+[node name="ParkSign" type="Sprite2D" parent="Hotspots/Hotspot" unique_id=867049759]
+position = Vector2(368, -44)
+texture = ExtResource("24_2v376")
 
 [node name="StaticBodies" type="Node" parent="." unique_id=1093025555]
 

@@ -20,7 +20,8 @@ func process_command(command: String):
 	var original_command = command.strip_edges(true, true).to_lower()
 
 	# replace fuck with with fuck_with
-	command = original_command.replace("fuck with", "fuckwith")
+	command = original_command.replace("mess with", "fuckwith")
+	command = command.replace("fuck with", "fuckwith")
 
 	#	If the command is blank then run the dont understand messages			
 	if command == "":

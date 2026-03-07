@@ -16,6 +16,13 @@ func _ready():
 func _input(event):
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		if not is_showing and event.is_action_pressed("save"):
+			if GameManager.player != null and not GameManager.player.is_alive:
+				DialogUi.dialog_text.send_message("You can't save the game right now.")
+				return
+			if not GameManager.is_testing and GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+				return
+			if not GameManager.can_pause:
+				return
 			_on()
 		if is_showing and event.is_action_pressed("ui_cancel"):
 			_off()
@@ -35,7 +42,8 @@ func _off():
 	parent.pop_all(false)
 
 func _on_save_button_pressed() -> void:
-	SaveGameManager.save(line_edit.text)
+	if line_edit.text != "":
+		SaveGameManager.save(line_edit.text)
 	_off()
 	line_edit.text = ""
 	save_button.disabled = true

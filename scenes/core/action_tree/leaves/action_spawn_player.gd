@@ -8,6 +8,7 @@ func run() -> void:
 	var pos: Vector2 = get_player_spawn_position_vector()
 	var entity = SpawnManager.spawn("player", pos, room)
 	if entity != null:
+		GameManager.player = entity
 		ItemManager.player = entity
 	if entity is CharacterController:
 		if SaveGameManager.loaded_restore_index != 0:

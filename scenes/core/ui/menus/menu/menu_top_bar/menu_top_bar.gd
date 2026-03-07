@@ -7,9 +7,8 @@ class_name MenuTopBar extends Menu
 @export var file_button: Button
 
 func _input(event):
-	# TODO - when going live uncomment this This is for testing
-	# if GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
-	# 	return
+	if not GameManager.is_testing and GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+		return
 	if not GameManager.can_pause:
 		return
 	if event is InputEventKey and event.is_pressed():
@@ -55,6 +54,11 @@ func _focus_first_button(panel: Panel):
 
 func _on_save_button_pressed() -> void:
 	_off()
+	if GameManager.player != null and not GameManager.player.is_alive:
+		DialogUi.dialog_text.send_message("You can't save the game right now.")
+		GameManager.unpause()
+		UiManager.game_menus.pop()
+		return
 	UiManager.game_menus.push("SaveGameMenu", false)
 
 func _on_quit_button_pressed() -> void:
