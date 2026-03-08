@@ -24,11 +24,13 @@ var can_pause: bool = false
 var player
 var is_testing: bool = true
 var demo_mode: bool = true
+var is_sleeping: bool = false
 
 signal state_changed(state: GAME_STATE)
 signal paused_toggled(is_paused: bool)
 signal on_pause
 signal on_unpause
+signal sleep_finished
 
 func _ready():
 	if OS.get_name() == "Web":

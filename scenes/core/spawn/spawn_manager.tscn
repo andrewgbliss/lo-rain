@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c7nlvdf1ebcdl" path="res://scenes/game/characters/johnny.tscn" id="4_b7sl6"]
 [ext_resource type="PackedScene" uid="uid://cjunwldi6qc84" path="res://scenes/game/characters/hanannan.tscn" id="5_gw8sj"]
 [ext_resource type="PackedScene" uid="uid://dr3m40neq2x1o" path="res://scenes/game/characters/rasky.tscn" id="6_1ls2g"]
+[ext_resource type="PackedScene" uid="uid://b6ywo6k3nxi5y" path="res://scenes/game/characters/car/car3.tscn" id="7_gw8sj"]
 
 [node name="SpawnManager" type="Node2D" unique_id=1034380021]
 script = ExtResource("1_3ga4s")
 entities = Dictionary[String, PackedScene]({
 "car": ExtResource("3_b7hal"),
+"car3": ExtResource("7_gw8sj"),
 "hanannan": ExtResource("5_gw8sj"),
 "johnny": ExtResource("4_b7sl6"),
 "player": ExtResource("2_ox1rk"),

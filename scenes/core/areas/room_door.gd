@@ -4,11 +4,14 @@ class_name RoomDoor extends Area2D
 @export var goto_door_id: String
 @export var scene_path: String
 @export var spawn_position: SpawnPosition
+@export var disabled: bool = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	
 func _on_body_entered(body):
+	if disabled:
+		return
 	if body is CharacterController:
 		GameStateStore.prev_door_id = door_id
 		GameStateStore.current_door_id = goto_door_id

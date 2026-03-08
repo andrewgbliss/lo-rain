@@ -15,7 +15,6 @@ func _ready():
 	hide()
 	
 func _on_dialog_text_is_started():
-	active = false
 	text = ""
 	showing = false
 	hide()

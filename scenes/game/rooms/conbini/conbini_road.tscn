@@ -7,12 +7,19 @@
 [ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_p7m8p"]
 [ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_mjgva"]
 [ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="5_xykyj"]
+[ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="6_flox4"]
 [ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="6_i4qfk"]
+[ext_resource type="Script" uid="uid://bta3mu63f0rg8" path="res://scenes/core/action_tree/leaves/action_next_random_leaf.gd" id="7_bjufb"]
+[ext_resource type="Script" uid="uid://woqmqjl10k3a" path="res://scenes/core/action_tree/leaves/action_next.gd" id="7_q8oms"]
+[ext_resource type="Script" uid="uid://cwlt4hqjpd0ew" path="res://scenes/core/action_tree/leaves/action_entity_exists.gd" id="8_bjufb"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="8_o32br"]
+[ext_resource type="Script" uid="uid://b0osu2rtunsnc" path="res://scenes/core/action_tree/leaves/action_spawn_entity.gd" id="9_4g4li"]
 [ext_resource type="TileSet" uid="uid://b4r8u5pw61oks" path="res://scenes/game/tilesets/road.tres" id="10_3aew7"]
 [ext_resource type="Texture2D" uid="uid://jvntudsq0mep" path="res://assets/img/rooms/conbini/ConvenienceStoreSmall.png" id="10_ha4el"]
 [ext_resource type="Texture2D" uid="uid://dk03i6w0a5riy" path="res://assets/img/rooms/long-road/AsphaltBend.png" id="10_v345v"]
+[ext_resource type="Script" uid="uid://cs2f4mmgvo7ve" path="res://scenes/core/action_tree/leaves/action_movement_state.gd" id="11_bjufb"]
 [ext_resource type="Texture2D" uid="uid://dq5130kucgbx" path="res://assets/img/rooms/long-road/AsphaltBendRight.png" id="11_i7l8u"]
+[ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="12_4g4li"]
 [ext_resource type="Texture2D" uid="uid://cr1pa6w4wdkar" path="res://assets/img/masks/LightMask.png" id="13_a7812"]
 [ext_resource type="PackedScene" uid="uid://hr1pmj7locu0" path="res://scenes/game/environment/right_railing.tscn" id="13_i7l8u"]
 [ext_resource type="PackedScene" uid="uid://b8b0n76kkgv8f" path="res://scenes/game/environment/left_railing.tscn" id="14_a7812"]
@@ -67,6 +74,90 @@ next_leaf = NodePath("../ActionCommandPrompt")
 [node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1865733365]
 script = ExtResource("5_mjgva")
 active = true
+
+[node name="SpawnCars" type="Node" parent="ActionTrees" unique_id=341731766 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_wwtq7")
+root_leaf = NodePath("ActionWait")
+run_after_ready = true
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionWait" type="Node" parent="ActionTrees/SpawnCars" unique_id=149146061 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("6_flox4")
+duration = 10.0
+next_leaf = NodePath("../ActionNextRandomLeaf")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionNextRandomLeaf" type="Node" parent="ActionTrees/SpawnCars" unique_id=1519373599 node_paths=PackedStringArray("leaves")]
+script = ExtResource("7_bjufb")
+leaves = [NodePath("../ActionSpawnCar"), NodePath("../ActionSpawnCar3")]
+
+[node name="ActionSpawnCar" type="Node" parent="ActionTrees/SpawnCars" unique_id=669085300 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_q8oms")
+next_leaf = NodePath("ActionEntityExists")
+metadata/_custom_type_script = "uid://woqmqjl10k3a"
+
+[node name="ActionEntityExists" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar" unique_id=896689524 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("8_bjufb")
+entity_name = "car"
+action_leaf_true = NodePath("../../ActionWait")
+action_leaf_false = NodePath("../ActionSpawnEntity")
+
+[node name="ActionSpawnEntity" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar" unique_id=735731540 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
+script = ExtResource("9_4g4li")
+room = NodePath("../../../..")
+spawn_position = NodePath("../../../../Spawners/CarStart")
+entity_name = "car"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+metadata/_custom_type_script = "uid://b0osu2rtunsnc"
+
+[node name="ActionNpcRunAnimation" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar" unique_id=1124499016 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_4g4li")
+entity_name = "car"
+animation_name = "WalkLeft"
+next_leaf = NodePath("../ActionMovementState")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionMovementState" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar" unique_id=1077699792 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("11_bjufb")
+entity_name = "car"
+movement_direction = 3
+velocity_x = -1.0
+next_leaf = NodePath("../../ActionWait")
+metadata/_custom_type_script = "uid://cs2f4mmgvo7ve"
+
+[node name="ActionSpawnCar3" type="Node" parent="ActionTrees/SpawnCars" unique_id=253265368 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_q8oms")
+next_leaf = NodePath("ActionEntityExists")
+metadata/_custom_type_script = "uid://woqmqjl10k3a"
+
+[node name="ActionEntityExists" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar3" unique_id=1343191257 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("8_bjufb")
+entity_name = "car3"
+action_leaf_true = NodePath("../../ActionWait")
+action_leaf_false = NodePath("../ActionSpawnEntity")
+
+[node name="ActionSpawnEntity" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar3" unique_id=1651247821 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
+script = ExtResource("9_4g4li")
+room = NodePath("../../../..")
+spawn_position = NodePath("../../../../Spawners/CarStart")
+entity_name = "car3"
+next_leaf = NodePath("../ActionNpcRunAnimation")
+metadata/_custom_type_script = "uid://b0osu2rtunsnc"
+
+[node name="ActionNpcRunAnimation" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar3" unique_id=1923176681 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_4g4li")
+entity_name = "car3"
+animation_name = "WalkLeft"
+next_leaf = NodePath("../ActionMovementState")
+metadata/_custom_type_script = "uid://dmtyk8rdqlhyl"
+
+[node name="ActionMovementState" type="Node" parent="ActionTrees/SpawnCars/ActionSpawnCar3" unique_id=909945334 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("11_bjufb")
+entity_name = "car3"
+movement_direction = 3
+velocity_x = -1.0
+next_leaf = NodePath("../../ActionWait")
+metadata/_custom_type_script = "uid://cs2f4mmgvo7ve"
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_i4qfk")]
 
@@ -334,6 +425,41 @@ commands = {
 "look": NodePath("Look")
 }
 
+[node name="Conbini" type="Node2D" parent="Hotspots" unique_id=1085677649 node_paths=PackedStringArray("commands")]
+script = ExtResource("20_oowm0")
+id = "conbini|store|building"
+commands = {
+"look": NodePath("ActionTree")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="ActionTree" type="Node" parent="Hotspots/Conbini" unique_id=383800929 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_wwtq7")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Conbini/ActionTree" unique_id=588164641]
+script = ExtResource("21_t4ods")
+messages = Array[String](["You see the conbini store. Better get inside before you freeze to death."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Railing" type="Node2D" parent="Hotspots" unique_id=1656649819 node_paths=PackedStringArray("commands")]
+script = ExtResource("20_oowm0")
+id = "railing"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Railing" unique_id=31557987 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_wwtq7")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Railing/Look" unique_id=1271568283]
+script = ExtResource("21_t4ods")
+messages = Array[String](["There is a railing along the sidewalk. It looks cold and wet. It's there so you don't fall off the cliff."])
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=432532002]
 position = Vector2(-594, -53)
 limit_left = -780
@@ -369,3 +495,8 @@ position = Vector2(-6, 3)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2146266217]
 polygon = PackedVector2Array(-509, -29, -121, -31, 0, -31, 20, -23, -119, -23, -155, -12, -155, -22, -785, -22, -784, 83, 558, 83, 558, -18, 73, -19, 73, -12, 56, -12, 38, -19, 28, -24, 8, -31, 555, -28, 578, -29, 578, 103, -805, 98, -807, -27)
+
+[node name="Spawners" type="Node2D" parent="." unique_id=793524368]
+
+[node name="CarStart" type="Node2D" parent="Spawners" unique_id=1828516145]
+position = Vector2(622, 20)

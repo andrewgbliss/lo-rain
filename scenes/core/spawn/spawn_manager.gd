@@ -10,6 +10,15 @@ func get_spawned_entity(entity_name: String):
 		return spawned_entities[entity_name]
 	return null
 
+func remove_entity(entity_name: String):
+	if spawned_entities.has(entity_name):
+		var entity = spawned_entities[entity_name]
+		if entity != null and is_instance_valid(entity):
+			entity.queue_free()
+			spawned_entities.erase(entity_name)
+			return true
+	return false
+
 func spawn(entity_name: String, spawn_position: Vector2, parent = null):
 	if not entities.has(entity_name):
 		return null

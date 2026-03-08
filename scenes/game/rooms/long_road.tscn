@@ -789,9 +789,6 @@ position = Vector2(223, 13)
 [node name="CarStart2" type="Node2D" parent="Spawners" unique_id=388553444]
 position = Vector2(616, 37)
 
-[node name="CarEnd" type="Node2D" parent="Spawners" unique_id=922619403]
-position = Vector2(-217, 8)
-
 [node name="DialogUI" parent="." unique_id=2072539769 instance=ExtResource("14_tgdiy")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1166665989]

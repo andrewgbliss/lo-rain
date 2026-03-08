@@ -7,4 +7,6 @@ func run() -> void:
 
 func next() -> void:
 	if next_leaf:
+		if GameManager.is_sleeping:
+			await GameManager.sleep_finished
 		next_leaf.run()
