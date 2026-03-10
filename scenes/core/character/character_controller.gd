@@ -67,14 +67,13 @@ func _ready():
 
 	if character_type == CharacterType.Player:
 		timer = Timer.new()
-		timer.wait_time = 1.0
+		timer.wait_time = 2.0
 		timer.timeout.connect(_on_timer_timeout)
 		add_child(timer)
 		timer.start()
 		if GameStateStore.player_hp > 0:
 			hp = GameStateStore.player_hp
 			max_hp = GameStateStore.player_max_hp
-		inventory.restore_from_file()
 
 func set_scale_by_y_position():
 	# Get the current Y position
@@ -343,6 +342,27 @@ func get_movement_direction_by_int(i: int) -> MovementDirection:
 			return MovementDirection.DownRight
 		_:
 			return MovementDirection.None
+
+func get_movement_direction_name() -> String:
+	match movement_direction:
+		MovementDirection.Up:
+			return "Up"
+		MovementDirection.Down:
+			return "Down"
+		MovementDirection.Left:
+			return "Left"
+		MovementDirection.Right:
+			return "Right"
+		MovementDirection.UpLeft:
+			return "UpLeft"
+		MovementDirection.UpRight:
+			return "UpRight"
+		MovementDirection.DownLeft:
+			return "DownLeft"
+		MovementDirection.DownRight:
+			return "DownRight"
+		_:
+			return "None"
 
 func set_paralyzed(value: bool):
 	if value:

@@ -12,10 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://4vo54dgiooh4" path="res://scenes/game/rooms/conbini/atm.tscn" id="6_h4f54"]
 [ext_resource type="Script" uid="uid://cxdxx8083nob7" path="res://scenes/core/action_tree/leaves/action_show_hud.gd" id="6_ybb6n"]
 [ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="7_fq5t2"]
+[ext_resource type="Script" uid="uid://dc0dykc5abfwx" path="res://scenes/core/action_tree/leaves/action_quest_complete.gd" id="8_bfobi"]
 [ext_resource type="Texture2D" uid="uid://ci3e3sa75ufe" path="res://assets/img/rooms/conbini/Backshelf.png" id="8_puffv"]
+[ext_resource type="Script" uid="uid://d3i0sakfll1e6" path="res://scenes/core/action_tree/leaves/action_has_quest_completed.gd" id="8_wvoio"]
 [ext_resource type="Texture2D" uid="uid://bwxg88c0cpxqj" path="res://assets/img/rooms/conbini/Bags.png" id="9_6s753"]
+[ext_resource type="Script" uid="uid://blw6hn8bnrjbj" path="res://scenes/core/action_tree/leaves/action_quest_start.gd" id="9_07fu3"]
 [ext_resource type="Script" uid="uid://cwa2mlfejng6n" path="res://scenes/core/hotspot/hotspot_resolver.gd" id="9_j66wu"]
 [ext_resource type="Texture2D" uid="uid://cnvbh084hhk8w" path="res://assets/img/rooms/conbini/LightSwitch.png" id="9_mxjwa"]
+[ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="9_tcgup"]
 [ext_resource type="Texture2D" uid="uid://cc24j6nphylh" path="res://assets/img/rooms/conbini/Bottles.png" id="10_1gpas"]
 [ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="11_sec67"]
 [ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="11_tpwdy"]
@@ -47,6 +51,31 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_nu0cm"]
 atlas = ExtResource("4_dmlvv")
 region = Rect2(263, 133, 42, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s753"]
+atlas = ExtResource("17_0nmns")
+region = Rect2(4, 4, 7, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njyvt"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ipj"]
+atlas = SubResource("CompressedTexture2D_njyvt")
+region = Rect2(20, 4, 7, 10)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ll5nj"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62y3h"]
+atlas = SubResource("CompressedTexture2D_ll5nj")
+region = Rect2(3, 19, 7, 9)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0nmns"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qh2p"]
+atlas = SubResource("CompressedTexture2D_0nmns")
+region = Rect2(18, 21, 13, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_om8fo"]
 size = Vector2(20, 40)
@@ -533,59 +562,6 @@ _data = {
 &"open_start": SubResource("Animation_fq5t2")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu73a"]
-size = Vector2(59, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6s753"]
-atlas = ExtResource("17_0nmns")
-region = Rect2(4, 4, 7, 10)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_njyvt"]
-load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4ipj"]
-atlas = SubResource("CompressedTexture2D_njyvt")
-region = Rect2(20, 4, 7, 10)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ll5nj"]
-load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_62y3h"]
-atlas = SubResource("CompressedTexture2D_ll5nj")
-region = Rect2(3, 19, 7, 9)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0nmns"]
-load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7qh2p"]
-atlas = SubResource("CompressedTexture2D_0nmns")
-region = Rect2(18, 21, 13, 7)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d4xmo"]
-atlas = ExtResource("21_52ccj")
-region = Rect2(4, 4, 8, 8)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swoko"]
-load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_df8qw"]
-atlas = SubResource("CompressedTexture2D_swoko")
-region = Rect2(20, 4, 8, 8)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1gpas"]
-load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_swoko"]
-atlas = SubResource("CompressedTexture2D_1gpas")
-region = Rect2(36, 4, 8, 8)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h4f54"]
-load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjjey"]
-atlas = SubResource("CompressedTexture2D_h4f54")
-region = Rect2(4, 20, 8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_h4f54"]
 atlas = ExtResource("29_hjjey")
 region = Rect2(32, 13, 95, 51)
@@ -732,6 +708,37 @@ load_path = "res://.godot/imported/Cans.png-43206088f8b49d6addca195c7c23c846.cte
 atlas = SubResource("CompressedTexture2D_1va84")
 region = Rect2(22, 19, 5, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vu73a"]
+size = Vector2(59, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4xmo"]
+atlas = ExtResource("21_52ccj")
+region = Rect2(4, 4, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_swoko"]
+load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df8qw"]
+atlas = SubResource("CompressedTexture2D_swoko")
+region = Rect2(20, 4, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1gpas"]
+load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swoko"]
+atlas = SubResource("CompressedTexture2D_1gpas")
+region = Rect2(36, 4, 8, 8)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h4f54"]
+load_path = "res://.godot/imported/CounterGoods.png-9fbd94a51d52198f9933f6719e63205d.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjjey"]
+atlas = SubResource("CompressedTexture2D_h4f54")
+region = Rect2(4, 20, 8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wvoio"]
+radius = 34.234486
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6s753"]
 size = Vector2(80, 14)
 
@@ -788,12 +795,36 @@ entity_name = "hanannan"
 next_leaf = NodePath("../ActionSpawnEntity2")
 metadata/_custom_type_script = "uid://b0osu2rtunsnc"
 
-[node name="ActionSpawnEntity2" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1523219386 node_paths=PackedStringArray("room", "spawn_position")]
+[node name="ActionSpawnEntity2" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1523219386 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
 script = ExtResource("6_ce0qk")
 room = NodePath("../../..")
 spawn_position = NodePath("../../../Spawners/ClerkSpawn")
 entity_name = "johnny"
+next_leaf = NodePath("../ActionHasQuestCompleted")
 metadata/_custom_type_script = "uid://b0osu2rtunsnc"
+
+[node name="ActionHasQuestCompleted" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1394786674 node_paths=PackedStringArray("action_leaf_false")]
+script = ExtResource("8_wvoio")
+quest_id = "someplace_warm"
+action_leaf_false = NodePath("ActionQuestComplete")
+metadata/_custom_type_script = "uid://d3i0sakfll1e6"
+
+[node name="ActionQuestComplete" type="Node" parent="ActionTrees/SpawnPlayer/ActionHasQuestCompleted" unique_id=1278626578 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("8_bfobi")
+quest_id = "someplace_warm"
+next_leaf = NodePath("../ActionWait")
+metadata/_custom_type_script = "uid://dc0dykc5abfwx"
+
+[node name="ActionWait" type="Node" parent="ActionTrees/SpawnPlayer/ActionHasQuestCompleted" unique_id=861245557 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("9_tcgup")
+duration = 5.0
+next_leaf = NodePath("../ActionQuestStart")
+metadata/_custom_type_script = "uid://bmfirnwwl5a16"
+
+[node name="ActionQuestStart" type="Node" parent="ActionTrees/SpawnPlayer/ActionHasQuestCompleted" unique_id=1462611377]
+script = ExtResource("9_07fu3")
+quest_id = "getting_home"
+metadata/_custom_type_script = "uid://blw6hn8bnrjbj"
 
 [node name="ConvenienceStoreInside" type="Sprite2D" parent="." unique_id=2010947186]
 z_index = -5
@@ -806,12 +837,41 @@ position = Vector2(37, -77)
 texture = SubResource("AtlasTexture_nu0cm")
 offset = Vector2(0, 17.9)
 
+[node name="Window" type="Sprite2D" parent="." unique_id=1787241161]
+z_index = 50
+position = Vector2(2, -19)
+texture = ExtResource("5_ahqrw")
+
 [node name="Hotspots" type="Node2D" parent="." unique_id=1465056601]
 y_sort_enabled = true
 
 [node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=806686551]
 script = ExtResource("9_j66wu")
 metadata/_custom_type_script = "uid://cwa2mlfejng6n"
+
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=601229711 node_paths=PackedStringArray("commands")]
+script = ExtResource("11_tpwdy")
+id = "room"
+commands = {
+"help": NodePath("Help"),
+"look": NodePath("Look")
+}
+
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=268784710 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=191520010]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You're at the front of the conbini. You can buy some food and drinks here."])
+
+[node name="Help" type="Node" parent="Hotspots/Room" unique_id=1779331853 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Help" unique_id=1015140760]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You can buy the water bottle in the fridge. The money is found in the first area."])
 
 [node name="Atm" parent="Hotspots" unique_id=1914298531 node_paths=PackedStringArray("commands") instance=ExtResource("6_h4f54")]
 position = Vector2(-85, -31)
@@ -820,6 +880,33 @@ commands = {
 "look": NodePath("Look"),
 "use": NodePath("Use")
 }
+
+[node name="Coffee" type="Node2D" parent="Hotspots" unique_id=845039740]
+z_index = -1
+script = ExtResource("11_tpwdy")
+id = "coffee"
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="CoffeeStand" type="Sprite2D" parent="Hotspots/Coffee" unique_id=552430293]
+position = Vector2(-37, -47)
+texture = ExtResource("18_7qh2p")
+offset = Vector2(0, -18.652)
+
+[node name="CoffeePot" type="Sprite2D" parent="Hotspots/Coffee/CoffeeStand" unique_id=1068248100]
+position = Vector2(-22.5, -17)
+texture = SubResource("AtlasTexture_6s753")
+
+[node name="CoffeeBox" type="Sprite2D" parent="Hotspots/Coffee/CoffeeStand" unique_id=364429636]
+position = Vector2(-10.5, -17)
+texture = SubResource("AtlasTexture_c4ipj")
+
+[node name="CoffeeBox2" type="Sprite2D" parent="Hotspots/Coffee/CoffeeStand" unique_id=1701147056]
+position = Vector2(18.5, -16)
+texture = SubResource("AtlasTexture_62y3h")
+
+[node name="CoffeeCups" type="Sprite2D" parent="Hotspots/Coffee/CoffeeStand" unique_id=639968861]
+position = Vector2(4.5, -15)
+texture = SubResource("AtlasTexture_7qh2p")
 
 [node name="Lightswitch" type="Node2D" parent="Hotspots" unique_id=1744506777 node_paths=PackedStringArray("commands")]
 position = Vector2(6, -45)
@@ -943,9 +1030,13 @@ script = ExtResource("14_tpwdy")
 messages = Array[String](["You see lighters on the counter."])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
-[node name="MagazineStand" type="Node2D" parent="Hotspots" unique_id=423742153]
+[node name="MagazineStand" type="Node2D" parent="Hotspots" unique_id=423742153 node_paths=PackedStringArray("commands")]
 position = Vector2(103, -5)
 script = ExtResource("11_tpwdy")
+id = "magazine|magazines"
+commands = {
+"look": NodePath("Look")
+}
 metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="MagazineStand" parent="Hotspots/MagazineStand" unique_id=533942004 instance=ExtResource("28_6s753")]
@@ -957,6 +1048,21 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/MagazineStand/HotspotInRange" unique_id=921955536]
 polygon = PackedVector2Array(43, 46, 42, 24, -28, 6, -52, 9, -47, 24, -47, 44, -24, 51, 5, 54, 34, 55)
+
+[node name="Look" type="Node" parent="Hotspots/MagazineStand" unique_id=2039973515 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionInRange")
+
+[node name="ActionInRange" type="Node" parent="Hotspots/MagazineStand/Look" unique_id=2110134227 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("15_ybb6n")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/MagazineStand/Look" unique_id=504002181]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["There are some new magazines near the counter. Look at all that filth in today's world. If you could afford the new people magazine you would. Hopefully no one finds out you read that."])
 
 [node name="WaterBottle" type="Node2D" parent="Hotspots" unique_id=2062527715]
 position = Vector2(-130, -21)
@@ -1032,27 +1138,168 @@ polygon = PackedVector2Array(-250, 30, -236, 30, -203, -6, -222, -6, -250, 22)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/ColdGoods" unique_id=1464250315]
 libraries/ = SubResource("AnimationLibrary_skrin")
 
-[node name="Goods" type="Node2D" parent="Hotspots" unique_id=361870036]
+[node name="CatchAllGood" type="Node2D" parent="Hotspots" unique_id=361870036 node_paths=PackedStringArray("commands")]
 script = ExtResource("11_tpwdy")
+id = "chips|can|cereal|bottle|ketchup|mustard|card"
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
 metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/Goods" unique_id=1230682436]
-script = ExtResource("7_fq5t2")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+[node name="Look" type="Node" parent="Hotspots/CatchAllGood" unique_id=1812504599 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Goods/HotspotInRange" unique_id=1278758581]
-polygon = PackedVector2Array(15, 6, 19, -40, -77, -40, -102, -40, -141, 3, -139, 50, 10, 49)
+[node name="ActionDialog" type="Node" parent="Hotspots/CatchAllGood/Look" unique_id=997311337]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You look at the goods you can't afford."])
 
-[node name="Shelf" type="Node2D" parent="Hotspots" unique_id=300521521]
+[node name="Take" type="Node" parent="Hotspots/CatchAllGood" unique_id=1938174823 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/CatchAllGood/Take" unique_id=871263562]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You can't afford anything. The cheapest thing is the water bottles in the fridge. Maybe if you find some money somewhere."])
+
+[node name="Shelf" type="Node2D" parent="Hotspots" unique_id=300521521 node_paths=PackedStringArray("commands")]
 script = ExtResource("11_tpwdy")
+id = "shelf"
+commands = {
+"look": NodePath("Look")
+}
 metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="HotspotInRange" type="Area2D" parent="Hotspots/Shelf" unique_id=522869875]
-script = ExtResource("7_fq5t2")
-metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
+[node name="ShelfSmall" type="Node2D" parent="Hotspots/Shelf" unique_id=151345800]
+position = Vector2(-36, -12)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Shelf/HotspotInRange" unique_id=1927974400]
-polygon = PackedVector2Array(15, 6, 19, -40, -77, -40, -102, -40, -141, 3, -139, 50, 10, 49)
+[node name="ShelfSmall" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=2131536162]
+position = Vector2(-0.5, -14)
+texture = SubResource("AtlasTexture_h4f54")
+
+[node name="SodaBottles" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=2047890864]
+position = Vector2(-22.5, -31)
+texture = ExtResource("30_n2e54")
+
+[node name="CanDrinks2" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=482404126]
+position = Vector2(-3.5, -27)
+texture = SubResource("AtlasTexture_n2e54")
+
+[node name="CanDrinks" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=322021723]
+position = Vector2(-4.5, -23)
+texture = SubResource("AtlasTexture_3dugd")
+
+[node name="CanDrinks4" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=996685427]
+position = Vector2(2.5, -27)
+texture = SubResource("AtlasTexture_a5gvy")
+
+[node name="CanDrinks3" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=520231772]
+position = Vector2(0.5, -23)
+texture = SubResource("AtlasTexture_qx15a")
+
+[node name="CanDrinks6" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=46086290]
+position = Vector2(9.5, -27)
+texture = SubResource("AtlasTexture_sugrn")
+
+[node name="CanDrinks5" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=1339158941]
+position = Vector2(7.5, -23)
+texture = SubResource("AtlasTexture_2wuda")
+
+[node name="Chips" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=951769319]
+position = Vector2(-37.5, -8)
+texture = SubResource("AtlasTexture_dn55d")
+
+[node name="Chips2" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=310580209]
+position = Vector2(-30.5, -8)
+texture = SubResource("AtlasTexture_ll5nj")
+
+[node name="Chips3" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=767196402]
+position = Vector2(-23.5, -8)
+texture = SubResource("AtlasTexture_0nmns")
+
+[node name="Chips4" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=875523110]
+position = Vector2(-16.5, -8)
+texture = SubResource("AtlasTexture_xjd0x")
+
+[node name="Chips5" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=344889726]
+position = Vector2(-9.5, -8)
+texture = SubResource("AtlasTexture_52ccj")
+
+[node name="Chips6" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=190768326]
+position = Vector2(3.5, -8)
+texture = SubResource("AtlasTexture_hebr8")
+
+[node name="Chips7" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=1974880290]
+position = Vector2(10.5, -8)
+texture = SubResource("AtlasTexture_g14v1")
+
+[node name="Chips8" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=743472166]
+position = Vector2(18.5, -8)
+texture = SubResource("AtlasTexture_11m50")
+
+[node name="Chips9" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=1380802830]
+position = Vector2(26.5, -8)
+texture = SubResource("AtlasTexture_2awyx")
+
+[node name="Chips10" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=209397691]
+position = Vector2(35.5, -8)
+texture = SubResource("AtlasTexture_cch8y")
+
+[node name="Bottles" type="Sprite2D" parent="Hotspots/Shelf/ShelfSmall" unique_id=448684128]
+position = Vector2(27.5, -27)
+texture = ExtResource("10_1gpas")
+
+[node name="ShelfBig" type="Node2D" parent="Hotspots/Shelf" unique_id=1167995657]
+position = Vector2(-36, 27)
+
+[node name="ShelfBig" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=1160090056]
+position = Vector2(-18, -12)
+texture = SubResource("AtlasTexture_njyvt")
+
+[node name="Cereal" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=773815924]
+position = Vector2(-52, -15)
+texture = ExtResource("15_ll5nj")
+
+[node name="Bags" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=590805939]
+position = Vector2(-60, 10)
+texture = SubResource("AtlasTexture_1gpas")
+
+[node name="Bags2" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=880581008]
+position = Vector2(-36, 10)
+texture = SubResource("AtlasTexture_1gpas")
+
+[node name="BoxOfJerky" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=107069606]
+position = Vector2(13, -10)
+texture = ExtResource("12_dn55d")
+
+[node name="Cans" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=646971632]
+position = Vector2(-25, -23)
+texture = SubResource("AtlasTexture_pc4o6")
+
+[node name="Cans2" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=1207647174]
+position = Vector2(-25, -7)
+texture = SubResource("AtlasTexture_i221w")
+
+[node name="Cans3" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=1060809032]
+position = Vector2(-16, -23)
+texture = SubResource("AtlasTexture_nlmid")
+
+[node name="Cans4" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=1062987892]
+position = Vector2(-16, -7)
+texture = SubResource("AtlasTexture_krb15")
+
+[node name="PrepaidCards" type="Sprite2D" parent="Hotspots/Shelf/ShelfBig" unique_id=886696616]
+position = Vector2(13, -18)
+texture = ExtResource("26_d4xmo")
+
+[node name="Look" type="Node" parent="Hotspots/Shelf" unique_id=748303644 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Shelf/Look" unique_id=706370087]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["There are a few shelves with goods on them. Too bad you can't afford anything."])
 
 [node name="Pay" type="Node2D" parent="Hotspots" unique_id=1910852162]
 script = ExtResource("11_tpwdy")
@@ -1082,6 +1329,83 @@ metadata/_custom_type_script = "uid://bbq6w0uiw0v74"
 position = Vector2(-19.5, 20)
 shape = SubResource("RectangleShape2D_vu73a")
 
+[node name="Counter" type="Node2D" parent="Hotspots" unique_id=893567981]
+position = Vector2(105, -16)
+
+[node name="Counter" type="Sprite2D" parent="Hotspots/Counter" unique_id=699423767]
+position = Vector2(0, 45)
+texture = ExtResource("20_11m50")
+
+[node name="Backshelf" type="Sprite2D" parent="Hotspots/Counter" unique_id=2092311024]
+position = Vector2(47, -15)
+texture = ExtResource("8_puffv")
+
+[node name="CounterGoods" type="Sprite2D" parent="Hotspots/Counter" unique_id=985813603]
+position = Vector2(18, -32)
+texture = SubResource("AtlasTexture_d4xmo")
+
+[node name="CounterGoods2" type="Sprite2D" parent="Hotspots/Counter" unique_id=2094370997]
+position = Vector2(26, -24)
+texture = SubResource("AtlasTexture_df8qw")
+
+[node name="CounterGoods3" type="Sprite2D" parent="Hotspots/Counter" unique_id=400588711]
+position = Vector2(20, -18)
+texture = SubResource("AtlasTexture_swoko")
+
+[node name="CounterGoods4" type="Sprite2D" parent="Hotspots/Counter" unique_id=921790835]
+position = Vector2(29, -10)
+texture = SubResource("AtlasTexture_hjjey")
+
+[node name="SecurityCamera" parent="Hotspots" unique_id=884146875 node_paths=PackedStringArray("commands") instance=ExtResource("30_h4f54")]
+position = Vector2(89, -81)
+commands = {
+"look": NodePath("Look")
+}
+
+[node name="Scanner" type="Node2D" parent="Hotspots" unique_id=1394267907 node_paths=PackedStringArray("commands")]
+position = Vector2(90, -45)
+script = ExtResource("11_tpwdy")
+id = "scanner|printer|copier"
+commands = {
+"look": NodePath("Look"),
+"use": NodePath("Use")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Printer" type="Sprite2D" parent="Hotspots/Scanner" unique_id=239296284]
+z_index = -1
+texture = ExtResource("27_swoko")
+
+[node name="HotspotInRange" type="Area2D" parent="Hotspots/Scanner" unique_id=97711495]
+collision_layer = 32
+script = ExtResource("7_fq5t2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Scanner/HotspotInRange" unique_id=1651472056]
+shape = SubResource("CircleShape2D_wvoio")
+
+[node name="Look" type="Node" parent="Hotspots/Scanner" unique_id=1722516378 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionInRange")
+
+[node name="ActionInRange" type="Node" parent="Hotspots/Scanner/Look" unique_id=37292935 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("15_ybb6n")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Scanner/Look" unique_id=630049809]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You see a copier in the back corner. It reminds you that you need to make a copy of your id to get into the convention."])
+
+[node name="Use" type="Node" parent="Hotspots/Scanner" unique_id=1505491721 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_fq5t2")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Scanner/Use" unique_id=410688068]
+script = ExtResource("14_tpwdy")
+messages = Array[String](["You can't use this yet. This is just a demo. Please get the full version."])
+
 [node name="Triggers" type="Node2D" parent="." unique_id=870668193]
 
 [node name="StealCheck" type="Node2D" parent="Triggers" unique_id=549615912]
@@ -1102,189 +1426,6 @@ metadata/_custom_type_script = "uid://6cnw82p6ya55"
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Triggers/StealCheck/HotspotActionTrigger2" unique_id=1984234137]
 position = Vector2(-16, -96)
 polygon = PackedVector2Array(97, 53, 18, 53, 18, 48, 97, 48)
-
-[node name="Backshelf" type="Sprite2D" parent="." unique_id=2092311024]
-position = Vector2(152, -31)
-texture = ExtResource("8_puffv")
-
-[node name="CoffeeStand" type="Sprite2D" parent="." unique_id=552430293]
-position = Vector2(-37, -47)
-texture = ExtResource("18_7qh2p")
-offset = Vector2(0, -18.652)
-
-[node name="CoffeePot" type="Sprite2D" parent="CoffeeStand" unique_id=1068248100]
-position = Vector2(-22.5, -17)
-texture = SubResource("AtlasTexture_6s753")
-
-[node name="CoffeeBox" type="Sprite2D" parent="CoffeeStand" unique_id=364429636]
-position = Vector2(-10.5, -17)
-texture = SubResource("AtlasTexture_c4ipj")
-
-[node name="CoffeeBox2" type="Sprite2D" parent="CoffeeStand" unique_id=1701147056]
-position = Vector2(18.5, -16)
-texture = SubResource("AtlasTexture_62y3h")
-
-[node name="CoffeeCups" type="Sprite2D" parent="CoffeeStand" unique_id=639968861]
-position = Vector2(4.5, -15)
-texture = SubResource("AtlasTexture_7qh2p")
-
-[node name="Printer" type="Sprite2D" parent="." unique_id=239296284]
-z_index = -1
-position = Vector2(90, -45)
-texture = ExtResource("27_swoko")
-
-[node name="Counter" type="Node2D" parent="." unique_id=893567981]
-position = Vector2(105, -16)
-
-[node name="Counter" type="Sprite2D" parent="Counter" unique_id=699423767]
-position = Vector2(0, 45)
-texture = ExtResource("20_11m50")
-
-[node name="CounterGoods" type="Sprite2D" parent="Counter" unique_id=985813603]
-position = Vector2(18, -32)
-texture = SubResource("AtlasTexture_d4xmo")
-
-[node name="CounterGoods2" type="Sprite2D" parent="Counter" unique_id=2094370997]
-position = Vector2(26, -24)
-texture = SubResource("AtlasTexture_df8qw")
-
-[node name="CounterGoods3" type="Sprite2D" parent="Counter" unique_id=400588711]
-position = Vector2(20, -18)
-texture = SubResource("AtlasTexture_swoko")
-
-[node name="CounterGoods4" type="Sprite2D" parent="Counter" unique_id=921790835]
-position = Vector2(29, -10)
-texture = SubResource("AtlasTexture_hjjey")
-
-[node name="ShelfSmall" type="Node2D" parent="." unique_id=151345800]
-position = Vector2(-36, -12)
-
-[node name="ShelfSmall" type="Sprite2D" parent="ShelfSmall" unique_id=2131536162]
-position = Vector2(-0.5, -14)
-texture = SubResource("AtlasTexture_h4f54")
-
-[node name="SodaBottles" type="Sprite2D" parent="ShelfSmall" unique_id=2047890864]
-position = Vector2(-22.5, -31)
-texture = ExtResource("30_n2e54")
-
-[node name="CanDrinks2" type="Sprite2D" parent="ShelfSmall" unique_id=482404126]
-position = Vector2(-3.5, -27)
-texture = SubResource("AtlasTexture_n2e54")
-
-[node name="CanDrinks" type="Sprite2D" parent="ShelfSmall" unique_id=322021723]
-position = Vector2(-4.5, -23)
-texture = SubResource("AtlasTexture_3dugd")
-
-[node name="CanDrinks4" type="Sprite2D" parent="ShelfSmall" unique_id=996685427]
-position = Vector2(2.5, -27)
-texture = SubResource("AtlasTexture_a5gvy")
-
-[node name="CanDrinks3" type="Sprite2D" parent="ShelfSmall" unique_id=520231772]
-position = Vector2(0.5, -23)
-texture = SubResource("AtlasTexture_qx15a")
-
-[node name="CanDrinks6" type="Sprite2D" parent="ShelfSmall" unique_id=46086290]
-position = Vector2(9.5, -27)
-texture = SubResource("AtlasTexture_sugrn")
-
-[node name="CanDrinks5" type="Sprite2D" parent="ShelfSmall" unique_id=1339158941]
-position = Vector2(7.5, -23)
-texture = SubResource("AtlasTexture_2wuda")
-
-[node name="Chips" type="Sprite2D" parent="ShelfSmall" unique_id=951769319]
-position = Vector2(-37.5, -8)
-texture = SubResource("AtlasTexture_dn55d")
-
-[node name="Chips2" type="Sprite2D" parent="ShelfSmall" unique_id=310580209]
-position = Vector2(-30.5, -8)
-texture = SubResource("AtlasTexture_ll5nj")
-
-[node name="Chips3" type="Sprite2D" parent="ShelfSmall" unique_id=767196402]
-position = Vector2(-23.5, -8)
-texture = SubResource("AtlasTexture_0nmns")
-
-[node name="Chips4" type="Sprite2D" parent="ShelfSmall" unique_id=875523110]
-position = Vector2(-16.5, -8)
-texture = SubResource("AtlasTexture_xjd0x")
-
-[node name="Chips5" type="Sprite2D" parent="ShelfSmall" unique_id=344889726]
-position = Vector2(-9.5, -8)
-texture = SubResource("AtlasTexture_52ccj")
-
-[node name="Chips6" type="Sprite2D" parent="ShelfSmall" unique_id=190768326]
-position = Vector2(3.5, -8)
-texture = SubResource("AtlasTexture_hebr8")
-
-[node name="Chips7" type="Sprite2D" parent="ShelfSmall" unique_id=1974880290]
-position = Vector2(10.5, -8)
-texture = SubResource("AtlasTexture_g14v1")
-
-[node name="Chips8" type="Sprite2D" parent="ShelfSmall" unique_id=743472166]
-position = Vector2(18.5, -8)
-texture = SubResource("AtlasTexture_11m50")
-
-[node name="Chips9" type="Sprite2D" parent="ShelfSmall" unique_id=1380802830]
-position = Vector2(26.5, -8)
-texture = SubResource("AtlasTexture_2awyx")
-
-[node name="Chips10" type="Sprite2D" parent="ShelfSmall" unique_id=209397691]
-position = Vector2(35.5, -8)
-texture = SubResource("AtlasTexture_cch8y")
-
-[node name="Bottles" type="Sprite2D" parent="ShelfSmall" unique_id=448684128]
-position = Vector2(27.5, -27)
-texture = ExtResource("10_1gpas")
-
-[node name="ShelfBig" type="Node2D" parent="." unique_id=1167995657]
-position = Vector2(-36, 27)
-
-[node name="ShelfBig" type="Sprite2D" parent="ShelfBig" unique_id=1160090056]
-position = Vector2(-18, -12)
-texture = SubResource("AtlasTexture_njyvt")
-
-[node name="Cereal" type="Sprite2D" parent="ShelfBig" unique_id=773815924]
-position = Vector2(-52, -15)
-texture = ExtResource("15_ll5nj")
-
-[node name="Bags" type="Sprite2D" parent="ShelfBig" unique_id=590805939]
-position = Vector2(-60, 10)
-texture = SubResource("AtlasTexture_1gpas")
-
-[node name="Bags2" type="Sprite2D" parent="ShelfBig" unique_id=880581008]
-position = Vector2(-36, 10)
-texture = SubResource("AtlasTexture_1gpas")
-
-[node name="BoxOfJerky" type="Sprite2D" parent="ShelfBig" unique_id=107069606]
-position = Vector2(13, -10)
-texture = ExtResource("12_dn55d")
-
-[node name="Cans" type="Sprite2D" parent="ShelfBig" unique_id=646971632]
-position = Vector2(-25, -23)
-texture = SubResource("AtlasTexture_pc4o6")
-
-[node name="Cans2" type="Sprite2D" parent="ShelfBig" unique_id=1207647174]
-position = Vector2(-25, -7)
-texture = SubResource("AtlasTexture_i221w")
-
-[node name="Cans3" type="Sprite2D" parent="ShelfBig" unique_id=1060809032]
-position = Vector2(-16, -23)
-texture = SubResource("AtlasTexture_nlmid")
-
-[node name="Cans4" type="Sprite2D" parent="ShelfBig" unique_id=1062987892]
-position = Vector2(-16, -7)
-texture = SubResource("AtlasTexture_krb15")
-
-[node name="PrepaidCards" type="Sprite2D" parent="ShelfBig" unique_id=886696616]
-position = Vector2(13, -18)
-texture = ExtResource("26_d4xmo")
-
-[node name="SecurityCamera" parent="." unique_id=884146875 instance=ExtResource("30_h4f54")]
-position = Vector2(89, -81)
-
-[node name="Window" type="Sprite2D" parent="." unique_id=1787241161]
-z_index = 50
-position = Vector2(2, -19)
-texture = ExtResource("5_ahqrw")
 
 [node name="Spawners" type="Node2D" parent="." unique_id=317215186]
 

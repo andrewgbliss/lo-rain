@@ -1,10 +1,70 @@
+@tool
+
 class_name Hotspot extends Node2D
 
 @export var id: String
 @export var commands: Dictionary[String, ActionTree]
 @export var disabled: bool = false
 
+@export_tool_button("Add Look Dialog", "Callable") var add_look_dialog_action = add_look_dialog
+@export_tool_button("Add Take Dialog", "Callable") var add_take_dialog_action = add_take_dialog
+@export_tool_button("Add Use Dialog", "Callable") var add_use_dialog_action = add_use_dialog
+@export_tool_button("Add In Range Collision", "Callable") var add_in_range_collision_action = add_in_range_collision
+
+func add_look_dialog():
+	var action_tree = ActionTree.new()
+	action_tree.name = "Look"
+	var action_dialog = ActionDialog.new()
+	action_dialog.name = "ActionDialog"
+	action_tree.add_child(action_dialog)
+	add_child(action_tree)
+	action_tree.owner = get_tree().edited_scene_root
+	action_dialog.owner = get_tree().edited_scene_root
+	action_tree.root_leaf = action_dialog
+	commands["look"] = action_tree
+
+func add_take_dialog():
+	var action_tree = ActionTree.new()
+	action_tree.name = "Take"
+	var action_dialog = ActionDialog.new()
+	action_dialog.name = "ActionDialog"
+	action_tree.add_child(action_dialog)
+	add_child(action_tree)
+	action_tree.owner = get_tree().edited_scene_root
+	action_dialog.owner = get_tree().edited_scene_root
+	action_tree.root_leaf = action_dialog
+	commands["take"] = action_tree
+
+func add_use_dialog():
+	var action_tree = ActionTree.new()
+	action_tree.name = "Use"
+	var action_dialog = ActionDialog.new()
+	action_dialog.name = "ActionDialog"
+	action_tree.add_child(action_dialog)
+	add_child(action_tree)
+	action_tree.owner = get_tree().edited_scene_root
+	action_dialog.owner = get_tree().edited_scene_root
+	action_tree.root_leaf = action_dialog
+	commands["use"] = action_tree
+
+func add_in_range_collision():
+	var hotspot_in_range = HotspotInRange.new()
+	hotspot_in_range.name = "HotspotInRange"
+	hotspot_in_range.collision_layer = 32
+	var collision_shape = CollisionShape2D.new()
+	collision_shape.name = "CollisionShape2D"
+	collision_shape.shape = CircleShape2D.new()
+	collision_shape.shape.radius = 10
+	hotspot_in_range.add_child(collision_shape)
+	add_child(hotspot_in_range)
+
+	collision_shape.owner = get_tree().edited_scene_root
+	hotspot_in_range.owner = get_tree().edited_scene_root
+
+
 func _ready():
+	if Engine.is_editor_hint():
+		return
 	hide()
 	call_deferred("_after_ready")
 

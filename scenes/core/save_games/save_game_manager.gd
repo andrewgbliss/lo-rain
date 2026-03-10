@@ -57,7 +57,6 @@ func save(description: String):
 		"description": description,
 		"scene_path": SceneManager.current_scene.scene_file_path,
 		"game_state_store": GameStateStore.save(),
-		"inventory": ItemManager.player.inventory.save(),
 		"quest_manager": QuestManager.save(),
 		"timestamp": Time.get_datetime_string_from_system(false, true)
 	}

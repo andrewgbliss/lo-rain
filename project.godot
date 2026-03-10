@@ -37,16 +37,15 @@ SpawnManager="*res://scenes/core/spawn/spawn_manager.tscn"
 UiManager="*uid://q052ogik1unx"
 TextParser="*uid://cpnfgx3761sse"
 QuestManager="*uid://bwa652clrqra3"
-GameStateStore="*uid://c6n03blnkoc62"
 DialogUi="*uid://dace1v6hxewpc"
 SaveGameManager="*uid://d14b2bjv1kj7h"
 ItemManager="*uid://cy8wo0ksltvw3"
+GameStateStore="*uid://c86ae763suj0p"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=4
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

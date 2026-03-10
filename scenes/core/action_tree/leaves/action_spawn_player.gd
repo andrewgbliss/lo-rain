@@ -6,10 +6,10 @@ class_name ActionSpawnPlayer extends ActionLeaf
 
 func run() -> void:
 	var pos: Vector2 = get_player_spawn_position_vector()
+	var spawn_direction: CharacterController.MovementDirection = get_player_spawn_direction()
 	var entity = SpawnManager.spawn("player", pos, room)
 	if entity != null:
 		GameManager.player = entity
-		ItemManager.player = entity
 	if entity is CharacterController:
 		if SaveGameManager.loaded_restore_index != 0:
 			entity.spawn_restore()
@@ -17,8 +17,8 @@ func run() -> void:
 			entity.spawn(pos)
 		entity.is_in_heat_area = is_in_heat_area
 		if not GameStateStore.current_door_id.is_empty():
-			entity.movement_direction = GameStateStore.movement_direction
-			entity.set_idle(entity.get_movement_direction_by_int(GameStateStore.movement_direction))
+			entity.movement_direction = spawn_direction
+			entity.set_idle(entity.get_movement_direction_by_int(spawn_direction))
 			GameStateStore.current_door_id = ""
 			GameStateStore.prev_door_id = ""
 		entity.update_hp.connect(UiManager.hud.update_health_bar)
@@ -49,3 +49,13 @@ func get_default_spawn_door() -> RoomDoor:
 		return a.door_id < b.door_id
 	)
 	return sorted[0]
+
+func get_player_spawn_direction() -> CharacterController.MovementDirection:
+	if GameStateStore.current_door_id.is_empty():
+		return CharacterController.MovementDirection.Right
+	var door: RoomDoor = room.current_room_door if (room.current_room_door != null and room.current_room_door.spawn_direction != null) else null
+	if door == null:
+		door = get_default_spawn_door()
+	if door == null or door.spawn_direction == null:
+		return CharacterController.MovementDirection.Right
+	return door.spawn_direction

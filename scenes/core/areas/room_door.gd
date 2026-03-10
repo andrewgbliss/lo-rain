@@ -4,6 +4,7 @@ class_name RoomDoor extends Area2D
 @export var goto_door_id: String
 @export var scene_path: String
 @export var spawn_position: SpawnPosition
+@export var spawn_direction: CharacterController.MovementDirection = CharacterController.MovementDirection.Right
 @export var disabled: bool = false
 
 func _ready() -> void:
@@ -15,5 +16,4 @@ func _on_body_entered(body):
 	if body is CharacterController:
 		GameStateStore.prev_door_id = door_id
 		GameStateStore.current_door_id = goto_door_id
-		GameStateStore.movement_direction = body.movement_direction
 		SceneManager.goto_scene(scene_path)

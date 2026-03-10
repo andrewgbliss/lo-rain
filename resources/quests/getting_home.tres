@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://c3kt1c3psltl7"]
+
+[ext_resource type="Script" uid="uid://bp7no1bvpm1we" path="res://scenes/core/quest/quest.gd" id="1_vwugs"]
+
+[resource]
+script = ExtResource("1_vwugs")
+quest_id = "getting_home"
+quest_name = "Getting Home"
+quest_description = "Get home so you can drive to the convention."
+metadata/_custom_type_script = "uid://bp7no1bvpm1we"

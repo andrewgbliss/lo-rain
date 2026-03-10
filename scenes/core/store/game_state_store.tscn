@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c86ae763suj0p"]
+
+[ext_resource type="Script" uid="uid://c6n03blnkoc62" path="res://scenes/core/store/game_state_store.gd" id="1_4wh5t"]
+[ext_resource type="Resource" uid="uid://cl6cayff5laqm" path="res://resources/players/inventory/stan_inventory.tres" id="2_dj2to"]
+
+[node name="GameStateStore" type="Node" unique_id=2023970107]
+script = ExtResource("1_4wh5t")
+inventory = ExtResource("2_dj2to")

@@ -99,3 +99,7 @@ func reset_scene():
 func quit():
 	set_state(GAME_STATE.GAME_QUIT)
 	get_tree().quit()
+
+func start_new_game():
+	GameStateStore.reset()
+	QuestManager.reset()

@@ -19,4 +19,5 @@ func _on_game_state_changed(state: GameManager.GAME_STATE):
 		GameManager.GAME_STATE.GAME_MAIN_MENU:
 			UiManager.game_menus.push("MainMenu")
 		GameManager.GAME_STATE.GAME_PLAY:
+			GameManager.start_new_game()
 			SceneManager.goto_first_scene()

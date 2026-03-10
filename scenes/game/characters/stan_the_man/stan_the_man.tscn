@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://cj1tuvgt8k671" path="res://assets/img/characters/Stan-Sheet.png" id="1_82bu6"]
 [ext_resource type="Script" uid="uid://crueou1p1x8k2" path="res://scenes/core/character/character_controller.gd" id="1_alups"]
 [ext_resource type="Script" uid="uid://b20n78127jv4d" path="res://scenes/core/character/character_controls.gd" id="2_02ihq"]
-[ext_resource type="Resource" uid="uid://cl6cayff5laqm" path="res://resources/players/inventory/stan_inventory.tres" id="2_ntuft"]
 [ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="5_hg5oh"]
 [ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="6_ck8jd"]
 [ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="6_hj7ru"]
@@ -172,7 +171,6 @@ collision_mask = 47
 motion_mode = 1
 script = ExtResource("1_alups")
 has_gravity = false
-inventory = ExtResource("2_ntuft")
 death_action_tree = NodePath("DeathActionTree")
 use_scale_factor = true
 scale_factor = 250.0

@@ -7,11 +7,10 @@ class_name MenuTopBar extends Menu
 @export var file_button: Button
 
 func _input(event):
-	# TODO: Uncomment this when going live
-	# if not GameManager.is_testing and GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
-	# 	return
-	# if not GameManager.can_pause:
-	# 	return
+	if not GameManager.is_testing and GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+		return
+	if not GameManager.can_pause:
+		return
 	if event is InputEventKey and event.is_pressed():
 		if Input.is_action_just_pressed("pause"):
 			if not GameManager.is_paused:
@@ -71,8 +70,7 @@ func _on_restore_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	_off()
-	GameStateStore.reset()
-	ItemManager.player.inventory.reset()
+	GameManager.start_new_game()
 	SceneManager.goto_first_scene()
 
 func _on_action_button_focus_entered() -> void:

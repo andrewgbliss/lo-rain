@@ -280,6 +280,7 @@ door_id = "2"
 goto_door_id = "1"
 scene_path = "res://scenes/game/rooms/conbini/conbini.tscn"
 spawn_position = NodePath("SpawnPosition")
+spawn_direction = 2
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor2" unique_id=1890810658]
@@ -299,6 +300,7 @@ door_id = "3"
 goto_door_id = "1"
 scene_path = "res://scenes/game/rooms/other_long_road_under_construction.tscn"
 spawn_position = NodePath("SpawnPosition")
+spawn_direction = 3
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor3" unique_id=192038809]

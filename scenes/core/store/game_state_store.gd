@@ -1,5 +1,7 @@
 extends Node
 
+@export var inventory: Inventory
+
 var _rooms: Dictionary = {}
 var _state: Dictionary = {}
 
@@ -40,7 +42,8 @@ func save() -> Dictionary:
 		"state": _state,
 		"rooms": _rooms,
 		"player_hp": player_hp,
-		"player_max_hp": player_max_hp
+		"player_max_hp": player_max_hp,
+		"inventory": inventory.save()
 	}
 
 func restore(data: Dictionary) -> void:
@@ -51,7 +54,8 @@ func restore(data: Dictionary) -> void:
 	_rooms = data.get("rooms", {})
 	player_hp = data.get("player_hp", 0)
 	player_max_hp = data.get("player_max_hp", 0)
-
+	inventory.restore(data.get("inventory", {}))
+	
 func reset() -> void:
 	prev_door_id = ""
 	current_door_id = ""
@@ -60,3 +64,4 @@ func reset() -> void:
 	_rooms = {}
 	player_hp = 0
 	player_max_hp = 0
+	inventory.reset()

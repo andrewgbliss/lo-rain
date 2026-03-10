@@ -4,6 +4,8 @@ class_name ActionTree extends Node
 @export var run_after_ready: bool = false
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	if not root_leaf:
 		print("ActionTree: No root leaf found")
 		return

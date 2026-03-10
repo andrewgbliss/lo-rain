@@ -42,8 +42,8 @@ func _on_item_selected(item_id: String):
 
 func _on():
 	super._on()
-	if ItemManager.player:
-		_update_inventory(ItemManager.player.inventory.item_ids)
+	if GameStateStore.inventory:
+		_update_inventory(GameStateStore.inventory.item_ids)
 	else:
 		print("Player not found, inventory not updated")
 
