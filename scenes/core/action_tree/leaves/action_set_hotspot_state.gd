@@ -5,7 +5,5 @@ class_name ActionSetHotspotState extends ActionLeaf
 @export var value: bool
 
 func run() -> void:
-	var data = GameStateStore.get_hotspot_data(hotspot.get_room_name(), hotspot.id)
-	data[state] = value
-	GameStateStore.set_hotspot_data(hotspot.get_room_name(), hotspot.id, data)
+	GameStateStore.set_hotspot_state(hotspot.get_room_name(), hotspot.id, state, value)
 	next()

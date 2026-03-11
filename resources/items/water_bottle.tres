@@ -8,18 +8,18 @@ load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_be2vl"]
 atlas = SubResource("CompressedTexture2D_xg436")
-region = Rect2(102, 3, 4, 8)
+region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pm7tm"]
 load_path = "res://.godot/imported/ColdGoods.png-5f113de5d21ee808ac14c209a67de67f.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3mrm"]
 atlas = SubResource("CompressedTexture2D_pm7tm")
-region = Rect2(102, 3, 4, 8)
+region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpdto"]
 atlas = ExtResource("1_o8yyb")
-region = Rect2(102, 3, 4, 8)
+region = Rect2(96, 0, 16, 16)
 
 [resource]
 script = ExtResource("2_8odmt")

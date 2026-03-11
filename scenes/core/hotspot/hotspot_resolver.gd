@@ -3,8 +3,6 @@ class_name HotspotResolver extends Node
 func _ready() -> void:
 	SignalBus.command_processed.connect(_on_command_processed)
 
-## Finds a command key in commands_dict that matches the verb.
-## Keys may be "verb" or "verb1|verb2|verb3" (pipe-separated alternatives).
 func _find_command_key(commands_dict: Dictionary, verb: String) -> String:
 	if verb.is_empty():
 		return ""
@@ -22,8 +20,6 @@ func _find_command_key(commands_dict: Dictionary, verb: String) -> String:
 					return key
 	return ""
 
-## Finds the hotspot by id (from TextParser.object) and action (from TextParser.verb),
-## then runs that action's ActionTree. Returns true if a hotspot action was found and run.
 func _run_hotspot() -> String:
 	var obj := TextParser.object.strip_edges()
 	var verb := TextParser.verb.strip_edges()
@@ -96,9 +92,11 @@ func _on_command_processed(did_process: bool) -> void:
 		GameManager.quit()
 		return
 
-	# "look" with no object should target the room Hotspot (id = "room").
 	if (verb == "look" or verb == "help") and TextParser.object == "":
 		TextParser.object = "room"
+
+	if (verb == "pay") and TextParser.object == "":
+		TextParser.object = "pay"
 
 	var message = _run_hotspot()
 	if message.is_empty():

@@ -6,10 +6,11 @@ class_name Hotspot extends Node2D
 @export var commands: Dictionary[String, ActionTree]
 @export var disabled: bool = false
 
-@export_tool_button("Add Look Dialog", "Callable") var add_look_dialog_action = add_look_dialog
-@export_tool_button("Add Take Dialog", "Callable") var add_take_dialog_action = add_take_dialog
-@export_tool_button("Add Use Dialog", "Callable") var add_use_dialog_action = add_use_dialog
-@export_tool_button("Add In Range Collision", "Callable") var add_in_range_collision_action = add_in_range_collision
+@export_tool_button("Add Look Dialog", "Add") var add_look_dialog_action = add_look_dialog
+@export_tool_button("Add Take Dialog", "Add") var add_take_dialog_action = add_take_dialog
+@export_tool_button("Add Talk Dialog", "Add") var add_talk_dialog_action = add_talk_dialog
+@export_tool_button("Add Use Dialog", "Add") var add_use_dialog_action = add_use_dialog
+@export_tool_button("Add In Range Collision", "Add") var add_in_range_collision_action = add_in_range_collision
 
 func add_look_dialog():
 	var action_tree = ActionTree.new()
@@ -34,6 +35,18 @@ func add_take_dialog():
 	action_dialog.owner = get_tree().edited_scene_root
 	action_tree.root_leaf = action_dialog
 	commands["take"] = action_tree
+
+func add_talk_dialog():
+	var action_tree = ActionTree.new()
+	action_tree.name = "Talk"
+	var action_dialog = ActionDialog.new()
+	action_dialog.name = "ActionDialog"
+	action_tree.add_child(action_dialog)
+	add_child(action_tree)
+	action_tree.owner = get_tree().edited_scene_root
+	action_dialog.owner = get_tree().edited_scene_root
+	action_tree.root_leaf = action_dialog
+	commands["talk"] = action_tree
 
 func add_use_dialog():
 	var action_tree = ActionTree.new()
@@ -60,7 +73,6 @@ func add_in_range_collision():
 
 	collision_shape.owner = get_tree().edited_scene_root
 	hotspot_in_range.owner = get_tree().edited_scene_root
-
 
 func _ready():
 	if Engine.is_editor_hint():

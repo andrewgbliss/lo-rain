@@ -5,4 +5,5 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_i2m1m")
+item_ids = Array[String](["id", "screw_driver", "dollar_bill"])
 metadata/_custom_type_script = "uid://djhowic13p8om"

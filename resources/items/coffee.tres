@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://26eod4tpu775"]
+
+[ext_resource type="Texture2D" uid="uid://8afh4m28kbeg" path="res://assets/img/rooms/conbini/Coffee.png" id="1_13yyq"]
+[ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="2_cl7mq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_13yyq"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl7mq"]
+atlas = SubResource("CompressedTexture2D_13yyq")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a2kk8"]
+load_path = "res://.godot/imported/Coffee.png-96c5f492b793edabeb23d450eb67a658.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj1yn"]
+atlas = SubResource("CompressedTexture2D_a2kk8")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff7u1"]
+atlas = ExtResource("1_13yyq")
+region = Rect2(16, 32, 16, 16)
+
+[resource]
+script = ExtResource("2_cl7mq")
+id = "coffee"
+name = "Coffee"
+description = "A nice warm cup of coffee. You can drink this anytime to stay warm."
+room_texture = SubResource("AtlasTexture_ff7u1")
+icon_texture = SubResource("AtlasTexture_cl7mq")
+inspect_texture = SubResource("AtlasTexture_wj1yn")
+metadata/_custom_type_script = "uid://cjyg0ygclwad6"

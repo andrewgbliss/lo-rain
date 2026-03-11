@@ -9,7 +9,7 @@ class_name Item extends Resource
 @export var icon_texture: Texture
 @export var inspect_texture: Texture
 
-@export_tool_button("Add To Scene", "Callable") var add_to_scene_action = add_to_scene
+@export_tool_button("Add To Scene", "Add") var add_to_scene_action = add_to_scene
 
 func add_to_scene():
 	var root = EditorInterface.get_edited_scene_root()

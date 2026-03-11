@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dmtyk8rdqlhyl" path="res://scenes/core/action_tree/leaves/action_npc_run_animation.gd" id="10_1rjgw"]
 [ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="11_sq3k1"]
 [ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="12_252rq"]
+[ext_resource type="Script" uid="uid://c53ma1b70knud" path="res://scenes/core/action_tree/leaves/action_dialog_thanks_for_playing.gd" id="13_1la4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxm2h"]
 size = Vector2(9, 2)
@@ -254,10 +255,14 @@ duration = 2.0
 next_leaf = NodePath("../ActionDialog")
 metadata/_custom_type_script = "uid://bmfirnwwl5a16"
 
-[node name="ActionDialog" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1970507860]
+[node name="ActionDialog" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=1970507860 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("12_252rq")
 messages = Array[String](["The wizard killed you.", "You are now dead."])
+next_leaf = NodePath("../ActionDialogThanksForPlaying")
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionDialogThanksForPlaying" type="Node" parent="Hotspot/HotspotActionTrigger/ActionTree" unique_id=2109070112]
+script = ExtResource("13_1la4c")
 
 [node name="Look" type="Node" parent="Hotspot" unique_id=1315677632 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("7_1la4c")

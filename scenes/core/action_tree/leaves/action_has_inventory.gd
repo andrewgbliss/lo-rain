@@ -5,9 +5,8 @@ class_name ActionHasInventory extends ActionLeaf
 @export var action_leaf_false: ActionLeaf
 
 func run() -> void:
-	var player = SpawnManager.get_spawned_entity("player")
-	if player != null and player is CharacterController:
-		if player.inventory.in_inventory(item.id):
+	if GameStateStore.inventory.in_inventory(item.id):
+		if action_leaf_true:
 			action_leaf_true.run()
-		else:
-			action_leaf_false.run()
+	elif action_leaf_false:
+		action_leaf_false.run()

@@ -116,7 +116,7 @@ autoplay = &"running"
 position = Vector2(0, -26)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1350559127]
-polygon = PackedVector2Array(-15, 26, -15, 13, 11, 13, 11, 19, 2, 27)
+polygon = PackedVector2Array(-15, 26, -15, 13, 15, 13, 15, 19, 15, 26)
 
 [node name="HotspotInRange" type="Area2D" parent="." unique_id=1858136973]
 script = ExtResource("3_rgmbs")
@@ -191,16 +191,7 @@ hotspot = NodePath("../..")
 state = "broken"
 value = true
 action_leaf_true = NodePath("../ActionDialog2")
-action_leaf_false = NodePath("../ActionDialog")
-
-[node name="ActionDialog" type="Node" parent="FuckWith" unique_id=284849290 node_paths=PackedStringArray("next_leaf")]
-script = ExtResource("7_pnj1w")
-messages = Array[String](["You fuck with the ATM causing it to malfunction. The screen goes blank."])
-next_leaf = NodePath("../ActionSetHotspotState")
-
-[node name="ActionDialog2" type="Node" parent="FuckWith" unique_id=60227458]
-script = ExtResource("7_pnj1w")
-messages = Array[String](["Haven't you already done enough damage?"])
+action_leaf_false = NodePath("../ActionSetHotspotState")
 
 [node name="ActionSetHotspotState" type="Node" parent="FuckWith" unique_id=151234912 node_paths=PackedStringArray("hotspot", "next_leaf")]
 script = ExtResource("9_qtiei")
@@ -209,8 +200,18 @@ state = "broken"
 value = true
 next_leaf = NodePath("../ActionPlayAnimation")
 
-[node name="ActionPlayAnimation" type="Node" parent="FuckWith" unique_id=592675948 node_paths=PackedStringArray("animation_player")]
+[node name="ActionPlayAnimation" type="Node" parent="FuckWith" unique_id=592675948 node_paths=PackedStringArray("animation_player", "next_leaf")]
 script = ExtResource("10_sunmk")
 animation_name = "broken"
 animation_player = NodePath("../../AnimationPlayer")
+next_leaf = NodePath("../ActionDialog")
 metadata/_custom_type_script = "uid://biskw5uli3lc2"
+
+[node name="ActionDialog" type="Node" parent="FuckWith" unique_id=284849290 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("7_pnj1w")
+messages = Array[String](["You mess with the ATM causing it to malfunction. The screen goes blank."])
+next_leaf = NodePath("../ActionSetHotspotState")
+
+[node name="ActionDialog2" type="Node" parent="FuckWith" unique_id=60227458]
+script = ExtResource("7_pnj1w")
+messages = Array[String](["Haven't you already done enough damage?"])

@@ -11,14 +11,13 @@
 [ext_resource type="Script" uid="uid://blw6hn8bnrjbj" path="res://scenes/core/action_tree/leaves/action_quest_start.gd" id="4_m3cwa"]
 [ext_resource type="Script" uid="uid://corso48wuveen" path="res://scenes/core/action_tree/leaves/action_quest_complete_checkpoint.gd" id="5_c2wk8"]
 [ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="5_gw5qv"]
-[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_wn1ym"]
 [ext_resource type="Script" uid="uid://dc0dykc5abfwx" path="res://scenes/core/action_tree/leaves/action_quest_complete.gd" id="6_c2wk8"]
 [ext_resource type="PackedScene" uid="uid://8yqfng7xpcog" path="res://scenes/game/hotspots/items/dollar_bill.tscn" id="7_iyflf"]
 [ext_resource type="Script" uid="uid://b0osu2rtunsnc" path="res://scenes/core/action_tree/leaves/action_spawn_entity.gd" id="10_0cuhu"]
+[ext_resource type="Script" uid="uid://b6js0frov0hyb" path="res://scenes/core/action_tree/leaves/action_start_play.gd" id="10_835e0"]
 [ext_resource type="TileSet" uid="uid://b4r8u5pw61oks" path="res://scenes/game/tilesets/road.tres" id="10_lksse"]
 [ext_resource type="Script" uid="uid://cs2f4mmgvo7ve" path="res://scenes/core/action_tree/leaves/action_movement_state.gd" id="11_4pa1n"]
 [ext_resource type="PackedScene" uid="uid://hr1pmj7locu0" path="res://scenes/game/environment/right_railing.tscn" id="12_jr44l"]
-[ext_resource type="Script" uid="uid://cxdxx8083nob7" path="res://scenes/core/action_tree/leaves/action_show_hud.gd" id="12_k6byg"]
 [ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="12_ne7q7"]
 [ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="12_wtmu4"]
 [ext_resource type="PackedScene" uid="uid://b8b0n76kkgv8f" path="res://scenes/game/environment/left_railing.tscn" id="13_iwu02"]
@@ -33,7 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://ca6prygih2cy4" path="res://scenes/game/hotspots/bench.tscn" id="16_gofan"]
 [ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="17_puwcg"]
 [ext_resource type="PackedScene" uid="uid://ccwcs5vmctju1" path="res://scenes/game/hotspots/grate.tscn" id="17_tvtbn"]
-[ext_resource type="Script" uid="uid://bvab066bx8tfb" path="res://scenes/core/action_tree/leaves/action_can_pause.gd" id="18_1bmwo"]
 [ext_resource type="PackedScene" uid="uid://ctk6yi8adass6" path="res://scenes/game/hotspots/trash.tscn" id="18_jr44l"]
 [ext_resource type="PackedScene" uid="uid://bqrl44pfo72sv" path="res://scenes/game/hotspots/lamp.tscn" id="19_iwu02"]
 [ext_resource type="Script" uid="uid://btwul30fxa5pu" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="23_8rclq"]
@@ -143,22 +141,11 @@ script = ExtResource("4_kcbv6")
 entity_name = "player"
 camera = NodePath("../../../Camera2D")
 phantom_camera = NodePath("../../../PhantomCamera2D")
-next_leaf = NodePath("../ActionCommandPrompt")
+next_leaf = NodePath("../ActionStartPlay")
 
-[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1799214738 node_paths=PackedStringArray("next_leaf")]
-script = ExtResource("5_wn1ym")
-active = true
-next_leaf = NodePath("../ActionCanPause")
-
-[node name="ActionCanPause" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=950989913 node_paths=PackedStringArray("next_leaf")]
-script = ExtResource("18_1bmwo")
-value = true
-next_leaf = NodePath("../ActionShowHud")
-
-[node name="ActionShowHud" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=400032454]
-script = ExtResource("12_k6byg")
-show = true
-metadata/_custom_type_script = "uid://cxdxx8083nob7"
+[node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1385439944]
+script = ExtResource("10_835e0")
+metadata/_custom_type_script = "uid://b6js0frov0hyb"
 
 [node name="GettingDumped" type="Node" parent="ActionTrees" unique_id=1750778023 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("12_wtmu4")
@@ -318,22 +305,11 @@ script = ExtResource("4_kcbv6")
 entity_name = "player"
 camera = NodePath("../../../Camera2D")
 phantom_camera = NodePath("../../../PhantomCamera2D")
-next_leaf = NodePath("../ActionCommandPrompt")
+next_leaf = NodePath("../ActionStartPlay")
 
-[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/GettingDumped" unique_id=1165033562 node_paths=PackedStringArray("next_leaf")]
-script = ExtResource("5_wn1ym")
-active = true
-next_leaf = NodePath("../ActionCanPause")
-
-[node name="ActionCanPause" type="Node" parent="ActionTrees/GettingDumped" unique_id=1136035192 node_paths=PackedStringArray("next_leaf")]
-script = ExtResource("18_1bmwo")
-value = true
-next_leaf = NodePath("../ActionShowHud")
-
-[node name="ActionShowHud" type="Node" parent="ActionTrees/GettingDumped" unique_id=1258371727]
-script = ExtResource("12_k6byg")
-show = true
-metadata/_custom_type_script = "uid://cxdxx8083nob7"
+[node name="ActionStartPlay" type="Node" parent="ActionTrees/GettingDumped" unique_id=1667440209]
+script = ExtResource("10_835e0")
+metadata/_custom_type_script = "uid://b6js0frov0hyb"
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_e8inl")]
 

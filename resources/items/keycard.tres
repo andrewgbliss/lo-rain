@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="2_p3e1w"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6es8h"]
+load_path = "res://.godot/imported/button-code-paper.png-3eb144000c63a908dbf79e2d05f9cd48.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p3e1w"]
+load_path = "res://.godot/imported/button-code-paper.png-3eb144000c63a908dbf79e2d05f9cd48.ctex"
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l5gbh"]
 load_path = "res://.godot/imported/button-code-paper.png-3eb144000c63a908dbf79e2d05f9cd48.ctex"
 
@@ -10,4 +16,6 @@ script = ExtResource("2_p3e1w")
 id = "keycard"
 name = "Keycard"
 room_texture = SubResource("CompressedTexture2D_l5gbh")
+icon_texture = SubResource("CompressedTexture2D_6es8h")
+inspect_texture = SubResource("CompressedTexture2D_p3e1w")
 metadata/_custom_type_script = "uid://cjyg0ygclwad6"
