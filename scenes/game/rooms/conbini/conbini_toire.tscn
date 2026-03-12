@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="15_8veaw"]
 [ext_resource type="Script" uid="uid://bnp8uwvev60jm" path="res://scenes/core/action_tree/leaves/action_has_inventory.gd" id="16_vaek0"]
 [ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="17_la174"]
-[ext_resource type="Script" uid="uid://cmamihrcrkifw" path="res://scenes/core/action_tree/leaves/action_scene_goto.gd" id="18_8itdi"]
 [ext_resource type="PackedScene" uid="uid://4jrse1t2nrt5" path="res://scenes/game/hotspots/items/keycard.tscn" id="19_xm7ms"]
 [ext_resource type="Script" uid="uid://c7u0pxs5cdyn1" path="res://scenes/core/action_tree/leaves/action_has_state.gd" id="23_8itdi"]
 [ext_resource type="Script" uid="uid://biskw5uli3lc2" path="res://scenes/core/action_tree/leaves/action_play_animation.gd" id="23_la174"]
@@ -297,8 +296,9 @@ entity_name = "player"
 camera = NodePath("../../../Camera2D")
 next_leaf = NodePath("../ActionStartPlay")
 
-[node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=624577038]
+[node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=624577038 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("5_vymwn")
+next_leaf = NodePath("")
 metadata/_custom_type_script = "uid://b6js0frov0hyb"
 
 [node name="ToireBg" type="Sprite2D" parent="." unique_id=1504179251]
@@ -405,7 +405,7 @@ action_leaf_false = NodePath("../ActionDialog2")
 [node name="ActionDialog" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=184133712 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("12_eryup")
 messages = Array[String](["You use the keycard to open the door."])
-next_leaf = NodePath("../ActionSceneGoto")
+next_leaf = NodePath("../ActionPlayAnimation")
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
 [node name="ActionDialog2" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=922577211]
@@ -413,13 +413,11 @@ script = ExtResource("12_eryup")
 messages = Array[String](["You need a keycard to open the door."])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
-[node name="ActionSceneGoto" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=1650048031]
-script = ExtResource("18_8itdi")
-scene_path = "res://scenes/game/rooms/conbini/conbini_storage.tscn"
-prev_door_id = "2"
-current_door_id = "1"
-movement_direction = 1
-metadata/_custom_type_script = "uid://cmamihrcrkifw"
+[node name="ActionPlayAnimation" type="Node" parent="Hotspots/StorageDoor/Open" unique_id=288463244 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("23_la174")
+animation_name = "open"
+animation_player = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://biskw5uli3lc2"
 
 [node name="Keycard" parent="Hotspots" unique_id=775142946 node_paths=PackedStringArray("commands") instance=ExtResource("19_xm7ms")]
 position = Vector2(-4, -13)
@@ -571,6 +569,7 @@ door_id = "1"
 goto_door_id = "2"
 scene_path = "res://scenes/game/rooms/conbini/conbini_inside_front.tscn"
 spawn_position = NodePath("SpawnPosition")
+spawn_direction = 1
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor1" unique_id=384834564]
@@ -588,8 +587,9 @@ collision_layer = 64
 script = ExtResource("35_qwl5s")
 door_id = "2"
 goto_door_id = "1"
-scene_path = "res://scenes/game/rooms/conbini/conbini_back.tscn"
+scene_path = "res://scenes/game/rooms/conbini/conbini_storage.tscn"
 spawn_position = NodePath("SpawnPosition")
+spawn_direction = 2
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor2" unique_id=1275938974]

@@ -8,10 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b3a8ubt8lxg75" path="res://assets/img/rooms/conbini/Railing2.png" id="3_vovsb"]
 [ext_resource type="Texture2D" uid="uid://dbugyyrekdlh2" path="res://assets/img/rooms/conbini/Railings.png" id="4_hjs4d"]
 [ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_lpyup"]
-[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_ji0gc"]
+[ext_resource type="Script" uid="uid://b6js0frov0hyb" path="res://scenes/core/action_tree/leaves/action_start_play.gd" id="5_h1ca5"]
 [ext_resource type="Texture2D" uid="uid://w5hi0wrqlwxg" path="res://assets/img/rooms/conbini/ConvenienceStoreInsidePreview.png" id="5_kvdit"]
 [ext_resource type="Texture2D" uid="uid://bnqcau6rkaf7d" path="res://assets/img/rooms/conbini/ConvenienceStore.png" id="6_kcf6v"]
-[ext_resource type="Script" uid="uid://cxdxx8083nob7" path="res://scenes/core/action_tree/leaves/action_show_hud.gd" id="6_ks763"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="6_kvdit"]
 [ext_resource type="Texture2D" uid="uid://cs7eqjmhomrt2" path="res://assets/img/rooms/conbini/Road.png" id="8_bced8"]
 [ext_resource type="Texture2D" uid="uid://c4d6x83onk5fk" path="res://assets/img/rooms/conbini/Sidewalk.png" id="9_85bi2"]
@@ -207,35 +206,27 @@ script = ExtResource("23_up5px")
 script = ExtResource("1_cudwr")
 room_name = "conbini"
 
-[node name="ActionTrees" type="Node" parent="." unique_id=1657866384]
+[node name="ActionTrees" type="Node" parent="." unique_id=1900981236]
 
-[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=526547909 node_paths=PackedStringArray("root_leaf")]
+[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=1535304071 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("2_up5px")
 root_leaf = NodePath("ActionSpawnPlayer")
 run_after_ready = true
-metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=900407493 node_paths=PackedStringArray("room", "next_leaf")]
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=371339533 node_paths=PackedStringArray("room", "next_leaf")]
 script = ExtResource("3_78efa")
 room = NodePath("../../..")
 next_leaf = NodePath("../ActionCameraFocus")
 
-[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1466216335 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1716297607 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
 script = ExtResource("4_lpyup")
 entity_name = "player"
 camera = NodePath("../../../Camera2D")
 phantom_camera = NodePath("../../../PhantomCamera2D")
-next_leaf = NodePath("../ActionCommandPrompt")
+next_leaf = NodePath("../ActionStartPlay")
 
-[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=414837880 node_paths=PackedStringArray("next_leaf")]
-script = ExtResource("5_ji0gc")
-active = true
-next_leaf = NodePath("../ActionShowHud")
-
-[node name="ActionShowHud" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=549074863]
-script = ExtResource("6_ks763")
-show = true
-metadata/_custom_type_script = "uid://cxdxx8083nob7"
+[node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1243765459]
+script = ExtResource("5_h1ca5")
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_324eo")]
 
@@ -283,22 +274,29 @@ texture = ExtResource("15_ymyrh")
 script = ExtResource("17_78efa")
 metadata/_custom_type_script = "uid://cwa2mlfejng6n"
 
-[node name="Room" type="Node2D" parent="Hotspots" unique_id=1532762646 node_paths=PackedStringArray("commands")]
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=1099069039 node_paths=PackedStringArray("commands")]
 script = ExtResource("18_ji0gc")
 id = "room"
 commands = {
+"help": NodePath("Help"),
 "look": NodePath("Look")
 }
-metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="Look" type="Node" parent="Hotspots/Room" unique_id=1281090557 node_paths=PackedStringArray("root_leaf")]
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=560885924 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("2_up5px")
 root_leaf = NodePath("ActionDialog")
-metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=1003995283]
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=692992726]
 script = ExtResource("19_h1ca5")
-messages = Array[String](["You're at the front of the conbini. You can buy some food and drinks here.", "You should probably get inside before you freeze to death."])
+messages = Array[String](["You're at the front of the conbini. You are broke so you probably can't buy anything. Unless you find some money somewhere.", "You should probably get inside before you freeze to death."])
+
+[node name="Help" type="Node" parent="Hotspots/Room" unique_id=989107850 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_up5px")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Help" unique_id=1092713145]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["This is the front of the conbini. Just some fun references to some games. You can talk to the owl. But all the good stuff is inside."])
 
 [node name="Clouds" type="Node2D" parent="Hotspots" unique_id=742632917 node_paths=PackedStringArray("commands")]
 script = ExtResource("18_ji0gc")

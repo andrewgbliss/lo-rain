@@ -17,8 +17,6 @@ func _input(event):
 			if not GameManager.can_pause:
 				return
 			_on()
-		if is_showing and event.is_action_pressed("ui_cancel"):
-			_off()
 	
 func _on():
 	super ()

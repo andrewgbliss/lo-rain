@@ -588,6 +588,7 @@ metadata/_custom_type_script = "uid://b6js0frov0hyb"
 script = ExtResource("6_ce0qk")
 room = NodePath("../../..")
 spawn_position = NodePath("../../../Spawners/WizardSpawn")
+entity_name = "hanannan"
 next_leaf = NodePath("../ActionSpawnEntity2")
 metadata/_custom_type_script = "uid://b0osu2rtunsnc"
 

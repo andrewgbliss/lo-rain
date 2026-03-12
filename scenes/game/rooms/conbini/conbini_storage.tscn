@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cvxcabec87t10" path="res://scenes/core/room/room.gd" id="1_npohu"]
 [ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_0prdp"]
 [ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_ogrw5"]
-[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_xi1xs"]
+[ext_resource type="Script" uid="uid://b6js0frov0hyb" path="res://scenes/core/action_tree/leaves/action_start_play.gd" id="5_0prdp"]
 [ext_resource type="PackedScene" uid="uid://dnmrejoofln50" path="res://scenes/game/hotspots/items/gold_coin.tscn" id="7_b0utr"]
 [ext_resource type="Script" uid="uid://cwa2mlfejng6n" path="res://scenes/core/hotspot/hotspot_resolver.gd" id="7_bdpfo"]
 [ext_resource type="Texture2D" uid="uid://f48a0u5gvc5j" path="res://assets/img/rooms/conbini/packing_boxes.png" id="8_on16k"]
@@ -16,12 +16,101 @@
 [ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="14_bdpfo"]
 [ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="15_wje1p"]
 [ext_resource type="Script" uid="uid://bnp8uwvev60jm" path="res://scenes/core/action_tree/leaves/action_has_inventory.gd" id="16_s845l"]
+[ext_resource type="Script" uid="uid://biskw5uli3lc2" path="res://scenes/core/action_tree/leaves/action_play_animation.gd" id="16_xi1xs"]
 [ext_resource type="Resource" uid="uid://csogn16xm8k0e" path="res://resources/items/keycard.tres" id="17_0prdp"]
+[ext_resource type="Script" uid="uid://bdhxkagor6i6b" path="res://scenes/core/action_tree/leaves/action_set_hotspot_state.gd" id="17_8v4oj"]
 [ext_resource type="Script" uid="uid://cmamihrcrkifw" path="res://scenes/core/action_tree/leaves/action_scene_goto.gd" id="18_ogrw5"]
+[ext_resource type="Texture2D" uid="uid://bk06qb324wcb7" path="res://assets/img/rooms/conbini/Box.png" id="21_ogrw5"]
+[ext_resource type="Script" uid="uid://d54o2utuv3ng" path="res://scenes/core/action_tree/leaves/action_has_hotspot_state.gd" id="23_rlwa7"]
 [ext_resource type="Texture2D" uid="uid://cfcgiab5w7cbu" path="res://assets/img/rooms/conbini/Bg.png" id="29_71dl1"]
 [ext_resource type="Texture2D" uid="uid://ctggkoljchrmr" path="res://assets/img/rooms/conbini/Storage.png" id="30_npohu"]
 [ext_resource type="Texture2D" uid="uid://btc5qb75hrohs" path="res://assets/img/rooms/conbini/Window.png" id="32_8mdtx"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="35_tsxq7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogrw5"]
+radius = 21.095022
+
+[sub_resource type="Animation" id="Animation_8v4oj"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Box:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Box:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_rlwa7"]
+resource_name = "pushed_box"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Box:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0, 82, -0.086666666, -2, 0, 0, 88, -0.038333338, -1, 0, 0),
+"times": PackedFloat32Array(0, 0.52, 0.75)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Box:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.25, 0, 9, -0.086666666, -1.8333334, 0, 0, 23, -0.038333338, -2.3333335, 0, 0),
+"times": PackedFloat32Array(0, 0.52, 0.75)
+}
+
+[sub_resource type="Animation" id="Animation_ofdic"]
+resource_name = "pushed_box_complete"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Box:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(88, -0.038333338, -1, 0, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Box:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(23, -0.038333338, -2.3333335, 0, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofdic"]
+_data = {
+&"RESET": SubResource("Animation_8v4oj"),
+&"pushed_box": SubResource("Animation_rlwa7"),
+&"pushed_box_complete": SubResource("Animation_ofdic")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upcbu"]
 size = Vector2(49, 29)
@@ -38,26 +127,25 @@ room_name = "conbini_storage"
 
 [node name="ActionTrees" type="Node" parent="." unique_id=187899850]
 
-[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=1308146678 node_paths=PackedStringArray("root_leaf")]
+[node name="SpawnPlayer" type="Node" parent="ActionTrees" unique_id=403599094 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("13_ttacm")
 root_leaf = NodePath("ActionSpawnPlayer")
 run_after_ready = true
-metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1522757077 node_paths=PackedStringArray("room", "next_leaf")]
+[node name="ActionSpawnPlayer" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1583622640 node_paths=PackedStringArray("room", "next_leaf")]
 script = ExtResource("3_0prdp")
 room = NodePath("../../..")
+is_in_heat_area = true
 next_leaf = NodePath("../ActionCameraFocus")
 
-[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1245015607 node_paths=PackedStringArray("camera", "next_leaf")]
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=78323587 node_paths=PackedStringArray("camera", "next_leaf")]
 script = ExtResource("4_ogrw5")
 entity_name = "player"
 camera = NodePath("../../../Camera2D")
-next_leaf = NodePath("../ActionCommandPrompt")
+next_leaf = NodePath("../ActionStartPlay")
 
-[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1630255758]
-script = ExtResource("5_xi1xs")
-active = true
+[node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=2004064519]
+script = ExtResource("5_0prdp")
 
 [node name="Bg" type="Sprite2D" parent="." unique_id=912557986]
 position = Vector2(3, -19)
@@ -78,12 +166,29 @@ texture = ExtResource("32_8mdtx")
 script = ExtResource("7_bdpfo")
 metadata/_custom_type_script = "uid://cwa2mlfejng6n"
 
-[node name="GoldCoin" parent="Hotspots" unique_id=1913126863 node_paths=PackedStringArray("commands") instance=ExtResource("7_b0utr")]
-position = Vector2(88, 16)
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=1115360771 node_paths=PackedStringArray("commands")]
+script = ExtResource("10_upcbu")
+id = "room"
 commands = {
-"look": NodePath("Look"),
-"take": NodePath("Take")
+"help": NodePath("Help"),
+"look": NodePath("Look")
 }
+
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=389050658 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("13_ttacm")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=1445296900]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["You're in the storage room of the conbini.", "You see a bunch of boxes. Probably contains some goods for the conbini."])
+
+[node name="Help" type="Node" parent="Hotspots/Room" unique_id=521514204 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("13_ttacm")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Help" unique_id=427693449]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["Looks like you can push one of the boxes."])
 
 [node name="Trash" parent="Hotspots" unique_id=503562292 node_paths=PackedStringArray("commands") instance=ExtResource("9_ft85l")]
 position = Vector2(-89, -38)
@@ -101,14 +206,105 @@ position = Vector2(-25, -57)
 texture = ExtResource("11_bj158")
 flip_h = true
 
-[node name="Boxes3" type="Node2D" parent="Hotspots" unique_id=567424955]
+[node name="Boxes3" type="Node2D" parent="Hotspots" unique_id=567424955 node_paths=PackedStringArray("commands")]
 script = ExtResource("10_upcbu")
 id = "box|boxes"
+commands = {
+"look": NodePath("Look"),
+"push": NodePath("Push")
+}
 metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
 [node name="PackingBoxes" type="Sprite2D" parent="Hotspots/Boxes3" unique_id=1507736396]
 position = Vector2(68, -9)
 texture = ExtResource("8_on16k")
+
+[node name="ActionTreeInit" type="Node" parent="Hotspots/Boxes3" unique_id=85167222 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("13_ttacm")
+root_leaf = NodePath("ActionHasHotspotState")
+run_after_ready = true
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionHasHotspotState" type="Node" parent="Hotspots/Boxes3/ActionTreeInit" unique_id=554356724 node_paths=PackedStringArray("hotspot", "action_leaf_true")]
+script = ExtResource("23_rlwa7")
+hotspot = NodePath("../..")
+state = "pushed_box"
+value = true
+action_leaf_true = NodePath("../ActionPlayAnimation")
+metadata/_custom_type_script = "uid://d54o2utuv3ng"
+
+[node name="ActionPlayAnimation" type="Node" parent="Hotspots/Boxes3/ActionTreeInit" unique_id=784118398 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("16_xi1xs")
+animation_name = "pushed_box_complete"
+animation_player = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://biskw5uli3lc2"
+
+[node name="Look" type="Node" parent="Hotspots/Boxes3" unique_id=1262146469 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("13_ttacm")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Boxes3/Look" unique_id=490572841]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["You see a bunch of boxes. Probably a bunch of items that belong to the store."])
+
+[node name="Push" type="Node" parent="Hotspots/Boxes3" unique_id=209514233 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("13_ttacm")
+root_leaf = NodePath("ActionHasHotspotState")
+
+[node name="ActionHasHotspotState" type="Node" parent="Hotspots/Boxes3/Push" unique_id=796637459 node_paths=PackedStringArray("hotspot", "action_leaf_true", "action_leaf_false")]
+script = ExtResource("23_rlwa7")
+hotspot = NodePath("../..")
+state = "pushed_box"
+action_leaf_true = NodePath("../ActionInRange")
+action_leaf_false = NodePath("../ActionDialog3")
+metadata/_custom_type_script = "uid://d54o2utuv3ng"
+
+[node name="ActionDialog3" type="Node" parent="Hotspots/Boxes3/Push" unique_id=1844309515]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["You already pushed the box."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionInRange" type="Node" parent="Hotspots/Boxes3/Push" unique_id=1649153259 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("15_wje1p")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Boxes3/Push" unique_id=584998058 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["You push one of the boxes."])
+next_leaf = NodePath("../ActionPlayAnimation")
+
+[node name="ActionPlayAnimation" type="Node" parent="Hotspots/Boxes3/Push" unique_id=498665271 node_paths=PackedStringArray("animation_player", "next_leaf")]
+script = ExtResource("16_xi1xs")
+animation_name = "pushed_box"
+animation_player = NodePath("../../AnimationPlayer")
+next_leaf = NodePath("../ActionDialog2")
+metadata/_custom_type_script = "uid://biskw5uli3lc2"
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/Boxes3/Push" unique_id=95273681 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["The box falls to the floor revealing a gold coin."])
+next_leaf = NodePath("../ActionSetHotspotState")
+
+[node name="ActionSetHotspotState" type="Node" parent="Hotspots/Boxes3/Push" unique_id=1225229642 node_paths=PackedStringArray("hotspot")]
+script = ExtResource("17_8v4oj")
+hotspot = NodePath("../..")
+state = "pushed_box"
+value = true
+metadata/_custom_type_script = "uid://bdhxkagor6i6b"
+
+[node name="HotspotInRange" type="Area2D" parent="Hotspots/Boxes3" unique_id=825464005]
+position = Vector2(63, 7)
+collision_layer = 32
+script = ExtResource("12_aacxs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Boxes3/HotspotInRange" unique_id=273431036]
+shape = SubResource("CircleShape2D_ogrw5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hotspots/Boxes3" unique_id=769876155]
+libraries/ = SubResource("AnimationLibrary_ofdic")
 
 [node name="OutsideDoor" type="Node2D" parent="Hotspots" unique_id=697253388 node_paths=PackedStringArray("commands")]
 position = Vector2(13, -38)
@@ -175,6 +371,55 @@ current_door_id = "1"
 movement_direction = 2
 metadata/_custom_type_script = "uid://cmamihrcrkifw"
 
+[node name="GoldCoin" parent="Hotspots" unique_id=1913126863 node_paths=PackedStringArray("commands") instance=ExtResource("7_b0utr")]
+position = Vector2(70, 2)
+commands = {
+"look": NodePath("Look"),
+"take": NodePath("Take")
+}
+
+[node name="Look" parent="Hotspots/GoldCoin" index="2" unique_id=2103782778 node_paths=PackedStringArray("root_leaf")]
+root_leaf = NodePath("ActionHasHotspotState")
+
+[node name="ActionHasHotspotState" type="Node" parent="Hotspots/GoldCoin/Look" index="0" unique_id=269215157 node_paths=PackedStringArray("hotspot", "action_leaf_true", "action_leaf_false")]
+script = ExtResource("23_rlwa7")
+hotspot = NodePath("../../../Boxes3")
+state = "pushed_box"
+value = true
+action_leaf_true = NodePath("../ActionInRange")
+action_leaf_false = NodePath("../ActionDialog2")
+metadata/_custom_type_script = "uid://d54o2utuv3ng"
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/GoldCoin/Look" index="1" unique_id=2110044319]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["You don't see that here."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionDialog" parent="Hotspots/GoldCoin/Look" index="3" unique_id=266618786]
+messages = Array[String](["You see a gold coin on the box."])
+
+[node name="Take" parent="Hotspots/GoldCoin" index="3" unique_id=1822629174 node_paths=PackedStringArray("root_leaf")]
+root_leaf = NodePath("ActionHasHotspotState")
+
+[node name="ActionHasHotspotState" type="Node" parent="Hotspots/GoldCoin/Take" index="0" unique_id=1379492316 node_paths=PackedStringArray("hotspot", "action_leaf_true", "action_leaf_false", "next_leaf")]
+script = ExtResource("23_rlwa7")
+hotspot = NodePath("../../../Boxes3")
+state = "pushed_box"
+value = true
+action_leaf_true = NodePath("../ActionInRange")
+action_leaf_false = NodePath("../ActionDialog2")
+next_leaf = NodePath("../ActionInRange")
+metadata/_custom_type_script = "uid://d54o2utuv3ng"
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/GoldCoin/Take" index="1" unique_id=1149058207]
+script = ExtResource("14_bdpfo")
+messages = Array[String](["You can't do that."])
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Box" type="Sprite2D" parent="Hotspots" unique_id=904685996]
+position = Vector2(70, -2)
+texture = ExtResource("21_ogrw5")
+
 [node name="RoomDoors" type="Node2D" parent="." unique_id=971706057]
 
 [node name="RoomDoor1" type="Area2D" parent="RoomDoors" unique_id=1697530638 node_paths=PackedStringArray("spawn_position")]
@@ -185,6 +430,7 @@ door_id = "1"
 goto_door_id = "2"
 scene_path = "res://scenes/game/rooms/conbini/conbini_toire.tscn"
 spawn_position = NodePath("SpawnPosition")
+spawn_direction = 1
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor1" unique_id=926340769]
@@ -204,6 +450,7 @@ door_id = "2"
 goto_door_id = "1"
 scene_path = "res://scenes/game/rooms/conbini/conbini_back.tscn"
 spawn_position = NodePath("SpawnPosition")
+spawn_direction = 2
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoors/RoomDoor2" unique_id=1589540715]
@@ -224,3 +471,5 @@ polygon = PackedVector2Array(-111, -40, -14, -40, -14, -36, 41, -36, 52, -26, 36
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1937497197]
 position = Vector2(2, -19)
 zoom = Vector2(2, 2)
+
+[editable path="Hotspots/GoldCoin"]

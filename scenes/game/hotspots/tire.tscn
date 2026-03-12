@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
 [node name="ActionDialog" type="Node" parent="Look" unique_id=409422914]
 script = ExtResource("4_sujjo")
-messages = Array[String](["You see a bike by the side of the dumpster."])
+messages = Array[String](["You see some old tires withering in the storm."])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
 [node name="Take" type="Node" parent="." unique_id=1282910417 node_paths=PackedStringArray("root_leaf")]
@@ -47,5 +47,5 @@ metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
 [node name="ActionDialog" type="Node" parent="Take" unique_id=1907757491]
 script = ExtResource("4_sujjo")
-messages = Array[String](["It's rusted and wet. You can't ride it."])
+messages = Array[String](["You can't carry a tire. Well you could since this is just a game. But what could you do with an old tire?"])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

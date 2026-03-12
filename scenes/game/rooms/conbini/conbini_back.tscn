@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="3_o8y6y"]
 [ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_v7l03"]
 [ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_ctaxb"]
-[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_h7eo3"]
+[ext_resource type="Script" uid="uid://b6js0frov0hyb" path="res://scenes/core/action_tree/leaves/action_start_play.gd" id="5_qikhi"]
 [ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="7_ngo68"]
 [ext_resource type="Texture2D" uid="uid://umwyrnuf5a65" path="res://assets/img/rooms/long-road/Asphalt.png" id="7_povko"]
 [ext_resource type="Texture2D" uid="uid://b6t0ksko11mn2" path="res://assets/img/rooms/conbini/ConvenienceStoreBack.png" id="8_m0vp7"]
@@ -60,16 +60,15 @@ script = ExtResource("3_v7l03")
 room = NodePath("../../..")
 next_leaf = NodePath("../ActionCameraFocus")
 
-[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=134599632 node_paths=PackedStringArray("camera", "phantom_camera", "next_leaf")]
+[node name="ActionCameraFocus" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=134599632 node_paths=PackedStringArray("camera", "next_leaf")]
 script = ExtResource("4_ctaxb")
 entity_name = "player"
 camera = NodePath("../../../Camera2D")
-phantom_camera = NodePath("../../../PhantomCamera2D")
-next_leaf = NodePath("../ActionCommandPrompt")
+next_leaf = NodePath("../ActionStartPlay")
 
-[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1839271078]
-script = ExtResource("5_h7eo3")
-active = true
+[node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1053184941]
+script = ExtResource("5_qikhi")
+metadata/_custom_type_script = "uid://b6js0frov0hyb"
 
 [node name="Biome" parent="." unique_id=34543219 instance=ExtResource("2_xmclv")]
 
@@ -97,6 +96,30 @@ y_sort_enabled = true
 [node name="HotspotResolver" type="Node" parent="Hotspots" unique_id=875151448]
 script = ExtResource("11_v7l03")
 metadata/_custom_type_script = "uid://cwa2mlfejng6n"
+
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=1911927711 node_paths=PackedStringArray("commands")]
+script = ExtResource("13_ctaxb")
+id = "room"
+commands = {
+"help": NodePath("Help"),
+"look": NodePath("Look")
+}
+
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=1714461245 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=1342692580]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You're in the back of the conbini. You see boxes, tires, barrels, and a dumpster.", "And an old bike. Probably from Face Quest 6."])
+
+[node name="Help" type="Node" parent="Hotspots/Room" unique_id=1871448500 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Help" unique_id=2132350405]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["There's bound to be something in the dumpster."])
 
 [node name="BigMetalBox" parent="Hotspots" unique_id=2048897671 node_paths=PackedStringArray("commands") instance=ExtResource("8_optu5")]
 position = Vector2(131, -20)
@@ -188,8 +211,15 @@ shape = SubResource("CircleShape2D_7tnls")
 
 [node name="Look" type="Node" parent="Hotspots/Trash" unique_id=150113654 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("2_ukcog")
-root_leaf = NodePath("ActionDialog")
+root_leaf = NodePath("ActionInRange")
 metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionInRange" type="Node" parent="Hotspots/Trash/Look" unique_id=282545041 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("16_nvfd1")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionDialog")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
 
 [node name="ActionDialog" type="Node" parent="Hotspots/Trash/Look" unique_id=1829796703]
 script = ExtResource("15_j4ed8")
@@ -273,6 +303,91 @@ commands = {
 "take": NodePath("Take")
 }
 
+[node name="Clouds" type="Node2D" parent="Hotspots" unique_id=722744209 node_paths=PackedStringArray("commands")]
+script = ExtResource("13_ctaxb")
+id = "clouds"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Clouds" unique_id=955504750 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Clouds/Look" unique_id=1799766347]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You see wonderfully crafted pixel art clouds. This must be a retro style game."])
+
+[node name="Mountains" type="Node2D" parent="Hotspots" unique_id=121109254 node_paths=PackedStringArray("commands")]
+script = ExtResource("13_ctaxb")
+id = "mountains"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Mountains" unique_id=1021845167 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Mountains/Look" unique_id=829502329]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You remember something about why you're here as you look at the mountains but then quickly forget."])
+
+[node name="Rain" type="Node2D" parent="Hotspots" unique_id=2026992890 node_paths=PackedStringArray("commands")]
+script = ExtResource("13_ctaxb")
+id = "rain"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Rain" unique_id=170051034 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Rain/Look" unique_id=724667852]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["The rain is coming down hard. You should find shelter."])
+
+[node name="Road" type="Node2D" parent="Hotspots" unique_id=1930350713 node_paths=PackedStringArray("commands")]
+script = ExtResource("13_ctaxb")
+id = "road|street"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Road" unique_id=226752356 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Road/Look" unique_id=557780349]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["You see a road leading back to the city. It's a long way to walk."])
+
+[node name="Sky" type="Node2D" parent="Hotspots" unique_id=1921501770 node_paths=PackedStringArray("commands")]
+script = ExtResource("13_ctaxb")
+id = "sky"
+commands = {
+"look": NodePath("Look")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="Look" type="Node" parent="Hotspots/Sky" unique_id=614392602 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_ukcog")
+root_leaf = NodePath("ActionDialog")
+metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Sky/Look" unique_id=1736551863]
+script = ExtResource("15_j4ed8")
+messages = Array[String](["The sky is a bright #55ffff. What a nice clear day to have a picnic."])
+
 [node name="Boxes" type="Sprite2D" parent="." unique_id=1540186826]
 position = Vector2(-95, -41)
 texture = ExtResource("14_rp1sl")
@@ -293,6 +408,7 @@ door_id = "1"
 goto_door_id = "2"
 scene_path = "res://scenes/game/rooms/conbini/conbini_storage.tscn"
 spawn_position = NodePath("SpawnPosition")
+spawn_direction = 2
 metadata/_custom_type_script = "uid://mn4wdeeplo2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor/RoomDoor1" unique_id=354092811]

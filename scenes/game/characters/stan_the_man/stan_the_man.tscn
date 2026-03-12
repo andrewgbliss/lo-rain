@@ -172,9 +172,7 @@ motion_mode = 1
 script = ExtResource("1_alups")
 has_gravity = false
 death_action_tree = NodePath("DeathActionTree")
-use_scale_factor = true
-scale_factor = 250.0
-scale_factor_max = 1.5
+scale_factor_max = 1.0
 
 [node name="CharacterControls" type="Node" parent="." unique_id=1826576061]
 script = ExtResource("2_02ihq")

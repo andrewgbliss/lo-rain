@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rykwx4g2p3oa"
-path="res://.godot/imported/ToireStorageDoor.png-0e5a9888549201dc10a0727b676bf925.ctex"
+uid="uid://cww1u2pkdx74u"
+path="res://.godot/imported/Screenshot_1 (3).png-1dd62e7f8dfdb956d8318c43cf2ee498.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/rooms/conbini/ToireStorageDoor.png"
-dest_files=["res://.godot/imported/ToireStorageDoor.png-0e5a9888549201dc10a0727b676bf925.ctex"]
+source_file="res://assets/screenshots/Screenshot_1 (3).png"
+dest_files=["res://.godot/imported/Screenshot_1 (3).png-1dd62e7f8dfdb956d8318c43cf2ee498.ctex"]
 
 [params]
 

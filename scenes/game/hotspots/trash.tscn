@@ -53,5 +53,5 @@ metadata/_custom_type_script = "uid://d4gkcch11dn80"
 
 [node name="ActionDialog" type="Node" parent="Look" unique_id=1493959905]
 script = ExtResource("8_k000u")
-messages = Array[String](["You see a trash can. You could fuck with it to see if you get anything out of it."])
+messages = Array[String](["You look inside the trash can and find nothing."])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"

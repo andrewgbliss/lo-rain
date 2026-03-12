@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="2_wwtq7"]
 [ext_resource type="Script" uid="uid://7biegjm5m3an" path="res://scenes/core/action_tree/leaves/action_spawn_player.gd" id="3_js43h"]
 [ext_resource type="Script" uid="uid://dkmodw4jb2vx" path="res://scenes/core/action_tree/leaves/action_camera_focus.gd" id="4_p7m8p"]
-[ext_resource type="Script" uid="uid://bmb1a7ehwnfd7" path="res://scenes/core/action_tree/leaves/action_command_prompt.gd" id="5_mjgva"]
+[ext_resource type="Script" uid="uid://b6js0frov0hyb" path="res://scenes/core/action_tree/leaves/action_start_play.gd" id="5_4g4li"]
 [ext_resource type="Texture2D" uid="uid://fyopraeulp4q" path="res://assets/img/rooms/long-road/AsphaltRoad.png" id="5_xykyj"]
 [ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="6_flox4"]
 [ext_resource type="PackedScene" uid="uid://ciebklw6tpwt7" path="res://scenes/game/rooms/background/background.tscn" id="6_i4qfk"]
@@ -69,11 +69,11 @@ script = ExtResource("4_p7m8p")
 entity_name = "player"
 camera = NodePath("../../../Camera2D")
 phantom_camera = NodePath("../../../PhantomCamera2D")
-next_leaf = NodePath("../ActionCommandPrompt")
+next_leaf = NodePath("../ActionStartPlay")
 
-[node name="ActionCommandPrompt" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1865733365]
-script = ExtResource("5_mjgva")
-active = true
+[node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=887664244]
+script = ExtResource("5_4g4li")
+metadata/_custom_type_script = "uid://b6js0frov0hyb"
 
 [node name="SpawnCars" type="Node" parent="ActionTrees" unique_id=341731766 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("2_wwtq7")
@@ -318,22 +318,29 @@ metadata/_custom_type_script = "uid://qia23iggn1qa"
 script = ExtResource("19_mjgva")
 metadata/_custom_type_script = "uid://cwa2mlfejng6n"
 
-[node name="Room" type="Node2D" parent="Hotspots" unique_id=1129517861 node_paths=PackedStringArray("commands")]
+[node name="Room" type="Node2D" parent="Hotspots" unique_id=391261254 node_paths=PackedStringArray("commands")]
 script = ExtResource("20_oowm0")
 id = "room"
 commands = {
+"help": NodePath("Help"),
 "look": NodePath("Look")
 }
-metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 
-[node name="Look" type="Node" parent="Hotspots/Room" unique_id=1789142487 node_paths=PackedStringArray("root_leaf")]
+[node name="Look" type="Node" parent="Hotspots/Room" unique_id=278015043 node_paths=PackedStringArray("root_leaf")]
 script = ExtResource("2_wwtq7")
 root_leaf = NodePath("ActionDialog")
-metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
-[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=1882401512]
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Look" unique_id=1447701718]
 script = ExtResource("21_t4ods")
 messages = Array[String](["You're walking down the road when you see a convenience store up ahead.", "You should probably get inside before you freeze to death."])
+
+[node name="Help" type="Node" parent="Hotspots/Room" unique_id=2094198684 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("2_wwtq7")
+root_leaf = NodePath("ActionDialog")
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Room/Help" unique_id=13613212]
+script = ExtResource("21_t4ods")
+messages = Array[String](["This road is a connecting road with nice scenary. Don't play in the street you will get run over.", "Make it to the conbini up ahead."])
 
 [node name="Clouds" type="Node2D" parent="Hotspots" unique_id=1919104518 node_paths=PackedStringArray("commands")]
 script = ExtResource("20_oowm0")

@@ -422,7 +422,7 @@ metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 
 [node name="ActionDialog" type="Node" parent="Hotspots/Room/Help" unique_id=1247098511]
 script = ExtResource("13_wtmu4")
-messages = Array[String](["Welcome to Lo Rain! An old school text parser adventure game.", "You can type commands in like: look at rain, take dollar, and fuck with light.", "Type help in each area to get hints."])
+messages = Array[String](["Welcome to Lo Rain! An old school text parser adventure game.", "You can type commands in like: look at rain, take dollar, and mess with light.", "Type help in each area to get hints."])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
 
 [node name="Clouds" type="Node2D" parent="Hotspots" unique_id=218857958 node_paths=PackedStringArray("commands")]

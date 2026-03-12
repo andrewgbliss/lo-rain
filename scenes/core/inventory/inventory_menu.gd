@@ -6,6 +6,19 @@ func _ready():
 	super ()
 	_clear_inventory()
 
+func _input(event):
+	if event is InputEventKey and event.is_pressed() and not event.is_echo():
+		if event.is_action_pressed("inventory"):
+			if GameManager.player != null and not GameManager.player.is_alive:
+				DialogUi.dialog_text.send_message("You can't see inventory right now.")
+				return
+			if not GameManager.is_testing and GameManager.game_state != GameManager.GAME_STATE.GAME_PLAY and GameManager.game_state != GameManager.GAME_STATE.GAME_PAUSED:
+				return
+			if not GameManager.can_pause:
+				return
+			GameManager.pause()
+			UiManager.game_menus.push("InventoryMenu", false)
+
 func _clear_inventory():
 	for child in inventory_container.get_children():
 		child.queue_free()
@@ -41,7 +54,7 @@ func _on_item_selected(item_id: String):
 	DialogUi.dialog_text.send_message(message)
 
 func _on():
-	super._on()
+	super ()
 	if GameStateStore.inventory:
 		_update_inventory(GameStateStore.inventory.item_ids)
 	else:

@@ -18,7 +18,11 @@ func _input(event):
 				UiManager.game_menus.push("MenuTopBar", false)
 			else:
 				GameManager.unpause()
-				UiManager.game_menus.pop()
+				UiManager.game_menus.pop_all()
+		if Input.is_action_just_pressed("help"):
+			_on_help_button_pressed()
+		if Input.is_action_just_pressed("restart"):
+			_on_restart_button_pressed()
 
 func _on():
 	super ()
@@ -89,3 +93,9 @@ func _on_sound_button_pressed() -> void:
 func _on_inventory_button_pressed() -> void:
 	_off()
 	UiManager.game_menus.push("InventoryMenu", false)
+
+func _on_help_button_pressed() -> void:
+	_off()
+	GameManager.unpause()
+	for message in GameManager.help_text:
+		DialogUi.dialog_text.send_message(message)

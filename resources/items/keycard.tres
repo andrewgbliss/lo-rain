@@ -15,6 +15,7 @@ load_path = "res://.godot/imported/button-code-paper.png-3eb144000c63a908dbf79e2
 script = ExtResource("2_p3e1w")
 id = "keycard"
 name = "Keycard"
+description = "The keycard you found in the bathroom. You can use this to access the back room."
 room_texture = SubResource("CompressedTexture2D_l5gbh")
 icon_texture = SubResource("CompressedTexture2D_6es8h")
 inspect_texture = SubResource("CompressedTexture2D_p3e1w")

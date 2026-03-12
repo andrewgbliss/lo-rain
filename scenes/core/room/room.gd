@@ -12,6 +12,7 @@ var current_room_door: RoomDoor = null
 @export_tool_button("Add Hotspot Resolver", "Add") var add_hotspot_resolver_action = add_hotspot_resolver
 @export_tool_button("Add Default Room Hotspot", "Add") var add_default_room_hotspot_action = add_default_room_hotspot
 @export_tool_button("Add Hotspot", "Add") var add_hotspot_action = add_hotspot
+@export_tool_button("Add Spawn Player", "Add") var add_spawn_player_action = add_spawn_player
 
 func add_hotspots_container():
 	var hotspots_container = Node2D.new()
@@ -82,6 +83,42 @@ func add_hotspot():
 	action_dialog.owner = get_tree().edited_scene_root
 	action_tree.root_leaf = action_dialog
 	room_hotspot.commands["look"] = action_tree
+
+func add_spawn_player():
+	var tree_container = get_node("ActionTrees")
+	if tree_container == null:
+		tree_container = Node.new()
+		tree_container.name = "ActionTrees"
+		add_child(tree_container)
+		tree_container.owner = get_tree().edited_scene_root
+
+	var action_tree = ActionTree.new()
+	action_tree.name = "SpawnPlayer"
+
+	var action_spawn_player = ActionSpawnPlayer.new()
+	action_spawn_player.name = "ActionSpawnPlayer"
+	action_spawn_player.room = self
+	action_tree.add_child(action_spawn_player)
+
+	var action_camera_focus = ActionCameraFocus.new()
+	action_camera_focus.name = "ActionCameraFocus"
+	action_camera_focus.entity_name = "player"
+	action_tree.add_child(action_camera_focus)
+
+	var action_start_play = ActionStartPlay.new()
+	action_start_play.name = "ActionStartPlay"
+	action_tree.add_child(action_start_play)
+
+	action_spawn_player.next_leaf = action_camera_focus
+	action_camera_focus.next_leaf = action_start_play
+
+	tree_container.add_child(action_tree)
+
+	action_tree.owner = get_tree().edited_scene_root
+	action_spawn_player.owner = get_tree().edited_scene_root
+	action_camera_focus.owner = get_tree().edited_scene_root
+	action_start_play.owner = get_tree().edited_scene_root
+	action_tree.root_leaf = action_spawn_player
 
 func _ready() -> void:
 	if Engine.is_editor_hint():

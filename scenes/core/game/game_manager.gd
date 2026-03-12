@@ -25,6 +25,13 @@ var player
 var is_testing: bool = true
 var demo_mode: bool = true
 var is_sleeping: bool = false
+var help_text: Array[String] = [
+	"Welcome to Lo Rain! An old school text parser adventure game.",
+	"Move around using the arrow keys.",
+	"You can type commands in like: look at rain, take dollar, and mess with light.",
+	"Type help in each area to get hints."
+]
+
 
 signal state_changed(state: GAME_STATE)
 signal paused_toggled(is_paused: bool)

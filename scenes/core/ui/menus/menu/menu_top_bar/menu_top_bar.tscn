@@ -345,7 +345,7 @@ focus_neighbor_top = NodePath("../../../..")
 focus_neighbor_right = NodePath("../../../../../ActionButton")
 focus_neighbor_bottom = NodePath("../RestoreButton")
 theme_override_font_sizes/font_size = 10
-text = "Save"
+text = "Save <F5>"
 flat = true
 alignment = 0
 
@@ -356,7 +356,7 @@ focus_neighbor_top = NodePath("../SaveButton")
 focus_neighbor_right = NodePath("../../../../../ActionButton")
 focus_neighbor_bottom = NodePath("../RestartButton")
 theme_override_font_sizes/font_size = 10
-text = "Restore"
+text = "Restore <F7>"
 flat = true
 alignment = 0
 
@@ -367,7 +367,7 @@ focus_neighbor_top = NodePath("../RestoreButton")
 focus_neighbor_right = NodePath("../../../../../ActionButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 10
-text = "Restart"
+text = "Restart <F9>"
 flat = true
 alignment = 0
 
@@ -390,15 +390,14 @@ focus_neighbor_left = NodePath("../FileButton")
 focus_neighbor_top = NodePath("Panel/MarginContainer/VBoxContainer/InventoryButton")
 focus_neighbor_right = NodePath("../OptionsButton")
 theme_override_font_sizes/font_size = 10
-text = "Action"
+text = "Game"
 flat = true
 
 [node name="Panel" type="Panel" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton" unique_id=2120318931]
-visible = false
 layout_mode = 0
 offset_left = -2.0
 offset_top = 20.0
-offset_right = 78.0
+offset_right = 93.0
 offset_bottom = 98.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel" unique_id=372902955]
@@ -420,10 +419,22 @@ theme_override_constants/separation = 0
 [node name="InventoryButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=1724116508]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../FileButton")
+focus_neighbor_top = NodePath("../HelpButton")
 focus_neighbor_right = NodePath("../../../../../OptionsButton")
-focus_neighbor_bottom = NodePath("../../../..")
+focus_neighbor_bottom = NodePath("../HelpButton")
 theme_override_font_sizes/font_size = 10
-text = "Inventory"
+text = "Inventory <Tab>"
+flat = true
+alignment = 0
+
+[node name="HelpButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=861138490]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../FileButton")
+focus_neighbor_top = NodePath("../InventoryButton")
+focus_neighbor_right = NodePath("../../../../../OptionsButton")
+focus_neighbor_bottom = NodePath("../InventoryButton")
+theme_override_font_sizes/font_size = 10
+text = "Help <F1>"
 flat = true
 alignment = 0
 
@@ -484,5 +495,6 @@ libraries/ = SubResource("AnimationLibrary_0gdhb")
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton" to="." method="_on_action_button_focus_entered"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_focus_entered"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_sound_button_pressed"]
