@@ -11,10 +11,16 @@ extends Node2D
 @export var quest_control: Control
 @export var animation_player: AnimationPlayer
 
-
 func set_quest(quest_id: String):
 	current_quest_id = quest_id
 	update_ui()
+
+func get_given_quests():
+	var given_quests: Array[Quest] = []
+	for quest in quests:
+		if quest.quest_status != Quest.QuestStatus.NONE and quest.quest_status != Quest.QuestStatus.AVAILABLE:
+			given_quests.append(quest)
+	return given_quests
 
 func get_quest_by_id(quest_id: String):
 	for quest in quests:
@@ -28,15 +34,7 @@ func update_ui():
 	if current_quest:
 		label_name.text = current_quest.quest_name
 		label_desc.text = current_quest.quest_description
-		match current_quest.quest_status:
-			Quest.QuestStatus.AVAILABLE:
-				label_status.text = "Available"
-			Quest.QuestStatus.IN_PROGRESS:
-				label_status.text = "In Progress"
-			Quest.QuestStatus.COMPLETED:
-				label_status.text = "Completed"
-			Quest.QuestStatus.FAILED:
-				label_status.text = "Failed"
+		label_status.text = get_status_text(current_quest.quest_status)
 	await get_tree().create_timer(3.0).timeout
 	animation_player.play("hide")
 
@@ -115,3 +113,15 @@ func get_quest_status_by_name(status_name: String):
 		"failed":
 			return Quest.QuestStatus.FAILED
 	return Quest.QuestStatus.NONE
+
+func get_status_text(status: Quest.QuestStatus):
+	match status:
+		Quest.QuestStatus.AVAILABLE:
+			return "Available"
+		Quest.QuestStatus.IN_PROGRESS:
+			return "In Progress"
+		Quest.QuestStatus.COMPLETED:
+			return "Completed"
+		Quest.QuestStatus.FAILED:
+			return "Failed"
+	return "Unknown"

@@ -581,8 +581,15 @@ next_leaf = NodePath("../ActionStartPlay")
 
 [node name="ActionStartPlay" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=812978244 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("5_tcgup")
-next_leaf = NodePath("../ActionSpawnEntity")
+next_leaf = NodePath("../ActionHasState")
 metadata/_custom_type_script = "uid://b6js0frov0hyb"
+
+[node name="ActionHasState" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=477831012 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("49_mqoiq")
+state_name = "defeated_wizard"
+action_leaf_true = NodePath("../ActionSpawnEntity")
+action_leaf_false = NodePath("../ActionSpawnEntity2")
+metadata/_custom_type_script = "uid://c7u0pxs5cdyn1"
 
 [node name="ActionSpawnEntity" type="Node" parent="ActionTrees/SpawnPlayer" unique_id=1902251126 node_paths=PackedStringArray("room", "spawn_position", "next_leaf")]
 script = ExtResource("6_ce0qk")
@@ -945,10 +952,11 @@ messages = Array[String](["There are some new magazines near the counter. Look a
 [node name="WaterBottle" type="Node2D" parent="Hotspots" unique_id=2062527715 node_paths=PackedStringArray("commands")]
 position = Vector2(-130, -21)
 script = ExtResource("11_tpwdy")
-id = "water_bottle"
+id = "water"
 commands = {
 "look": NodePath("Look"),
-"take": NodePath("Take")
+"take": NodePath("Take"),
+"throw": null
 }
 metadata/_custom_type_script = "uid://drjwci0pg2o4c"
 

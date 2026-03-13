@@ -14,6 +14,8 @@ func _on_body_entered(body):
 	if disabled:
 		return
 	if body is CharacterController:
+		body.set_paralyzed(true)
+		body.set_idle()
 		GameStateStore.prev_door_id = door_id
 		GameStateStore.current_door_id = goto_door_id
 		SceneManager.goto_scene(scene_path)

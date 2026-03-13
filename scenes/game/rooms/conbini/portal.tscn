@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ckuepi7fkkd7o"]
+
+[ext_resource type="SpriteFrames" uid="uid://6vaf0h7ikixy" path="res://assets/img/rooms/conbini/portal.res" id="1_i6wbp"]
+[ext_resource type="Script" uid="uid://mn4wdeeplo2" path="res://scenes/core/areas/room_door.gd" id="2_yj1l7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1p1aa"]
+height = 54.0
+
+[node name="Portal" type="Node2D" unique_id=2072214665]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=746412627]
+sprite_frames = ExtResource("1_i6wbp")
+autoplay = "default"
+frame_progress = 0.88531
+
+[node name="RoomDoor" type="Area2D" parent="." unique_id=706674360]
+collision_layer = 64
+script = ExtResource("2_yj1l7")
+door_id = "3"
+goto_door_id = "1"
+scene_path = "res://scenes/game/rooms/other_long_road_under_construction.tscn"
+metadata/_custom_type_script = "uid://mn4wdeeplo2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomDoor" unique_id=1637459779]
+shape = SubResource("CapsuleShape2D_1p1aa")

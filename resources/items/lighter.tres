@@ -1,9 +1,32 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://n8gafjxtbtom"]
 
 [ext_resource type="Script" uid="uid://cjyg0ygclwad6" path="res://scenes/core/inventory/item.gd" id="1_7wnou"]
+[ext_resource type="Texture2D" uid="uid://b0xqb0od7ho68" path="res://assets/img/items/lighter.png" id="1_8u20k"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8u20k"]
+load_path = "res://.godot/imported/lighter.png-bae1e6911aa46d34fbfa0a7d50164bcf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fgrk"]
+atlas = SubResource("CompressedTexture2D_8u20k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2b3lm"]
+load_path = "res://.godot/imported/lighter.png-bae1e6911aa46d34fbfa0a7d50164bcf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3ahb"]
+atlas = SubResource("CompressedTexture2D_2b3lm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b3lm"]
+atlas = ExtResource("1_8u20k")
+region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_7wnou")
 id = "lighter"
 name = "Lighter"
+description = "A lighter to use to keep warm. Don't go starting fires though!"
+room_texture = SubResource("AtlasTexture_2b3lm")
+icon_texture = SubResource("AtlasTexture_8fgrk")
+inspect_texture = SubResource("AtlasTexture_l3ahb")
 metadata/_custom_type_script = "uid://cjyg0ygclwad6"

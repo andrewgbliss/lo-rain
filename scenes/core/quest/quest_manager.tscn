@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://cjo18jsrkhiv2" path="res://resources/quests/getting_dumped.tres" id="4_aq60o"]
 [ext_resource type="Resource" uid="uid://sh3faqflxjnt" path="res://resources/quests/walk_the_road.tres" id="6_aq60o"]
 [ext_resource type="Resource" uid="uid://c3kt1c3psltl7" path="res://resources/quests/getting_home.tres" id="7_1fdh0"]
+[ext_resource type="Resource" uid="uid://bv7yjgeh7rnkm" path="res://resources/quests/defeat_the_wizard.tres" id="8_b37t6"]
 
 [sub_resource type="Animation" id="Animation_wswyf"]
 length = 0.001
@@ -160,7 +161,7 @@ _data = {
 
 [node name="QuestManager" type="Node2D" unique_id=2089656274 node_paths=PackedStringArray("label_name", "label_desc", "label_status", "quest_control", "animation_player")]
 script = ExtResource("1_6kme4")
-quests = Array[ExtResource("3_qhxnn")]([ExtResource("2_sm6xr"), ExtResource("4_aq60o"), ExtResource("2_3a6x4"), ExtResource("6_aq60o"), ExtResource("7_1fdh0")])
+quests = Array[ExtResource("3_qhxnn")]([ExtResource("2_sm6xr"), ExtResource("4_aq60o"), ExtResource("2_3a6x4"), ExtResource("6_aq60o"), ExtResource("7_1fdh0"), ExtResource("8_b37t6")])
 label_name = NodePath("CanvasLayer/Control/Panel/MarginContainer/VBoxContainer/LabelName")
 label_desc = NodePath("CanvasLayer/Control/Panel/MarginContainer/VBoxContainer/LabelDescription")
 label_status = NodePath("CanvasLayer/Control/Panel/MarginContainer/VBoxContainer/LabelStatus")

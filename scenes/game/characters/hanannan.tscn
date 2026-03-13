@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ldv0v8cbtgxx" path="res://scenes/core/character/character_actions/navigation_process.gd" id="3_3nwy5"]
 [ext_resource type="Script" uid="uid://bw8g80cjnl8co" path="res://scenes/core/character/character_actions/navigation_set_target_pos.gd" id="4_ypx8e"]
 [ext_resource type="Script" uid="uid://drjwci0pg2o4c" path="res://scenes/core/hotspot/hotspot.gd" id="5_6i174"]
+[ext_resource type="PackedScene" uid="uid://ckuepi7fkkd7o" path="res://scenes/game/rooms/conbini/portal.tscn" id="5_sq3k1"]
 [ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="6_0uobs"]
 [ext_resource type="Script" uid="uid://c5kvwmwjxtahl" path="res://scenes/core/action_tree/action_tree.gd" id="7_1la4c"]
 [ext_resource type="Script" uid="uid://8oquxlfp2c6a" path="res://scenes/core/action_tree/leaves/action_paralyze.gd" id="8_dwyl5"]
@@ -13,6 +14,12 @@
 [ext_resource type="Script" uid="uid://bmfirnwwl5a16" path="res://scenes/core/action_tree/leaves/action_wait.gd" id="11_sq3k1"]
 [ext_resource type="Script" uid="uid://ccw4c0yg8jjqd" path="res://scenes/core/action_tree/leaves/action_dialog.gd" id="12_252rq"]
 [ext_resource type="Script" uid="uid://c53ma1b70knud" path="res://scenes/core/action_tree/leaves/action_dialog_thanks_for_playing.gd" id="13_1la4c"]
+[ext_resource type="Script" uid="uid://bbq6w0uiw0v74" path="res://scenes/core/hotspot/hotspot_in_range.gd" id="14_dwyl5"]
+[ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="15_4qa26"]
+[ext_resource type="Script" uid="uid://c7u0pxs5cdyn1" path="res://scenes/core/action_tree/leaves/action_has_state.gd" id="16_1rjgw"]
+[ext_resource type="Script" uid="uid://t7322bdsywkl" path="res://scenes/core/action_tree/leaves/action_set_visible.gd" id="18_ouba6"]
+[ext_resource type="Script" uid="uid://dum3uuucgsd8y" path="res://scenes/core/action_tree/leaves/action_set_process_mode.gd" id="19_nm7yo"]
+[ext_resource type="Script" uid="uid://c3nf2mlpgndis" path="res://scenes/core/action_tree/leaves/action_set_state.gd" id="20_nm7yo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxm2h"]
 size = Vector2(9, 2)
@@ -156,6 +163,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp1f3"]
 radius = 20.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4qa26"]
+radius = 63.0
+
 [node name="Hanannan" type="CharacterBody2D" unique_id=11442449 node_paths=PackedStringArray("navigation_agent") groups=["Persist"]]
 collision_layer = 16
 collision_mask = 2
@@ -164,6 +174,7 @@ wall_min_slide_angle = 0.00872665
 script = ExtResource("1_88g1p")
 character_type = 1
 has_gravity = false
+move_speed = Vector2(30, 15)
 default_movement_direction = 3
 navigation_agent = NodePath("NavigationAgent2D")
 metadata/_custom_type_script = "uid://crueou1p1x8k2"
@@ -186,13 +197,17 @@ target_desired_distance = 5.0
 simplify_path = true
 
 [node name="NavigationProcess" type="Node2D" parent="." unique_id=930871290]
-process_mode = 4
 script = ExtResource("3_3nwy5")
 
 [node name="NavigationAgentSetTargetPos" type="Node2D" parent="." unique_id=713736514]
 script = ExtResource("4_ypx8e")
 target_pos_type = 1
 wait_time = 3.0
+
+[node name="Portal" parent="." unique_id=2072214665 instance=ExtResource("5_sq3k1")]
+process_mode = 4
+visible = false
+position = Vector2(0, -21)
 
 [node name="Hotspot" type="Node2D" parent="." unique_id=34449643 node_paths=PackedStringArray("commands")]
 script = ExtResource("5_6i174")
@@ -275,3 +290,102 @@ metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 script = ExtResource("12_252rq")
 messages = Array[String](["You see a wizard from Mings Quest 3.", "Best to stay away from him."])
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="Hotspot2" type="Node2D" parent="." unique_id=209279320 node_paths=PackedStringArray("commands")]
+script = ExtResource("5_6i174")
+id = "water"
+commands = {
+"throw": NodePath("ThrowWater")
+}
+metadata/_custom_type_script = "uid://drjwci0pg2o4c"
+
+[node name="HotspotInRange" type="Area2D" parent="Hotspot2" unique_id=1520029124]
+collision_layer = 32
+script = ExtResource("14_dwyl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspot2/HotspotInRange" unique_id=201050442]
+shape = SubResource("CircleShape2D_4qa26")
+
+[node name="ThrowWater" type="Node" parent="Hotspot2" unique_id=1078647454 node_paths=PackedStringArray("root_leaf")]
+script = ExtResource("7_1la4c")
+root_leaf = NodePath("ActionInRange")
+
+[node name="ActionInRange" type="Node" parent="Hotspot2/ThrowWater" unique_id=1376816219 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
+script = ExtResource("15_4qa26")
+hotspot_in_range = NodePath("../../HotspotInRange")
+action_leaf_true = NodePath("../ActionHasState")
+show_not_in_range_message = true
+metadata/_custom_type_script = "uid://d4gkcch11dn80"
+
+[node name="ActionHasState" type="Node" parent="Hotspot2/ThrowWater" unique_id=1261541989 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("16_1rjgw")
+state_name = "did_pay_for_water"
+value = true
+action_leaf_true = NodePath("../ActionSetProcessMode3")
+action_leaf_false = NodePath("../ActionDialog2")
+metadata/_custom_type_script = "uid://c7u0pxs5cdyn1"
+
+[node name="ActionSetProcessMode3" type="Node" parent="Hotspot2/ThrowWater" unique_id=1178667460 node_paths=PackedStringArray("node", "next_leaf")]
+script = ExtResource("19_nm7yo")
+node = NodePath("../../../NavigationProcess")
+set_mode = 4
+next_leaf = NodePath("../ActionSetIdle")
+metadata/_custom_type_script = "uid://dum3uuucgsd8y"
+
+[node name="ActionSetIdle" type="Node" parent="Hotspot2/ThrowWater" unique_id=1311387564 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("9_4qa26")
+entity_name = "hanannan"
+next_leaf = NodePath("../ActionDialog")
+metadata/_custom_type_script = "uid://cqjbjyrorfhxx"
+
+[node name="ActionDialog" type="Node" parent="Hotspot2/ThrowWater" unique_id=1092391252 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_252rq")
+messages = Array[String](["You throw the water at the wizard."])
+next_leaf = NodePath("../ActionSetVisible")
+
+[node name="ActionDialog2" type="Node" parent="Hotspot2/ThrowWater" unique_id=315771883]
+script = ExtResource("12_252rq")
+messages = Array[String](["You haven't paid for the water yet."])
+
+[node name="ActionSetVisible" type="Node" parent="Hotspot2/ThrowWater" unique_id=1633686367 node_paths=PackedStringArray("node", "next_leaf")]
+script = ExtResource("18_ouba6")
+node = NodePath("../../../Portal")
+next_leaf = NodePath("../ActionSetProcessMode")
+
+[node name="ActionSetProcessMode" type="Node" parent="Hotspot2/ThrowWater" unique_id=119680118 node_paths=PackedStringArray("node", "next_leaf")]
+script = ExtResource("19_nm7yo")
+node = NodePath("../../../Portal")
+next_leaf = NodePath("../ActionSetVisible2")
+metadata/_custom_type_script = "uid://dum3uuucgsd8y"
+
+[node name="ActionSetVisible2" type="Node" parent="Hotspot2/ThrowWater" unique_id=2122034030 node_paths=PackedStringArray("node", "next_leaf")]
+script = ExtResource("18_ouba6")
+node = NodePath("../../../Sprite2D")
+visible = false
+next_leaf = NodePath("../ActionSetProcessMode2")
+
+[node name="ActionSetProcessMode2" type="Node" parent="Hotspot2/ThrowWater" unique_id=586110104 node_paths=PackedStringArray("node", "next_leaf")]
+script = ExtResource("19_nm7yo")
+node = NodePath("../../../CollisionShape2D")
+set_mode = 4
+next_leaf = NodePath("../ActionSetProcessMode4")
+metadata/_custom_type_script = "uid://dum3uuucgsd8y"
+
+[node name="ActionSetProcessMode4" type="Node" parent="Hotspot2/ThrowWater" unique_id=1220632675 node_paths=PackedStringArray("node", "next_leaf")]
+script = ExtResource("19_nm7yo")
+node = NodePath("../../../Hotspot/HotspotActionTrigger")
+set_mode = 4
+next_leaf = NodePath("../ActionDialog3")
+metadata/_custom_type_script = "uid://dum3uuucgsd8y"
+
+[node name="ActionDialog3" type="Node" parent="Hotspot2/ThrowWater" unique_id=1098887480 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("12_252rq")
+messages = Array[String](["The water causes him to wither, but before he dies he warps back to Flings Quest 3.", "The warp portal remains open, if you dare to enter."])
+next_leaf = NodePath("../ActionSetState")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionSetState" type="Node" parent="Hotspot2/ThrowWater" unique_id=826008238]
+script = ExtResource("20_nm7yo")
+state_name = "defeated_wizard"
+value = true
+metadata/_custom_type_script = "uid://c3nf2mlpgndis"

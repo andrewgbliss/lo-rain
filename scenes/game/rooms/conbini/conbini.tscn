@@ -27,8 +27,14 @@
 [ext_resource type="Script" uid="uid://d4gkcch11dn80" path="res://scenes/core/action_tree/leaves/action_in_range.gd" id="22_h1ca5"]
 [ext_resource type="PackedScene" uid="uid://o0lomg3wclnc" path="res://scenes/game/characters/xandric.tscn" id="23_2optl"]
 [ext_resource type="Script" uid="uid://6cnw82p6ya55" path="res://scenes/core/hotspot/hotspot_action_trigger.gd" id="23_ji0gc"]
+[ext_resource type="Script" uid="uid://blw6hn8bnrjbj" path="res://scenes/core/action_tree/leaves/action_quest_start.gd" id="23_ks763"]
+[ext_resource type="Script" uid="uid://c7u0pxs5cdyn1" path="res://scenes/core/action_tree/leaves/action_has_state.gd" id="23_sbbdo"]
 [ext_resource type="Script" uid="uid://d0xyrnkgp68i1" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="23_up5px"]
 [ext_resource type="Script" uid="uid://biskw5uli3lc2" path="res://scenes/core/action_tree/leaves/action_play_animation.gd" id="24_h1ca5"]
+[ext_resource type="Script" uid="uid://deqpnph8yr2sj" path="res://scenes/core/action_tree/leaves/action_add_inventory.gd" id="25_fkavg"]
+[ext_resource type="Script" uid="uid://bnp8uwvev60jm" path="res://scenes/core/action_tree/leaves/action_has_inventory.gd" id="25_u5qrr"]
+[ext_resource type="Resource" uid="uid://n8gafjxtbtom" path="res://resources/items/lighter.tres" id="26_u5qrr"]
+[ext_resource type="Script" uid="uid://dc0dykc5abfwx" path="res://scenes/core/action_tree/leaves/action_quest_complete.gd" id="28_qdujy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_533q6"]
 radius = 52.009613
@@ -439,14 +445,58 @@ metadata/_custom_type_script = "uid://c5kvwmwjxtahl"
 [node name="ActionInRange" type="Node" parent="Hotspots/Owl/Talk" unique_id=1814003358 node_paths=PackedStringArray("hotspot_in_range", "action_leaf_true")]
 script = ExtResource("22_h1ca5")
 hotspot_in_range = NodePath("../../HotspotInRange")
-action_leaf_true = NodePath("../ActionDialog")
+action_leaf_true = NodePath("../ActionHasState")
 show_not_in_range_message = true
 metadata/_custom_type_script = "uid://d4gkcch11dn80"
 
-[node name="ActionDialog" type="Node" parent="Hotspots/Owl/Talk" unique_id=53076135]
+[node name="ActionHasState" type="Node" parent="Hotspots/Owl/Talk" unique_id=1267056654 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("23_sbbdo")
+state_name = "defeated_wizard"
+value = true
+action_leaf_true = NodePath("../ActionHasInventory")
+action_leaf_false = NodePath("../ActionDialog")
+metadata/_custom_type_script = "uid://c7u0pxs5cdyn1"
+
+[node name="ActionDialog" type="Node" parent="Hotspots/Owl/Talk" unique_id=53076135 node_paths=PackedStringArray("next_leaf")]
 script = ExtResource("19_h1ca5")
-messages = Array[String](["Whooo, whooo, whooo.", "Don't go in there, there is a wizard on a trip from another game.", "Be careful!"])
+messages = Array[String](["Whooo, whooo, whooo.", "Don't go in there, there is a wizard on a trip from another text parser game.", "If you defeat him I will give you something to help you on your journey."])
+next_leaf = NodePath("../ActionQuestStart")
 metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionQuestStart" type="Node" parent="Hotspots/Owl/Talk" unique_id=765545910]
+script = ExtResource("23_ks763")
+quest_id = "defeat_the_wizard"
+metadata/_custom_type_script = "uid://blw6hn8bnrjbj"
+
+[node name="ActionHasInventory" type="Node" parent="Hotspots/Owl/Talk" unique_id=1526280943 node_paths=PackedStringArray("action_leaf_true", "action_leaf_false")]
+script = ExtResource("25_u5qrr")
+item = ExtResource("26_u5qrr")
+action_leaf_true = NodePath("../ActionDialog3")
+action_leaf_false = NodePath("../ActionDialog2")
+metadata/_custom_type_script = "uid://bnp8uwvev60jm"
+
+[node name="ActionDialog2" type="Node" parent="Hotspots/Owl/Talk" unique_id=208773329 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["Whooo, whooo, whooo.", "You actually defeated the wizard?", "Here is a lighter to help keep you warm on your long journey home."])
+next_leaf = NodePath("../ActionAddInventory")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionAddInventory" type="Node" parent="Hotspots/Owl/Talk" unique_id=1358722008 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("25_fkavg")
+item = ExtResource("26_u5qrr")
+next_leaf = NodePath("../ActionQuestComplete")
+metadata/_custom_type_script = "uid://deqpnph8yr2sj"
+
+[node name="ActionDialog3" type="Node" parent="Hotspots/Owl/Talk" unique_id=68072388 node_paths=PackedStringArray("next_leaf")]
+script = ExtResource("19_h1ca5")
+messages = Array[String](["Whooo, whooo, whooo.", "Watch out for snakes!"])
+next_leaf = NodePath("../ActionAddInventory")
+metadata/_custom_type_script = "uid://ccw4c0yg8jjqd"
+
+[node name="ActionQuestComplete" type="Node" parent="Hotspots/Owl/Talk" unique_id=1093264811]
+script = ExtResource("28_qdujy")
+quest_id = "defeat_the_wizard"
+metadata/_custom_type_script = "uid://dc0dykc5abfwx"
 
 [node name="Doors" type="Node2D" parent="Hotspots" unique_id=946229153 node_paths=PackedStringArray("commands")]
 position = Vector2(32, -5)

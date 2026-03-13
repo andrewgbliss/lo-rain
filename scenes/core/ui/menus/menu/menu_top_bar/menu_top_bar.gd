@@ -99,3 +99,7 @@ func _on_help_button_pressed() -> void:
 	GameManager.unpause()
 	for message in GameManager.help_text:
 		DialogUi.dialog_text.send_message(message)
+
+func _on_quest_button_pressed() -> void:
+	_off()
+	UiManager.game_menus.push("QuestMenu", false)

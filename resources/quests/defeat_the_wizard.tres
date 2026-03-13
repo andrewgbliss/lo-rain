@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Quest" format=3 uid="uid://bv7yjgeh7rnkm"]
+
+[ext_resource type="Script" uid="uid://bp7no1bvpm1we" path="res://scenes/core/quest/quest.gd" id="1_bx8i2"]
+
+[resource]
+script = ExtResource("1_bx8i2")
+quest_id = "defeat_the_wizard"
+quest_name = "Defeat the wizard"
+quest_description = "Defeat the wizard and the owl will give you something good."
+metadata/_custom_type_script = "uid://bp7no1bvpm1we"

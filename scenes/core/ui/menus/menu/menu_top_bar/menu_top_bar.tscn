@@ -421,16 +421,27 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../FileButton")
 focus_neighbor_top = NodePath("../HelpButton")
 focus_neighbor_right = NodePath("../../../../../OptionsButton")
-focus_neighbor_bottom = NodePath("../HelpButton")
+focus_neighbor_bottom = NodePath("../QuestButton")
 theme_override_font_sizes/font_size = 10
 text = "Inventory <Tab>"
+flat = true
+alignment = 0
+
+[node name="QuestButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=387989963]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../FileButton")
+focus_neighbor_top = NodePath("../InventoryButton")
+focus_neighbor_right = NodePath("../../../../../OptionsButton")
+focus_neighbor_bottom = NodePath("../HelpButton")
+theme_override_font_sizes/font_size = 10
+text = "Quests <F4>"
 flat = true
 alignment = 0
 
 [node name="HelpButton" type="Button" parent="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer" unique_id=861138490]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../FileButton")
-focus_neighbor_top = NodePath("../InventoryButton")
+focus_neighbor_top = NodePath("../QuestButton")
 focus_neighbor_right = NodePath("../../../../../OptionsButton")
 focus_neighbor_bottom = NodePath("../InventoryButton")
 theme_override_font_sizes/font_size = 10
@@ -495,6 +506,7 @@ libraries/ = SubResource("AnimationLibrary_0gdhb")
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/FileButton/Panel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton" to="." method="_on_action_button_focus_entered"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer/InventoryButton" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer/QuestButton" to="." method="_on_quest_button_pressed"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/ActionButton/Panel/MarginContainer/VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="focus_entered" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_focus_entered"]
 [connection signal="pressed" from="Control/Panel/MarginContainer/HBoxContainer/OptionsButton/Panel/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_sound_button_pressed"]
